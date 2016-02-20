@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for spelling numbers in English</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for spelling numbers in English</h1>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-05</p>
+</div>
+<p>
+This article is a comparison of CPAN modules for spelling out numbers in words,
+in English. Here's a summary of the modules covered:
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#Lingua::EN::Inflect"><tt>Lingua::EN::Inflect</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dconway/Lingua-EN-Inflect-1.894/lib/Lingua/EN/Inflect.pm">CPAN</a></span></td>
+  <td align=right><tt>1.894</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dconway/">Damian Conway</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua-EN-Inflect"><tt>14</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Lingua::EN::Inflect"><tt>30</tt></a></td>
+  <td align=right><tt>2012-06-14</tt></td>
+</tr><tr>
+  <td><a href="#Lingua::EN::Numbers"><tt>Lingua::EN::Numbers</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Lingua-EN-Numbers-1.04/lib/Lingua/EN/Numbers.pm">CPAN</a></span></td>
+  <td align=right><tt>1.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua-EN-Numbers"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Lingua::EN::Numbers"><tt>9</tt></a></td>
+  <td align=right><tt>2012-06-21</tt></td>
+</tr><tr>
+  <td><a href="#Lingua::EN::Nums2Words"><tt>Lingua::EN::Nums2Words</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~hightowe/Lingua-EN-Nums2Words-1.14/Nums2Words.pm">CPAN</a></span></td>
+  <td align=right><tt>1.14</tt></td>
+  <td align=left><a href="http://search.cpan.org/~hightowe/">Lester Hightower</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua-EN-Nums2Words"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Lingua::EN::Nums2Words"><tt>0</tt></a></td>
+  <td align=right><tt>2011-10-02</tt></td>
+</tr><tr>
+  <td><a href="#Math::BigInt::Named"><tt>Math::BigInt::Named</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tels/Math-BigInt-Named-0.03/lib/Math/BigInt/Named.pm">CPAN</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tels/">Tels</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Math-BigInt-Named"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Math::BigInt::Named"><tt>0</tt></a></td>
+  <td align=right><tt>2007-02-24</tt></td>
+</tr><tr>
+  <td><a href="#Number::Spell"><tt>Number::Spell</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~lhoward/Number-Spell-0.04/Spell.pm">CPAN</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~lhoward/">Les Howard</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Number-Spell"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Number::Spell"><tt>0</tt></a></td>
+  <td align=right><tt>2000-03-11</tt></td>
+</tr>
+</table>
+
+
+<p>
+I'll look at each module in turn, then present results of comparing the modules,
+and finally which module you should use when.
+</p>
+
+<p>
+I haven't included modules for other languages in the evaluation, as I don't speak any of them well enough to check the generated word strings. Following the discussion on the modules above, I've included a list of related modules.
+</p>
+
+<p>
+Before we start, there are two things you need to be aware of. Firstly, <a href="http://en.wikipedia.org/wiki/Long_and_short_scales">long and short scales</a>. Read the linked wikipedia page if you're really interested, but it's about whether you call 1,000,000,000 a billion, or a thousand million. Until 1974 British English followed the latter usage, but now all English speaking countries use the short scale (Canada uses the short scale for Canadian English and the long scale for Canadian French. SacrÃ© bleu!).
+</p>
+
+<p>
+There are also differences in how numbers are spelled out. These are often referred to as American English versus British English styles, but it's not really so clear-cut. Of course there's a <a href="http://en.wikipedia.org/wiki/English_numerals">Wikipedia page on English numerals</a>, but some key examples:
+</p>
+
+<table>
+<tr><td width=50></td><td></td><td width=15></td><th align=left>British English</th><td width=15></td><th align=left>American English</th></tr>
+<tr><td></td><td>0.1</td><td></td><td>nought point one</td><td></td><td>zero point one</td></tr>
+<tr><td></td><td>-1</td><td></td><td>minus one</td><td></td><td>negative one</td></tr>
+<tr><td></td><td>117</td><td></td><td>one hundred and seventeen</td><td></td><td>one hundred seventeen</td></tr>
+</table>
+<h2 id="Lingua::EN::Inflect">Lingua::EN::Inflect</h2>
+<p>
+<a href="https://www.metacpan.org/module/Lingua::EN::Inflect">Lingua::EN::Inflect</a>
+provides a range of functions for converting singular forms of words into plural,
+and various other things as well.
+The two functions relevant for this review are
+<tt>NUMWORDS()</tt> and <tt>ORD()</tt> function.
+The following shows basic usage:
+</p>
+
+<pre>
+use Lingua::EN::Inflect qw(NUMWORDS ORD);
+
+$age = 46;
+print "I am ", NUMWORDS($age), " years old.\n";
+print "I've had my ", NUMWORDS(ORD($age)), " birthday.\n";</pre>
+
+<p>Which will display:</p>
+
+<pre>I am forty-six years old.
+I've had my forty-sixth birthday.
+</pre>
+
+<p>
+The <tt>ORD()</tt> function takes a number and returns the ordinal form.
+So <tt>ORD(13)</tt> returns <tt>13th</tt>.
+If <tt>NUMWORDS</tt> is passed an ordinal it will convert it to the ordinal form in words.
+</p>
+
+<p>
+The following is a list of numbers I'll try with each module in turn:
+</p>
+
+<table>
+<tr><td width=50></td><td align=right>-3.14</td><td width=15></td><td align=left>minus three point one four</td></tr>
+<tr><td width=50></td><td align=right>0</td><td width=15></td><td align=left>zero</td></tr>
+<tr><td width=50></td><td align=right>0.7</td><td width=15></td><td align=left>zero point seven</td></tr>
+<tr><td width=50></td><td align=right>+4</td><td width=15></td><td align=left>plus four</td></tr>
+<tr><td width=50></td><td align=right>67</td><td width=15></td><td align=left>sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>123</td><td width=15></td><td align=left>one hundred and twenty-three</td></tr>
+<tr><td width=50></td><td align=right>101001</td><td width=15></td><td align=left>one hundred and one thousand and one</td></tr>
+<tr><td width=50></td><td align=right>1234567</td><td width=15></td><td align=left>one million, two hundred and thirty-four thousand, five hundred and sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>10101010101</td><td width=15></td><td align=left>ten billion, one hundred and one million, ten thousand, one hundred and one</td></tr>
+<tr><td width=50></td><td align=right>6.02e23</td><td width=15></td><td align=left>six point zero two two three</td></tr>
+</table>
+
+
+<p>
+As you can see, it doesn't support exponential notation (as noted in the documentation),
+but does just fine on the others.
+</p>
+
+<p>
+The NUMWORDS function also takes a number of options, as a hash following the number.
+</p>
+
+<dl>
+<dt><tt>group</tt>:<dd>
+    says that the number should be split into groups of digits,
+    with each group converted separately.
+    So <tt>NUMWORDS(1997, group =&gt; 2)</tt> will return "nineteen, ninety-seven".
+<dt><tt>zero</tt>:<dd>
+    by default, NUMWORDS will convert 0 to 'zero', but if you want 'nought',
+    you can specify this. 
+    So <tt>NUMWORDS(0.12, zero =&gt; 'nought')</tt> will return "nought point one two".
+<dt><tt>one</tt>:<dd>
+    can be used to specify an alternative to 'one' for 1, such as 'a single'.
+<dt><tt>and</tt>:<dd>
+    used to specify whether you want 'and' included in the generated words.
+    <tt>NUMWORDS(123)</tt> will return 'one hundred and twenty-three'.
+    <tt>NUMWORDS(123, and =&gt; '')</tt> will return 'one hundred twenty-three'.
+<dt><tt>dot</tt>:<dd>
+    used to override the word used for the decimal point, defaulting to 'point'.
+</dl>
+
+<p>
+There is so much more to this module.
+If you're generating natural language beyond just numbers,
+this is probably the one for you.
+</p>
+<h2 id="Lingua::EN::Numbers">Lingua::EN::Numbers</h2>
+<p>This module provides two functions:</p>
+<ul>
+<li><tt>num2en()</tt> takes a number and returns a string containing english words expressing the number.</li>
+<li><tt>num2en_ordinal()</tt> returns a string with the number expressed as an ordinal.</li>
+</ul>
+
+<p>
+Both functions will return <tt>undef</tt> if you pass a scalar which isn't a number. The following illustrates their usage:
+</p>
+
+<pre>
+use Lingua::EN::Numbers qw(num2en num2en_ordinal);
+    
+$age = 45;
+print "I am ", num2en($age), " years old.\n";
+print "I've had my ", num2en_ordinal($age), " birthday.\n";
+</pre>
+
+<p>Which will display:</p>
+
+<pre>
+I am forty-five years old.
+I've had my forty-fifth birthday.
+</pre>
+
+<p>
+<tt>num2en</tt> supports negative numbers, real numbers,
+and exponential notation.
+Here's the list of test numbers:
+</p>
+
+<table>
+<tr><td width=50></td><td align=right>-3.14</td><td width=15></td><td align=left>negative three point one four</td></tr>
+<tr><td width=50></td><td align=right>0</td><td width=15></td><td align=left>zero</td></tr>
+<tr><td width=50></td><td align=right>0.7</td><td width=15></td><td align=left>zero point seven</td></tr>
+<tr><td width=50></td><td align=right>+4</td><td width=15></td><td align=left>positive four</td></tr>
+<tr><td width=50></td><td align=right>67</td><td width=15></td><td align=left>sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>123</td><td width=15></td><td align=left>one hundred and twenty-three</td></tr>
+<tr><td width=50></td><td align=right>101001</td><td width=15></td><td align=left>one hundred and one thousand and one</td></tr>
+<tr><td width=50></td><td align=right>1234567</td><td width=15></td><td align=left>one million, two hundred and thirty-four thousand, five hundred and sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>10101010101</td><td width=15></td><td align=left>ten billion, one hundred and one million, ten thousand, one hundred and one</td></tr>
+<tr><td width=50></td><td align=right>6.02e23</td><td width=15></td><td align=left>six point zero two times ten to the twenty-third</td></tr>
+</table>
+
+
+<p>
+Interestingly the module generates a mix of British and American styles,
+and there's no way to specify which style you want.
+</p>
+
+<p>
+When I first wrote this review, I found a bug in the module,
+and there was another bug listed on RT, with a fix attached.
+Sean Burke, who wrote this module, kindly gave me co-maint,
+and I have released new versions which resolve all outstanding issues on RT.
+</p>
+<h2 id="Lingua::EN::Nums2Words">Lingua::EN::Nums2Words</h2>
+<p>This module provides four functions:</p>
+<ul>
+<li><tt>num2word()</tt> takes a number and returns a string containing english words expressing the number.</li>
+<li><tt>num2word_ordinal()</tt> returns a string with the number expressed as an ordinal.</li>
+<li><tt>num2word_short_ordinal()</tt> returns a string with the number expressed as an ordinal, made up of the numerals followed by the ordinal suffix.</li>
+<li><tt>num2usdollars()</tt> returns a string with the number formatted as a dollar amount.</li>
+</ul>
+
+<p>
+The following illustrates their usage:
+</p>
+
+<pre>
+use Lingua::EN::Nums2Words;
+Lingua::EN::Nums2Words::set_case('lower');
+
+$age = 45;
+print "I am ", num2word($age), " years old.\n";
+print "I've had my ", num2word_ordinal($age), " birthday.\n";
+print "I've had my ", num2word_short_ordinal($age), " birthday.\n";
+print "Pay me ", num2usdollars($age), ".\n";
+</pre>
+
+<p>Which will display:</p>
+
+<pre>
+I am forty-five years old.
+I've had my forty-fifth birthday.
+I'm in my 46th year.
+Pay me forty-five dollars and zero cents.
+</pre>
+
+<p>
+By default the generated text is in upper case.
+The <tt>set_case()</tt> call in the above example requests lower case output.
+</p>
+
+<p><tt>num2word</tt> supports negative numbers and real numbers, but not exponential notation. Here's the output from the list of test numbers:</p>
+
+<table>
+<tr><td width=50></td><td align=right>-3.14</td><td width=15></td><td align=left>negative three and fourteen hundredths</td></tr>
+<tr><td width=50></td><td align=right>0</td><td width=15></td><td align=left>zero</td></tr>
+<tr><td width=50></td><td align=right>0.7</td><td width=15></td><td align=left>zero and seven tenths</td></tr>
+<tr><td width=50></td><td align=right>+4</td><td width=15></td><td align=left>four</td></tr>
+<tr><td width=50></td><td align=right>67</td><td width=15></td><td align=left>sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>123</td><td width=15></td><td align=left>one hundred twenty-three</td></tr>
+<tr><td width=50></td><td align=right>101001</td><td width=15></td><td align=left>one hundred one thousand, one</td></tr>
+<tr><td width=50></td><td align=right>1234567</td><td width=15></td><td align=left>one million, two hundred thirty-four thousand, five hundred sixty-seven</td></tr>
+<tr><td width=50></td><td align=right>10101010101</td><td width=15></td><td align=left>ten billion, one hundred one million, ten thousand, one hundred one</td></tr>
+<tr><td width=50></td><td align=right>6.02e23</td><td width=15></td><td align=left>six and two thousand hundred-thousandths</td></tr>
+</table>
+
+<p>Notes:</p>
+
+<ul>
+<li>Invalid input isn't caught.</li>
+<li>Passing an invalid/unsupported number results in a perl warning, but you will get back something.</li>
+<li>Do Americans really pronounce 3.14 as "three and fourteen hundredths"?</li>
+</ul>
+
+<p>
+<tt>num2word</tt> generates American style spellings (no "and" in longer numbers), and american style fractions. There is no way to configure the the module for British or US spellings (as noted in the documentation).
+</p>
+<h2 id="Math::BigInt::Named">Math::BigInt::Named</h2>
+<p>This module is a subclass of Math::BigInt, adding a method for spelling out a BigInt. Numbers can be spelled out in English or German, but I've only tested the former.</p>
+
+<pre>
+use Math::BigInt::Named;
+    
+$age = 45;
+$bigint = Math::BigInt::Named->new($age);
+print "I am ", $bigint->name, " years old.\n";
+# or
+print "I am ", Math::BigInt::Named->name($age), " years old.\n";
+</pre>
+
+<p>Which will display:</p>
+
+<pre>
+I am fourtyfive years old.
+</pre>
+
+<p>
+Note: version 0.3 (at the time of writing, the latest version on CPAN)
+has a bug which makes the module unusable.
+I've submitted a bug report and patch.
+</p>
+
+<p>Here's the list of test numbers passed through the above code:</p>
+
+<table>
+<tr><td width=50></td><td align=right>-3.14</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>0</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>0.7</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>+4</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>67</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>123</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>101001</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>1234567</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>10101010101</td><td width=15></td><td align=left><em>failed</em></td></tr>
+<tr><td width=50></td><td align=right>6.02e23</td><td width=15></td><td align=left><em>failed</em></td></tr>
+</table>
+
+<p>
+BigInt truncates real numbers to integer values,
+which is why 0.7 becomes "zero".
+Negative fractional numbers result in NaN though.
+There are some missing spaces as well (bug reported for that too).
+</p>
+
+<p>
+The module uses long scales (e.g. "milliard" instead of "billion"),
+which aren't used in American, British or any other English.
+</p>
+
+<p>
+Given the various problems with this module,
+I don't think there are any occasions when you might use it <b>for English</b>. The German spelling may be better.
+</p>
+<h2 id="Number::Spell">Number::Spell</h2>
+<p>
+This module provides one function, <tt>spell_number</tt>, which will spell out integers only.
+</p>
+
+<pre>
+use Number::Spell;
+
+$age = 45;
+print "I am ", spell_number($age), " years old.\n";
+</pre>
+
+<p>Which will display:</p>
+
+<pre>
+I am forty five years old.
+</pre>
+
+<p><tt>spell_number</tt> produces "American formatting" by default,
+but the Format parameter can be passed to request "European formatting":
+<p>
+
+<pre>
+$n = 1017324034;
+print "American: ", spell_number($n), "\n";
+print "European: ", spell_number($n, Format => 'eu'), "\n";
+</pre>
+
+<p>Which results in:</p>
+
+<pre>
+American: one billion seventeen million three hundred twenty four thousand thirty four
+European: one thousand seventeen million three hundred twenty four thousand thirty four
+</pre>
+
+<p>The European option actually just switches to long scales, and is thus misnamed. Many European languages do use long scales, but British English uses short scales. It does generate American style spelling ("and" isn't included when spelling out large numbers), and there's no way to request British spelling.</p>
+
+<p>
+Here's the list of test numbers:
+</p>
+
+<table>
+<tr><td width=50></td><td align=right>-3.14</td><td width=15></td><td align=left>three negative</td></tr>
+<tr><td width=50></td><td align=right>0</td><td width=15></td><td align=left>zero</td></tr>
+<tr><td width=50></td><td align=right>0.7</td><td width=15></td><td align=left>zero</td></tr>
+<tr><td width=50></td><td align=right>+4</td><td width=15></td><td align=left>four</td></tr>
+<tr><td width=50></td><td align=right>67</td><td width=15></td><td align=left>sixty seven</td></tr>
+<tr><td width=50></td><td align=right>123</td><td width=15></td><td align=left>one hundred twenty three</td></tr>
+<tr><td width=50></td><td align=right>101001</td><td width=15></td><td align=left>one hundred one thousand one</td></tr>
+<tr><td width=50></td><td align=right>1234567</td><td width=15></td><td align=left>one million two hundred thirty four thousand five hundred sixty seven</td></tr>
+<tr><td width=50></td><td align=right>10101010101</td><td width=15></td><td align=left>ten billion one hundred one million ten thousand one hundred one</td></tr>
+<tr><td width=50></td><td align=right>6.02e23</td><td width=15></td><td align=left>six</td></tr>
+</table>
+
+<p>
+There are a number of problems:
+</p>
+
+<ul>
+<li>Invalid input isn't trapped, so you can sometimes get back the spelling for a substring of the passed scalar. I've submitted a bug for this.</li>
+<li>Numbers between twenty-one and ninety-nine should be hyphenated. There's an outstanding bug in RT for this.</li>
+<li>Negative numbers aren't handled properly.</li>
+<li>Without commas, very long numbers are hard to scan.</li>
+</ul>
+
+<p>
+There are more bugs in RT, one of which includes a patch.
+</p>
+<h1>Comparison</h1>
+
+<p>Most of the interesting points have been covered in the discussions on each module, but I'll show the results of a performance
+test, and then present a summary table of the different capabilities.</p>
+
+<h2>Performance</h2>
+
+<p>I Benchmark'd the modules, converting numbers from 0 to 100,000. The following table shows the time taken.</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>Number::Spell</td><td align=right class=time>1.56</td></tr>
+<tr><td class=module>Lingua::EN::Nums2Words</td><td align=right class=time>2.40</td></tr>
+<tr><td class=module>Lingua::EN::Numbers</td><td align=right class=time>3.44</td></tr>
+<tr><td class=module>Lingua::EN::Inflect</td><td align=right class=time>5.17</td></tr>
+<tr><td class=module>Math::BigInt::Named</td><td align=right class=time>88.31</td></tr>
+</table>
+
+<p>Not that surprising that the BigInt module takes a lot longer.</p>
+
+<h3>Capabilities</h3>
+
+<p>The following table summarises the capabilities described above. Let me know if there's any other aspect you'd like to see compared.</p>
+
+<table class=capabilities>
+<tr align=center>  <td>                                      </td>  <th>Lingua :: EN ::<br>Inflect</th>  <th>Lingua :: EN ::<br>Numbers</th>  <th>Lingua :: EN ::<br>Nums2Words</th>  <th>Math :: BigInt ::<br>Named</th>  <th>Number :: Spell</th> </tr>
+<tr align=center>  <td align=left nowrap>Positive integers   </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td> &#10003; </td>              <td> &#10003; </td>           <td> &#10003; </td>    </tr>
+<tr align=center>  <td align=left nowrap>Negative integers   </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td> &#10003; </td>              <td>          </td>           <td>  buggy   </td>    </tr>
+<tr align=center>  <td align=left nowrap>Real numbers        </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td> &#10003; </td>              <td>          </td>           <td>          </td>    </tr>
+<tr align=center>  <td align=left nowrap>Scientific notation </td>  <td>          </td>           <td> &#10003; </td>           <td>          </td>              <td>          </td>           <td>          </td>    </tr>
+<tr align=center>  <td align=left nowrap>Long scales         </td>  <td>          </td>           <td>          </td>           <td>          </td>              <td> &#10003; </td>           <td> &#10003; </td>    </tr>
+<tr align=center>  <td align=left nowrap>Short scales        </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td> &#10003; </td>              <td>          </td>           <td> &#10003; </td>    </tr>
+<tr align=center>  <td align=left nowrap>American style      </td>  <td> partial  </td>           <td>          </td>           <td> &#10003; </td>              <td> partial  </td>           <td> &#10003; </td>    </tr>
+<tr align=center>  <td align=left nowrap>British style       </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td>          </td>              <td> partial  </td>           <td>          </td>    </tr>
+<tr align=center>  <td align=left nowrap>Ordinal             </td>  <td> &#10003; </td>           <td> &#10003; </td>           <td> &#10003; </td>              <td>          </td>           <td>          </td>    </tr>
+</table>
+
+<p>I can't imagine anyone wants Long Scales, but please let me know if you do!</p>
+<h2>Conclusion</h2>
+
+<p>Overall the best module is Lingua::EN::Numbers. It covers the broadest range of input, and supports ordinals. The module could be improved with the addition of parameters for controlling the formatting:</p>
+<ul>
+<li>Do you want "and" in your numbers?</li>
+<li>"minus" or "negative"?</li>
+<li>"nought" or "zero"?</li>
+<li>Do you want commas in your numbers?</li>
+<li>If it turns out there are people who want Long Scales in English, that could be an option too.</li>
+</ul>
+
+<p>
+Lingua::EN::Inflect is a close second: it supports a couple of the points above, but doesn't support exponential numbers.
+</p>
+
+<p>
+Now I'm maintainer for Lingua::EN::Numbers, I'm going to think about how best to integrate those ideas.
+</p>
+
+<p>
+If you want "US formatting" (no "and", for example), then Lingua::EN::Nums2Words is the one for you. It's not far behind when comparing features, and the main quirk (for me) is the way fractions are spelled out.
+</p>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

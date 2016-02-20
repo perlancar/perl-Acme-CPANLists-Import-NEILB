@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for converting markdown to HTML</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for converting markdown to HTML</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2013-10-30</p>
+</div>
+<p>
+This is a review of Perl CPAN modules that can be used to convert
+<a href="http://daringfireball.net/projects/markdown/syntax">markdown</a>
+to HTML. If you're looking for a quick answer,
+you could skip to the <a href="#comparison">Comparison</a> section,
+but you can't go too far wrong with
+<a href="https://metacpan.org/pod/Text::Markdown" class=module
+>Text::Markdown</a>. 
+</p>
+
+<p>
+The following is a list of the modules I'm aware of so far.
+Please let me know if I've missed any: neilb at cpan dot org.
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#DR::SunDown"><tt>DR::SunDown</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~unera/DR-SunDown-0.02/lib/DR/SunDown.pm">pod</a></span></td>
+  <td align=right><tt>0.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~unera/">Dmitry E. Oboukhov</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=DR-SunDown"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=DR::SunDown"><tt>0</tt></a></td>
+  <td align=right><tt>2012-08-09</tt></td>
+</tr><tr>
+  <td><a href="#Markdent"><tt>Markdent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~drolsky/Markdent-0.22/lib/Markdent.pm">pod</a></span></td>
+  <td align=right><tt>0.22</tt></td>
+  <td align=left><a href="http://search.cpan.org/~drolsky/">Dave Rolsky</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Markdent"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Markdent"><tt>2</tt></a></td>
+  <td align=right><tt>2012-07-23</tt></td>
+</tr><tr>
+  <td><a href="#Markup::Unified"><tt>Markup::Unified</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~idoperel/Markup-Unified-0.0401/lib/Markup/Unified.pm">pod</a></span></td>
+  <td align=right><tt>0.0401</tt></td>
+  <td align=left><a href="http://search.cpan.org/~idoperel/">×¢××× ×¤×¨×××××¨ (Ido Perlmuter)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Markup-Unified"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Markup::Unified"><tt>2</tt></a></td>
+  <td align=right><tt>2012-11-22</tt></td>
+</tr><tr>
+  <td><a href="#Text::Markdown"><tt>Text::Markdown</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bobtfish/Text-Markdown-1.000031/lib/Text/Markdown.pm">pod</a></span></td>
+  <td align=right><tt>1.000031</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bobtfish/">Tomas Doran</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-Markdown"><tt>8</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::Markdown"><tt>38</tt></a></td>
+  <td align=right><tt>2010-03-20</tt></td>
+</tr><tr>
+  <td><a href="#Text::Markdown::Discount"><tt>Text::Markdown::Discount</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~sekimura/Text-Markdown-Discount-0.10/lib/Text/Markdown/Discount.pm">pod</a></span></td>
+  <td align=right><tt>0.10</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sekimura/">Masayoshi Sekimura</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-Markdown-Discount"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::Markdown::Discount"><tt>1</tt></a></td>
+  <td align=right><tt>2013-08-09</tt></td>
+</tr><tr>
+  <td><a href="#Text::Markdown::Hoedown"><tt>Text::Markdown::Hoedown</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tokuhirom/Text-Markdown-Hoedown-0.07/lib/Text/Markdown/Hoedown.pm">pod</a></span></td>
+  <td align=right><tt>0.07</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tokuhirom/">MATSUNOâÂTokuhiro</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-Markdown-Hoedown"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::Markdown::Hoedown"><tt>1</tt></a></td>
+  <td align=right><tt>2013-10-02</tt></td>
+</tr><tr>
+  <td><a href="#Text::Markup"><tt>Text::Markup</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dwheeler/Text-Markup-0.18/lib/Text/Markup.pm">pod</a></span></td>
+  <td align=right><tt>0.18</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dwheeler/">David E. Wheeler</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-Markup"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::Markup"><tt>1</tt></a></td>
+  <td align=right><tt>2013-06-08</tt></td>
+</tr><tr>
+  <td><a href="#Text::Markup::Any"><tt>Text::Markup::Any</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~songmu/Text-Markup-Any-0.03/lib/Text/Markup/Any.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~songmu/">Masayuki Matsuki</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-Markup-Any"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::Markup::Any"><tt>1</tt></a></td>
+  <td align=right><tt>2013-10-08</tt></td>
+</tr><tr>
+  <td><a href="#Text::MultiMarkdown"><tt>Text::MultiMarkdown</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bobtfish/Text-MultiMarkdown-1.000034/lib/Text/MultiMarkdown.pm">pod</a></span></td>
+  <td align=right><tt>1.000034</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bobtfish/">Tomas Doran</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Text-MultiMarkdown"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Text::MultiMarkdown"><tt>18</tt></a></td>
+  <td align=right><tt>2011-04-26</tt></td>
+</tr>
+</table>
+
+
+<p>
+Each module is presented in turn, with a SYNOPSIS style code sample.
+Then all the converter modules are compared, and I end up with recommendations.
+The review ends with a <a href="#see_also">See Also</a> section that
+lists markdown-related modules that don't meet the criteria for this review.
+</p>
+<p>
+With each module I convert the following small snippet of markdown:
+</p>
+
+<pre>
+# Sample markdown
+
+This is a paragraph of text.
+
+  * This is a bullet
+  * Another bullet
+
+And here's a code sample
+
+    print "Hello, World!\n";
+
+And inline formatting:
+*italic*, **bold**, and **_bold italic_**.
+</pre>
+
+<p>
+The first thing to consider is whether you want a full HTML document
+to be generated, or just a fragment that could be embedded.
+Most of the modules listed here generate fragments rather than
+complete HTML documents.
+</p>
+
+<h2 id="DR::SunDown">DR::SunDown</h2>
+<p>
+<a href="https://metacpan.org/module/DR::SunDown" class="module">DR::SunDown</a>
+is a wrapper around the <a href="https://github.com/vmg/sundown">sundown</a> C library.
+Sundown is a fork of the
+<a href="http://fossil.instinctive.eu/libsoldout/">soldout</a> library.
+</p>
+<p>
+The module provides a <tt>markdown2html</tt> function,
+which takes a markdown string and returns an HTML one:
+</p>
+
+<pre>
+use DR::SunDown;
+my $html = markdown2html($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here&#39;s a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+This module doesn't offer anything beyond basic conversion,
+but its main advantage is its speed.
+</p>
+
+<p>
+The underlying sundown library has been <a href="https://raw.github.com/vmg/sundown/master/CONTRIBUTING.md">frozen</a>
+since November 2012, and has a lot of <a href="https://github.com/vmg/sundown/issues">outstanding bugs</a>,
+so I wouldn't recommend using it.
+The freeze notice says github and others are apparently working
+on a formal definition of markdown and a new parser.
+</p>
+<h2 id="Markdent">Markdent</h2>
+<p>
+<a href="https://metacpan.org/module/Markdent" class="module">Markdent</a> is a toolkit for parsing markdown,
+which can also be used to convert a markdown document:
+</p>
+
+<pre>
+use Markdent::Simple::Document;
+my $parser = Markdent::Simple::Document->new();
+my $html   = $parser->markdown_to_html(
+                title    => 'sample document',
+                markdown => $markdown
+             );
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+          &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;title&gt;sample document&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Sample markdown
+&lt;/h1&gt;&lt;p&gt;This is a paragraph of text.
+&lt;/p&gt;&lt;ul&gt;&lt;li&gt;This is a bullet
+&lt;/li&gt;&lt;li&gt;Another bullet
+&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;And here's a code sample
+&lt;/p&gt;&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.
+&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</pre>
+
+<p>
+Note that this is for generating documents, rather than processing
+snippets of markdown.
+The documentation says to look at
+<a href="https://metacpan.org/module/Markdent::Handler::HTMLStream::Fragment" class="module">Markdent::Handler::HTMLStream::Fragment</a>
+if you don't want to produce a complete document.
+I wrote a simple class using that, and here's the output that resulted:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown
+&lt;/h1&gt;&lt;p&gt;This is a paragraph of text.
+&lt;/p&gt;&lt;ul&gt;&lt;li&gt;This is a bullet
+&lt;/li&gt;&lt;li&gt;Another bullet
+&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;And here's a code sample
+&lt;/p&gt;&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.
+&lt;/p&gt;
+</pre>
+
+<p>
+The documentation says that if you just want to convert markdown to HTML,
+then look at Text::Markdown.
+</p>
+<h2 id="Markup::Unified">Markup::Unified</h2>
+<p>
+<a href="https://metacpan.org/module/Markup::Unified" class="module">Markup::Unified</a>
+provides a common interface to conversion of three simple markup languages:
+markdown,
+<a href="http://www.bbcode.org/">BBCode</a>,
+and <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>.
+The conversion of each format is handled by other modules;
+for Markdown it is <tt>Text::Markdown</tt>.
+</p>
+<p>
+Here's how you convert markdown:
+</p>
+
+<pre>
+use Markup::Unified;
+my $u    = Markup::Unified->new();
+my $html = $u->format($markdown, 'markdown');
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+If you need to support multiple markup formats, for example in a blogging engine,
+then this kind of module might be useful.
+</p>
+
+<h2 id="Text::Markdown">Text::Markdown</h2>
+<p>
+<a href="https://metacpan.org/module/Text::Markdown" class="module">Text::Markdown</a> supports both a functional and OO interface.
+For simple conversion of markdown, you can import the <tt>markdown()</tt>
+function:
+</p>
+
+<pre>
+use Text::Markdown qw(markdown);
+my $html = markdown($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+So this can be used to process a snippet of markdown to embed into
+another document / page.
+</p>
+<p>
+The OO interface gives you a little bit of control:
+</p>
+<pre>
+use Text::Markdown;
+my $parser = Text::Markdown->new(
+                  empty_element_suffix => '>',
+                             tab_width => 4,
+                trust_list_start_value => 1,
+             );
+my $html   = $parser->markdown($markdown);
+print $html, "\n";</pre>
+<p>
+This appears to be the most widely used module,
+and it's the one that I've been using to date.
+It does have some <a href="https://github.com/bobtfish/text-markdown/issues">outstanding bugs</a> on github,
+but for 'regular markdown usage', it's fine.
+</p>
+<h2 id="Text::Markdown::Discount">Text::Markdown::Discount</h2>
+<p>
+<a href="https://metacpan.org/module/Text::Markdown::Discount" class="module">Text::Markdown::Discount</a> is a perl interface
+to <a href="http://www.pell.portland.or.us/~orc/Code/discount/">Discount</a>,
+a markdown parser in C.
+It exports a single function <tt>markdown()</tt>:
+</p>
+
+<pre>
+use Text::Markdown::Discount qw(markdown);
+my $html = markdown($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+The discount library also supports a number of extensions,
+which are described on the
+<a href="http://www.pell.portland.or.us/~orc/Code/discount/">discount home page</a>.
+Here are some of them:
+</p>
+<ul>
+<li>Centering a paragraph
+<li>Specifying image sizes
+<li>Definition lists
+<li>Ordered lists with letters instead of numbers
+<li>Tables
+<li>Ability to specify a CSS class for a div instead of a blockquote
+</ul>
+
+<h2 id="Text::Markdown::Hoedown">Text::Markdown::Hoedown</h2>
+<p>
+<a href="https://metacpan.org/module/Text::Markdown::Hoedown" class="module">Text::Markdown::Hoedown</a>, from the prolific <a href="https://metacpan.org/author/TOKUHIROM">TOKUHIROM</a>, is a wrapper around the <a href="https://github.com/vmg/sundown">hoedown</a> C library.
+Hoedown is a fork of the sundown library (used in DR::Sundown,
+described above),
+which is itself a fork of the
+<a href="http://fossil.instinctive.eu/libsoldout/">soldout</a> library.
+</p>
+<p>
+The simplest usage is similar to the other modules:
+</p>
+
+<pre>
+use Text::Markdown::Hoedown;
+my $html = markdown($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here&#39;s a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+The <tt>markdown</tt> function can also take options,
+which are used to enable certain markdown extensions,
+and control the HTML that is generated.
+</p>
+
+<pre>
+use Text::Markdown::Hoedown;
+my $html = markdown($markdown,
+                    extensions   =>   HOEDOWN_EXT_SPACE_HEADERS
+                                    | HOEDOWN_EXT_DISABLE_INDENTED_CODE,
+                    html_options =>   HOEDOWN_HTML_TOC
+                                    | HOEDOWN_HTML_USE_XHTML
+                   );
+print $html, "\n";</pre>
+
+<p>
+See the
+<a href="https://metacpan.org/module/Text::Markdown::Hoedown">documentation</a>
+for a list of all options.
+The doc's a bit thin though, so you'll have to guess / experiment
+to work out what all the options are.
+</p>
+
+<p>
+The module also provides a <tt>markdown_toc()</tt> function,
+which will generate an HTML table of contents for a markdown string:
+</p>
+
+<pre>
+use Text::Markdown::Hoedown;
+my $html = markdown_toc($markdown);
+print $html, "\n";</pre>
+
+<p>
+Note that if you want to generate a TOC, you'll need to
+pass the <tt>HOEDOWN_HTML_TOC</tt> option to <tt>markdown()</tt>,
+shown above. This generates the <tt>id</tt> attributes on the header,
+linked to by the TOC.
+</p>
+
+<p>
+This module is fast, and appears quite flexible.
+Once I've worked out what all the options are for, this might be a good option,
+if you don't mind a module that requires a C compiler.
+</p>
+
+<h2 id="Text::Markup">Text::Markup</h2>
+<p>
+<a href="https://metacpan.org/module/Text::Markup" class="module">Text::Markup</a>
+is a parser that can handle a number of formats, converting
+them to HTML.
+</p>
+
+<pre>
+use Text::Markup;
+my $parser = Text::Markup->new();
+my $html   = $parser->parse(file => $path);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;html&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet
+&lt;/li&gt;
+&lt;li&gt;Another bullet
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+<p>
+So this seems to be oriented towards generating documents rather
+than embeddable snippets.
+</p>
+<h2 id="Text::Markup::Any">Text::Markup::Any</h2>
+<p>
+<a href="https://metacpan.org/module/Text::Markup::Any" class="module">Text::Markup::Any</a>
+provides a single interface to a number of other markup conversion modules.
+The following shows conversion using <tt>Text::Markdown</tt>:
+</p>
+
+<pre>
+use Text::Markup::Any;
+my $tma  = Text::Markup::Any->new('Text::Markdown');
+my $html = $tma->markup($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+The markup modules supported are:
+<a href="https://metacpan.org/module/Text::Markdown" class="module">Text::Markdown</a>,
+<a href="https://metacpan.org/module/Text::MultiMarkdown" class="module">Text::MultiMarkdown</a>,
+<a href="https://metacpan.org/module/Text::Markdown::Discount" class="module">Text::Markdown::Discount</a>,
+<a href="https://metacpan.org/module/Text::Xatena" class="module">Text::Xatena</a>,
+and
+<a href="https://metacpan.org/module/Text::Textile" class="module">Text::Textile</a>.
+</p>
+<p>
+Compared with <a href="https://metacpan.org/module/Markup::Unified" class="module">Markup::Unified</a>
+this module is a little strange:
+you have to specify the name of the conversion module rather than the format name
+(ie <tt>'Text::Markdown'</tt> instead of 'markdown'),
+plus it supports two different markdown modules, with no discussion of why you might choose one
+over the other.
+</p>
+<h2 id="Text::MultiMarkdown">Text::MultiMarkdown</h2>
+<p>
+<a href="https://metacpan.org/module/Text::MultiMarkdown" class="module">Text::MultiMarkdown</a> converts MultiMarkdown to HTML,
+and is written by Tomas Doran, who's the current maintainer of Text::Markdown
+as well.
+<a href="https://metacpan.org/module/Text::MultiMarkdown">MultiMarkdown</a>
+is superset of Markdown defined by
+<a href="http://fletcherpenney.net">Fletcher Penney</a>.
+Since it's a superset, you can use Text::MultiMarkdown
+as a converter for regular Markdown:
+</p>
+
+<pre>
+use Text::MultiMarkdown qw(markdown);
+my $html = markdown($markdown);
+print $html, "\n";</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>&lt;h1 id=&quot;samplemarkdown&quot;&gt;Sample markdown&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a bullet&lt;/li&gt;
+&lt;li&gt;Another bullet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And here's a code sample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;print &quot;Hello, World!\n&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And inline formatting:
+&lt;em&gt;italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;strong&gt;&lt;em&gt;bold italic&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+</pre>
+
+<p>
+The output is nearly identical to that produced by Text::Markdown,
+unsurprisingly. Notice the <b><tt>id</tt></b> attribute on the
+<b><tt>h1</tt></b> element, for example.
+</p>
+<h1 id="comparison">Comparison</h1>
+
+<h2 id="performance">Performance</h2>
+
+<p>
+I benchmarked three of the modules
+using a slightly longer markdown sample (2K),
+which contains most of the different notations.
+I converted this 10,000 times.
+I didn't include
+<a href="https://metacpan.org/module/Text::Markup" class=module>Text::Markup</a>,
+as it just uses
+<a href="https://metacpan.org/module/Text::Markdown" class=module>Text::Markdown</a>,
+under the hood.
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>DR::SunDown</td><td align=right class=time>0.35</td></tr>
+<tr><td class=module>Text::Markdown::Hoedown</td><td align=right class=time>0.44</td></tr>
+<tr><td class=module>Text::Markdown::Discount</td><td align=right class=time>2.62</td></tr>
+<tr><td class=module>Text::Markdown</td><td align=right class=time>90.13</td></tr>
+<tr><td class=module>Markup::Unified</td><td align=right class=time>90.40</td></tr>
+<tr><td class=module>Text::Markup::Any</td><td align=right class=time>91.39</td></tr>
+<tr><td class=module>Text::MultiMarkdown</td><td align=right class=time>149.54</td></tr>
+<tr><td class=module>Markdent</td><td align=right class=time>348.31</td></tr>
+</table>
+
+
+<p>
+At the moment I'm using
+<a href="https://metacpan.org/module/Benchmark" class=module>Benchmark</a>.
+I've been meaning to try
+<a href="https://metacpan.org/module/Dumbbench" class=module>Dumbbench</a>,
+and noticed the dist includes
+<a href="https://metacpan.org/module/Benchmark::Dumb" class=module>Benchmark::Dumb</a>,
+which is billed as a "Benchmark.pm compatibility layer".
+But it's not a complete drop-in, so I'll come back to that.
+</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>
+The following table shows the number of run-time dependencies for
+each module, when running the example code given for each module above.
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right># dependencies</th></tr>
+<tr><td align=left>Text::Markdown::Discount</td><td align=right>4</td></tr>
+<tr><td align=left>Text::Markdown::Hoedown</td><td align=right>7</td></tr>
+<tr><td align=left>DR::SunDown</td><td align=right>8</td></tr>
+<tr><td align=left>Text::Markup</td><td align=right>24</td></tr>
+<tr><td align=left>Text::Markup::Any</td><td align=right>26</td></tr>
+<tr><td align=left>Text::Markdown</td><td align=right>26</td></tr>
+<tr><td align=left>Text::MultiMarkdown</td><td align=right>27</td></tr>
+<tr><td align=left>Markup::Unified</td><td align=right>43</td></tr>
+<tr><td align=left>Markdent</td><td align=right>299</td></tr>
+</table>
+
+
+<p>
+Note that the first three modules are all based on C libraries,
+so while they're reporting a lot fewer dependencies, they require
+the relevant C library and a C compiler.
+</p>
+
+<h2 id="correctness">Correctness &amp; Robustness</h2>
+
+<p>
+I've been building a corpus of markdown samples, which I used to
+compare the output generated by the different modules.
+This is similar to
+<a href="http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip">Gruber's testsuite (zip file)</a>,
+but has smaller files, to make it easier to identify exactly what
+the differences are.
+</p>
+<p>
+I've mainly focussed on Text::Markdown,
+DR::SunDown,
+Text::Markdown::Discount, and
+Text::Markdown::Hoedown.
+The differences I've found so far:
+</p>
+<ul>
+<li>SunDown, Hoedown and Text::Markdown all seem to have a bug where
+    they incorrectly nest a list bullet in an extra &lt;ul&gt;;
+    this seems to happen if you change / drop the indent.
+    For example with
+<pre>
+List items can wrap across multiple lines:
+
+  * This is the first bullet,
+    which is longer than one line.
+  * This is the second bullet,
+which is also on multiple lines.
+* You don't have to indent the bullet
+But there must be a space following the bullet marker.
+</pre>
+The third bullet is the critter. Discount is the only one that gets it right.
+I've reported bugs on the others.
+<li>SunDown and Hoedown entify double and single quotes, but Discount and Text::Markdown don't. The <a href="http://daringfireball.net/projects/markdown/syntax#precode">'spec'</a> says that ampersands and angle brackets should be entified, but doesn't explicitly say you shouldn't entify other characters.
+<li>Text::Markdown does slightly different things with leading whitespace in bulleted lists inside a blockquote (but I don't think they'll render differently).
+It does the same in paragraphs inside blockquotes.
+<li>If you leave two spaces at the end of a line (which normally indicates a hard newline) which is also the last line in a paragraph, Discount strips off the trailing spaces, but the others don't.
+</ul>
+<h1 id="conclusion">Conclusion</h1>
+
+<p>
+Text::Markdown is pretty battle-hardened,
+but Discount, SunDown and Hoedown are a lot faster.
+SunDown is no longer maintained, so don't use that.
+</p>
+<p>
+For basic usage, and if you want a pure-Perl solution,
+Text::Markdown is the one to go with.
+</p>
+<p>
+If you want better performance, then look at Discount or Hoedown.
+</p>
+<p>
+If you want to write your own markdown processor,
+then Markdent looks like your best option.
+</p>
+<h1 id="see_also">See Also</h1>
+
+<p>
+This is a list of modules that don't meet the criteria for this review,
+but which might be of interest,
+as they're markdown-related.
+</p>
+
+<dl>
+
+<dt><a href="https://metacpan.org/pod/Catalyst::Plugin::Markdown" class="module"
+    >Catalyst::Plugin::Markdown</a><dd>
+    A persistent markdown processor for the
+    <a href="http://www.catalystframework.org">Catalyst</a> web framework,
+    which uses Text::Markdown.
+
+<dt><a href="https://metacpan.org/pod/Dist::Zilla::Plugin::ReadmeAnyFromPod" class="module"
+    >Dist::Zilla::Plugin::ReadmeAnyFromPod</a><dd>
+    A Dist::Zilla plugin which will convert POD to a README in one
+    of a number of formats, including markdown.
+
+<dt><a href="https://metacpan.org/release/DocLife" class="module"
+    >DocLife</a><dd>
+    A plack-based document viewer for markdown documents.
+
+<dt><a href="https://metacpan.org/pod/Email::Simple::Markdown" class="module"
+    >Email::Simple::Markdown</a><dd>
+    Create an email message where the content is specified using markdown,
+    which is then converted to both text and HTML versions
+    (a markdown version of <a href="https://metacpan.org/pod/Email::Simple" class=module>Email::Simple</a>).
+
+<dt><a href="https://metacpan.org/release/HTML-Format" class="module"
+    >HTML-Format</a><dd>
+    A distribution that contains modules for converting HTML
+    into other formats, including markdown.
+
+<dt><a href="https://metacpan.org/pod/HTML::WikiConverter" class="module"
+    >HTML::WikiConverter</a><dd>
+    A framework for converting HTML to various wiki formats.
+    It has a plugin capability, via which a lot of formats.
+    One of these is
+    <a href="https://metacpan.org/pod/HTML::WikiConverter::Markdown" class=module>HTML::WikiConverter::Markdown</a>
+    which converts HTML to markdown.
+
+<dt><a href="https://metacpan.org/pod/Markdown::Pod" class="module"
+    >Markdown::Pod</a><dd>
+    Converts markdown into pod.
+
+<dt><a href="https://metacpan.org/pod/Pod::Markdown" class="module"
+    >Pod::Markdown</a><dd>
+    A subclass of <a href="https://metacpan.org/pod/Pod::Parser" class=module
+    >Pod::Parser</a> which converts POD to markdown.
+
+<dt><a href="https://metacpan.org/pod/Template::Provider::Markdown" class="module"
+    >Template::Provider::Markdown</a><dd>
+    Use the <a href="https://metacpan.org/pod/Template">template toolkit</a>
+    with markdown templates instead of HTML.
+
+<dt>Mark Allen's <tt>wp2md</tt> script (on <a href="https://github.com/mrallen1/wp2md">github</a>)<dd>
+    A script that converts Wordpress XML export into a set of markdown files.
+
+</dl>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

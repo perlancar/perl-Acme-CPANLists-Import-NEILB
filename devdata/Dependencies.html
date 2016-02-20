@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for getting module dependency information</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for getting module dependency information</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-29</p>
+</div>
+<p>
+This is a comparison of modules that can be used to get dependency information for Perl modules.
+I was working on a review of modules for making HTTP requests, and realised that some of them
+were pulling in a lot of other modules. I wanted to be able to visualize this, so had a look to
+see what was on CPAN.
+</p>
+
+<p>
+If you don't want to read this (long) review, skip to the <a href="#conclusion">Conclusion</a>.
+</p>
+
+<p>
+The following is a list of the modules I'm aware of so far.
+Please let me know if I've missed any: neilb at cpan dot org.
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#App::FatPacker::Trace"><tt>App::FatPacker::Trace</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ether/App-FatPacker-0.009009/lib/App/FatPacker/Trace.pm">CPAN</a></span></td>
+  <td align=right><tt>0.009009</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ether/">Karen Etheridge</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=App-FatPacker"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=App::FatPacker::Trace"><tt>4</tt></a></td>
+  <td align=right><tt>2012-08-03</tt></td>
+</tr><tr>
+  <td><a href="#CPAN::Dependency"><tt>CPAN::Dependency</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~saper/CPAN-Dependency-0.15/lib/CPAN/Dependency.pm">CPAN</a></span></td>
+  <td align=right><tt>0.15</tt></td>
+  <td align=left><a href="http://search.cpan.org/~saper/">SÃ©bastien Aperghis-Tramoni</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=CPAN-Dependency"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=CPAN::Dependency"><tt>0</tt></a></td>
+  <td align=right><tt>2008-03-05</tt></td>
+</tr><tr>
+  <td><a href="#CPAN::FindDependencies"><tt>CPAN::FindDependencies</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dcantrell/CPAN-FindDependencies-2.4/lib/CPAN/FindDependencies.pm">CPAN</a></span></td>
+  <td align=right><tt>2.4</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dcantrell/">David Cantrell</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=CPAN-FindDependencies"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=CPAN::FindDependencies"><tt>0</tt></a></td>
+  <td align=right><tt>2012-05-27</tt></td>
+</tr><tr>
+  <td><a href="#Devel::Dependencies"><tt>Devel::Dependencies</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Devel-Dependencies-1.01/lib/Devel/Dependencies.pm">CPAN</a></span></td>
+  <td align=right><tt>1.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-Dependencies"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::Dependencies"><tt>0</tt></a></td>
+  <td align=right><tt>2012-08-10</tt></td>
+</tr><tr>
+  <td><a href="#Devel::Loaded"><tt>Devel::Loaded</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mlfisher/pmtools-1.10/Devel/Loaded.pm">CPAN</a></span></td>
+  <td align=right><tt>1.10</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mlfisher/">Mark Leighton Fisher</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=pmtools"><tt>5</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::Loaded"><tt>1</tt></a></td>
+  <td align=right><tt>2008-02-29</tt></td>
+</tr><tr>
+  <td><a href="#Devel::Modlist"><tt>Devel::Modlist</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rjray/Devel-Modlist-0.801/lib/Devel/Modlist.pm">CPAN</a></span></td>
+  <td align=right><tt>0.801</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rjray/">Randy J Ray</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-Modlist"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::Modlist"><tt>0</tt></a></td>
+  <td align=right><tt>2008-09-05</tt></td>
+</tr><tr>
+  <td><a href="#Devel::TraceDeps"><tt>Devel::TraceDeps</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ewilhelm/Devel-TraceDeps-v0.0.3/lib/Devel/TraceDeps.pm">CPAN</a></span></td>
+  <td align=right><tt>v0.0.3</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ewilhelm/">Eric Wilhelm</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-TraceDeps"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::TraceDeps"><tt>0</tt></a></td>
+  <td align=right><tt>2009-01-31</tt></td>
+</tr><tr>
+  <td><a href="#Devel::TraceLoad"><tt>Devel::TraceLoad</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~andya/Devel-TraceLoad-1.04/lib/Devel/TraceLoad.pm">CPAN</a></span></td>
+  <td align=right><tt>1.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~andya/">Andy Armstrong</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-TraceLoad"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::TraceLoad"><tt>1</tt></a></td>
+  <td align=right><tt>2009-06-15</tt></td>
+</tr><tr>
+  <td><a href="#Devel::TraceUse"><tt>Devel::TraceUse</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~book/Devel-TraceUse-2.06/lib/Devel/TraceUse.pm">CPAN</a></span></td>
+  <td align=right><tt>2.06</tt></td>
+  <td align=left><a href="http://search.cpan.org/~book/">Philippe Bruhat (BooK)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-TraceUse"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::TraceUse"><tt>1</tt></a></td>
+  <td align=right><tt>2012-01-14</tt></td>
+</tr><tr>
+  <td><a href="#Devel::VersionDump"><tt>Devel::VersionDump</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rhoelz/Devel-VersionDump-0.02/lib/Devel/VersionDump.pm">CPAN</a></span></td>
+  <td align=right><tt>0.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rhoelz/">Rob Hoelz</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-VersionDump"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::VersionDump"><tt>0</tt></a></td>
+  <td align=right><tt>2011-01-14</tt></td>
+</tr><tr>
+  <td><a href="#Dist::Requires"><tt>Dist::Requires</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~thaljef/Dist-Requires-0.008/lib/Dist/Requires.pm">CPAN</a></span></td>
+  <td align=right><tt>0.008</tt></td>
+  <td align=left><a href="http://search.cpan.org/~thaljef/">Jeffrey Ryan Thalhammer</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Requires"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Dist::Requires"><tt>1</tt></a></td>
+  <td align=right><tt>2012-08-20</tt></td>
+</tr><tr>
+  <td><a href="#HTML::Perlinfo::Loaded"><tt>HTML::Perlinfo::Loaded</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~accardo/HTML-Perlinfo-1.62/lib/HTML/Perlinfo/Loaded.pm">CPAN</a></span></td>
+  <td align=right><tt>1.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~accardo/">Michael Accardo</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-Perlinfo"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTML::Perlinfo::Loaded"><tt>1</tt></a></td>
+  <td align=right><tt>2011-06-13</tt></td>
+</tr><tr>
+  <td><a href="#Module::Dependency::Grapher"><tt>Module::Dependency::Grapher</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~timb/Module-Dependency-1.86/lib/Module/Dependency/Grapher.pm">CPAN</a></span></td>
+  <td align=right><tt>6632</tt></td>
+  <td align=left><a href="http://search.cpan.org/~timb/">Tim Bunce</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Dependency"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Dependency::Grapher"><tt>0</tt></a></td>
+  <td align=right><tt>2006-07-12</tt></td>
+</tr><tr>
+  <td><a href="#Module::Depends"><tt>Module::Depends</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rclamp/Module-Depends-0.16/lib/Module/Depends.pm">CPAN</a></span></td>
+  <td align=right><tt>0.16</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rclamp/">Richard Clamp</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Depends"><tt>8</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Depends"><tt>6</tt></a></td>
+  <td align=right><tt>2012-05-03</tt></td>
+</tr><tr>
+  <td><a href="#Module::Depends::Tree"><tt>Module::Depends::Tree</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~petdance/Module-Depends-Tree-1.00/Tree.pm">CPAN</a></span></td>
+  <td align=right><tt>1.00</tt></td>
+  <td align=left><a href="http://search.cpan.org/~petdance/">Andy Lester</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Depends-Tree"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Depends::Tree"><tt>0</tt></a></td>
+  <td align=right><tt>2006-11-24</tt></td>
+</tr><tr>
+  <td><a href="#Module::Extract::Use"><tt>Module::Extract::Use</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bdfoy/Module-Extract-Use-1.03/lib/Module/Extract/Use.pm">CPAN</a></span></td>
+  <td align=right><tt>1.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bdfoy/">brian d foy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Extract-Use"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Extract::Use"><tt>2</tt></a></td>
+  <td align=right><tt>2012-08-02</tt></td>
+</tr><tr>
+  <td><a href="#Module::ExtractUse"><tt>Module::ExtractUse</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~domm/Module-ExtractUse-0.28/lib/Module/ExtractUse.pm">CPAN</a></span></td>
+  <td align=right><tt>0.28</tt></td>
+  <td align=left><a href="http://search.cpan.org/~domm/">Thomas Klausner</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-ExtractUse"><tt>8</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::ExtractUse"><tt>5</tt></a></td>
+  <td align=right><tt>2012-08-21</tt></td>
+</tr><tr>
+  <td><a href="#Module::Info"><tt>Module::Info</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mbarbon/Module-Info-0.32/lib/Module/Info.pm">CPAN</a></span></td>
+  <td align=right><tt>0.32</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mbarbon/">Mattia Barbon</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Info"><tt>5</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Info"><tt>11</tt></a></td>
+  <td align=right><tt>2010-09-08</tt></td>
+</tr><tr>
+  <td><a href="#Module::Inspector"><tt>Module::Inspector</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~adamk/Module-Inspector-1.05/lib/Module/Inspector.pm">CPAN</a></span></td>
+  <td align=right><tt>1.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~adamk/">Adam Kennedy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Inspector"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Inspector"><tt>1</tt></a></td>
+  <td align=right><tt>2008-08-16</tt></td>
+</tr><tr>
+  <td><a href="#Module::MakefilePL::Parse"><tt>Module::MakefilePL::Parse</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rrwo/Module-MakefilePL-Parse-0.12/lib/Module/MakefilePL/Parse.pm">CPAN</a></span></td>
+  <td align=right><tt>0.12</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rrwo/">Robert Rothenberg</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-MakefilePL-Parse"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::MakefilePL::Parse"><tt>1</tt></a></td>
+  <td align=right><tt>2004-09-03</tt></td>
+</tr><tr>
+  <td><a href="#Module::Overview"><tt>Module::Overview</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~jkutej/Module-Overview-0.01/lib/Module/Overview.pm">CPAN</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~jkutej/">Jozef Kutej</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Overview"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Overview"><tt>0</tt></a></td>
+  <td align=right><tt>2010-09-26</tt></td>
+</tr><tr>
+  <td><a href="#Module::ParseDeps"><tt>Module::ParseDeps</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rrwo/Module-ParseDeps-0.02/lib/Module/ParseDeps.pm">CPAN</a></span></td>
+  <td align=right><tt>0.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rrwo/">Robert Rothenberg</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-ParseDeps"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::ParseDeps"><tt>0</tt></a></td>
+  <td align=right><tt>2004-07-19</tt></td>
+</tr><tr>
+  <td><a href="#Module::PrintUsed"><tt>Module::PrintUsed</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~crenz/Module-PrintUsed-0.05/PrintUsed.pm">CPAN</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~crenz/">Christian Renz</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-PrintUsed"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::PrintUsed"><tt>0</tt></a></td>
+  <td align=right><tt>2009-09-08</tt></td>
+</tr><tr>
+  <td><a href="#Module::ScanDeps"><tt>Module::ScanDeps</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rschupp/Module-ScanDeps-1.08/lib/Module/ScanDeps.pm">CPAN</a></span></td>
+  <td align=right><tt>1.08</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rschupp/">Roderich Schupp</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-ScanDeps"><tt>11</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::ScanDeps"><tt>10</tt></a></td>
+  <td align=right><tt>2012-02-21</tt></td>
+</tr><tr>
+  <td><a href="#Module::Used"><tt>Module::Used</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~elliotjs/Module-Used-v1.3.0/lib/Module/Used.pm">CPAN</a></span></td>
+  <td align=right><tt>v1.3.0</tt></td>
+  <td align=left><a href="http://search.cpan.org/~elliotjs/">Elliot Shank</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Used"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Used"><tt>1</tt></a></td>
+  <td align=right><tt>2012-08-28</tt></td>
+</tr><tr>
+  <td><a href="#Perl::PrereqScanner"><tt>Perl::PrereqScanner</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rjbs/Perl-PrereqScanner-1.014/lib/Perl/PrereqScanner.pm">CPAN</a></span></td>
+  <td align=right><tt>1.014</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rjbs/">Ricardo SIGNES</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Perl-PrereqScanner"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Perl::PrereqScanner"><tt>8</tt></a></td>
+  <td align=right><tt>2012-07-26</tt></td>
+</tr>
+</table>
+
+
+<p>
+I've also included a module that I've written, Devel::DependencyGrapher,
+since none of the other modules did quite what I was looking for.
+It's not on CPAN yet.
+</p>
+
+<p>
+There are three basic approaches taken by the modules described below:
+</p>
+
+<ol>
+<li>Parsing one of the metadata files in the target module's distribution.
+    This obviously relies on the module's author correctly listing all dependencies,
+    and might not distinguish between build/test and run-time dependencies.
+    </li>
+<li>Parsing the source of the target module,
+    looking for <tt>use</tt> and <tt>require</tt> statements.
+    This will find most potential dependencies, but in doing so might report
+    modules that will never be used on your platform.
+    It will also miss modules loaded via DBI-&gt;connect, some plugin mechanism,
+    <tt>eval</tt>, or <tt>require $module</tt>,
+    for example <a href="http://api.metacpan.org/source/SMUELLER/PathTools-3.33/lib/File/Spec.pm">File::Spec</a>'s <tt>require "File/Spec/$module.pm";</tt>.
+    </li>
+<li>Looking to see what modules are loaded during runtime, using one of several approaches.
+    The advantage of this approach is that you only see the modules that were actually used,
+    and the File::Spec trickery won't fool it.
+    The disadvantage is that you might miss dependencies, for example if the modules used
+    vary based on the inputs.
+</ol>
+
+<p>
+Each approach has its use, but be aware of the limitations when you're using any of these.
+</p>
+
+<p>
+Each module is presented in turn, with a comparison and conclusion at the end.
+</p>
+<h2 id="App::FatPacker::Trace">App::FatPacker::Trace</h2>
+<p>
+<a href="https://www.metacpan.org/module/App::FatPacker::Trace">App::FatPacker::Trace</a>
+has an <tt>CHECK</tt> block that looks at <tt>%INC</tt> to see what modules
+were loaded during the runtime of your script.
+In its <tt>import()</tt> function it takes a copy of <tt>%INC</tt>,
+then it compares that with <tt>%INC</tt> in the <tt>CHECK</tt> block.
+By default the list of modules used is written to
+file <tt>fatpacker.trace</tt> in the current directory.
+Here's how I used it with my HTTP::Client test script:
+</p>
+
+<pre>% perl -MApp::FatPacker::Trace http-client.pl</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>
+warnings/register.pm
+Carp.pm
+vars.pm
+Socket.pm
+Errno.pm
+HTTP/Client.pm
+Config.pm
+Fcntl.pm
+HTTP/Lite.pm
+</pre>
+
+<p>
+Note that modules are given as partial paths rather than module names,
+as that's what is used as the key in <tt>%INC</tt>.
+</p>
+
+<p>
+You can pass an option to change where the output is written;
+the following shows how to get the list written to stdout:
+</p>
+
+<pre>
+% perl '-MApp::FatPacker::Trace=>&STDOUT' http-client.pl
+</pre>
+<h2 id="CPAN::Dependency">CPAN::Dependency</h2>
+<p>
+CPAN::Dependency uses CPANPLUS to get information about modules and build dependendy information.
+It can also get the information from a CPANTS database, though I haven't tried that.
+You can save the dependency information as YAML:
+</p>
+
+<pre>
+use CPAN::Dependency;
+$dep = CPAN::Dependency->new(verbose => 1);
+$dep->process('HTTP::Client');
+$dep->run();
+$dep->save_deps_tree(file => 'cpan-dependency-output.yaml');</pre>
+
+<p>
+When you run this, you get the following to stdout:
+</p>
+
+<pre>
+HTTP::Client => HTTP-Client 1.52 by NEILB (Neil Bowers)
+  prereqs: Carp, HTTP::Lite
+  >> Carp is in Perl core
+</pre>
+
+<p>
+And the output generated is:
+</p>
+
+<pre>---
+HTTP-Client:
+  author: Neil Bowers
+  cpanid: NEILB
+  prereqs:
+    HTTP-Lite: 1
+  score: 0
+  used_by: {}
+</pre>
+
+<h2 id="CPAN::FindDependencies">CPAN::FindDependencies</h2>
+<p>
+CPAN::FindDependencies works by fetching the META.yml or Makefile.PL
+for distributions using <a href="http://search.cpan.org">search.cpan.org</a>.
+The following shows how to get dependencies for my test module:
+</p>
+
+<pre>
+use CPAN::FindDependencies;
+@deps = CPAN::FindDependencies::finddeps('HTTP::Client');
+open($fh, '>', $outfile);
+foreach my $dep (@deps) {
+    print $fh ' ' x $dep->depth;
+    print $fh $dep->name, " [", $dep->distribution(), "]\n";
+}</pre>
+
+<p>
+This takes a little while to run, then you get the following output:
+</p>
+
+<pre>HTTP::Client [N/NE/NEILB/HTTP-Client-1.52.tar.gz]
+ HTTP::Lite [A/AD/ADAMK/HTTP-Lite-2.3.tar.gz]
+  ExtUtils::MakeMaker [M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz]
+   File::Spec [S/SM/SMUELLER/PathTools-3.33.tar.gz]
+    Scalar::Util [P/PE/PEVANS/Scalar-List-Utils-1.25.tar.gz]
+     Test::More [M/MS/MSCHWERN/Test-Simple-0.98.tar.gz]
+      Test::Harness [O/OV/OVID/Test-Harness-3.25.tar.gz]
+    Carp [Z/ZE/ZEFRAM/Carp-1.26.tar.gz]
+     warnings [F/FL/FLORA/perl-5.15.4.tar.gz]
+     Exporter [T/TO/TODDR/Exporter-5.66.tar.gz]
+   Pod::Man [R/RR/RRA/podlators-2.4.2.tar.gz]
+    Pod::Simple [D/DW/DWHEELER/Pod-Simple-3.22.tar.gz]
+     Pod::Escapes [S/SB/SBURKE/Pod-Escapes-1.04.tar.gz]
+     Text::Wrap [M/MU/MUIR/modules/Text-Tabs+Wrap-2009.0305.tar.gz]
+     Test [S/SB/SBURKE/Test-1.25.tar.gz]
+    Encode [D/DA/DANKOGAI/Encode-2.44.tar.gz]
+</pre>
+
+<h2 id="Devel::Dependencies">Devel::Dependencies</h2>
+<p>
+Devel::Dependencies works at compile time.
+It uses the <tt>%INC</tt> hash to identify what modules have been loaded.
+</p>
+
+<p>
+The following is a minimal script that uses HTTP::Client to GET
+a web page:
+</p>
+
+<pre>
+use HTTP::Client;
+$client   = HTTP::Client->new();
+$response = $client->get('http://perl.org/');</pre>
+
+<p>
+To identify dependencies, you run the following:
+</p>
+
+<pre>% perl -MDevel::Dependencies http-client.pl</pre>
+
+<p>
+When you run this, you get the following output:
+</p>
+
+<pre>
+Devel::Dependencies finds 11 dependencies:
+  Carp.pm
+  Config.pm
+  Errno.pm
+  Exporter.pm
+  Fcntl.pm
+  HTTP/Client.pm
+  HTTP/Lite.pm
+  Socket.pm
+  XSLoader.pm
+  vars.pm
+  warnings/register.pm
+</pre>
+
+<p>
+This shows you all modules that were loaded,
+but no sense of which modules are dependent on which.
+</p>
+
+<p>
+This module was written by <a href="http://search.cpan.org/~jlleroy/">Jean-Louis Leroy</a>,
+as a by-product of writing his article
+<a href="http://www.perl.com/pub/2005/12/21/a_timely_start.html">A Timely Start</a>,
+where he describes investigating
+why a Perl script ran 10 times slower than the shell script it replaced.
+Interestingly, it was a similar line of questioning that led me to do this review,
+and now I've taken over maintenance of this module.
+</p>
+<h2 id="Devel::DependencyGrapher">Devel::DependencyGrapher</h2>
+<p>
+Having looked at all the other modules presented here,
+none of them did exactly what I was after.
+So I've created a module which just about does what I wanted.
+It's not on CPAN yet, partly because I'm not sure what to call it.
+</p>
+
+<p>
+My first attempt used the trick of putting a function at the head of <tt>@INC</tt>,
+but the trouble is that you only get to hear about the first time a module is used/required.
+</p>
+
+<p>
+So the current version works by overriding <tt>require</tt> and logging information
+to a text file. Using the script presented in the previous section,
+here's a simple way to use Devel::DependencyGrapher:
+</p>
+
+<pre>% perl -MDevel::DependencyGrapher http-client.pl</pre>
+
+<p>
+This generates a data file, which is currently a simple text file.
+I've got a script takes one or more module names, reads the data file,
+and spits out a graph in the dot format used by graphviz.
+This lets you generate a data file for a large application that uses a lot of modules,
+and then pick a specific module to see the dependency graph for.
+</p>
+
+<pre>% ddg2dot HTTP::Client > http-client.dot</pre>
+
+<p>
+You can then generate this in various formats. Here's how I generated a PNG file:
+</p>
+
+<pre>% dot -Tpng -Grankdir=TB -Nfontsize=10 -Nshape=rect -ohttp-client.png http-client.dot</pre>
+
+<p>
+And here's the generated graph (click to see it full size):
+</p>
+
+<div style="margin-left: 1em;">
+<a href="http-client.png" target="_blank"><img src="http-client.png" style="border: solid 1px #cccccc;" width=400></a>
+</div>
+
+<p>
+There are a number of things I might add in the near future:
+the ability to leave out core modules;
+mapping modules to distributions.
+Now I'm maintainer of Devel::Dependencies, I will probably fold this
+module into that distribution, maybe as Devel::Dependencies::Grapher,
+thought that's a bit of a mouthful!
+</p>
+<h2 id="Devel::Loaded">Devel::Loaded</h2>
+<p>
+<a href="https://www.metacpan.org/module/Devel::Loaded">Devel::Loaded</a>
+is part of the <a href="https://www.metacpan.org/release/pmtools">pmtools</a>
+distribution, that was original written by Tom Christiansen.
+It has an <tt>END</tt> block that dumps out the paths from <tt>%INC</tt>.
+Here's the use with my standard HTTP::Client test script:
+</p>
+
+<pre>% perl -MDevel::Loaded http-client.pl</pre>
+
+<p>
+When you run this, you get the following to stdout:
+</p>
+
+<pre>
+/usr/local/lib/perl5/5.16.0/XSLoader.pm
+/usr/local/lib/perl5/5.16.0/warnings/register.pm
+/usr/local/lib/perl5/5.16.0/Carp.pm
+/usr/local/lib/perl5/5.16.0/vars.pm
+/usr/local/lib/perl5/5.16.0/Exporter.pm
+/usr/local/lib/perl5/5.16.0/strict.pm
+/usr/local/lib/perl5/5.16.0/darwin-2level/Socket.pm
+/usr/local/lib/perl5/site_perl/5.16.0/Devel/Loaded.pm
+/usr/local/lib/perl5/5.16.0/darwin-2level/Errno.pm
+/usr/local/lib/perl5/5.16.0/warnings.pm
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+/usr/local/lib/perl5/5.16.0/darwin-2level/Config.pm
+/usr/local/lib/perl5/5.16.0/darwin-2level/Fcntl.pm
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Lite.pm
+</pre>
+
+<p>
+The code for this module is so brief, we can show it in full here:
+</p>
+
+<pre>
+# Loaded.pm -- show what files were loaded 
+# tchrist@perl.com
+
+package Devel::Loaded;
+ 
+$VERSION = '1.10';
+ 
+BEGIN { %Seen = %INC } 
+ 
+END { 
+    delete $INC{"Loaded.pm"};
+ 
+    for my $path (values %INC) {
+        print "$path\n" unless $Seen{$path};
+    } 
+}
+</pre>
+
+<p>
+The module was obviously called <tt>Loaded</tt> in the past;
+it's trying to delete itself from the output, but uses the old name.
+I've submitted a bug on this, with suggested patch.
+</p>
+
+<p>
+This is the only "%INC dumping" module that prints the path rather
+than the module name. I think most of the time I'd want the name,
+but I can imagine there might be times when this will be handy.
+</p>
+<h2 id="Devel::Modlist">Devel::Modlist</h2>
+<p>
+<a href="https://www.metacpan.org/module/Devel::Modlist">Devel::Modlist</a>
+has an <tt>END</tt> block that looks at <tt>%INC</tt> to see what modules
+were loaded during the runtime of your script,
+and prints out a summary, including the version of each module.
+Here's how I used it with my HTTP::Client test script:
+</p>
+
+<pre>% perl -d:Modlist http-client.pl</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>
+Carp                   1.26
+Config                     
+Errno                  1.15
+Exporter               5.66
+Fcntl                  1.11
+HTTP::Client           1.52
+HTTP::Lite              2.4
+Socket                2.001
+XSLoader               0.16
+vars                   1.02
+warnings               1.13
+warnings::register     1.02
+</pre>
+
+<p>
+It supports a number of options, to change what information is shown, and how.
+For example, to exclude core modules, use the <tt>nocore</tt> option:
+</p>
+
+<pre>
+% perl -d:Modlist=nocore http-client.pl
+HTTP::Client           1.52
+HTTP::Lite              2.4
+</pre>
+
+<p>
+The <tt>cpandist</tt> option will produce a list of the
+CPAN distributions that the script is dependent on:
+</p>
+
+<pre>
+% perl -d:Modlist=nocore,cpandist http-client.pl
+N/NE/NEILB/HTTP-Client-1.52.tar.gz
+N/NE/NEILB/HTTP-Lite-2.4.tar.gz
+</pre>
+
+<p>
+The <a href="https://www.metacpan.org/module/Devel::Modlist">documentation</a>
+covers the other options, such as <tt>noversion</tt> which supppresses
+display of version numbers in the output.
+</p>
+
+<p>
+Any use of the <tt>strict</tt> pragma won't be reported,
+as Devel::Modlist removes it from the output, as it uses strict itself.
+I think it would be better for Devel::Modlist to not use strict itself
+&mdash; all the tests could use strict, so the author wouldn't miss anything.
+</p>
+<h2 id="Devel::TraceDeps">Devel::TraceDeps</h2>
+<p>To be reviewed ...</p>
+<h2 id="Devel::TraceLoad">Devel::TraceLoad</h2>
+<p>To be reviewed ...</p>
+<h2 id="Devel::TraceUse">Devel::TraceUse</h2>
+<p>
+Devel::TraceUse displays a tree view of the modules used by your code.
+For example, to inspect my test script for HTTP::Client:
+</p>
+
+<pre>% perl -d:TraceUse http-client.pl</pre>
+
+<p>
+When you run this, you get the following to stdout:
+</p>
+
+<pre>
+Modules used from http-client.pl:
+   1.  HTTP::Client 1.52, http-client.pl line 3 [main]
+   2.    strict 1.07, HTTP/Client.pm line 4
+   3.    warnings 1.13, HTTP/Client.pm line 5
+   4.    Carp 1.26, HTTP/Client.pm line 6
+   5.      Exporter 5.66, Carp.pm line 35
+   6.    HTTP::Lite 2.4, HTTP/Client.pm line 7
+   7.      Socket 2.001, HTTP/Lite.pm line 5
+   8.        warnings::register 1.02, Socket.pm line 649
+   9.        XSLoader 0.16, Socket.pm line 652
+  10.      Fcntl 1.11, HTTP/Lite.pm line 6
+  11.      Errno 1.15, HTTP/Lite.pm line 7
+  12.        Config, Errno.pm line 8
+  13.          vars 1.02, Config.pm line 11
+</pre>
+
+<p>
+You can also run it with <tt>perl -MDevel::TraceUse</tt>,
+but with <tt>-d:TraceUse</tt> you get more information.
+Devel::TraceUse will also show where a module failed to load,
+and if it doesn't know which module loaded a particular module (for example
+if loaded in an <tt>eval</tt> and you were using <tt>-MDevel::Dependencies</tt>),
+it will be listed at the end.
+</p>
+
+<p>I had the following from the author, Philippe Bruhat (BooK), in email:</p>
+
+<blockquote>
+It started as a hack by chromatic in the "Perl Hacks" book.
+After using it for a while, I found it had some issues, so I fixed the bugs,
+and ended up rewriting it almost entirely.
+I'm now its maintainer.
+</blockquote>
+
+<p>
+Philippe gave a remote lightning talk at YAPC::Europe 2010 &mdash;
+a <a href="http://zlonk.bruhat.net/Devel-TraceUse.avi">video</a>
+showing the differences between Devel::TraceUse 1.00
+(chromatic's) and Devel::TraceUse 2.00 (Philippe's).
+</p>
+
+<p>
+Devel::TraceUse uses the technique I used with the first version of my module:
+it installs a coderef at the start of <tt>@INC</tt>.
+The referenced function then gets called every time <tt>require</tt> tries to load a module;
+it works out who the caller is and what module is being loaded, and stores this info.
+It then returns <tt>undef</tt>,
+so that <tt>require</tt> will continue working down <tt>@INC</tt>.
+The disadvantage of this approach is that the module will only see the first time
+a module is <tt>use</tt>d.
+You still get to see all modules that are loaded by your code,
+but you don't get to see the full dependency graph.
+</p>
+<h2 id="Devel::VersionDump">Devel::VersionDump</h2>
+<p>To be reviewed ...</p>
+<h2 id="Dist::Requires">Dist::Requires</h2>
+<p>
+<a href="">Dist::Requires</a> extracts prerequisite information
+from a metadata file for a distribution.
+You can either tell it the path to a gzip'd tarball,
+or the path to the directory where a distribution has been unpacked.
+Dist::Requires will try and configure the distribution using
+its build mechanism.
+</p>
+
+<p>
+The following shows how to extract pre-requisites from an unpacked
+HTTP::Client distribution:
+</p>
+
+<pre>
+use Dist::Requires;
+$dr = Dist::Requires->new(filter => {});
+%prereqs = $dr->prerequisites(dist => $path_to_http_client);
+while (($module, $version) = each %prereqs) {
+    printf "  $module => $version\n";
+}</pre>
+
+<p>
+By default Dist::Requires will not list core modules.
+You can override this behaviour with the <tt>filter</tt> argument,
+which takes a hashref; in this you list any modules you want to
+filter out of the pre-requisites.
+Passing an empty hashref will show all prerequisites.
+You can specify the version of perl you're interested in,
+and Dist::Requires will only exclude core modules from that version
+(identified using
+<a href="https://www.metacpan.org/module/Module::CoreList">/Module::CoreList</a>).
+</p>
+
+<p>
+When you run the above, you get the following:
+</p>
+
+<pre>
+  ExtUtils::MakeMaker => 0
+  HTTP::Lite => 0
+  Carp => 0
+</pre>
+
+<p>
+This doesn't provide any mechanism for recursively identifying prerequisites;
+you'd have to roll one of those for yourself, by repeatedly calling
+the <tt>prerequisites</tt> method and either finding local copies of modules
+or downloading their distributions.
+If you want to find recursive dependencies in this way,
+you'd be better off using <a href="#CPAN::FindDependencies">CPAN::FindDependencies</a>,
+as it already does that.
+</p>
+
+<p>
+The documentation suggests that Dist::Requires isn't very robust
+(compared to CPAN and cpanm), but in the few simple examples I tried
+it seemed to work fine.
+It is some of the cleanest looking code I've seen while reviewing modules.
+</p>
+<h2 id="HTML::Perlinfo::Loaded">HTML::Perlinfo::Loaded</h2>
+<p>To be reviewed ...</p>
+<h2 id="Module::Dependency::Grapher">Module::Dependency::Grapher</h2>
+<p>
+Module::Dependency includes 3 main modules: the indexer, an info module, and a grapher.
+The indexer parses local Perl files (modules and scripts) and extracts information from them,
+and then stores it in a Storable.
+The grapher takes one or more modules and pulls dependency information from the Storable,
+to produce a number of formats.
+</p>
+
+<pre>
+use Module::Dependency::Grapher;
+use Module::Dependency::Indexer;
+Module::Dependency::Indexer::setIndex( 'module-dependency-info.dat' );
+Module::Dependency::Indexer::makeIndex( $path_to_core, $path_to_site_perl );
+
+Module::Dependency::Grapher::setIndex( 'module-dependency-info.dat' );
+Module::Dependency::Grapher::makeText( 'both', ['HTTP::Client'], 'md-grapher.txt', {NoLegend => 1} );
+Module::Dependency::Grapher::makeImage( 'both', ['HTTP::Client'], 'md-grapher.png', {Format => 'png'} );</pre>
+
+<p>
+Here's the text version produced for HTTP::Client:
+</p>
+
+<pre>Dependency Tree
+---------------
+
+Grapher.pm 6632 - Thu Jul 12 09:31:43 2012
+
+   ****> +- HTTP::Client
+         |
+  Child> +- 5, Carp, HTTP::Lite, strict, warnings
+         |
+  Child> +- Errno, Exporter, Fcntl, Socket, vars
+         |
+  Child> +- Config, Exporter::Heavy, Scalar::Util, XSLoader, warnings::register
+         |
+  Child> +- DynaLoader, List::Util, Scalar::Util::PP
+         |
+  Child> +- B, List::Util::PP, overload
+         |
+  Child> +- mro
+</pre>
+
+<p>
+And here's the image version:
+</p>
+
+<div style="margin-left: 1em; overflow: visible;">
+<a href="md-grapher.png"><img src="md-grapher.png" style="border: solid 1px #cccccc;" width=710></a>
+</div>
+
+<p>
+The problem with parsing (rather than running) the source is that you might end up inferring dependencies inaccurately.
+For example, one module might have logic that decides which of two modules to <tt>require</tt>, but the parsing approach
+might see assume that both are dependencies.
+</p>
+<h2 id="Module::Depends">Module::Depends</h2>
+<p>
+Module::Depends uses <a href="https://www.metacpan.org/module/Parse::CPAN::Meta">Parse::CPAN::Meta</a>
+to extract dependency information from the CPAN metadata files in an unpacked distribution.
+</p>
+
+<pre>
+use Module::Depends;
+use YAML;
+
+$md = Module::Depends->new();
+$md->dist_dir($path_to_dist);
+$deps = $md->find_modules();
+open($fh, '>', $outfile);
+print $fh Dump $deps->requires;</pre>
+
+<p>
+I am now co-maint on HTTP::Client, and did a release where I added Carp as a pre-requisite.
+Here's the output after running on the previous version
+</p>
+
+<pre>
+---
+HTTP::Lite: 0
+</pre>
+
+<p>
+But when I run it on my latest release, I get the following:
+</p>
+
+<pre>--- {}
+</pre>
+
+<p>
+I'll have to look into what's going on there, as META.yml does mention the dependencies:
+</p>
+
+<pre>
+requires:
+  Carp: 0
+  HTTP::Lite: 0
+</pre>
+
+<p>
+This module has a number of 'problems':
+</p>
+
+<ul>
+<li>Not all dists contain a metadata file.</li>
+<li>
+Module distributions are often created by fallible humans,
+as opposed to the less fallible Dist::Zilla, for example.
+So the distribution's metadata might be incomplete, or just plain wrong.
+And should you list all dependencies on core modules?
+</li>
+</ul>
+
+<h2 id="Module::Depends::Tree">Module::Depends::Tree</h2>
+<p>
+Module::Depends::Tree provides the heaving lifting for
+the <tt>deptree</tt> script, which is included in the distribution.
+Neither the module nor the script have any documentation to talk of,
+but the script only has two command-line options:
+<tt>mirror</tt> identifies a CPAN mirror for the module to use;
+<tt>workdir</tt> specifies a local directory to use as a cache for
+distribution tarballs.
+</p>
+
+<p>
+The following shows how to generate output for HTTP::Client:
+</p>
+
+<pre>% deptree --mirror=http://mirror.bytemark.co.uk/CPAN/ HTTP::Client</pre>
+
+<p>
+When you run this, you get the following output:
+</p>
+
+<pre>
+Dependency tree created Thu Jul 12 12:59:51 2012
+Created with Module::Depends::Tree 1.00
+$ /usr/local/bin/deptree HTTP::Client
+
+HTTP::Client
+    HTTP::Lite
+
+
+Number of times each module is used
+    HTTP::Client
+    HTTP::Lite
+
+2 total modules
+
+HTTP-Client-1.52.tar.gz
+    HTTP::Client
+HTTP-Lite-2.3.tar.gz
+    HTTP::Lite
+
+2 total packages
+</pre>
+
+<p>
+Which is more human-friendly than computer-friendly.
+This is a handy script for identifying all the dists that a given
+module depends on, as it ignores core modules.
+</p>
+
+<p>
+Turns out that the human friendliness was intention &mdash;
+Andy commented to me via email:
+</p>
+
+<blockquote>
+the intent was, indeed, to be human readable.
+If I recall correctly,
+I had a project on two different machines and I wanted to see the 150-or-so modules
+that the project used, and what the differences were between the two machines.
+I would run the tree program and then diff the output to ID problems.
+</blockquote>
+<h2 id="Module::Extract::Use">Module::Extract::Use</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Extract::Use">Module::Extract::Use</a>
+uses PPI to parse a Perl source file and extract modules used.
+The simplest use is the <tt>get_modules()</tt> method,
+which takes a file and returns a list of modules:
+</p>
+
+<pre>
+use Module::Extract::Use;
+
+$extractor = Module::Extract::Use->new;
+@modules = $extractor->get_modules($path_to_http_client_pm);
+print "HTTP::Client depends on:\n";
+foreach my $m (@modules) {
+    print "  $m\n";
+}</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>HTTP::Client depends on:
+  strict
+  warnings
+  Carp
+  HTTP::Lite
+</pre>
+
+<p>
+Module::Extract::Use also provides the <tt>get_modules_with_details()</tt> method,
+which returns a list of hashrefs, one per dependency.
+Each hash contains the following keys:
+</p>
+
+<ul>
+<li><b>module</b>: the name of the module.
+<li><b>pragma</b>: if the module is a pragma, then this will also be set to the module name.
+<li><b>version</b>: if a version was specified, it will appear here.
+<li><b>imports</b>: an array ref, which contains any imported items.
+</ul>
+
+<p>
+This will be clearer with an example. Given the following example source:
+</p>
+
+<pre>require 5.16.0;
+use warnings 'all';
+use Net::HTTP::Tiny 0.001 qw(http_get);
+use constant 1.23 DEBUG => 0;
+</pre>
+
+<p>
+Here's a script which uses <tt>get_modules_with_details()</tt>:
+</p>
+
+<pre>
+use Module::Extract::Use;
+
+$extractor = Module::Extract::Use->new;
+$details = $extractor->get_modules_with_details($path_to_http_client_pm);
+print "HTTP::Client depends on:\n\n";
+foreach my $m (@$details) {
+    print "  $m->{module}:\n";
+    print "     version = $m->{version}\n" if defined($m->{version});
+    print "     pragma  = $m->{pragma}\n";
+    print "     imports = ", join(' ', @{ $m->{imports} }),"\n";
+    print "\n";
+}</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>
+HTTP::Client depends on:
+
+  warnings:
+     pragma  = warnings
+     imports = all
+
+  Net::HTTP::Tiny:
+     version = 0.001
+     pragma  = 
+     imports = http_get
+
+  constant:
+     version = 1.23
+     pragma  = constant
+     imports = 
+</pre>
+
+<p>
+Note that <tt>require 5.16.0</tt> doesn't get included in the output
+(it does with some of the modules here).
+And I'm not sure why the constant definition doesn't appear in the <b>imports</b> list.
+</p>
+
+<h2 id="Module::ExtractUse">Module::ExtractUse</h2>
+<p>
+Module::ExtractUse uses <a href="https://www.metacpan.org/module/Parse::RecDescent">Parse::RecDescent</a>
+to parse perl files and find <tt>use</tt> and <tt>require</tt> statements.
+You can either pass a string which contains the source, or the path for a file.
+The following shows basic use:
+</p>
+
+<pre>
+use Module::ExtractUse;
+
+$extractor = Module::ExtractUse->new;
+$extractor->extract_use($path_to_http_client_pm);
+print "HTTP::Client depends on:\n";
+foreach my $m ($extractor->array) {
+    print "  $m\n";
+}</pre>
+
+<p>
+When you run this, you get the following output:
+</p>
+
+<pre>
+HTTP::Client depends on:
+  warnings
+  strict
+  5.8.0
+  HTTP::Lite
+  Carp
+</pre>
+
+<p>
+Notice that it has included <strong>5.8.0</strong> as a dependency,
+because it saw the line:
+</p>
+
+<pre>
+use 5.8.0;
+</pre>
+
+<p>
+I was going to report this as a bug, but noticed that the distribution
+has a testsuite for this (use <em>version</em>),
+so it's obviously intentional.
+</p>
+<h2 id="Module::Info">Module::Info</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Info">Module::Info</a>
+will provide various information about a module,
+some of it without loading the module, and some with loading involved.
+Here's how you get the list of used modules:
+</p>
+
+<pre>
+use Module::Info;
+
+$mi = Module::Info->new_from_module('HTTP::Client');
+print "HTTP::Client uses the following modules:\n";
+foreach my $m ($mi->modules_used) {
+    print "  $m\n";
+}</pre>
+
+<p>
+Which produces the output:
+</p>
+
+<pre>
+HTTP::Client uses the following modules:
+  strict
+  warnings
+  HTTP::Lite
+  Carp
+</pre>
+
+<p>
+Interestingly the <tt>modules_used()</tt> function appears in the documentation
+section that starts with the line:
+</p>
+
+<pre>
+WARNING! From here down reliability drops rapidly!
+</pre>
+
+<p>
+In addition to the above, Module::Info can also tell you: the path where the module
+is installed, the version, whether it's a core module, what packages are defined in it,
+a list of subroutines defined, superclasses, and what subroutines are called.
+It uses the <a href="https://www.metacpan.org/module/B::Utils">B::Utils</a> module
+and caveats "lots of cargo-culting from
+<a href="https://www.metacpan.org/module/B::Deparse">B::Deparse</a>", which I enjoyed.
+</p>
+
+<p>
+I haven't really done this module justice, but I can imagine that now it's
+tucked away in my grey matter, I might find myself using it again.
+</p>
+
+<p>
+When installing this, some of the tests failed.
+They looked harmless so I did a <tt>force install</tt>.
+</p>
+<h2 id="Module::Inspector">Module::Inspector</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Inspector">Module::Inspector</a>
+is a front-end to a number of modules that can be used to get information
+about a distribution by parsing files in the distribution.
+Here's how you get the list of build and run-time dependencies for a distribution:
+</p>
+
+<pre>
+use Module::Inspector;
+
+$inspector = Module::Inspector->new( dist_dir => $path_to_dist );
+
+print "Run-time dependencies:\n";
+print $inspector->dist_requires->as_string, "\n";
+
+print "Build dependencies:\n";
+print $inspector->dist_build_requires->as_string, "\n";</pre>
+
+<p>
+Which produces the output:
+</p>
+
+<pre>Run-time dependencies:
+Carp: 0
+HTTP::Lite: 0
+
+Build dependencies:
+ExtUtils::MakeMaker: 0
+
+</pre>
+
+<p>
+The <tt>dist_requires()</tt> and <tt>dist_build_requires()</tt> methods
+return an instance of <a href="https://www.metacpan.org/module/Module::Math::Depends">Module::Math::Depends</a>. You can't get a list of modules from this, just the whole lot via <tt>as_string().</tt>
+</p>
+
+<p>
+The <tt>dist_depends()</tt> method returns the union of <tt>dist_requires()</tt>
+and <tt>dist_build_requires()</tt>.
+</p>
+
+<p>
+Module::Inspector was clearly meant to provide a lot more &mdash;
+the <b>TO DO</b> section of the pod says "Implement most of the functionality".
+It was created by the prolific Adam Kennedy, but given he's not active in the Perl world
+right now, this module seems unlikely to progress.
+</p>
+
+<h2 id="Module::MakefilePL::Parse">Module::MakefilePL::Parse</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::MakefilePL::Parse">Module::MakefilePL::Parse</a>
+parses the contents of a <tt>Makefile.PL</tt> looking for pre-requisites
+specified in the format used by <a href="https://www.metacpan.org/module/ExtUtils::MakeMaker">ExtUtils::MakeMaker</a> and <a href="https://www.metacpan.org/module/Module::Install">Module::Install</a>.
+The following shows how to get dependencies:
+</p>
+
+<pre>
+use Module::MakefilePL::Parse;
+use File::Slurp;
+
+$contents = read_file($makefile_pl_path);
+$parser   = Module::MakefilePL::Parse->new($contents);
+$reqs     = $parser->required();
+
+print "Dependencies are:\n";
+foreach my $module (keys %$reqs) {
+    print "  $module $reqs->{$module}\n";
+}</pre>
+
+<p>
+Running this on the
+<a href="https://www.metacpan.org/source/NEILB/HTTP-Client-1.52/Makefile.PL">Makefile.PL</a>
+for HTTP::Client, we get:
+</p>
+
+<pre>Dependencies are:
+  HTTP::Lite 0
+  Carp 0
+</pre>
+
+<p>
+The parsing is too context sensitive though,
+making assumptions about how you'll write your Makefile.PL.
+For example, the
+<a href="https://www.metacpan.org/source/ABW/Template-Toolkit-2.24/Makefile.PL">Makefile.PL</a>
+for the Template Toolkit builds up a hash and then calls:
+</p>
+
+<pre>
+WriteMakefile( %opts );
+</pre>
+
+<p>
+As a result, Module::MakefilePL::Parse fails to find any dependencies.
+</p>
+
+<p>
+This module is no longer supported: its CPAN support status is 'abandoned'.
+So don't use it.
+</p>
+<h2 id="Module::Overview">Module::Overview</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Overview">Module::Overview</a>
+provides various pieces of information about a module, somewhat like Module::Info.
+The following shows how to get the list of modules used:
+</p>
+
+<pre>
+use Module::Overview;
+
+$mo = Module::Overview->new({ module_name => 'HTTP::Client' });
+$info = $mo->get();
+print "HTTP::Client uses the following modules:\n";
+foreach my $m (@{ $info->{ uses } }) {
+    print "  $m\n";
+}</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>HTTP::Client uses the following modules:
+  Carp
+  HTTP::Lite
+</pre>
+
+<p>
+It uses <a href="https://www.metacpan.org/module/Module::ExtractUse">Module::ExtractUse</a>
+to get this information.
+</p>
+
+<p>
+Module::Overview can also generate a summary table of all the information available:
+</p>
+
+<pre>
+use Module::Overview;
+
+$mo = Module::Overview->new({ module_name => 'HTTP::Client' });
+print $mo->text_simpletable();</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>.------------------+--------------------------------------------------------------.
+| class            | HTTP::Client                                                 |
++------------------+--------------------------------------------------------------+
+| uses             | Carp                                                         |
+|                  | HTTP::Lite                                                   |
++------------------+--------------------------------------------------------------+
+| methods          | agent()                                                      |
+|                  | content_encoding()                                           |
+|                  | content_length()                                             |
+|                  | content_type()                                               |
+|                  | date()                                                       |
+|                  | from()                                                       |
+|                  | get()                                                        |
+|                  | host()                                                       |
+|                  | last_modified()                                              |
+|                  | new()                                                        |
+|                  | protocol()                                                   |
+|                  | response_headers()                                           |
+|                  | server()                                                     |
+|                  | status_message()                                             |
+|                  | title()                                                      |
+|                  | warning()                                                    |
++------------------+--------------------------------------------------------------+
+| methods_imported | carp()                                                       |
+|                  | confess()                                                    |
+|                  | croak()                                                      |
+'------------------+--------------------------------------------------------------'
+</pre>
+
+<p>
+The <tt>get()</tt> method used in the first example takes a string from
+the left-hand column and returns an array ref containing what you see on the right.
+</p>
+
+<p>
+Module::Overview also provides a <tt>graph()</tt> method,
+which returns an instance of
+<a href="https://www.metacpan.org/module/Graph::Easy">Graph::Easy</a>
+containing the same information in the table.
+</p>
+
+<h2 id="Module::ParseDeps">Module::ParseDeps</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::ParseDeps">Module::ParseDeps</a>
+parses files in a CPAN distribution to identify dependencies.
+The files it looks for are META.yml, *.meta, and Makefile.PL.
+If a Makefile.PL is found, it is parsed by <a href="https://www.metacpan.org/module/Module::MakefilePL::Parse">Module::MakefilePL::Parse</a>,
+which is also <a href="Module::MakefilePL::Parse">included</a> in this review.
+</p>
+
+<p>
+The module exports one function, <tt>parsedeps()</tt>,
+which takes the path to an unpacked distribution:
+</p>
+
+<pre>
+use Module::ParseDeps;
+
+$reqs = parsedeps($path_to_dist);
+
+print "Dependencies are:\n";
+foreach my $module (keys %$reqs) {
+    print "  $module $reqs->{$module}\n";
+}</pre>
+
+<p>
+Running this on a local copy of HTTP::Client I get:
+</p>
+
+<pre>
+Error parsing META file:  at ./module-parsedeps.pl line 14.
+Error parsing META file:  at ./module-parsedeps.pl line 14.
+Dependencies are:
+  HTTP::Lite 0
+  Carp 0
+</pre>
+
+<p>
+So even though I get some error messages, it does get the dependencies right.
+It doesn't do so well with the Template Toolkit though: I get one error
+message and no dependencies.
+</p>
+
+<p>
+Module::ParseDeps hasn't been updated since 2004, so I'm guessing that formats
+for the various files have changed, which is why it doesn't work very well.
+</p>
+<h2 id="Module::PrintUsed">Module::PrintUsed</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::PrintUsed">Module::PrintUsed</a>
+prints out a list of modules used by your code. Using my simple test script
+for HTTP::Client:
+</p>
+
+<pre>% perl -MModule::PrintUsed http-client.pl</pre>
+
+<p>
+Which generates the following output:
+</p>
+
+<pre>
+Modules used by http-client.pl:
+ - Carp                      1.26     /usr/local/lib/perl5/5.16.0/Carp.pm
+ - Config                             /usr/local/lib/perl5/5.16.0/darwin-2level/Config.pm
+ - Errno                     1.15     /usr/local/lib/perl5/5.16.0/darwin-2level/Errno.pm
+ - Exporter                  5.66     /usr/local/lib/perl5/5.16.0/Exporter.pm
+ - Fcntl                     1.11     /usr/local/lib/perl5/5.16.0/darwin-2level/Fcntl.pm
+ - HTTP::Client              1.52     /usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+ - HTTP::Lite                2.4      /usr/local/lib/perl5/site_perl/5.16.0/HTTP/Lite.pm
+ - Module::PrintUsed         0.05     /usr/local/lib/perl5/site_perl/5.16.0/Module/PrintUsed.pm
+ - Socket                    2.001    /usr/local/lib/perl5/5.16.0/darwin-2level/Socket.pm
+ - XSLoader                  0.16     /usr/local/lib/perl5/5.16.0/XSLoader.pm
+ - strict                    1.07     /usr/local/lib/perl5/5.16.0/strict.pm
+ - vars                      1.02     /usr/local/lib/perl5/5.16.0/vars.pm
+ - warnings                  1.13     /usr/local/lib/perl5/5.16.0/warnings.pm
+ - warnings::register        1.02     /usr/local/lib/perl5/5.16.0/warnings/register.pm
+</pre>
+
+<p>
+The module works by looking at the <tt>%INC</tt> hash in an <tt>END</tt> block.
+Unlike some of the other modules which use this technique, it also gets the version of every module used,
+and includes that in the output.
+</p>
+
+<p>
+Note that the output includes <tt>Module::PrintUsed</tt> itself, even though it's not actually
+a dependency of the script. The module <em>could</em> just exclude itself from the list,
+but given it's working off <tt>%INC</tt>, it has no way of knowing whether one of the other modules
+used it as well.
+</p>
+
+<p>
+The module also provides two functions.
+<tt>FormattedModulesList()</tt> returns a string that contains the table shown above.
+<tt>ModulesList()</tt> returns a list of hashrefs. Each has contains three keys: <tt>name</tt>,
+<tt>version</tt>, and <tt>path</tt>. These contain the individual items used to populate the
+table shown above, so could be used as follows:
+</p>
+
+<pre>
+use Module::PrintUsed;
+use HTTP::Client;
+
+foreach my $dep (Module::PrintUsed::ModulesList()) {
+    printf "  %24s : %s\n", $dep->{name}, $dep->{version};
+}</pre>
+
+<p>
+The only problem is that the default output will also still be generated.
+I've submitted an RT issue for this, suggesting that there be a mechanism for suppressing the default output.
+</p>
+
+<h2 id="Module::ScanDeps">Module::ScanDeps</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::ScanDeps">Module::ScanDeps</a>
+parses Perl source to identify modules use'd or require'd.
+It exports a <tt>scan_deps()</tt> function which is used to scan a number of files:
+</p>
+
+<pre>
+use Module::ScanDeps;
+
+$deps = scan_deps(
+                   files   => [ $path_to_http_client_pm ],
+                   recurse => 0,
+                   compile => 0,
+                 );
+
+print "HTTP::Client uses the following modules:\n";
+foreach my $module (keys %{ $deps }) {
+    $info = $deps->{$module};
+
+    print "  $module:\n";
+    print "      type    : ", $info->{type}, "\n";
+    if (defined($info->{used_by})) {
+        print "      used by : ", join(', ', @{ $info->{used_by} }), "\n";
+    }
+    if (defined($info->{uses})) {
+        print "      uses    : ", join(', ', @{ $info->{uses} }), "\n";
+    }
+}</pre>
+
+<p>
+Which produces the following output:
+</p>
+
+<pre>HTTP::Client uses the following modules:
+  warnings.pm:
+      type    : module
+      used by : HTTP/Client.pm
+  Carp.pm:
+      type    : module
+      used by : HTTP/Client.pm
+  HTTP/Client.pm:
+      type    : module
+      uses    : Carp.pm, warnings.pm, strict.pm, HTTP/Lite.pm
+  strict.pm:
+      type    : module
+      used by : HTTP/Client.pm
+  HTTP/Lite.pm:
+      type    : module
+      used by : HTTP/Client.pm
+</pre>
+
+<p>
+Note:
+<p>
+<ul>
+<li>The dependencies are listed as partial paths, eg <tt>HTTP/Lite.pm</tt> rather than HTTP::Lite.
+    I've submitted an RT issue suggesting a <tt>name</tt> key be added to the hash for each dependency.
+<li>the <tt>used_by</tt> key means you can generate a true dependency graph, rather than just a flat
+    list of all dependencies.
+</ul>
+
+<p>
+If you set <tt>recurse</tt> to 1, it will recurse through all dependencies found,
+producing the complete dependency graph.
+Unfortunately Module::ScanDeps currently has <a href="https://rt.cpan.org/Public/Bug/Display.html?id=72211">a bug</a>
+which results in it pulling a whole load of non-dependencies if you <tt>use strict</tt>.
+</p>
+
+<p>
+Note that here only 'module' types are displayed. Other types are 'autoload', 'data', and 'shared'.
+When recursing you might get a bunch of these, and there's currently no way to state that you only want
+to see entries of type 'module'.
+</p>
+
+<p>
+Module::ScanDeps is a powerful module, but I wouldn't use it at the moment.
+Other modules are easier to use for my purposes, and it doesn't seem to be actively supported at the moment:
+there are too many outstanding issues, including the critical one mentioned above,
+which was reported in November 2011.
+</p>
+<h2 id="Module::Used">Module::Used</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Used">Module::Used</a>
+uses PPI to parse Perl and look for statements that <tt>use</tt>
+or <tt>require</tt> modules.
+Here's how you'd use it to process a locally installed module:
+</p>
+
+<pre>
+use Module::Used qw(modules_used_in_modules);
+
+@modules = modules_used_in_modules('HTTP::Client');
+foreach my $m (@modules) {
+    print "  $m\n";
+}</pre>
+
+<p>
+Which produces the output:
+</p>
+
+<pre>
+  strict
+  warnings
+  HTTP::Lite
+  Carp
+</pre>
+
+<p>
+Module::Used provides two other functions:
+</p>
+
+<ul>
+<li><tt>modules_used_in_files</tt> takes a list of file names/paths,
+    and returns a list of module names.
+<li><tt>modules_used_in_string</tt> takes a string containing perl source
+    and returns a list of module names;
+<li><tt>modules_used_in_document</tt> takes a
+    <a href="https://www.metacpan.org/module/PPI::Document">PPI::Document</a>
+    and returns a list of module names.
+</ul>
+
+<p>
+This is a nice module: a clear simple API, and seems to work fine.
+</p>
+<h2 id="Perl::PrereqScanner">Perl::PrereqScanner</h2>
+<p>
+Perl::PrereqScanner uses <a href="https://www.metacpan.org/module/PPI">PPI</a>
+to scan perl source and extract dependency information.
+You can scan a PPI doc, a source file, or a source string,
+and are returned an instance of
+<a href="https://www.metacpan.org/module/CPAN::Meta::Requirements">CPAN::Meta::Requirements</a>.
+The following script uses it to parse the HTTP::Client example script:
+</p>
+
+<pre>
+use Perl::PrereqScanner;
+
+$scanner = Perl::PrereqScanner->new;
+$prereqs = $scanner->scan_file($path_to_http_client_pm);
+$hashref = $prereqs->as_string_hash();
+foreach my $m (sort keys %$hashref) {
+    printf "  $m\n";
+}</pre>
+
+<p>
+When you run this, you get the following to stdout:
+</p>
+
+<pre>
+  Carp
+  HTTP::Lite
+  perl
+  strict
+  warnings
+</pre>
+
+<p>
+HTTP::Client uses HTTP::Lite, in case you were curious.
+The 'perl' entry is from the following line in HTTP::Client:
+</p>
+
+<pre>use 5.8.0;</pre>
+
+<p>
+Not sure I'd do that, but you can always skip it in the output.
+</p>
+
+<p>
+As you can see, this would be most useful for generating dependency
+information where you have a tree of source, for example for one project.
+The distribution includes a script
+<a href="https://www.metacpan.org/module/Perl::PrereqScanner::App">scan_prerequs</a>,
+which uses File::Find to traverse a directory in this way.
+A neat addition to this would be an option to follow dependencies:
+having identified HTTP::Client as a dependency,
+it could search @INC looking for it,
+and if it's found, scan that as well.
+</p>
+
+<p>
+Actually, that sounded fun, so I knocked up a script to do that,
+and spit out a dot format graph.
+Here's the interesting part of the script:
+</p>
+
+<pre>
+use Perl::PrereqScanner;
+
+$scanner = Perl::PrereqScanner->new;
+push(@queue, 'HTTP::Client');
+
+while (@queue > 0) {
+    $module = shift @queue;
+    next if exists $seen{$module};
+    $seen{$module} = 1;
+    
+    if (defined($module_path = find_module_path($module))) {
+        $prereqs = $scanner->scan_file($module_path);
+        $depsref = $prereqs->as_string_hash();
+        delete($depsref->{perl});
+        $deps{$module} = $depsref;
+        push(@queue, keys %{ $deps{$module} });
+    }
+}
+generate_graph();</pre>
+
+<p>
+And here's the graph generated for HTTP::Client (click for full-size):
+</p>
+
+<div style="margin-left: 1em;">
+<a href="ppg.png" target="_blank"><img src="ppg.png" style="border: solid 1px #cccccc;" width=400></a>
+</div>
+
+<p>
+So, very different from the graph generated by Devel::DependencyGrapher,
+but similar to that generated by Module::Dependency.
+</p>
+<h2>Comparison</h2>
+
+<p>
+As noted in the introduction, there are three basic types of module:
+</p>
+
+<ul>
+<li>CPAN::Dependency, CPAN::FindDependencies, Module::Depends, Dist::Requires, and Module::Depends::Tree
+    all work by processing the metadata files from distributions.
+    There are two main disadvantages with this approach: the module's author may not have listed
+    some dependencies, and where the metadata is grabbed from CPAN, it might be for different
+    versions of some of the modules than are installed locally.
+<li>Module::Dependency::Grapher, Module::Extract::Use, Module::ExtractUse, Module::Info, Module::ScanDeps,
+    and Perl::PrereqScanner work by parsing or compiling source code.
+    These have the advantage that they're (probably) looking at the versions of the modules that you're
+    using, but they might infer dependencies that aren't actually dependencies.
+<li>Devel::Dependencies, Devel::TraceUser, Module::PrintUsed, Devel::Modlist,
+    App::FatPacker::Trace, and Devel::DependencyGrapher work by 'reflection':
+    looking at what modules were loaded during compile time.
+    This gives a good indication of how much code was actually loaded,
+    but only shows you for a particular run or runs.
+    So not a comprehensive view of dependencies, and doesn't cover build- and test-time dependencies.
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+If you want to know all the distributions you'd need for a module,
+perhaps because you want to bundle them all together,
+then I think
+<a href="https://www.metacpan.org/module/CPAN::FindDependencies">CPAN::FindDependencies</a>
+is the best bet.
+This isn't surprising, since the module is by
+<a href="http://search.cpan.org/~dcantrell/">David Cantrell</a>,
+who runs the <a href="http://deps.cpantesters.org/">CPAN Dependencies</a> service.
+</p>
+
+<p>
+If you're not sure you want to trust the accuracy of the metadata in distributions,
+then you could use one of the modules which parses code to identify all possible dependencies.
+For this I'd use
+<a href="https://www.metacpan.org/module/Module::Extract::Use">Module::Extract::Use</a>,
+as it's built on top of PPI,
+and provides a bit more information than Perl::PrereqScanner.
+I think I need to do a more rigorous bake-off to see which of the parsing-based modules
+is most reliable.
+</p>
+
+<p>
+And if you want to know what modules are pulled in when you use a module,
+then use <a href="https://www.metacpan.org/module/Devel::Modlist">Devel::Modlist</a>,
+or <a href="https://www.metacpan.org/module/Devel::TraceUse">Devel::TraceUse</a>,
+at least until I've released my module :-)
+</p>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

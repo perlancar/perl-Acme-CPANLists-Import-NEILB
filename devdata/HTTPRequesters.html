@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for making HTTP requests</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for making HTTP requests</h1>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-07-23</p>
+</div>
+<p>
+This article is a review of 20 CPAN modules that can be used to make HTTP requests.
+Many of the modules can handle FTP and other types of requests,
+but here I'm just focussing on HTTP, and in particular GET and POST requests.
+</p>
+
+<p>
+If you're thinking "Sheesh, just tell me what module to use!",
+here's a concise summary of the <a href="#Conclusion">recommendations</a>:
+</p>
+<ul>
+<li>A sensible default choice would be <a href="https://www.metacpan.org/module/HTTP::Tiny">HTTP::Tiny</a>:
+    it handles all requests types, supports SSL, transparently handles redirects, and has a relatively
+    small number of dependencies.
+<li>If you're working with cookies or need full access to the request and/or response,
+    and top performance and minimal dependencies aren't requirements,
+    then use <a href="https://www.metacpan.org/module/LWP">LWP</a>
+    (or <a href="https://www.metacpan.org/module/Mojo::UserAgent">Mojo::UserAgent</a>
+    if you're already using Mojolicious).
+<li>If speed is critical for you, then you have two choices: for pure perl, go with Furl.
+    If you're happy to install <a href="http://curl.haxx.se/libcurl/">libcurl</a> (a C library),
+    then go for one of the Curl-based modules.
+    <a href="https://www.metacpan.org/module/LWP::Curl">LWP::Curl</a> has the simplest interface.
+<li>If you need speed <em>and</em> complete control,
+    then look at <a href="https://www.metacpan.org/module/WWW::Curl">WWW::Curl</a> or
+    <a href="https://www.metacpan.org/module/Net::Curl">Net::Curl</a>.
+</ul>
+
+<p>
+The following table lists the modules reviewed, along with basic information.
+The <b># users</b> column is the number of distributions that list the
+module as a pre-requisite.
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="http://search.cpan.org/~tokuhirom/Furl-0.40/lib/Furl.pm"><tt>Furl</tt></a></td>
+  <td align=right><tt>0.40</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tokuhirom/">MATSUNOâTokuhiro</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Furl"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Furl"><tt>10</tt></a></td>
+  <td align=right><tt>2012-06-04</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~neilb/HTTP-Client-1.52/lib/HTTP/Client.pm"><tt>HTTP::Client</tt></a></td>
+  <td align=right><tt>1.52</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-Client"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::Client"><tt>0</tt></a></td>
+  <td align=right><tt>2012-01-15</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~msergeant/HTTP-GHTTP-1.07/GHTTP.pm"><tt>HTTP::GHTTP</tt></a></td>
+  <td align=right><tt>1.07</tt></td>
+  <td align=left><a href="http://search.cpan.org/~msergeant/">Matt Sergeant</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-GHTTP"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::GHTTP"><tt>0</tt></a></td>
+  <td align=right><tt>2002-03-25</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~neilb/HTTP-Lite-2.4/lib/HTTP/Lite.pm"><tt>HTTP::Lite</tt></a></td>
+  <td align=right><tt>2.4</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-Lite"><tt>10</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::Lite"><tt>0</tt></a></td>
+  <td align=right><tt>2012-07-19</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~piers/HTTP-MHTTP-0.15/MHTTP.pm"><tt>HTTP::MHTTP</tt></a></td>
+  <td align=right><tt>0.15</tt></td>
+  <td align=left><a href="http://search.cpan.org/~piers/">Piers Harding</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-MHTTP"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::MHTTP"><tt>0</tt></a></td>
+  <td align=right><tt>2003-12-13</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~potyl/HTTP-Soup-0.01/lib/HTTP/Soup.pm"><tt>HTTP::Soup</tt></a></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~potyl/">Emmanuel Rodriguez</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-Soup"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::Soup"><tt>0</tt></a></td>
+  <td align=right><tt>2011-09-18</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~dagolden/HTTP-Tiny-0.022/lib/HTTP/Tiny.pm"><tt>HTTP::Tiny</tt></a></td>
+  <td align=right><tt>0.022</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dagolden/">David Golden</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-Tiny"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::Tiny"><tt>41</tt></a></td>
+  <td align=right><tt>2012-06-02</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~gaas/libwww-perl-6.04/lib/LWP.pm"><tt>LWP</tt></a></td>
+  <td align=right><tt>6.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~gaas/">Gisle Aas</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=libwww-perl"><tt>130</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=LWP"><tt>1460</tt></a></td>
+  <td align=right><tt>2012-02-18</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~lorn/LWP-Curl-0.12/lib/LWP/Curl.pm"><tt>LWP::Curl</tt></a></td>
+  <td align=right><tt>0.12</tt></td>
+  <td align=left><a href="http://search.cpan.org/~lorn/">Lindolfo Rodrigues de Oliveira Neto</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=LWP-Curl"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=LWP::Curl"><tt>1</tt></a></td>
+  <td align=right><tt>2012-06-26</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~gaas/libwww-perl-6.04/lib/LWP/Simple.pm"><tt>LWP::Simple</tt></a></td>
+  <td align=right><tt>6.00</tt></td>
+  <td align=left><a href="http://search.cpan.org/~gaas/">Gisle Aas</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=libwww-perl"><tt>130</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=LWP::Simple"><tt>1460</tt></a></td>
+  <td align=right><tt>2012-02-18</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~tempire/Mojolicious-3.11/lib/Mojo/UserAgent.pm"><tt>Mojo::UserAgent</tt></a></td>
+  <td align=right><tt>3.11</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tempire/">Glen Hinkle</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Mojolicious"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Mojo::UserAgent"><tt>136</tt></a></td>
+  <td align=right><tt>2012-07-19</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~sparky/Net-Curl-0.25/lib/Net/Curl.pm"><tt>Net::Curl</tt></a></td>
+  <td align=right><tt>0.25</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sparky/">PrzemysÅaw Iskra</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Net-Curl"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Net::Curl"><tt>2</tt></a></td>
+  <td align=right><tt>2011-05-16</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~sparky/Net-Curl-Simple-0.13/lib/Net/Curl/Simple.pm"><tt>Net::Curl::Simple</tt></a></td>
+  <td align=right><tt>0.13</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sparky/">PrzemysÅaw Iskra</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Net-Curl-Simple"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Net::Curl::Simple"><tt>0</tt></a></td>
+  <td align=right><tt>2011-05-15</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~gaas/Net-HTTP-6.03/lib/Net/HTTP.pm"><tt>Net::HTTP</tt></a></td>
+  <td align=right><tt>6.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~gaas/">Gisle Aas</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Net-HTTP"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Net::HTTP"><tt>16</tt></a></td>
+  <td align=right><tt>2012-02-16</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~zefram/Net-HTTP-Tiny-0.001/lib/Net/HTTP/Tiny.pm"><tt>Net::HTTP::Tiny</tt></a></td>
+  <td align=right><tt>0.001</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zefram/">Andrew Main (Zefram)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Net-HTTP-Tiny"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Net::HTTP::Tiny"><tt>0</tt></a></td>
+  <td align=right><tt>2012-03-20</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~btrott/URI-Fetch-0.09/lib/URI/Fetch.pm"><tt>URI::Fetch</tt></a></td>
+  <td align=right><tt>0.09</tt></td>
+  <td align=left><a href="http://search.cpan.org/~btrott/">Benjamin Trott</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=URI-Fetch"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=URI::Fetch"><tt>15</tt></a></td>
+  <td align=right><tt>2011-01-28</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~opitz/URL-Grab-1.4/lib/URL/Grab.pm"><tt>URL::Grab</tt></a></td>
+  <td align=right><tt>1.4</tt></td>
+  <td align=left><a href="http://search.cpan.org/~opitz/">Oliver Falk</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=URL-Grab"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=URL::Grab"><tt>0</tt></a></td>
+  <td align=right><tt>2008-01-24</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~tobyink/Web-Magic-0.008/lib/Web/Magic.pm"><tt>Web::Magic</tt></a></td>
+  <td align=right><tt>0.008</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tobyink/">Toby Inkster</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Web-Magic"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Web::Magic"><tt>3</tt></a></td>
+  <td align=right><tt>2012-02-29</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~szbalint/WWW-Curl-4.15/lib/WWW/Curl.pm"><tt>WWW::Curl</tt></a></td>
+  <td align=right><tt>4.15</tt></td>
+  <td align=left><a href="http://search.cpan.org/~szbalint/">BÃ¡lint Szilakszi</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=WWW-Curl"><tt>10</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=WWW::Curl"><tt>13</tt></a></td>
+  <td align=right><tt>2010-11-28</tt></td>
+</tr><tr>
+  <td><a href="http://search.cpan.org/~andremar/WWW-Curl-Simple-0.100185/lib/WWW/Curl/Simple.pm"><tt>WWW::Curl::Simple</tt></a></td>
+  <td align=right><tt>0.100185</tt></td>
+  <td align=left><a href="http://search.cpan.org/~andremar/">Andreas Marienborg</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=WWW-Curl-Simple"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=WWW::Curl::Simple"><tt>2</tt></a></td>
+  <td align=right><tt>2012-02-23</tt></td>
+</tr>
+</table>
+
+
+<p>
+I intentionally excluded modules like
+<a href="https://www.metacpan.org/module/WWW::Mechanize">WWW::Mechanize</a>,
+which provide higher-level functions.
+<a href="https://www.metacpan.org/module/Web::Magic">Web::Magic</a> was close
+to failing that test!
+</p>
+
+<p>
+I'll look at each module in turn, then present results of comparing the modules,
+and finally which module you should use when.
+</p>
+
+<p>In comparing the modules, I'm looking at the following:</p>
+
+<ul>
+<li>Does it provide a clean simple interface?</li>
+<li>Can you make https requests?</li>
+<li>Which HTTP verbs/methods are supported?</li>
+<li>If you want more control and information on the response, can you get it?</li>
+<li>(How) does it handle redirects?</li>
+<li>Support for cookies.</li>
+<li>What dependencies does it have?
+    I don't like to see modules that reinvent wheels just to minimise dependencies,
+    but on the other hand if I'm relying on this module, I don't want half of CPAN pulled in.</li>
+<li>Can you specify the User-Agent string?
+    If you're just writing a quick script making one-off HTTP requests,
+    you'll probably be happy to go with the module's default.
+    But if you're writing a module, or more involved application,
+    you'll want to stamp your own identity.</li>
+<li>Quality of documentation.</li>
+</ul>
+
+<p>
+In each section I'll show SYNOPSIS style code examples to illustrate basic use of each module.
+</p>
+
+<h3>Basics</h3>
+
+<p>
+Before starting the reviews, I'll present a simple model for making HTTP requests,
+so I can describe how each module fits into it.
+I'll assume you're familiar with the basics of HTTP, and how the web works
+(there are
+<a href="http://www.google.com/search?client=safari&rls=en&q=HTTP+tutorial&ie=UTF-8&oe=UTF-8">plenty</a>
+of <a href="http://www.jmarshall.com/easy/http/">HTTP tutorial</a>s online).
+</p>
+
+<p>
+Making an HTTP request involves three entities:
+</p>
+
+<ul>
+<li>An <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5">HTTP request</a>
+    is the network request made to an HTTP server.
+    It consists of the method (also referred to as the verb), such as GET, POST, HEAD, PUT or DELETE.
+    The request contains a number of headers, and may contain a body.</li>
+<li>An <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6">HTTP response</a>
+    is what's returned by the HTTP server as a result of receiving a request.
+    This contains a 3-digit HTTP status code, a reason phrase,
+    a number of response header fields, and possibly a message body.</li>
+<li>A <b>User Agent</b> is the entity (for example, a web browser) which actually makes the HTTP request.
+    The HTTP request should include a
+    <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43">User-Agent</a> header,
+    which identifies the agent (browser, robot, etc).
+</ul>
+
+<p>
+With some of the modules here, each of those entities is represented with a separate class.
+Sometimes the request is implicit, constructed from arguments passed to a <em>request</em>
+method on the User Agent. And sometimes there isn't a separate response class either:
+everything is rolled into the User Agent.
+</p>
+
+<p>
+Disclaimer: I'm not an HTTP expert. Please let me know if you spot any errors,
+inaccuracies or gaps in the material below.
+</p>
+<h2 id="Furl">Furl</h2>
+
+<p>
+Furl bills itself as a lightning-fast URL fetcher.
+Not merely fast you understand, but <em>lightning</em> fast.
+I'm expecting that most of the time in making a request is in network latency,
+so I'm having a hard time seeing what will make this so much faster than the competition,
+but we'll see.
+</p>
+
+<p>
+Furl is the User-Agent class, and rather than a request class,
+relevant information is passed to a request method:
+</p>
+
+<pre>
+use Furl;
+
+$furl = Furl->new(agent => 'MyModule/2.0', max_redirects => 0);
+
+$response = $furl->get($url);
+
+if ($response->is_success) {
+    print "Status:  ", $response->code, "\n";
+    print "Content: ", $response->body, "\n";
+} else {
+    print "Status:  ", $response->code, "\n";
+    print "Message: ", $response->message, "\n";
+}</pre>
+
+<p>
+Furl has a generic <tt>request</tt> method, but also provides <tt>get</tt>,
+<tt>post</tt>, <tt>head</tt>, <tt>put</tt>, and <tt>delete</tt> methods.
+Each of these return an instance of
+<a href="https://www.metacpan.org/module/Furl::Response">Furl::Response</a>,
+which is very similar to the HTTP::Response class from LWP
+(and provides a method <tt>as_http_response()</tt> which
+will return an instance of
+<a href="https://www.metacpan.org/module/HTTP::Response">HTTP::Response</a>).
+</p>
+
+<p>
+The following shows simple POST usage:
+</p>
+
+<pre>
+use Furl;
+
+$furl     = Furl->new();
+$response = $furl->post($url, [], [ x => 7, y => 13 ]);
+
+if ($response->is_success) {
+    print $response->body, "\n";
+} else {
+    print "Status:  ", $response->code, "\n";
+    print "Message: ", $response->message, "\n";
+}</pre>
+
+<p>
+Furl will automatically follow redirects, upto a specified limit,
+which defaults to 7.
+You can overide this with the <tt>max_redirects</tt> parameter
+passed to the constructor.
+If you don't want redirects followed, just set this to 0 (zero).
+</p>
+
+<p>
+Furl doesn't natively support working with cookies but the documentation
+contains a <a href="https://www.metacpan.org/module/Furl#How-do-you-use-cookie_jar-">section</a> which shows how to use LWP classes
+with Furl to handle cookies. This would lose you some of the performance
+benefits of Furl over LWP.
+</p>
+
+<p>
+Furl does support https requests.
+</p>
+<h2 id="HTTP::Client">HTTP::Client</h2>
+
+<p>
+HTTP::Client is a small class for making GET requests,
+built on top of HTTP::Lite.
+The documentation says the aim was speed,
+and highlights the fact that it doesn't require LWP.
+The following illustrates making a simple GET request:
+</p>
+
+<pre>
+use HTTP::Client;
+
+$client = HTTP::Client->new();
+
+$response = $client->get($url);
+
+if ($client->status_message =~ /^200/) {
+    print "Status:  ", $client->status_message, "\n";
+    print "Content: ", $response, "\n";
+} else {
+    print "Status:  ", $client->status_message, "\n";
+}</pre>
+
+<p>
+The <tt>get</tt> method is a bit strange:
+if the request results in an HTTP 200 status code,
+the content of the request page is returned.
+Otherwise it returns a status string, in the form "404 Not found".
+This means that anything other than a status code of 200
+is considered a failure,
+and that redirects are not handled (you'll just get "302 Found", for example).
+</p>
+
+<p>
+This design means you can't tell the difference between a request
+for a non-existent file, and a text file which contains "404 Not found".
+Ok, not very likely,
+but this is exactly the sort of thing an HTTP library should get right.
+And it's why you should always check the status_message,
+rather than the return value of <tt>get</tt>.
+</p>
+
+<p>
+The module supports a number of methods for getting at header information
+returned in the HTTP response,
+but it doesn't let you get the HTTP status code and message individually,
+only via the <tt>status_message</tt> method.
+</p>
+
+<p>
+As noted above, HTTP::Client only supports making GET requests,
+doesn't support SSL, and doesn't handle cookies.
+</p>
+
+<p>
+The version on CPAN when I started working on this review had a number of bugs.
+I ended up getting co-maint and fixing the bugs listed on RT.
+I may improve some of the areas mentioned above, but more likely,
+unless I hear that people are actively using it, I'll just maintain
+it into retirement.
+</p>
+<h2 id="HTTP::GHTTP">HTTP::GHTTP</h2>
+
+<p>
+<tt>HTTP::GHTTP</tt> is a Perl interface to Gnome's libghttp.
+It's a fairly low-level interface, which means you have to write more code than with some modules:
+</p>
+
+<pre>
+use HTTP::GHTTP ':methods';
+
+$ghttp = HTTP::GHTTP->new();
+$ghttp->set_uri($url);
+$ghttp->set_type(METHOD_GET);
+$ghttp->process_request;
+print "STATUS:  ", ($ghttp->get_status)[0], "\n";
+print "CONTENT: ", $ghttp->get_body, "\n";</pre>
+
+<p>
+The <tt>get_status()</tt> method returns two values:
+the <em>status code</em> and <em>reason phrase</em>,
+as <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1.1">defined by the HTTP spec</a>.
+</p>
+
+<p>
+Though because it's low-level,
+you have a lot of control over the outbound request.
+It supports all the regular HTTP request types and some which
+are apparently for DAV (which I'm not familiar with).
+</p>
+
+<p>
+You can make POST requests, but you have to specify the Content-Type explicitly,
+and have to encode the body by hand as well.
+</p>
+
+<pre>
+use HTTP::GHTTP ':methods';
+
+$ghttp = HTTP::GHTTP->new();
+$ghttp->set_uri($url);
+$ghttp->set_type(METHOD_POST);
+$body = 'x=7&y=13';
+$ghttp->set_header('Content-Type', 'application/x-www-form-urlencoded');
+$ghttp->set_body($body);
+$ghttp->process_request;
+print "STATUS:  ", ($ghttp->get_status)[0], "\n";
+print "CONTENT: ", $ghttp->get_body, "\n";</pre>
+
+<p>
+To encode the POST parameters properly, you need to do a lot more than I did,
+so if you need to POST, you should use a different module.
+</p>
+
+<p>
+You can also do async requests as well, where results are pulled back
+in chunks of N bytes.
+</p>
+
+<pre>
+use HTTP::GHTTP;
+
+$ghttp = HTTP::GHTTP->new();
+$ghttp->set_uri($url);
+$ghttp->set_async;
+$ghttp->set_chunksize(32);
+$ghttp->prepare;
+$count = 0;
+while ($status = $ghttp->process) {
+    # do some other processing
+    ++$count;
+}
+die "failed to complete request\n" unless defined($status);
+print "STATUS : ", ($ghttp->get_status)[0], "\n";
+print "COUNT  : ", $count, "\n";</pre>
+
+<p>
+The documentation is fairly light, for example in the section on async operation:
+</p>
+
+<blockquote>
+Doing timeouts is an exercise for the reader
+(hint: lookup select() in perlfunc).
+</blockquote>
+
+<p>
+<tt>HTTP::GHTTP</tt> doesn't handle https requests,
+as the underlying libghttp doesn't handle SSL.
+There is no support for working with cookies,
+and it doesn't handle redirects for you.
+</p>
+
+<p>
+The underlying <tt>libghttp</tt> doesn't seem to be maintained:
+I couldn't find much about it online,
+and this module was last released in 2002.
+It has been superseded by <a href="https://live.gnome.org/LibSoup/">libSoup</a> for the GNOME project.
+So this is probably not one to use, though as you'll see in the
+performance comparison below, it's the fastest module,
+both for GET and POST requests.
+</p>
+<h2 id="HTTP::Lite">HTTP::Lite</h2>
+
+<p>
+HTTP::Lite is a "lightweight HTTP implementation",
+intended for use where you're only wanting to make simple HTTP requests.
+</p>
+
+<pre>
+use HTTP::Lite;
+
+$http = HTTP::Lite->new();
+$http->http11_mode(1);
+$result = $http->request($url);
+
+print "Status: ", $result, "\n";
+if (defined($result) && ($result =~ /^2/ || $result == 302)) {
+    print "CONTENT: ", $http->body, "\n";
+} else {
+    print "Failed: ", $http->status, "\n";
+}</pre>
+
+<p>
+The following code shows how to make a POST request.
+You call the <tt>prepare_post()</tt> method before making the request.
+This builds the request body, and sets the method type to POST.
+</p>
+
+<pre>
+use HTTP::Lite;
+
+$http = HTTP::Lite->new();
+$http->http11_mode(1);
+$http->prepare_post({ x => 7, y => 13 });
+$result = $http->request($url);
+
+print "Status: ", $result, "\n";
+if (defined($result) && ($result =~ /^2/ || $result == 302)) {
+    print "CONTENT: ", $http->body, "\n";
+} else {
+    print "Failed: ", $http->status_message, "\n";
+}</pre>
+
+<p>
+You can define arbitrary HTTP headers to use when making a request,
+which you do before making the request.
+The following example over-rides the default User-Agent header,
+and switches to HTTP/1.1 (it is HTTP/1.0 by default):
+</p>
+
+<pre>
+use HTTP::Lite;
+
+$http   = HTTP::Lite->new();
+$http->http11_mode(1);
+$http->add_req_header('User-Agent', 'HTTP::Lite/2.3');
+print "User-Agent:\n";
+foreach my $header ($http->get_header('User-Agent')) {
+    print "  $header\n";
+}
+$result = $http->request($url);
+print "status code = $result\n";
+print "content = ", $http->body, "\n";</pre>
+
+<p>
+If you want to make multiple requests,
+you have to call the <tt>reset()</tt> method between each request:
+</p>
+
+<pre>
+use HTTP::Lite;
+
+$http   = HTTP::Lite->new();
+$result = $http->request('http://perl.org');
+print "response from perl.org = $result\n";
+
+$http->reset;
+
+$result = $http->request('http://perl.com');
+print "response from perl.com = $result\n";</pre>
+
+<p>
+An instance of <tt>HTTP::Lite</tt> represents a <em>user agent</em>,
+an HTTP request, and the HTTP response, all at the same time.
+As a result the interface is potentially a little confusing,
+which is further not helped by the documentation contradicting itself
+in a number of places.
+</p>
+
+<p>
+The documentation says that HTTP::Lite only supports GET and POST requests,
+but also describes a <tt>method()</tt> method, which suggests you can
+do PUT and HEAD requests as well. I've only tested GET and POST.
+I've just taken over maintenance of this module and have fixed some of the outstanding bugs.
+I'll resolve the documentation issues and decide what to do on remaining bugs.
+</p>
+
+<p>
+The module has some features I've not covered,
+such as the ability to provide callback
+functions which are invoked at specific points in the request cycle.
+It doesn't: support https; handle redirects, or provide support for cookies.
+I wouldn't recommend using this module if you were starting something now.
+</p>
+
+<h2 id="HTTP::MHTTP">HTTP::MHTTP</h2>
+
+<p>
+HTTP::MHTTP provides a low-level library for making HTTP requests,
+based on a C library which is
+included in the distribution.
+Instead of an OO interface like most modules here, it exports 14 functions which act
+on global variables held in the C library. So not thread-friendly.
+</p>
+<p>
+It took me a while to get it working reliably, until I realised that
+</p>
+
+<ol type=a>
+<li>most web servers these days require 1.1.</li>
+<li>HTTP::MHTTP doesn't pass the <tt>Host:</tt> header ("Some support of HTTP 1.1 is available"),
+and if you don't pass it, your request will fail with most (all?) servers.</li>
+</ol>
+
+<p>
+As a result, if you want to use this module (and you almost certainly don't),
+you should call <tt>http_set_protocol()</tt> to switch to HTTP/1.1 (HTTP/1.0 is the default),
+and then you should manually as the Host header to your request:
+</p>
+
+<pre>
+use HTTP::MHTTP;
+
+http_init();
+http_set_protocol(1);
+http_add_headers('User-Agent' => 'HTTP::MHTTP/0.15',
+                 'Host'       => 'www.robotstxt.org',
+                );
+$result = http_call('GET', $url);
+if ($result > 0) {
+    if (http_status() == 200) {
+        print "CONTENT: ", http_response(), "\n";
+    } else {
+        print "Failed to GET file - ", http_status(), "\n";
+    }
+} else {
+    print "failed to make request - error code: $result\n";
+}</pre>
+
+<p>
+But when running the benchmarks, I discovered that if you switch to HTTP/1.1 then you can't
+make multiple requests: the first request will succeed, but subsequent requests fail without
+even talking to the HTTP server.
+</p>
+
+<p>
+The following is the closest I could get to a working example of a POST request.
+The parameters are successfully posted, but the body returned has some extra characters.
+</p>
+
+<pre>
+use HTTP::MHTTP;
+
+http_init();
+http_set_protocol(1);
+$body = 'x=7&y=13';
+http_body($body);
+http_add_headers('User-Agent'     => 'HTTP::MHTTP/0.15',
+                 'Host'           => 'localhost',
+                 'Content-Type'   => 'application/x-www-form-urlencoded',
+                );
+$result = http_call('POST', $url);
+if ($result > 0) {
+    if (http_status() == 200) {
+        print '"', http_response(), '"', "\n";
+    } else {
+        print "POST failed - ", http_status(), "\n";
+    }
+} else {
+    print "failed to make request - error code: $result\n";
+}</pre>
+
+<p>
+If you're going to make multiple HTTP requests, you have to call <tt>http_reset()</tt>
+between requests.
+This doesn't clear any headers you set though, so you might want to call <tt>http_init()</tt>
+between requests instead.
+</p>
+
+<p>
+The documentation says that "rudimentary SSL support can be compiled in",
+but I didn't test that, as by this point it was clear that you shouldn't use this module.
+Given the "rudimentary", I counted https as not being supported
+(for the features comparison table, below).
+It also doesn't handle redirect transparently, and doesn't help with cookies.
+</p>
+
+<h2 id="HTTP::Soup">HTTP::Soup</h2>
+
+<p>
+This module marked a first for me: the first time I've given up on trying to get a module to work!
+When reviewing other modules I've fixed a fair few bugs,
+and worked hard to install underlying C libraries,
+but after spending a couple of hours on this, enough is enough, for the moment.
+</p>
+
+<p>
+HTTP::Soup is a Perl interface to <a href="http://developer.gnome.org/libsoup/stable/">libsoup</a>,
+which is an HTTP client/server library for <a href="http://www.gnome.org/">GNOME</a>.
+It looks like libsoup replaced libghttp as the HTTP library for GNOME.
+</p>
+
+<p>
+I first tried installing libsoup by hand, but on the 9th dependent library, and struggling to get things building cleanly,
+I decide to give <a href="http://www.macports.org/">MacPorts</a> a go. After nearly an hour I finally had libsoup
+installed: man, it installed a lot of packages!
+</p>
+
+<p>
+Then I tried to install HTTP::Soup.
+There was an undeclared pre-requisite, but once I got past that, I couldn't get
+one of the dependencies to install.
+I may go back to this, but for the moment you should probably give this a miss,
+unless you've already got all the GNOME libraries installed, in which case you might be more successful.
+</p>
+<h2 id="HTTP::Tiny">HTTP::Tiny</h2>
+
+<p>
+HTTP::Tiny bills itself as "a small, simple, correct HTTP/1.1 client".
+The instance of HTTP::Tiny is the User-Agent; the request 'object' is just a hashref used internally,
+with the response returned as a hashref:
+</p>
+
+<pre>
+use HTTP::Tiny;
+
+$tiny = HTTP::Tiny->new();
+
+$response = $tiny->get($url);
+
+if ($response->{success}) {
+    print "Status:  ", $response->{status},  "\n";
+    print "Content: ", $response->{content}, "\n";
+} else {
+    print "Status: ", $response->{status},  "\n";
+    print "Reason: ", $response->{reason},  "\n";
+}</pre>
+
+<p>
+The following shows usage of the <tt>post_form</tt> method,
+which submits form data with a content type of application/x-www-form-urlencoded:
+</p>
+
+<pre>
+use HTTP::Tiny;
+
+$tiny = HTTP::Tiny->new();
+$response = $tiny->post_form($url, { x => 7, y => 13 });
+
+if ($response->{success}) {
+    print "Status:  ", $response->{status},  "\n";
+    print "Content: ", $response->{content}, "\n";
+} else {
+    print "Status: ", $response->{status},  "\n";
+    print "Reason: ", $response->{reason},  "\n";
+}</pre>
+
+<p>
+HTTP::Tiny supports all HTTP verbs (GET, HEAD, PUT, POST, DELETE),
+either with the generic <tt>request</tt> method,
+or with convenience functions, which are the lower-case name of the verb.
+</p>
+
+<pre>
+$response = $http->request($verb, $url, \%options);
+
+$response = $http->post($url, \%options);
+</pre>
+
+<p>
+The <tt>options</tt> hashref can be used to provide callbacks
+(see the <a href="https://metacpan.org/module/HTTP::Tiny">doc</a> for details)
+the body of the request, or HTTP headers to include in the request.
+For example, to include the If-Modified-Since header
+(which will only return the requested URL if it has been modified after the date/time
+you give:)
+</p>
+
+<pre>
+use HTTP::Tiny;
+
+$tiny = HTTP::Tiny->new();
+
+$response = $tiny->get($url,
+    {
+     headers => { 'If-Modified-Since' => 'Mon, 23 Aug 2010 19:18:05 GMT' },
+    });
+
+if ($response->{success}) {
+    print "Status:  ", $response->{status},  "\n";
+    print "Content: ", $response->{content}, "\n";
+} else {
+    print "Status: ", $response->{status},  "\n";
+    print "Reason: ", $response->{reason},  "\n";
+}</pre>
+
+<p>
+which results in the following:
+</p>
+
+<pre>Status: 304
+Reason: Not Modified
+</pre>
+
+<p>
+Note that if you make a request with the <tt>If-Modified-Since</tt> header,
+then a 304 response (the remote file hasn't been modified), then the <tt>success</tt>
+field in the response hashref will be false, so you'll need to check the <tt>status</tt> field.
+</p>
+
+<p>
+You can pass a number of options to the constructor:
+</p>
+
+<pre>
+$http = HTTP::Tiny->new(
+                        agent           => 'MyAgent/1.0',
+                        default_headers => {
+                                           },
+                        max_redirect    => 7,
+                        max_size        => 1_048_576,
+                        proxy           => $proxy_url,
+                        timeout         => 60,
+                       );
+</pre>
+
+<p>
+The <tt>agent</tt> option provides the string passed in the User-Agent HTTP header.
+The <tt>default_headers</tt> option can be used to provide HTTP headers which you
+want to include in all requests.
+If <tt>max_redirect</tt> is set to a number greater than 0, then HTTP::Tiny will
+transparently follow redirects, up to the specified number of hops (defaulting to 5).
+If you specify a <tt>max_size</tt>, then if the response exceeds the specified number of bytes,
+you'll get a 599 status code, with reason set to <em>Internal Exception</em>,
+and the <tt>content</tt> of the response will be set to:
+</p>
+
+<pre>
+Size of response body exceeds the maximum allowed of $self->{max_size}
+</pre>
+
+<p>
+Https requests are supported if you have
+<a href="https://metacpan.org/module/IO::Socket::SSL">IO::Socket::SSL</a> installed.
+</p>
+
+<p>
+This is a well thought-out module, and is now the default module I turn to for HTTP (replacing LWP).
+he main thing that bugs me slightly is why the response is returned as a hashref,
+rather than as an instance of a response class.
+I don't see that that would break the Tiny philosophy.
+When I asked David Golden why it returns a hashref and not an object, he replied:
+</p>
+<pre>
+Because it's *tiny*  :-)
+</pre>
+<h2 id="LWP">LWP</h2>
+
+<p>
+LWP is the great-grandaddy of libraries for doing all things HTTP.
+In the canonical usage, you construct a User Agent
+(<a href="https://metacpan.org/module/LWP::UserAgent">LWP::UserAgent</a>),
+then for each request you create an instance of
+<a href="https://metacpan.org/module/HTTP::Request">HTTP::Request</a>.
+You pass the request object to the request method of the UserAgent,
+and get back an instance of
+<a href="https://metacpan.org/module/HTTP::Response">HTTP::Response</a>:
+</p>
+
+<pre>
+use LWP::UserAgent;
+use HTTP::Request;
+
+$ua       = LWP::UserAgent->new();
+$request  = HTTP::Request->new('GET' => $url);
+$response = $ua->request($request);
+
+if ($response->is_success) {
+    print "Status:  ", $response->code,  "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "Status: ", $response->code,  "\n";
+    print "Reason: ", $response->message,  "\n";
+}</pre>
+
+<p>
+When constructing the request, you can specify headers to include either
+by passing an instance of <a href="https://metacpan.org/module/HTTP::Headers">HTTP::Headers</a>,
+or by passing an arrayref which contains key/value pairs.
+If you're doing anything other than the simplest requests, you might also want to look at
+<a href="https://metacpan.org/module/HTTP::Request::Common">HTTP::Request::Common</a>,
+which provides convenience functions for constructing request objects.
+</p>
+
+<p>
+The following shows how to make a POST request, using the POST function from
+<a href="https://metacpan.org/module/HTTP::Request::Common">HTTP::Request::Common</a>:
+</p>
+
+<pre>
+use LWP::UserAgent;
+use HTTP::Request::Common;
+
+$ua       = LWP::UserAgent->new();
+$response = $ua->request(POST $url, [x => 7, y => 13]);
+
+if ($response->is_success) {
+    print "Status:  ", $response->code,  "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "Status: ", $response->code,  "\n";
+    print "Reason: ", $response->message,  "\n";
+}</pre>
+
+<p>
+In addition to http requests, LWP supports ftp and file URLs, and can be used to POST
+to mailto URLs.
+If you want to make https requests,
+you 'just' need to install
+<a href="https://metacpan.org/module/LWP::Protocol::https">LWP::Protocol::https</a>,
+which comes in a separate distribution.
+</p>
+
+<p>
+More examples on using LWP can be found in
+<a href="https://metacpan.org/module/lwpcook">lwpcook</a>.
+</p>
+<h2 id="LWP::Curl">LWP::Curl</h2>
+
+<p>
+LWP::Curl tries to provide an LWP-like interface on top of
+<a href="http://curl.haxx.se/libcurl/">libcurl</a>.
+LWP::Curl is analogous to LWP::UserAgent, but it doesn't provide
+Request and Response classes: requests are constructed from arguments
+passed to the <tt>get</tt> and <tt>post</tt> methods,
+which return the body of the response:
+</p>
+
+<pre>
+use LWP::Curl;
+
+$client = LWP::Curl->new();
+
+$content = $client->get($url);
+
+if (defined($content)) {
+    print "Request successful\n";
+    print "Content: ", $content, "\n";
+} else {
+    print "Request failed\n";
+}</pre>
+
+<p>
+The constructor can take a number of arguments,
+the most interesting ones being:
+</p>
+
+<pre>
+$client = LWP::Curl->new(
+                         timeout        => 10,
+                         headers        => 0,
+                         user_agent     => 'MyAgent/1.03',
+                         followlocation => 1,
+                         maxredirs      => 3,
+                         auto_encode    => 1,
+                        );
+</pre>
+
+<p>
+If <tt>headers</tt> is true, then the return value from <tt>get</tt>
+and <tt>post</tt> will include the HTTP headers from the response.
+If <tt>followlocation</tt> is true, then LWP::Curl will follow
+redirects, up to the number of hops specified in <tt>maxredirs</tt>.
+The <tt>followlocation</tt> is redundant, as you could just
+set <tt>maxredirs</tt> to 0, which is what HTTP::Tiny and others do.
+</p>
+
+<p>
+The following shows a basic POST request:
+</p>
+
+<pre>
+use LWP::Curl;
+
+$client = LWP::Curl->new();
+$content = $client->post($url, { x => 7, y => 13 });
+
+if (defined($content)) {
+    print "Request successful\n";
+    print "Content: ", $content, "\n";
+} else {
+    print "Request failed\n";
+}</pre>
+
+<p>
+The style of interface falls between LWP and Net::HTTP::Tiny.
+It does support https, but you can't provide HTTP headers to include in the request,
+and it doesn't support cookies.
+</p>
+
+<p>
+I've submitted a number of fixes and changes to this module,
+which Lindolfo was very quick to act on, and he's given me co-maint.
+I may come back and do some more work on this, as I like the combination
+of a simple interface with Curl's performance.
+</p>
+<h2 id="LWP::Simple">LWP::Simple</h2>
+
+<p>
+LWP::Simple provides a very simple interace to LWP.
+It exports 5 functions,
+the most commonly used of which is probably the <tt>get</tt> function,
+which makes a GET request for the specified URL:
+</p>
+
+<pre>
+use LWP::Simple;
+
+$content  = get($url);
+
+if (defined($content)) {
+    print "Content: ", $content, "\n";
+} else {
+    print "Failed to get content, can't tell you why\n";
+}</pre>
+
+<p>
+There is no way to get hold of the HTTP response code,
+but if you just want to get the contents, and just care about success or failure,
+then this might serve your needs.
+</p>
+
+<p>
+The <tt>getstore</tt> function takes a URL and filename;
+if a GET request to the URL is successful, the contents are written to the file.
+The function returns the HTTP status code from the response.
+The <tt>mirror</tt> function takes the same arguments, but as an <tt>If-Modified-Since</tt>
+header to the GET request, taking the modified time from the filename, if it exists.
+</p>
+
+<p>
+There is no function for making a POST request.
+</p>
+
+<h2 id="Mojo::UserAgent">Mojo::UserAgent</h2>
+
+<p>
+<a href="https://www.metacpan.org/module/Mojo::UserAgent">Mojo::UserAgent</a>
+is part of the <a href="http://mojolicio.us/">Mojolicious</a> web framework.
+When using Mojo::UserAgent, you're actually working with quite a large
+collection of classes &mdash; you have to get your head around quite a lot
+to use it, even at a basic level.
+</p>
+
+<p>
+For example, when you make a GET request,
+by calling the <tt>get()</tt> method,
+you're returned an instance of
+<a href="https://www.metacpan.org/module/Mojo::Transaction::HTTP">Mojo::Transaction::HTTP</a>.
+The documentation for Mojo::Transaction::HTTP is quite light,
+because it inherits a lot from
+<a href="https://www.metacpan.org/module/Mojo::Transaction">Mojo::Transaction</a>.
+It turns out that Mojo::Transaction has a <tt>res()</tt> method that
+returns a
+<a href="https://www.metacpan.org/module/Mojo::Message::Response">Mojo::Message::Response</a> object.
+Aha, you might be thinking, that's the sort of thing you were after.
+</p>
+
+<p>
+Here's a simple GET request:
+</p>
+
+<pre>
+use Mojo::UserAgent;
+
+$ua       = Mojo::UserAgent->new(max_redirects => 7);
+$tx       = $ua->get($url);
+$response = $tx->res();
+
+if ($response->code == 200) {
+    print "Status:  ", $response->code,  "\n";
+    print "Content: ", $response->body, "\n";
+} else {
+    my ($message, $code) = $tx->error();
+    print "Status: $code\n";
+    print "Reason: $message\n";
+}</pre>
+
+<p>
+It may be that I'm not thinking "the mojo way" here, but I'm trying to map Mojo::UserAgent
+into my existing mental model.
+</p>
+
+<p>
+It will handle redirects, but you have to specify a positive value for <tt>max_redirects</tt>,
+as it defaults to zero (i.e. don't follow redirects). I've submitted an issue suggesting that
+the default should be something like 5 (five). I got a quick response to this, saying they
+might make the change for the next major version (4), but don't want to break things with
+the current major version.
+</p>
+
+<p>
+Here's how to make a simple POST request:
+</p>
+
+<pre>
+use Mojo::UserAgent;
+
+$ua       = Mojo::UserAgent->new();
+$tx       = $ua->post_form($url => { x => 7, y => 13 });
+$response = $tx->res();
+
+if ($response->code == 200) {
+    print "Status:  ", $response->code,  "\n";
+    print "Content: ", $response->body, "\n";
+} else {
+    my ($message, $code) = $tx->error();
+    print "Status: $code\n";
+    print "Reason: $message\n";
+}</pre>
+
+<p>
+Mojo::UserAgent handles all HTTP methods, https, and supports cookies.
+It's part of a comprehensive collection of classes, very reminiscent of LWP.
+So much so I found myself wondering why they didn't just use LWP.
+There are a bunch of additional things in there I haven't looked at though,
+so I'm guessing there are reasons why.
+</p>
+
+<p>
+If you're already using Mojolicious, then this is a good choice.
+If you're not using Mojolicious,
+then I can't think of a good reason why you'd use this over one of the other choices.
+</p>
+<h2 id="Net::Curl">Net::Curl</h2>
+
+<p>
+Net::Curl provides an interface to libcurl, the library which underlies the widely used curl utility.
+Even though the distribution is Net::Curl,
+the module you actually use is <a href="https://metacpan.org/module/Net::Curl::Easy">Net::Curl::Easy</a>.
+It's a low-level interface &mdash; you write quite a lot of code just to make a simple request:
+</p>
+
+<pre>
+use Net::Curl::Easy qw(:constants);
+
+$curl = Net::Curl::Easy->new();
+$curl->setopt(CURLOPT_URL,            $url);
+$curl->setopt(CURLOPT_FOLLOWLOCATION, 1);
+$curl->setopt(CURLOPT_MAXREDIRS,      5);
+$curl->setopt(CURLOPT_SSL_VERIFYPEER, 0);
+$curl->setopt(CURLOPT_WRITEDATA,      \$response_body);
+$curl->setopt(CURLOPT_USERAGENT,      "Net::Curl/$Net::Curl::VERSION");
+eval { $curl->perform(); };
+if ($@) {
+    die "Request failed: $@\n";
+} else {
+    print "Status:  ", $curl->getinfo(CURLINFO_HTTP_CODE), "\n";
+    print "Content: ", $response_body, "\n";
+}</pre>
+
+<p>
+The example above shows how you configure it to follow redirects for up to 5 hops.
+</p>
+
+<p>
+On failure, most of the methods throw a <tt>Net::Curl::Easy::Code</tt> error object.
+This is a dual-var, having both an integer and string value.
+There are <tt>CURLE_</tt> symbols defined for all errors, for example:
+</p>
+
+<pre>
+if (ref($@) eq 'Net::Curl::Easy::Code') {
+    if ($@ == CURLE_TOO_MANY_REDIRECTS) {
+        die "too many redirect hops: I gave up!\n";
+    } else {
+        die "request failed: $@\n";
+    }
+}
+</pre>
+
+<p>
+This module clearly provides a lot of low-level features for controlling and getting feedback on the request
+cycle, but I didn't find the documentation very helpful. It relies on you understanding the underlying C library.
+For example, <tt>getinfo</tt> retrieves one of the many defined pieces of information, but the documentation
+doesn't list all of the supported values.
+The distribution includes a number of examples in
+<a href="https://metacpan.org/module/Net::Curl::examples">Net::Curl::examples</a>,
+but I didn't find them particularly helpful either.
+</p>
+
+<p>
+The following shows a POST request. This took me a while to work out, though now when I look at it I wonder why.
+</p>
+
+<pre>
+use Net::Curl::Easy qw(:constants);
+
+$body = 'x=7&y=13';
+
+$curl = Net::Curl::Easy->new();
+$curl->setopt(CURLOPT_URL,        $url);
+$curl->setopt(CURLOPT_POST,       1);
+$curl->setopt(CURLOPT_POSTFIELDS, $body);
+$curl->setopt(CURLOPT_WRITEDATA,  \$response_body);
+eval { $curl->perform(); };
+if ($@ || $net_curl->getinfo(CURLINFO_HTTP_CODE) != 200) {
+    die "POST failed\n";
+} else {
+    print "Content: ", $response_body, "\n";
+}</pre>
+
+<p>
+Net::Curl handles all HTTP methods and redirects.
+It can handle https requests, but if you use the GET example code above, you'll get an error message something like:
+</p>
+
+<pre>Request failed: Peer certificate cannot be authenticated with given CA certificates</pre>
+
+<p>
+The documentation for Net::Curl says nothing about this,
+but when I hit a similar issue with <a href="https://www.metacpan.org/module/WWW::Curl">WWW::Curl</a>
+I spent some time looking at libcurl
+to work out the issue. See <a href="#WWW::Curl">section on WWW::Curl</a> below for the solution.
+</p>
+
+<p>
+I initially failed to install Net::Curl.
+CPAN complained that Net::Curl depended on ExtUtils::PkgConfig,
+which it couldn't install because <tt>pkg-config</tt> wasn't available.
+I tried to install pkg-config, but configure complained that it
+needed glib, and when trying to install glib, configure bombed
+out complaining that <tt>pkg-config</tt> wasn't found.
+The README explained that you could configure for curl manually, so I tried that.
+</p>
+<p>
+Make test failed, with each test aborting with an error message:
+</p>
+
+<pre>Symbol not found: _ERR_remove_thread_state</pre>
+
+<p>
+After searching online,
+I discovered that this was down to curl being compiled against the wrong version of openssl.
+My mac comes with curl, but I had compiled the most recent curl and installed it in <tt>/usr/local</tt>.
+I rebuilt curl and pulled in the right version of openssl, then manually configured Makefile.PL to pull
+in my version of curl and not the default system one. Successful install at last!
+</p>
+
+<p>
+I installed openssl in <tt>/usr/local</tt>, so the final configure for libcurl was:
+</p>
+<pre>
+% ./configure --prefix=/usr/local --with-ssl=/usr/local
+</pre>
+<p>
+Then the <tt>%curl</tt> hash in <tt>Makefile.PL</tt> for Net::Curl would look something like (I have just installed curl 7.26.0):
+</p>
+<pre>
+my %curl = (
+   incdir  => '/usr/local/include',
+   cflags  => '-I/usr/local/include',
+   libs    => '-L/usr/local/lib -lcurl',
+   version => '7.26.0',
+);
+</pre>
+
+<p>
+Overall, this module appears comprehensive and stable.
+If you need fast requests or if you're already familiar with 
+<a href="http://curl.haxx.se/libcurl/">libcurl</a>,
+then this might be a good choice.
+For interal use I might consider this module, but I were releasing a module to CPAN
+I wouldn't want to introduce a dependency on a C library.
+</p>
+<h2 id="Net::Curl::Simple">Net::Curl::Simple</h2>
+
+<p>
+Net::Curl::Simple is built on top of Net::Curl::Easy,
+and provides a simpler interface.
+By default it works asynchronously:
+</p>
+
+<pre>
+use Net::Curl::Simple;
+use Net::Curl::Easy qw(:constants);
+
+$curl = Net::Curl::Simple->new();
+$curl->get($url, \&finished);
+1 while Net::Curl::Simple->join;
+
+sub finished {
+    my $curl = shift;
+
+    if ($curl->code == 0) {
+        my $status = $curl->getinfo(CURLINFO_HTTP_CODE);
+        print "HTTP status: $status\n";
+        print "Content: ", $curl->content, "\n" if $status =~ /^2/;
+    } else {
+        print "request failed\n";
+    }
+}</pre>
+
+<p>
+When using the <tt>getinfo</tt> method, you can either pass string names,
+or you can import the constants from <tt>Net::Curl::Easy</tt>.
+I think <tt>Net::Curl::Simple</tt> should provide these constants for you.
+</p>
+
+<p>
+The following shows making a simple POST request:
+</p>
+
+<pre>
+use Net::Curl::Simple;
+use Net::Curl::Easy qw(:constants);
+
+$curl = Net::Curl::Simple->new();
+$curl->post($url, { x => 7, y => 13 }, \&finished);
+1 while Net::Curl::Simple->join;
+
+sub finished {
+    my $curl = shift;
+
+    if ($curl->code == 0) {
+        my $status = $curl->getinfo(CURLINFO_HTTP_CODE);
+        print "HTTP status: $status\n";
+        print "Content: ", $curl->content, "\n" if $status =~ /^2/;
+    } else {
+        print "request failed\n";
+    }
+}</pre>
+
+<p>
+With version 0.13, running the above examples results in an error message:
+</p>
+
+<pre>Attempt to free unreferenced scalar: SV 0x7fc139909528 during global destruction.</pre>
+
+<p>
+You can use the module in a synchronous mode,
+by passing <tt>undef</tt> for the callback parameter:
+</p>
+
+<pre>
+$curl->get($url, undef);
+
+if ($curl->code == 0) {</pre>
+
+<p>
+In addition to GET, the module also supports HEAD, POST and PUT.
+If your libcurl was compiled with the right options,
+then Net::Curl::Easy supports
+IPv6 and SSL. You can get at most (all?) of the full power of Curl,
+so this module does effectively support cookies, though the documentation
+doesn't mention how you do this.
+</p>
+
+<p>
+When I first installed Net::Curl::Simple and tried to use it, I got a warning:
+</p>
+
+<pre>Please rebuild libcurl with AsynchDNS to avoid blocking DNS requests</pre>
+
+<p>
+To do async DNS lookups curl needs the <a href="http://c-ares.haxx.se/">c-ares</a> library.
+I installed it with the following:
+</p>
+
+<pre>
+% ./configure --prefix=/usr/local
+% make
+% make install
+</pre>
+
+<p>
+And then rebuilt curl (again!) with the following:
+</p>
+
+<pre>
+./configure --prefix=/usr/local -with-ssl=/usr/local --enable-ares=/usr/local
+% make
+% make install
+</pre>
+
+<p>
+Which seemed to satisfy <tt>Net::Curl::Simple</tt>.
+</p>
+<h2 id="Net::HTTP">Net::HTTP</h2>
+
+<p>
+Net::HTTP is a low-level module which represents an HTTP connection &mdash;
+it's a subclass of
+<a href="https://metacpan.org/module/IO::Socket::INET"><tt>IO::Socket::INET</tt></a>.
+On top of the <a href="https://metacpan.org/module/IO::Socket">IO::Socket</a>
+methods, it provides a number of HTTP-specific methods.
+Given the low-level nature you can achieve most things you might want to,
+but you will write a lot more code than with other modules.
+</p>
+
+<pre>
+use Net::HTTP;
+use URI;
+
+$uri     = URI->new($url);
+%headers = ('User-Agent' => "Net::HTTP/$Net::HTTP::VERSION");
+$client  = Net::HTTP->new(Host => $uri->host) || die $@;
+
+$client->write_request(GET => $uri->path, %headers);
+
+($code, $mess, %headers) = $client->read_response_headers;
+
+if ($code =~ /^2/) {
+    print "Status: $code\n";
+    while (1) {
+        my $buf;
+        my $nread = $client->read_entity_body($buf, 1024);
+        die "read failed: $!" unless defined $nread;
+        last unless $nread;
+        print $buf;
+    }
+} else {
+    print "Request failed\n";
+    print "Status:   $code\n";
+    print "Response: $mess\n";
+}</pre>
+
+<p>
+The following shows how to make a simple POST request:
+</p>
+
+<pre>
+use Net::HTTP;
+use URI;
+
+$uri     = URI->new($url);
+$body    = 'x=7&y=13';
+%headers = ('Content-Type' => 'application/x-www-form-urlencoded');
+$client  = Net::HTTP->new(Host => $uri->host) || die $@;
+
+$client->write_request(POST => $uri->path, %headers, $body);
+
+($code, $mess, %headers) = $client->read_response_headers;
+
+if ($code =~ /^2/) {
+    print "Status: $code\n";
+    while (1) {
+        my $buf;
+        my $nread = $client->read_entity_body($buf, 1024);
+        die "read failed: $!" unless defined $nread;
+        last unless $nread;
+        print $buf;
+    }
+} else {
+    print "Request failed\n";
+    print "Status:   $code\n";
+    print "Response: $mess\n";
+}</pre>
+
+<p>
+Given the low-level design, Net::HTTP doesn't support cookies,
+doesn't transparently handle redirects, and doesn't handle https.
+</p>
+
+<p>
+I'm not going to go into further detail.
+If you need complete control over your HTTP requests,
+this might be the module for you (<a href="https://metacpan.org/release/libwww-perl">LWP</a> builds on it, amongst <a href="http://deps.cpantesters.org/depended-on-by.pl?module=Net::HTTP">others</a>),
+but for most people I suspect it's just too low-level.
+</p>
+<h2 id="Net::HTTP::Tiny">Net::HTTP::Tiny</h2>
+
+<p>
+Net::HTTP::Tiny is a new module that bills itself as a "minimal HTTP client".
+It provides a single function for making GET requests,
+which returns the body on success, and dies on failure.
+</p>
+
+<pre>
+use Net::HTTP::Tiny qw(http_get);
+
+eval { $content = http_get($url); };
+
+if (not $@) {
+    print "Content: $content\n";
+} elsif ($@ =~ m!^HTTP error: 4\d\d!) {
+    print "let's retry!\n";
+} else {
+    print "failed to get $url - $@\n";
+}</pre>
+
+<p>
+An HTTP status code of 200 is considered success;
+all other status codes are treated as failure.
+There are many other reasons why <tt>http_get</tt> might fail.
+If you want to check for certain 5xx codes to decide on a retry strategy,
+you can match against <tt>$@</tt>:
+</p>
+
+<pre>
+eval { $content = http_get($url); };
+if (not $@) {
+    # success
+} elsif ($@ =~ m!^HTTP error: 5\d\d!) {
+    # retry
+} else {
+    # failed
+}
+</pre>
+
+<p>
+(yes, I know that a blanket retry on 5xx is a bad idea).
+</p>
+
+<p>
+This really is a minimalist module.
+It will follow redirects up to a hard-coded limit of 5 hops,
+and will support IPv6 if <tt>IO::Socket::IP</tt> is installed.
+But that's about it.
+From email with Zefram, he's considering https support and
+a means for configuring the number of redirect hops,
+but is waiting to see what is wanted by users.
+I'd considering switching to this for some of my modules if it supported https.
+</p>
+
+<p>
+I think the module is mis-named: <tt>Net::HTTP::Tiny</tt> suggests it
+is related to <tt>Net::HTTP</tt>, so for doing low-level HTTP requests.
+By analogy with <tt>HTTP::Tiny</tt> and other <tt>::Tiny</tt> modules,
+I think <tt>HTTP::Minimal</tt> would be a better name.
+</p>
+
+<p>
+One of the benefits of this module is the minimal number of dependencies.
+If you're writing a module which just needs to make a simple GET request,
+and want to minimise your dependencies (either for ease of distribution
+or to keep footprint and runtime down), then this might be a good choice.
+</p>
+<h2 id="URI::Fetch">URI::Fetch</h2>
+
+<p>
+URI::Fetch provides a single function, which is accessed as a class method.
+At its simplest, this will GET the specified URI for you, using LWP:
+</p>
+
+<pre>
+use URI::Fetch;
+
+$response = URI::Fetch->fetch($url);
+
+if (defined($response)) {
+    print "Status:  ", $response->http_status, "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "Request failed\n";
+    print "Status:  ", $response->http_status, "\n";
+}</pre>
+
+<p>
+By default, if successful it will return an
+<a href="https://metacpan.org/module/URI::Fetch::Response">URI::Fetch::Response</a>,
+and <tt>undef</tt> if the underlying GET request returned anything other than a 200 status code.
+You can change this behaviour with the <tt>ForceResponse</tt> option, which says that a Response
+object should always be returned.
+</p>
+
+<p>
+The Response object provides some methods in common with LWPs'
+<a href="https://metacpan.org/module/HTTP::Response">HTTP::Response</a>,
+and holds an instance of the latter, which you can access with the <tt>http_response</tt> method:
+</p>
+
+<pre>
+use URI::Fetch;
+
+$response = URI::Fetch->fetch($url, ForceResponse => 1);
+
+if ($response->http_response->is_success) {
+    print "Status:  ", $response->http_response->status_line, "\n";
+    print "Content: ", $response->http_response->content, "\n";
+} else {
+    print "Status:  ", $response->http_response->status_line, "\n";
+}
+</pre>
+
+<p>
+One of the things which sets this module apart from most of the others here 
+is the support for caching.
+When fetching a URL, you can pass a cache object,
+which has to support the <a href="https://metacpan.org/module/Cache">Cache</a> interface.
+If the remote file is already in the cache, then <tt>fetch</tt> will add an
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25">If-Modified-Since</a> header.
+If the remote resource has been modified since the cache was last updated,
+fetch will get a 200 response, store the contents in the cache,
+and return a 200 response to you, along with the contents.
+If the remote resource hasn't been modified,
+fetch will receieve a <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.5">304</a> response.
+On receiving a 304, fetch will get the contents from the cache,
+and return a 304 to you along with the contents (usually a 304 doesn't have a body).
+</p>
+
+<pre>
+use URI::Fetch;
+use Cache::File;
+
+$cache    = Cache::File->new(cache_root => '/tmp/cache');
+$response = URI::Fetch->fetch($url, ForceResponse => 1, Cache => $cache);
+
+# if ($response->is_success || $response->http_status == 304) {
+if ($response->is_success) {
+    print "Status:  ", $response->http_status, "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "Request failed (", $response->http_status, ")\n";
+}</pre>
+
+<p>
+Rather than use the 304 code explicitly,
+you could use <a href="https://metacpan.org/module/HTTP::Status">HTTP::Status</a>
+(part of the <a href="https://metacpan.org/release/HTTP-Message">HTTP-Message</a> dist),
+and refer to the status symbolically:
+</p>
+
+<pre>
+use HTTP::Status;
+if ($response->is_success || $response->http_status == HTTP_NOT_MODIFIED) {
+</pre>
+
+<p>
+Given the nature of the module, I think that in this situation <tt>is_success</tt> should
+return true, and have submitted feedback to that effect.
+</p>
+
+<p>
+You can add the <tt>NoNetwork</tt> option to further control whether the remote resource
+is even requested. If set to 0, then <tt>fetch()</tt> works as described above.
+If set to 1, then the remote server isn't contacted; if it's in the cache you'll get it.
+A value of N (greater than 1) tells <tt>fetch()</tt> not to make the HTTP request if
+the cache was updated within the last N seconds.
+</p>
+
+<p>
+This module handles https and redirects, but doesn't handle anything other than GET requests,
+and doesn't provide support for cookies.
+</p>
+
+<p>
+There are a few more options that I haven't mentioned,
+see the <a href="https://metacpan.org/module/URI::Fetch">documentation</a> for more on those.
+</p>
+
+<p>
+This module should really be called <tt><b>URL</b>::Fetch</tt> rather than <tt>URI::Fetch</tt>
+(there are plenty of resources online about <a href="http://stackoverflow.com/questions/176264/whats-the-difference-between-a-uri-and-a-url">the difference between a URI and a URL</a>).
+</p>
+<h2 id="URL::Grab">URL::Grab</h2>
+
+<p>
+As the name suggests, URL::Grab is meant for situations where you just wanted to grab
+the contents of a URL, and don't need much more than that.
+The simplest usage is the <tt>grab_single()</tt> method:
+</p>
+
+<pre>
+use URL::Grab;
+
+$grabber = URL::Grab->new();
+$result  = $grabber->grab_single($url);
+
+if (defined($result)) {
+    print "Request successful - content:\n";
+    print $result->{$url}, "\n";
+} else {
+    print "Request failed - can't tell you why\n";
+}</pre>
+
+<p>
+Under the hood this is using LWP, so it will handle redirects and https,
+but you can't get at the HTTP status code, or the resulting URL if your original URL was redirected.
+</p>
+
+<p>
+You can request multiple URLs in one go with <tt>grab()</tt>:
+</p>
+
+<pre>
+$result = $grabber->grab($url1, $url2);
+
+foreach my $url ($url1, $url2) {
+    if (exists($result->{$url}->{$url})) {
+        print "$url : successful\n";
+    } else {
+        print "$url : failed\n";
+    }
+}</pre>
+
+<p>
+There's no parallelism here: it just requests the URLs sequentially.
+Notice the curious return data structure: you're returned a hashref,
+and to get at the contents of the URL you use:
+</p>
+
+<pre>
+$retval->{ $url }->{ $url };
+</pre>
+
+<p>
+To check if the request for a particular URL failed:
+</p>
+
+<pre>
+if (defined($retval->{ $url })) {
+</pre>
+
+<p>
+The <tt>grab_failover()</tt> method takes a list of URLs,
+and calls <tt>grab_single()</tt> on them in turn.
+As soon as one is successful, it stops and returns the result from <tt>grab_single()</tt>.
+This would be useful if you were regularly grabbing a file which is mirrored on a number
+of sites (like CPAN), and wanted to cycle through a list of mirrors to try and ensure you
+get it every time:
+</p>
+
+<pre>
+$result = $grabber->grab_failover($url1, $url2);
+
+if (defined($result)) {
+    if (exists($result->{$url1})) {
+        print "Got url1\n";
+    } else {
+        print "Got url2\n";
+    }
+} else {
+    print "Request failed\n";
+}</pre>
+
+<p>
+This illustrates the problem with the strange return value.
+You either have to try each key in turn, as above, or do something ugly like:
+</p>
+
+<pre>
+$content = (values %$result)[0];
+</pre>
+
+<p>
+The whole point of trying a number of alternatives is that you don't care which one
+succeeds, you just want the contents.
+</p>
+
+<p>
+The <tt>grab_mirrorlist()</tt> method is a strange beast.
+If you pass a list of URLs, it will try each in turn, but the returned hashref
+will only include results for the last URL in the list.
+If you pass a reference to an array of URLs, it will pass the referenced array of URLs to
+<tt>grab_failover()</tt> (described above), so you'll get the result from the first successful URL.
+This means that if you wrote the following:
+</p>
+
+<pre>
+$result = $grabber->grab_mirrorlist($url1, [$url2, $url3], $url4);
+</pre>
+
+<p>
+This would request <tt>$url1</tt>, <tt>$url2</tt> and assuming that was successful,
+wouldn't request <tt>$url3</tt>, and finally would request <tt>$url4</tt>,
+and return the result from <tt>grab_single()</tt> on <tt>$url4</tt>.
+I don't really see the scenario where you'd want <tt>grab_mirrorlist()</tt>.
+</p>
+
+<p>
+This feels like the rough-cut of a useful module that hasn't been finished yet.
+In the synopsis the author appears to apologise for the quirky interface, saying that
+it can't be changed now. I'd clean up the interface with new method names,
+and support the old interface (but deprecated) for backwards compatibility.
+</p>
+
+<p>
+URL::Grab handles https and redirects, but doesn't provide support for cookies,
+or for any HTTP method other than GET. All of which is in line with the design of the module.
+</p>
+<h2 id="Web::Magic">Web::Magic</h2>
+
+<p>
+Web::Magic (WM hereafter) provides a slightly quirky interface.
+At its simplest you can use it to make HTTP requests:
+</p>
+
+<pre>
+use Web::Magic;
+
+$magic = Web::Magic->new(GET => $url);
+$magic->User_Agent("Web::Magic/$Web::Magic::VERSION");
+if ($magic->response->is_success) {
+    print "Status:  ", $magic->response->code,  "\n";
+    print "Content: ", $magic->content, "\n";
+} else {
+    print "Status: ", $magic->response->code,  "\n";
+    print "Reason: ", $magic->response->message,  "\n";
+}</pre>
+
+<p>
+The following shows how to make a simple POST request:
+</p>
+
+<pre>
+use Web::Magic;
+
+$magic = Web::Magic->new(POST => $url);
+$magic->set_request_body({ x => 7, y => 13 });
+if ($magic->response->is_success) {
+    print "Status:  ", $magic->response->code,  "\n";
+    print "Content: ", $magic->content, "\n";
+} else {
+    print "Status: ", $magic->response->code,  "\n";
+    print "Reason: ", $magic->response->message,  "\n";
+}</pre>
+
+<p>
+WM doesn't make the request from the constructor, but delays until it has to:
+in the above that's when you try and access the content.
+This means you can call a number of methods between the constructor and <tt>content()</tt>,
+to configure the request.
+To set headers on the HTTP request you can either call <tt>set_request_header()</tt>,
+or call a method named after the header, with underscores instead of dashes.
+</p>
+
+<p>
+In general, you don't need to worry about when the request is made,
+but you can call <tt>do_request()</tt> explicitly, should you want to.
+</p>
+
+<p>
+Web::Magic handles redirects and https, and can handle cookies (it uses LWP,
+and you can pass your own instance of LWP::UserAgent with the <tt>user_agent</tt> method).
+</p>
+
+<p>
+There are lots of post-request methods, and this is where Web::Magic stands apart
+from the other modules. The request itself is made with LWP, and you can use
+the <tt>response()</tt> method to get the HTTP::Response method returned by LWP.
+</p>
+
+<p>
+The <tt>to_dom</tt> method parses the response body as XML or HTML,
+based on the Content-Type response header,
+and returns the result as an
+<a href="https://metacpan.org/module/XML::LibXML::Document">XML::LibXML::Document</a>.
+You can get the response body as JSON or YAML, or <a href="https://www.metacpan.org/module/RDF::Trine::Model">RDF::Trine::Model</a>, whatever that is.
+It also does plenty more besides.
+</p>
+
+<p>
+This depends on a <em>lot</em> of modules: installing Web::Magic seemed to take a long time.
+Furthermore, it <tt>use</tt>s them all at compile time, where many of them could be
+loaded only if needed.
+It's a strange beast: personally I'm not a fan of the kitchen sink school of module design,
+but if you want to process a remote file as RDF, or one of the other high-level operations
+it supports, then this module might be just the thing for you.
+</p>
+<h2 id="WWW::Curl">WWW::Curl</h2>
+
+<p>
+WWW::Curl is another module on top of libcurl.
+But where LWP::Curl tries to give you a high-level API on top of libcurl,
+WWW::Curl just maps the C interface into Perl:
+</p>
+
+<pre>
+use WWW::Curl::Easy;
+
+$curl = WWW::Curl::Easy->new();
+$curl->setopt(CURLOPT_URL, $url);
+$curl->setopt(CURLOPT_FOLLOWLOCATION, 1);
+$curl->setopt(CURLOPT_MAXREDIRS,      7);
+$curl->setopt(CURLOPT_WRITEDATA, \$content);
+$ccode = $curl->perform();
+if ($ccode == 0) {
+    $status = $curl->getinfo(CURLINFO_HTTP_CODE);
+    if ($status == 200) {
+        print "Status: $status\n";
+        print "Content: ", $content, "\n";
+    } else {
+        print "Status: $status\n";
+    }
+} else {
+    print "Request failed\n";
+    print "An error happened: $ccode ".$curl->strerror($ccode)." ".$curl->errbuf."\n";
+}</pre>
+
+<p>
+You call methods to configure a request you want to make,
+then call <tt>perform()</tt> to actually make the request.
+</p>
+
+<p>
+The following shows how to make a POST request:
+</p>
+
+<pre>
+use WWW::Curl::Easy;
+
+$body = 'x=7&y=13';
+
+$curl = WWW::Curl::Easy->new();
+$curl->setopt(CURLOPT_URL, $url);
+$curl->setopt(CURLOPT_POST, 1);
+$curl->setopt(CURLOPT_POSTFIELDS, $body);
+$curl->setopt(CURLOPT_WRITEDATA, \$content);
+$ccode = $curl->perform();
+if ($ccode == 0) {
+    $status = $curl->getinfo(CURLINFO_HTTP_CODE);
+    if ($status == 200) {
+        print "Content: ", $content, "\n";
+    } else {
+        print "Status: $status\n";
+    }
+} else {
+    print "Request failed\n";
+    print "An error happened: $ccode ".$curl->strerror($ccode)." ".$curl->errbuf."\n";
+}</pre>
+
+<p>
+The documentation for this module is fairly thin - it refers you to the
+<a href="http://curl.haxx.se/docs/">curl documentation online</a>.
+The documentation also suggests that you use LWP for most situations
+where you're working with HTTP, but that WWW::Curl may be a better
+choice where speed is important, or where you want to make multiple
+requests in parallel.
+</p>
+
+<p>
+WWW::Curl handles redirects, and also supports cookies.
+If you request an https URL using the GET example above,
+you'll get an error message something like the following:
+</p>
+
+<pre>An error happened: 60 Peer certificate cannot be authenticated with given CA certificates</pre>
+
+<p>
+You can use an option to tell Curl where your certificates are (with the <tt>CURLOPT_SSLCERT</tt>
+and <tt>CURLOPT_SSLCERTTYPE</tt> options
+(for more see <a href="http://curl.haxx.se/libcurl/c/curl_easy_setopt.html">the relevant libcurl
+documentation</a>)), or you can tell it not to worry about certificates:
+</p>
+
+<pre>$curl->setopt(CURLOPT_SSL_VERIFYPEER, 0);</pre>
+
+<p>
+WWW::Curl also provides some other interfaces:
+</p>
+
+<ul>
+<li>WWW::Curl::Multi will perform multiple requests in parallel,
+    in a non-blocking mode.</li>
+<li>WWW::Curl::Share is used to share DNS and cookies caches
+    between multiple instances of WWW::Curl::Easy.</li>
+</ul>
+<h2 id="WWW::Curl::Simple">WWW::Curl::Simple</h2>
+
+<p>
+WWW::Curl::Simple is built on top of WWW::Curl (see previous section) and provides a simpler interface.
+There are two ways to use WWW::Curl::Simple; the first is to make a single GET or POST request,
+in a blocking mode. Here's the way to make a single GET request:
+</p>
+
+<pre>
+use WWW::Curl::Simple;
+
+$curl = WWW::Curl::Simple->new(max_redirects => 5, check_ssl_certs => 0);
+$response = $curl->get($url);
+if ($response->is_success) {
+    print "Status:  ", $response->code, "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "request failed\n";
+    print "  code    = ", $response->code, "\n";
+    print "  message = ", $response->message, "\n";
+    print "Content: ", $response->content, "\n";
+}</pre>
+
+<p>
+The <tt>get</tt> and <tt>post</tt> methods return an
+<a href="https://www.metacpan.org/module/HTTP::Response">HTTP::Response</a> object
+(which used to be part of the LWP distribution,
+but is now part of the <a href="https://www.metacpan.org/release/HTTP-Message">HTTP-Message</a> distribution.
+</p>
+
+<p>
+The following shows how to make a simple POST request:
+</p>
+
+<pre>
+use WWW::Curl::Simple;
+
+$curl = WWW::Curl::Simple->new();
+$response = $curl->post($url, 'x=7&y=13');
+if ($response->is_success) {
+    print "Status:  ", $response->code, "\n";
+    print "Content: ", $response->content, "\n";
+} else {
+    print "request failed\n";
+    print "  code    = ", $response->code, "\n";
+    print "  message = ", $response->message, "\n";
+}</pre>
+
+<p>
+WWW::Curl::Simple doesn't follow redirects and can't handle https requests.
+I've submitted a patch to addres both points.
+It can't handle cookies, because you can't get at the underlying Curl handle
+in order to pass the appropriate options.
+</p>
+
+<p>
+The other way you can use this module is to make multiple requests in parallel.
+This is built on top of WWW::Curl::Multi.
+</p>
+
+<p>
+While this undoubtedly provides a simple API to Curl,
+it is much slower than the other Curl-based modules
+(see the <a href="#Performance">performance comparison</a> below).
+</p>
+<h2 id="Comparison">Comparison</h2>
+
+<h3 id="Capabilities">Capabilities</h3>
+
+<p>
+The following table summarises the capabilities of each module.
+</p>
+
+<table class=indent>
+<tr>
+  <th align=left>Module</th>
+  <th>GET</th>
+  <th>POST</th>
+  <th>DELETE</th>
+  <th>PUT</th>
+  <th>HTTPS</th>
+  <th>HTTP11</th>
+  <th>redirects</th>
+  <th>cookies</th>
+</tr>
+<tr>
+  <td align=left>Furl</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>HTTP::Client</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+<tr>
+  <td align=left>HTTP::GHTTP</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+<tr>
+  <td align=left>HTTP::Lite</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+<tr>
+  <td align=left>HTTP::MHTTP</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+<tr>
+  <td align=left>HTTP::Tiny</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>LWP</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>LWP::Curl</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>LWP::Simple</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>Mojo::UserAgent</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>Net::Curl</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>Net::Curl::Simple</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>Net::HTTP</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+<tr>
+  <td align=left>Net::HTTP::Tiny</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>URI::Fetch</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>URL::Grab</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+<tr>
+  <td align=left>Web::Magic</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>WWW::Curl</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+<tr>
+  <td align=left>WWW::Curl::Simple</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center>&#10003;</td>
+  <td align=center></td>
+  <td align=center></td>
+</table>
+
+
+<h3 id="Performance">Performance</h3>
+
+<p>
+The following shows the results of benchmarking the modules for making GET requests.
+I ran two separate benchmarks: one for a very small file (14 bytes), and another
+for a much larger file (100K). I made 10,000 requests for both benchmarks.
+</p>
+
+<table>
+<tr><td>
+<table class=benchmark>
+<tr><th colspan=2>Small File</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td align=left>HTTP::GHTTP</td><td align=right class=duration>0.7</td></tr>
+<tr><td align=left>Net::Curl</td><td align=right class=duration>0.8</td></tr>
+<tr><td align=left>WWW::Curl::Easy</td><td align=right class=duration>0.9</td></tr>
+<tr><td align=left>LWP::Curl</td><td align=right class=duration>1.1</td></tr>
+<tr><td align=left>HTTP::MHTTP</td><td align=right class=duration>1.6</td></tr>
+<tr><td align=left>Furl</td><td align=right class=duration>1.7</td></tr>
+<tr><td align=left>Net::HTTP::Tiny</td><td align=right class=duration>4.7</td></tr>
+<tr><td align=left>Net::HTTP</td><td align=right class=duration>5.2</td></tr>
+<tr><td align=left>HTTP::Lite</td><td align=right class=duration>5.9</td></tr>
+<tr><td align=left>HTTP::Client</td><td align=right class=duration>5.9</td></tr>
+<tr><td align=left>HTTP::Tiny</td><td align=right class=duration>6.4</td></tr>
+<tr><td align=left>Net::Curl::Simple</td><td align=right class=duration>8.8</td></tr>
+<tr><td align=left>LWP</td><td align=right class=duration>11.5</td></tr>
+<tr><td align=left>Mojo::UserAgent</td><td align=right class=duration>11.7</td></tr>
+<tr><td align=left>URL::Grab</td><td align=right class=duration>11.8</td></tr>
+<tr><td align=left>LWP::Simple</td><td align=right class=duration>13.1</td></tr>
+<tr><td align=left>URI::Fetch</td><td align=right class=duration>14.5</td></tr>
+<tr><td align=left>Web::Magic</td><td align=right class=duration>15.0</td></tr>
+<tr><td align=left>WWW::Curl::Simple</td><td align=right class=duration>59.0</td></tr>
+</table>
+
+</td><td>
+<table class=benchmark>
+<tr><th colspan=2>Large File</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td align=left>HTTP::GHTTP</td><td align=right class=duration>1.7</td></tr>
+<tr><td align=left>LWP::Curl</td><td align=right class=duration>2.4</td></tr>
+<tr><td align=left>Furl</td><td align=right class=duration>2.5</td></tr>
+<tr><td align=left>Net::Curl</td><td align=right class=duration>2.6</td></tr>
+<tr><td align=left>WWW::Curl::Easy</td><td align=right class=duration>2.7</td></tr>
+<tr><td align=left>Net::HTTP::Tiny</td><td align=right class=duration>6.2</td></tr>
+<tr><td align=left>HTTP::Lite</td><td align=right class=duration>8.4</td></tr>
+<tr><td align=left>HTTP::Tiny</td><td align=right class=duration>8.8</td></tr>
+<tr><td align=left>HTTP::MHTTP</td><td align=right class=duration>11.1</td></tr>
+<tr><td align=left>Net::HTTP</td><td align=right class=duration>11.9</td></tr>
+<tr><td align=left>Net::Curl::Simple</td><td align=right class=duration>13.3</td></tr>
+<tr><td align=left>Mojo::UserAgent</td><td align=right class=duration>16.8</td></tr>
+<tr><td align=left>URL::Grab</td><td align=right class=duration>20.5</td></tr>
+<tr><td align=left>LWP</td><td align=right class=duration>22.6</td></tr>
+<tr><td align=left>Web::Magic</td><td align=right class=duration>23.4</td></tr>
+<tr><td align=left>URI::Fetch</td><td align=right class=duration>25.4</td></tr>
+<tr><td align=left>LWP::Simple</td><td align=right class=duration>44.5</td></tr>
+<tr><td align=left>WWW::Curl::Simple</td><td align=right class=duration>60.8</td></tr>
+<tr><td align=left>HTTP::Client</td><td align=right class=duration>4064.0</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+<p>
+I was surprised to see WWW::Curl::Simple performing so badly, given it's based on libcurl.
+I'd put onto my list to look into that, but having looked at dependencies (see next section),
+I suspect that Moose is the culprit. At some point I'll see whether switching to Mouse would
+help things. I also need to look into why HTTP::Client degrades so badly with larger files,
+given most of the work is done by HTTP::Lite, which doesn't suffer in the same way.
+</p>
+
+<p>
+The following shows the results of benchmarking the relevant modules for making
+simple POST requests. This was basically the example POST request showed for each module above;
+Again, I was making 10,000 requests for each module.
+</p>
+
+<table class=benchmark>
+<tr><th colspan=2>Simple POST requests</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td align=left>HTTP::GHTTP</td><td align=right class=duration>0.8</td></tr>
+<tr><td align=left>Net::Curl</td><td align=right class=duration>0.9</td></tr>
+<tr><td align=left>WWW::Curl::Easy</td><td align=right class=duration>0.9</td></tr>
+<tr><td align=left>LWP::Curl</td><td align=right class=duration>1.3</td></tr>
+<tr><td align=left>Furl</td><td align=right class=duration>2.2</td></tr>
+<tr><td align=left>Net::HTTP</td><td align=right class=duration>5.3</td></tr>
+<tr><td align=left>HTTP::Tiny</td><td align=right class=duration>7.4</td></tr>
+<tr><td align=left>Net::Curl::Simple</td><td align=right class=duration>10.0</td></tr>
+<tr><td align=left>Mojo::UserAgent</td><td align=right class=duration>13.3</td></tr>
+<tr><td align=left>LWP</td><td align=right class=duration>14.4</td></tr>
+<tr><td align=left>Web::Magic</td><td align=right class=duration>17.2</td></tr>
+<tr><td align=left>HTTP::Lite</td><td align=right class=duration>17.8</td></tr>
+<tr><td align=left>WWW::Curl::Simple</td><td align=right class=duration>56.8</td></tr>
+</table>
+
+
+<p>
+A shame that the fastest module (HTTP::GHTTP) is no longer maintained.
+</p>
+
+<h3>Dependencies</h3>
+
+<p>
+If you're writing your own module which is making HTTP requests,
+then it may be important to you how many dependencies the HTTP request has.
+This may be for performance reasons, or to minimise the likelihood of your module
+not installing / working due to downstream dependencies.
+</p>
+
+<p>
+The following table is an indication of
+the number of modules loaded by each of the modules under review:
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right># dependencies</th></tr>
+<tr><td align=left>WWW::Curl</td><td align=right>6</td></tr>
+<tr><td align=left>HTTP::GHTTP</td><td align=right>8</td></tr>
+<tr><td align=left>Net::Curl</td><td align=right>9</td></tr>
+<tr><td align=left>HTTP::MHTTP</td><td align=right>10</td></tr>
+<tr><td align=left>HTTP::Lite</td><td align=right>11</td></tr>
+<tr><td align=left>HTTP::Client</td><td align=right>12</td></tr>
+<tr><td align=left>HTTP::Tiny</td><td align=right>20</td></tr>
+<tr><td align=left>LWP::Curl</td><td align=right>21</td></tr>
+<tr><td align=left>Net::HTTP::Tiny</td><td align=right>28</td></tr>
+<tr><td align=left>Furl</td><td align=right>29</td></tr>
+<tr><td align=left>Net::HTTP</td><td align=right>35</td></tr>
+<tr><td align=left>Net::Curl::Simple</td><td align=right>41</td></tr>
+<tr><td align=left>LWP</td><td align=right>69</td></tr>
+<tr><td align=left>URL::Grab</td><td align=right>71</td></tr>
+<tr><td align=left>LWP::Simple</td><td align=right>79</td></tr>
+<tr><td align=left>URI::Fetch</td><td align=right>84</td></tr>
+<tr><td align=left>Mojo::UserAgent</td><td align=right>109</td></tr>
+<tr><td align=left>WWW::Curl::Simple</td><td align=right>153</td></tr>
+<tr><td align=left>Web::Magic</td><td align=right>159</td></tr>
+</table>
+
+
+<p>
+The problem with the dependency / pre-requisite information for modules is that it can
+include build or test dependencies, rather than runtime dependencies.
+The figures were generated by running the GET requests shown for each module,
+then running the following:
+</p>
+
+<pre>
+$ndeps = int(keys %INC) - 1;
+</pre>
+
+<p>
+The <tt>-1</tt> is because the module itself appears in <tt>%INC</tt> as well.
+</p>
+
+<p>
+I was expecting Web::Magic to come in last,
+but was surprised to see WWW::Curl::Simple close on its tail. 
+WWW::Curl::Simple uses Moose, which adds 111 to the tally right off the bat.
+</p>
+
+<p>
+The top four depend on external C libraries, as do all of the Curl-based modules.
+</p>
+
+<p>
+While thinking about dependencies,
+I got distracted looking at
+<a href="http://neilb.org/reviews/dependencies.html">modules for collecting dependency information</a>.
+For the first update to this review I'll probably distinguish between core and non-core dependencies,
+and the number of dependent distributions as well.
+</p>
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>
+There's no single module which will be the best to use in all situations.
+I started writing this section in the format
+"If you want X and don't care about Y, then use Foo",
+and quickly realised a graphic would be easier and clearer.
+</p>
+
+<p>
+Here's one approach:
+</p>
+
+<div style="margin-left: 1em; overflow: visible;">
+<img src="decision-tree.png" width=542 height=340 style="border: solid 1px #cccccc;">
+</div>
+
+<p>
+In this context, "basic requests" means GET or POST requests,
+https and transparent handling of redirects.
+</p>
+
+<p>
+And a simpler one, which will give just as good answers most of the time:
+</p>
+
+<div style="margin-left: 1em; overflow: visible;">
+<img src="simple-decision-tree.png" width=620 height=333 style="border: solid 1px #cccccc;">
+</div>
+
+<p>
+A final twist: if you're repeatedly requesting the same file, for example in a regularly schedule job,
+then you might want to consider <a href="https://www.metacpan.org/module/URI::Fetch">URI::Fetch</a>.
+</p>
+
+<h3>Final thoughts</h3>
+
+<p>
+A number of modules can make POST requests, but require you to encode the body yourself.
+I couldn't find a utility module with a function for doing this:
+</p>
+<pre>
+$body = encode_form_data(username => $user, password => $pword);
+</pre>
+<p>
+Does anyone know of a <em>lightweight</em> module that provides such a function?
+If not I'll suggest to Gisle that LWP's code be pulled into a separate dist.
+</p>
+
+<p>
+WWW::Curl and Net::Curl are almost identical in basic usage, though WWW::Curl provides a lot of other features.
+I wonder if these could be merged into a single dist?
+</p>
+
+<p>
+When I started work on this review, I found most of the Curl modules (apart from LWP::Curl)
+quite frustrating to work with, as they assume you're familiar with libcurl. I wasn't.
+Now I'm a lot more familiar with Curl, and am happy to work with any of the modules.
+Perhaps one of the benefits of merging WWW::Curl and Net::Curl would be to provide more
+comprehensive documentation.
+</p>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

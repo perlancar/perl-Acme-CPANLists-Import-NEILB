@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules that (can) load other modules</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules that (can) load other modules</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2013-03-09</p>
+</div>
+<p>
+This article is a review of CPAN modules that can be used to load other modules.
+Actually, it's less of a review and more of a travelogue.
+The modules described below can do a range of things, including:
+</p>
+
+<ul>
+<li>Run-time loading of explicitly named modules, addressing
+    restrictions with the <tt>require</tt> built-in.
+<li>Automatic loading of modules.
+<li>Finding plugin modules in a given namespace, or matching a pattern,
+    and loading them.
+<li>Specifying the base classes or superclasses for your module.
+</ul>
+
+<p>
+If you don't want to read the whole text (there are currently 43 modules),
+skip to the <a href="#comparison">Comparison</a>
+section, which presents all the modules roughly grouped by capability.
+And then <a href="#conclusion">Conclusion</a> suggests modules for specific tasks.
+</p>
+
+<p>
+The following is a list of the modules I'm aware of so far.
+Please let me know if I've missed any: neilb at cpan dot org.
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#above"><tt>above</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~brummett/UR-0.40/lib/above.pm">pod</a></span></td>
+  <td align=right><tt>0.40</tt></td>
+  <td align=left><a href="http://search.cpan.org/~brummett/">Anthony Brummett</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=UR"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=above"><tt>1</tt></a></td>
+  <td align=right><tt>2013-02-25</tt></td>
+</tr><tr>
+  <td><a href="#Acme::require::case"><tt>Acme::require::case</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dagolden/Acme-require-case-0.007/lib/Acme/require/case.pm">pod</a></span></td>
+  <td align=right><tt>0.007</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dagolden/">David Golden</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Acme-require-case"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Acme::require::case"><tt>0</tt></a></td>
+  <td align=right><tt>2013-02-28</tt></td>
+</tr><tr>
+  <td><a href="#again"><tt>again</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/again-0.03/again.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=again"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=again"><tt>0</tt></a></td>
+  <td align=right><tt>2013-02-23</tt></td>
+</tr><tr>
+  <td><a href="#aliased"><tt>aliased</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ovid/aliased-0.31/lib/aliased.pm">pod</a></span></td>
+  <td align=right><tt>0.31</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ovid/">Curtis "Ovid" Poe</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=aliased"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=aliased"><tt>74</tt></a></td>
+  <td align=right><tt>2013-02-18</tt></td>
+</tr><tr>
+  <td><a href="#all"><tt>all</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dexter/all-0.5101/lib/all.pm">pod</a></span></td>
+  <td align=right><tt>0.5101</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dexter/">Piotr Roszatycki</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=all"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=all"><tt>0</tt></a></td>
+  <td align=right><tt>2008-12-05</tt></td>
+</tr><tr>
+  <td><a href="#AnyLoader"><tt>AnyLoader</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mschwern/AnyLoader-0.04/lib/AnyLoader.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mschwern/">Michael G Schwern</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=AnyLoader"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=AnyLoader"><tt>0</tt></a></td>
+  <td align=right><tt>2000-11-29</tt></td>
+</tr><tr>
+  <td><a href="#autouse"><tt>autouse</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~flora/autouse-1.07/lib/autouse.pm">pod</a></span></td>
+  <td align=right><tt>1.07</tt></td>
+  <td align=left><a href="http://search.cpan.org/~flora/">Florian Ragwitz</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=autouse"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=autouse"><tt>3</tt></a></td>
+  <td align=right><tt>2012-09-11</tt></td>
+</tr><tr>
+  <td><a href="#base"><tt>base</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rgarcia/base-2.18/lib/base.pm">pod</a></span></td>
+  <td align=right><tt>2.18</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rgarcia/">RafaÃ«l Garcia-Suarez</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=base"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=base"><tt>372</tt></a></td>
+  <td align=right><tt>2012-03-31</tt></td>
+</tr><tr>
+  <td><a href="#Class::Autouse"><tt>Class::Autouse</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~adamk/Class-Autouse-2.01/lib/Class/Autouse.pm">pod</a></span></td>
+  <td align=right><tt>2.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~adamk/">Adam Kennedy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-Autouse"><tt>5</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Autouse"><tt>15</tt></a></td>
+  <td align=right><tt>2012-02-03</tt></td>
+</tr><tr>
+  <td><a href="#Class::LazyLoad"><tt>Class::LazyLoad</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~rkinyon/Class-LazyLoad-0.04/lib/Class/LazyLoad.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~rkinyon/">Rob Kinyon</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-LazyLoad"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::LazyLoad"><tt>0</tt></a></td>
+  <td align=right><tt>2005-02-10</tt></td>
+</tr><tr>
+  <td><a href="#Class::Load"><tt>Class::Load</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~drolsky/Class-Load-0.20/lib/Class/Load.pm">pod</a></span></td>
+  <td align=right><tt>0.20</tt></td>
+  <td align=left><a href="http://search.cpan.org/~drolsky/">Dave Rolsky</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-Load"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Load"><tt>151</tt></a></td>
+  <td align=right><tt>2012-07-15</tt></td>
+</tr><tr>
+  <td><a href="#Class::Load::XS"><tt>Class::Load::XS</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~drolsky/Class-Load-XS-0.06/lib/Class/Load/XS.pm">pod</a></span></td>
+  <td align=right><tt>0.06</tt></td>
+  <td align=left><a href="http://search.cpan.org/~drolsky/">Dave Rolsky</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-Load-XS"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Load::XS"><tt>2</tt></a></td>
+  <td align=right><tt>2012-10-08</tt></td>
+</tr><tr>
+  <td><a href="#Class::Loader"><tt>Class::Loader</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~vipul/Class-Loader-2.03/lib/Class/Loader.pm">pod</a></span></td>
+  <td align=right><tt>2.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~vipul/">Vipul Ved Prakash</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-Loader"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Loader"><tt>3</tt></a></td>
+  <td align=right><tt>2005-04-28</tt></td>
+</tr><tr>
+  <td><a href="#ClassLoader"><tt>ClassLoader</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~fseitz/ClassLoader-1.00006/lib/ClassLoader.pm">pod</a></span></td>
+  <td align=right><tt>1.00006</tt></td>
+  <td align=left><a href="http://search.cpan.org/~fseitz/">Frank Seitz</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=ClassLoader"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=ClassLoader"><tt>0</tt></a></td>
+  <td align=right><tt>2010-06-15</tt></td>
+</tr><tr>
+  <td><a href="#Devel::UseAnyFunc"><tt>Devel::UseAnyFunc</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~evo/Devel-UseAnyFunc-1/UseAnyFunc.pm">pod</a></span></td>
+  <td align=right><tt>1</tt></td>
+  <td align=left><a href="http://search.cpan.org/~evo/">Matthew Simon Cavalletto</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-UseAnyFunc"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::UseAnyFunc"><tt>2</tt></a></td>
+  <td align=right><tt>2003-08-28</tt></td>
+</tr><tr>
+  <td><a href="#if"><tt>if</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ilyaz/if-0.0601/if.pm">pod</a></span></td>
+  <td align=right><tt>0.0601</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ilyaz/">Ilya Zakharevich</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=if"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=if"><tt>29</tt></a></td>
+  <td align=right><tt>2010-12-01</tt></td>
+</tr><tr>
+  <td><a href="#lib::require::all"><tt>lib::require::all</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~miyagawa/lib-require-all-0.01/lib/lib/require/all.pm">pod</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~miyagawa/">Tatsuhiko Miyagawa</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=lib-require-all"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=lib::require::all"><tt>0</tt></a></td>
+  <td align=right><tt>2012-11-09</tt></td>
+</tr><tr>
+  <td><a href="#MAD::Loader"><tt>MAD::Loader</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~blabos/MAD-Loader-2.000003/lib/MAD/Loader.pm">pod</a></span></td>
+  <td align=right><tt>2.000003</tt></td>
+  <td align=left><a href="http://search.cpan.org/~blabos/">Blabos de Blebe</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=MAD-Loader"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=MAD::Loader"><tt>0</tt></a></td>
+  <td align=right><tt>2013-03-03</tt></td>
+</tr><tr>
+  <td><a href="#Module::Find"><tt>Module::Find</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~crenz/Module-Find-0.11/Find.pm">pod</a></span></td>
+  <td align=right><tt>0.11</tt></td>
+  <td align=left><a href="http://search.cpan.org/~crenz/">Christian Renz</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Find"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Find"><tt>56</tt></a></td>
+  <td align=right><tt>2012-05-22</tt></td>
+</tr><tr>
+  <td><a href="#Module::Hash"><tt>Module::Hash</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tobyink/Module-Hash-0.001/lib/Module/Hash.pm">pod</a></span></td>
+  <td align=right><tt>0.001</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tobyink/">Toby Inkster</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Hash"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Hash"><tt>1</tt></a></td>
+  <td align=right><tt>2012-11-23</tt></td>
+</tr><tr>
+  <td><a href="#Module::Implementation"><tt>Module::Implementation</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~drolsky/Module-Implementation-0.06/lib/Module/Implementation.pm">pod</a></span></td>
+  <td align=right><tt>0.06</tt></td>
+  <td align=left><a href="http://search.cpan.org/~drolsky/">Dave Rolsky</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Implementation"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Implementation"><tt>7</tt></a></td>
+  <td align=right><tt>2012-02-12</tt></td>
+</tr><tr>
+  <td><a href="#Module::Load"><tt>Module::Load</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bingos/Module-Load-0.24/lib/Module/Load.pm">pod</a></span></td>
+  <td align=right><tt>0.24</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bingos/">Chris Williams</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Load"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Load"><tt>125</tt></a></td>
+  <td align=right><tt>2013-02-01</tt></td>
+</tr><tr>
+  <td><a href="#Module::Load::Conditional"><tt>Module::Load::Conditional</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bingos/Module-Load-Conditional-0.54/lib/Module/Load/Conditional.pm">pod</a></span></td>
+  <td align=right><tt>0.54</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bingos/">Chris Williams</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Load-Conditional"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Load::Conditional"><tt>35</tt></a></td>
+  <td align=right><tt>2012-08-12</tt></td>
+</tr><tr>
+  <td><a href="#Module::Quote"><tt>Module::Quote</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tobyink/Module-Quote-0.001/lib/Module/Quote.pm">pod</a></span></td>
+  <td align=right><tt>0.001</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tobyink/">Toby Inkster</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Quote"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Quote"><tt>0</tt></a></td>
+  <td align=right><tt>2012-11-23</tt></td>
+</tr><tr>
+  <td><a href="#Module::Recursive::Require"><tt>Module::Recursive::Require</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~masap/Module-Recursive-Require-0.04/lib/Module/Recursive/Require.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~masap/">Masahiro Funakoshi</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Recursive-Require"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Recursive::Require"><tt>3</tt></a></td>
+  <td align=right><tt>2006-09-03</tt></td>
+</tr><tr>
+  <td><a href="#Module::Require"><tt>Module::Require</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~jsmith/Module-Require-0.05/lib/Module/Require.pm">pod</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~jsmith/">James G Smith</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Require"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Require"><tt>0</tt></a></td>
+  <td align=right><tt>2004-03-05</tt></td>
+</tr><tr>
+  <td><a href="#Module::Requires"><tt>Module::Requires</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~yappo/Module-Requires-0.03/lib/Module/Requires.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~yappo/">Kazuhiro Osawa</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Requires"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Requires"><tt>0</tt></a></td>
+  <td align=right><tt>2009-12-25</tt></td>
+</tr><tr>
+  <td><a href="#Module::Runtime"><tt>Module::Runtime</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~zefram/Module-Runtime-0.013/lib/Module/Runtime.pm">pod</a></span></td>
+  <td align=right><tt>0.013</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zefram/">Andrew Main (Zefram)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Runtime"><tt>5</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Runtime"><tt>42</tt></a></td>
+  <td align=right><tt>2012-02-16</tt></td>
+</tr><tr>
+  <td><a href="#Module::UseFrom"><tt>Module::UseFrom</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~jberger/Module-UseFrom-0.03/lib/Module/UseFrom.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~jberger/">Joel Berger</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-UseFrom"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::UseFrom"><tt>0</tt></a></td>
+  <td align=right><tt>2012-01-06</tt></td>
+</tr><tr>
+  <td><a href="#modules"><tt>modules</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~muenalan/modules-0.04/modules.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~muenalan/">Murat Ãnalan</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=modules"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=modules"><tt>1</tt></a></td>
+  <td align=right><tt>2002-06-25</tt></td>
+</tr><tr>
+  <td><a href="#Mojo::Loader"><tt>Mojo::Loader</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ams/Mojolicious-3.89/lib/Mojo/Loader.pm">pod</a></span></td>
+  <td align=right><tt>3.89</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ams/">Abhijit Menon-Sen</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Mojolicious"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Mojo::Loader"><tt>211</tt></a></td>
+  <td align=right><tt>2013-03-04</tt></td>
+</tr><tr>
+  <td><a href="#Mrequire"><tt>Mrequire</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~goevert/Mrequire-0.006/lib/Mrequire.pm">pod</a></span></td>
+  <td align=right><tt>0.006</tt></td>
+  <td align=left><a href="http://search.cpan.org/~goevert/">Norbert GÃ¶vert</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Mrequire"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Mrequire"><tt>0</tt></a></td>
+  <td align=right><tt>2003-12-08</tt></td>
+</tr><tr>
+  <td><a href="#namespace"><tt>namespace</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~amichauer/namespace-0.05/namespace.pm">pod</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~amichauer/">Albert Michauer</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=namespace"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=namespace"><tt>0</tt></a></td>
+  <td align=right><tt>2001-10-06</tt></td>
+</tr><tr>
+  <td><a href="#Object::Trampoline"><tt>Object::Trampoline</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~lembark/Object-Trampoline-1.26/lib/Object/Trampoline.pm">pod</a></span></td>
+  <td align=right><tt>1.26</tt></td>
+  <td align=left><a href="http://search.cpan.org/~lembark/">Steven Lembark</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Object-Trampoline"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Object::Trampoline"><tt>0</tt></a></td>
+  <td align=right><tt>2009-07-26</tt></td>
+</tr><tr>
+  <td><a href="#only"><tt>only</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ingy/only-0.28/lib/only.pm">pod</a></span></td>
+  <td align=right><tt>0.28</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ingy/">Ingy dÃ¶t Net</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=only"><tt>11</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=only"><tt>5</tt></a></td>
+  <td align=right><tt>2005-04-25</tt></td>
+</tr><tr>
+  <td><a href="#parent"><tt>parent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~corion/parent-0.225/lib/parent.pm">pod</a></span></td>
+  <td align=right><tt>0.225</tt></td>
+  <td align=left><a href="http://search.cpan.org/~corion/">Max Maischein</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=parent"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=parent"><tt>836</tt></a></td>
+  <td align=right><tt>2011-03-08</tt></td>
+</tr><tr>
+  <td><a href="#pkg"><tt>pkg</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~djerius/pkg-0.03/lib/pkg.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~djerius/">Diab Jerius</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=pkg"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=pkg"><tt>0</tt></a></td>
+  <td align=right><tt>2013-03-06</tt></td>
+</tr><tr>
+  <td><a href="#provide"><tt>provide</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~belden/provide-0.03/lib/provide.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~belden/">Belden Lyman</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=provide"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=provide"><tt>1</tt></a></td>
+  <td align=right><tt>2013-02-13</tt></td>
+</tr><tr>
+  <td><a href="#relative"><tt>relative</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~saper/relative-0.04/lib/relative.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~saper/">SÃ©bastien Aperghis-Tramoni</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=relative"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=relative"><tt>2</tt></a></td>
+  <td align=right><tt>2008-02-02</tt></td>
+</tr><tr>
+  <td><a href="#superclass"><tt>superclass</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dagolden/superclass-0.002/lib/superclass.pm">pod</a></span></td>
+  <td align=right><tt>0.002</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dagolden/">David Golden</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=superclass"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=superclass"><tt>0</tt></a></td>
+  <td align=right><tt>2013-02-25</tt></td>
+</tr><tr>
+  <td><a href="#syntax"><tt>syntax</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~phaylon/syntax-0.004/lib/syntax.pm">pod</a></span></td>
+  <td align=right><tt>0.004</tt></td>
+  <td align=left><a href="http://search.cpan.org/~phaylon/">Robert 'phaylon' Sedlacek</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=syntax"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=syntax"><tt>21</tt></a></td>
+  <td align=right><tt>2012-05-18</tt></td>
+</tr><tr>
+  <td><a href="#UNIVERSAL::require"><tt>UNIVERSAL::require</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mschwern/UNIVERSAL-require-0.13/lib/UNIVERSAL/require.pm">pod</a></span></td>
+  <td align=right><tt>0.13</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mschwern/">Michael G Schwern</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=UNIVERSAL-require"><tt>7</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=UNIVERSAL::require"><tt>208</tt></a></td>
+  <td align=right><tt>2009-03-30</tt></td>
+</tr><tr>
+  <td><a href="#use"><tt>use</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~audreyt/use-0.05/lib/use.pm">pod</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~audreyt/">â» åé³³ âº</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=use"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=use"><tt>0</tt></a></td>
+  <td align=right><tt>2012-10-21</tt></td>
+</tr>
+</table>
+
+
+<p>
+I started this list while looking at <a href="dependencies.html">modules for getting dependency information</a>.
+Some of those modules parse code looking for explicit dependencies:
+</p>
+
+<pre>
+use Foo::Bar;
+require Foo::Bar;
+use parent 'Base::Class';
+</pre>
+
+<p>
+But I realised there were more modules on CPAN that should be considered as well, so started looking for them...
+</p>
+
+<p>
+The modules described here each provide some mechanism for implicitly or explicitly
+loading a module. This may be something as simple as:
+</p>
+
+<pre>
+sub load_module {
+    my $module = shift;
+    eval "use $module";
+}
+</pre>
+
+<p>
+Each module will be presented in turn,
+with a comparison and conclusion at the end.
+</p>
+<h2 id="above">above</h2>
+<p>
+<a href="https://metacpan.org/module/above" class=moduleName>above</a>
+loads a module from "somewhere above you"
+in the directory path to the calling code, even if that directory isn't in <tt>@INC</tt>.
+</p>
+
+<p>
+For example, let's say you have modules <tt>Foo::Bar</tt> and <tt>Foo::Bar::Baz</tt>,
+and a script <tt>mytool</tt>.
+You have the following directory structure:
+</p>
+
+<pre>
+ +-- lib
+     |
+     +---Foo
+         |
+         +-- Bar.pm
+         |
+         +-- Bar
+             |
+             +-- Baz.pm
+             |
+             +-- mytool
+</pre>
+
+<p>
+If the mytool script wants to use Foo::Bar, you can use the following:
+</p>
+
+<pre>
+use above 'Foo::Bar';
+</pre>
+
+<p>
+The version on CPAN (0.392) has a bug: if the module you're using exports some symbols,
+they don't get imported into the calling namespace.
+I've submitted a pull request for a fix to this.
+</p>
+
+<p>
+I'm not really sure of a scenario where I'd use this module.
+The documentation says "<em>Do NOT use this in modules, or user applications</em>",
+and that it's used for "<em>Command modules which are developer tools</em>".
+It's part of the
+<a href="https://metacpan.org/module/UR" class=moduleName>UR</a> dist,
+and is used in some of it modules, as well as scripts that are part of its testsuite.
+</p>
+<h2 id="Acme::require::case">Acme::require::case</h2>
+<p>
+<a href="https://metacpan.org/module/Acme::require::case" class=moduleName>Acme::require::case</a>
+overrides the <tt>require</tt> built-in with a version which does a
+case-sensitive check of the module name.
+</p>
+
+<p>
+If you're running Perl on a case-insensitive filesystem (as I am: MacOSX),
+then by default you don't have to get the case of module names right.
+But if you run the following:
+</p>
+
+<pre>
+use Acme::require::case;
+
+use Module::path qw(module_path);
+
+print "path = ", module_path('Acme::require::case'), "\n";</pre>
+
+<p>
+It will die with the following message:
+</p>
+
+<pre>
+Module/path.pm has incorrect case (maybe you want Module/Path.pm instead?) at ./acme-require-case.pl line 8.
+BEGIN failed--compilation aborted at ./acme-require-case.pl line 8.
+</pre>
+
+<p>
+You probably wouldn't include this in your code,
+not least because it's a lot slower than the built-in <tt>require</tt>,
+but you might do a one-off check:
+</p>
+
+<pre>
+perl -MAcme::require::case myprogram.pl
+</pre>
+
+<h2 id="again">again</h2>
+<p>
+<a href="https://metacpan.org/module/again" class=moduleName>again</a>
+provides a mechanism for
+reloading a module if it has changed on disk since it was first / previously loaded.
+</p>
+
+<p>
+The following illustrates the module's use:
+</p>
+
+<pre>
+use again 'Module::Path', qw(module_path);
+use again;
+
+print "path to again: ", module_path('again'), "\n";
+
+# ... time passes ...
+
+require_again('Module::Path');
+Module::Path-&gt;import('module_path');
+
+print "path to again: ", module_path('again'), "\n";
+</pre>
+
+<p>
+You initially use again to load the module of interest <tt>use</tt>;
+this is just like using <tt>use</tt> directly, apart from:
+</p>
+<ul>
+<li>it records the modify-time for the module on disk.
+<li>Note the additional comma after the module name &mdash; that has caught me out a few times.
+</ul>
+
+<p>
+You then have to use the module again, this time without any arguments.
+This imports the <tt>require_again</tt> function.
+</p>
+
+<p>
+When you're ready to reload the module,
+pass the module name to <tt>require_again()</tt>.
+This checks whether the module has changed on disk, and if it has, reloads it
+and updates its internal timestamp for the module.
+If you explicitly imported something from the module, you'll need to do it again,
+otherwise you'll be calling the previous version.
+</p>
+
+<p>
+The interface doesn't feel very natural.
+The original author Juerd Waalboer has given me co-maintenance:
+so far I've just done documentation updates, but I may think about
+changes to the interface.
+</p>
+
+<h2 id="aliased">aliased</h2>
+<p>
+<a href="https://metacpan.org/module/aliased" class=moduleName>aliased</a>
+is a neat little module
+by <a href="https://metacpan.org/author/OVID">Ovid</a>
+which lets you refer to a class using a shorter name.
+This can be handy if you're referring to a class with a name like
+<a href="https://metacpan.org/module/CPAN::Testers::Reports::Query::JSON::Set" class=moduleName>CPAN::Testers::Reports::Query::JSON::Set</a>.
+The following shows the simplest usage:
+</p>
+
+<pre>
+use aliased 'Parse::HTTP::UserAgent';
+
+$ua = UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+By default it takes the last part of the class name to be the new class name.
+You can override this behaviour, and provide a new class name:
+</p>
+
+<pre>
+use aliased 'Parse::HTTP::UserAgent' => 'UA';
+
+$ua = UA->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+If you use aliased without any arguments, it exports the function <tt>alias</tt>,
+which can be used to provide a variable alias:
+</p>
+
+<pre>
+use aliased;
+
+my $userAgent = alias 'Parse::HTTP::UserAgent';
+
+$ua = $userAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+That's it really. Look at the documentation to see how import arguments are handled.
+The only downside is that you can't specify a minimum version of the module being used.
+</p>
+
+<p>
+At the time of writing the latest version on CPAN was 0.31.
+The documentation says:
+</p>
+
+<blockquote>
+Also, don't let the version number fool you.
+This code is ridiculously simple and is just fine for most use.
+</blockquote>
+
+<p>
+I've submitted a bug suggesting Ovid bump the version to 1.00.
+</p>
+<h2 id="all">all</h2>
+<p>
+The <a href="https://metacpan.org/module/all" class=moduleName>all</a> pragma
+is used to load all modules under a given namespace.
+The following script loads all <tt>Module::*</tt> modules, and then just uses
+<tt>Module::Path</tt> and <tt>Module::Version</tt>
+</p>
+
+<pre>
+use all 'Module::*';
+
+print "path    = ", Module::Path::module_path('all'),    "\n";
+print "version = ", Module::Version::get_version('all'), "\n";</pre>
+
+<p>
+As with any module like this, you need to be careful:
+the above code ends up loading 221 modules on my machine!
+</p>
+
+<p>
+If a module fails to load, then <tt>all</tt> catches this and <tt>warn</tt>s.
+Another downside to <tt>all</tt>: it doesn't provide any mechanism for finding out
+what modules were loaded.
+Obviously you could interrogate <tt>%INC</tt>, but a better interface would
+let you find out what modules were loaded, and what modules failed to be loaded.
+</p>
+
+<h2 id="AnyLoader">AnyLoader</h2>
+<p>
+This is one of those modules on CPAN that just seems a bit freaky, but in a good way.
+If you use <a href="https://metacpan.org/module/AnyLoader" class=moduleName>AnyLoader</a>,
+then you you can just call functions with a fully-qualified name,
+without having to load them first:
+</p>
+
+<pre>
+use AnyLoader;
+
+print "path = ", Module::Path::module_path('AnyLoader'), "\n";</pre>
+
+<p>
+The first time you try and use a function this way,
+AnyLoader will <tt>require</tt> the module for you.
+</p>
+
+<p>
+If you find that just a bit too scary, you can provide a list of module names,
+and AnyLoader will only autoload those classes, if implicitly used:
+</p>
+
+<pre>
+use AnyLoader qw('Module::Path');
+
+print "path = ", Module::Path::module_path('AnyLoader'), "\n";</pre>
+
+<p>
+With <tt>no AnyLoader</tt> you can explicitly exclude certain module names:
+</p>
+
+<pre>
+use AnyLoader;
+no AnyLoader qw('Carp');
+
+print "path = ", Module::Path::module_path('AnyLoader'), "\n";</pre>
+
+<p>
+This relies on a deprecated feature, so I guess it might stop working
+with some future version of Perl 5.
+It works on 5.16.2.
+</p>
+<h2 id="autouse">autouse</h2>
+<p>
+<a href="https://metacpan.org/module/autouse" class=moduleName>autouse</a> will automatically load
+a module for you the first time you try and use a named function.
+</p>
+
+<pre>
+use autouse 'Module::Path' => qw(module_path);
+
+print "path = ", module_path('autouse'), "\n";</pre>
+
+<p>
+It's similar to <a href="https://metacpan.org/module/AnyLoader" class=moduleName>AnyLoader</a> (described above),
+with the difference being that you have to explicitly list the module(s) that you want
+automatically loaded, and the functions that will trigger it.
+</p>
+
+<p>
+As with AnyLoader, you can't specify the minimum version of the module
+when you autouse it.
+</p>
+<h2 id="base">base</h2>
+<p>
+The <a href="https://metacpan.org/module/base" class=moduleName>base</a> pragma is used to
+specify one or more parents for the invoking class to inherit from:
+</p>
+
+<pre>
+package MyClass;
+use base 'ParentClass';
+</pre>
+
+<p>
+The above code is equivalent to:
+</p>
+
+<pre>
+package MyClass;
+BEGIN {
+    require ParentClass;
+    push(@ISA, 'ParentClass');
+}
+</pre>
+
+<p>
+The documentation says that in general you should use the lighter
+<a href="https://metacpan.org/module/parent" class=moduleName>parent</a> pragma for this job,
+unless you're using the <a href="https://metacpan.org/module/fields" class=moduleName>fields</a> pragma
+in your class as well.
+</p>
+
+<p>
+You can't specify a minimum version of the base class;
+if you want to do that,
+you should look at <a href="https://metacpan.org/module/inherit" class=moduleName>inherit</a>,
+described below.
+</p>
+<h2 id="Class::Autouse">Class::Autouse</h2>
+<p>
+<a href="https://metacpan.org/module/Class::Autouse" class=moduleName>Class::Autouse</a>
+provides lazy-loading of a class:
+it will delay loading of the class until the first time you try and invoke a class method:
+</p>
+
+<pre>
+use Class::Autouse qw(Parse::HTTP::UserAgent);
+
+# Parse::HTTP::UserAgent hasn't been loaded at this point
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+
+# Parse::HTTP::UserAgent has now been loaded
+
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+One thing to be aware of when using this module:
+after running <span class=inlineCode>use Class::Autouse qw(Parse::HTTP::UserAgent)</span>
+then <tt>%INC</tt> will appear to show that <tt>Parse::HTTP::UserAgent</tt> has been loaded,
+but the value will be <tt>'Class::Autouse'</tt> rather than the path to the module.
+This prevents a subsequent explicit <span class=inlineCode>use Parse::HTTP::UserAgent</span>
+from loading the class before <tt>Class::Autouse</tt> does.
+</p>
+
+<p>
+You can also use this module in 'super loader' mode,
+where you don't have to explicitly list the modules you want automatically loaded:
+</p>
+
+<pre>
+use Class::Autouse ':superloader';
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+Superloader mode is the same as the default mode for
+<a href="https://metacpan.org/module/AnyLoader" class=moduleName>AnyLoader</a>.
+</p>
+
+<p>
+There's quite a bit more to this module &mdash; see
+<a href="https://metacpan.org/module/Class::Autouse">the documentation</a>.
+
+as witnessed by the thorough documentation, and the fact that it 
+
+</p>
+<h2 id="Class::LazyLoad">Class::LazyLoad</h2>
+<p>
+<a href="https://metacpan.org/module/Class::LazyLoad" class=moduleName>Class::LazyLoad</a> is one of a number
+of modules on CPAN (eg <a href="https://metacpan.org/module/Object::Realize::Later" class=moduleName>Object::Realize::Later</a> &amp; <a href="https://metacpan.org/module/Class::LazyObject" class=moduleName>Class::LazyObject</a>)
+which provide lazy instantiation of objects.
+</p>
+<p>
+You can use Class::LazyLoad in a number of ways, but the following is the one most
+relevant to this review:
+</p>
+<pre>
+use Class::LazyLoad 'Parse::HTTP::UserAgent';
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+
+# class isn't instantiated until we call a method:
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+If you have a class that is expensive to instantiate,
+and where sometimes you end up not invoking any methods on an object,
+then Class::LazyLoad will save you some (run-)time.
+</p>
+
+<p>
+It intercepts the constructor for your class, and defers construction until you really
+need an instance. Typically this is by calling one of your methods,
+but as the <a href="https://metacpan.org/module/Class::LazyLoad">documentation</a> explains,
+there's at least one other situation where the object will be instantiated (calling <tt>can()</tt>).
+</p>
+<h2 id="Class::Load">Class::Load</h2>
+<p>
+<a href="https://metacpan.org/module/Class::Load" class=moduleName>Class::Load</a> provides a function
+for loading a class at run-time, and some related utility functions.
+</p>
+<p>
+The <tt>load_class()</tt> function addresses a deficiency of
+<a href="http://perldoc.perl.org/functions/require.html" class=moduleName>require</a>:
+you can't say <span class="inlineCode">require 'Foo::Bar'</span>
+or <span class="inlineCode">require $class</span>.
+</p>
+<pre>
+use Class::Load 'load_class';
+
+load_class('Parse::HTTP::UserAgent');
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+If the module couldn't be loaded for some reason, it will throw an error.
+</p>
+
+<p>
+You can specify a minimum version of the module, by passing the <tt>-version</tt> option
+after the class name:
+</p>
+
+<pre>load_class('Parse::HTTP::UserAgent', { -version =&gt; 0.35 });</pre>
+
+<p>
+Class::Load provides four other functions, all of which can take the optional <tt>-version</tt> argument:
+</p>
+
+<ul>
+<li><tt>try_load_class()</tt> works like <tt>load_class()</tt> except it returns a true or false
+    value, rather than die'ing if the load fails.
+<li><tt>is_class_loaded()</tt> returns a true value if the specified class has already been loaded.
+<li><tt>load_first_existing_class()</tt> takes a list of classes and works down the list
+    until it successfully loads one of them. If no class could be loaded, an error is thrown.
+    This is useful if you first want to check for an XS version of a module, then fall back on the pure perl
+    implementation.
+<li><tt>load_optional_class()</tt> is a hybrid of <tt>load_class()</tt> and <tt>try_load_class()</tt>:
+    if the class was loaded, it returns 1; if the class wasn't found, it returns 0;
+    if the class exists but failed to load, then it throws an error.
+</ul>
+
+<p>
+Under the hood, <tt>Class::Load</tt> uses
+<a href="https://metacpan.org/module/Module::Runtime" class=moduleName>Module::Runtime</a>,
+so if you used that directly, you'd save yourself some dependencies.
+</p>
+<h2 id="Class::Load::XS">Class::Load::XS</h2>
+<p>
+<a href="https://metacpan.org/module/Class::Load::XS" class=moduleName>Class::Load::XS</a>
+provides an XS implementation of parts of Class::Load, which is described above.
+</p>
+<p>
+If you've got Class::Load::XS installed, then use'ing Class::Load will
+result in you using Class::Load::XS.
+This is achieved using <a href="https://metacpan.org/module/Module::Implementation" class=moduleName>Module::Implementation</a>,
+which is described below.
+</p>
+<h2 id="Class::Loader">Class::Loader</h2>
+<p>
+<a href="https://metacpan.org/module/Class::Loader" class=moduleName>Class::Loader</a>
+is used to load a module at run-time, and then instantiate it.
+Here's an example of the simplest usage:
+</p>
+
+<pre>
+use Class::Loader;
+
+$ua = Class::Loader->_load(Module      => 'HTML::ParseBrowser',
+                           Constructor => 'new',
+                           );
+$ua->Parse('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+If you include <span class=inlineCode>CPAN =&gt; 1</span>
+in the arguments to <tt>_load()</tt>,
+then if the module isn't installed locally, it will try and install
+it with the CPAN module.
+</p>
+
+<p>
+<tt>Class::Loader</tt> also provides a mechanism for storing
+a configuration (using method <tt>_storemap</tt>),
+which you can refer to by name later.
+I couldn't get this working, as the code doesn't match the documentation.
+</p>
+<h2 id="ClassLoader">ClassLoader</h2>
+<p>
+<a href="https://metacpan.org/module/ClassLoader" class=moduleName>ClassLoader</a> is the equivalent
+of <a href="https://metacpan.org/module/AnyLoader" class=moduleName>AnyLoader</a>, but for classes.
+If you use ClassLoader, then you can instantiate classes without having to <tt>use</tt> them first:
+</p>
+
+<pre>
+use ClassLoader;
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+There's plenty of <a href="https://metacpan.org/module/ClassLoader">documentation for ClassLoader</a>,
+but unfortunately for me it's in German, so I can't tell you much more about it.
+It does work though.
+</p>
+<h2 id="Devel::UseAnyFunc">Devel::UseAnyFunc</h2>
+<p>
+<a href="https://metacpan.org/module/Devel::UseAnyFunc" class=moduleName>Devel::UseAnyFunc</a>
+lets you load one of a number of equivalent functions from different modules,
+aliasing it to your preferred name.
+There are a lot of cases on CPAN where multiple modules provide essentially the same function;
+this lets you use whichever is available, possibly in order of preference of performance.
+</p>
+
+<p>
+The following example is based on the SYNOPSIS from the
+<a href="https://metacpan.org/module/Devel::UseAnyFunc">documentation</a>:
+</p>
+
+<pre>
+use Devel::UseAnyFunc 'url_esc',
+                                 'URI::Escape'          => 'uri_escape',
+                                 'HTML::Mason::Escapes' => 'url_escape', 
+                                 'CGI::Util'            => 'escape';
+
+my $query   = 'perl 7 heresy!';
+my $encoded = url_esc($query);
+
+print "URL      = '$query'\n";
+print "SAFE URL = '$encoded'\n";</pre>
+
+<p>
+You can turn on diagnostics by setting <span class="inlineCode">$Devel::UseAnyFunc::DIGANOSTICS = 1</span>
+in a <tt>BEGIN</tt> block.
+</p>
+
+<p>
+I started this review because I was interested in modules that might hide dependencies from
+code that's parsing source to determine dependencies.
+If you used Devel::UseAnyFunc, which of the modules would you list as a dependency?
+Presumably the last one in the list, to ensure you always get an implementation of the function you want.
+</p>
+<h2 id="if">if</h2>
+<p>
+The <a href="https://metacpan.org/module/if" class=moduleName>if</a>
+pragma provides conditional loading of a module:
+</p>
+
+<pre>
+use if CONDITION, MODULE =&gt; ARGUMENTS;
+</pre>
+
+<p>
+The following unrealistic example only loads <tt>Module::Path</tt>
+if it's running on Perl 5.16.2 or later:
+</p>
+
+<pre>
+use if $] >= 5.016002, 'Module::Path' => qw(module_path);
+print "path = ", module_path('if'), "\n";</pre>
+
+<p>
+The <a href="https://metacpan.org/module/if">documentation</a>
+isn't very helpful, and I couldn't think of a real use for it.
+But I realised that
+<a href="http://deps.cpantesters.org/depended-on-by.pl?module=if">there are other dists using the <tt>if</tt> pragma</a>,
+so I had a look at some of them.
+</p>
+
+<p>
+The following mechanism is used to
+<a href="https://metacpan.org/module/deprecate" class=moduleName>deprecate</a>
+core modules beyond a certain version of Perl.
+This is from
+<a href="http://cpansearch.perl.org/src/RJBS/Text-Soundex-3.04/Soundex.pm">Text::Soundex 3.04</a>:
+</p>
+
+<pre>
+use if $] &gt; 5.016, 'deprecate';
+</pre>
+
+<p>
+Another example, from
+<a href="https://metacpan.org/module/Attribute::Lexical" class=moduleName>Attribute::Lexical</a>;
+this loads <a href="https://metacpan.org/module/mro" class=moduleName>mro</a>
+if running on Perl 5.9.5 or later:
+</p>
+
+<pre>
+use constant _KLUDGE_FAKE_MRO =&gt; "$]" &lt; 5.009005;
+use if !_KLUDGE_FAKE_MRO, "mro";
+</pre>
+
+<p>
+And finally, from the testsuite for
+<a href="https://metacpan.org/module/File::Map" class=moduleName>File::Map</a>,
+the following imports two functions from
+<a href="https://metacpan.org/module/POSIX" class=moduleName>POSIX</a>,
+as long as it's not running on Windows:
+</p>
+
+<pre>
+use if $^O ne 'MSWin32', POSIX =&gt; qw/setlocale LC_ALL/;
+</pre>
+
+<p>
+If Perl 5 was on github, I'd probably write some more documentation
+for this module and submit a pull request.
+</p>
+<h2 id="lib::require::all">lib::require::all</h2>
+<p>
+<a href="https://metacpan.org/module/lib::require::all" class=moduleName>lib::require::all</a>
+will load all modules (<tt>*.pm</tt>) in a given directory.
+By default it will load everything in the <tt>lib</tt> directory,
+but you can override this by specifying the directory when you use
+<tt>lib::require::all</tt>
+</p>
+
+<pre>
+use lib::require::all 'lib/Module';
+
+print "path = ", Module::Path::module_path('lib::require::all'), "\n";</pre>
+
+<p>
+The other modules for bulk-loading modules let you specify the start
+of the namespace. This module would be useful when loading modules
+included in a distribution, or some modules used in a testsuite.
+</p>
+
+<p>
+You <em>could</em> use it to load all modules in a given namespace,
+though it's not quite as user-friendly as the other modules.
+Let's say you want to load all the <tt>Module::*</tt> modules you've got
+installed.
+</p>
+
+<pre>
+use lib::require::all 'lib/Module';
+
+print "path = ", Module::Path::module_path('lib::require::all'), "\n";
+</pre>
+
+<p>
+But what's happening here is:
+</p>
+
+<ul>
+<li>the <tt>lib/Module</tt> gets added <em>to the front</em> of <tt>@INC</tt>.
+<li>a find is run on <tt>lib/Module</tt>.
+<li>it finds <tt>Path.pm</tt> (ie <tt>Module::Path</tt>)
+<li>it runs <span class="inlineCode">require Path.pm</span>
+</ul>
+
+<p>
+There's a potential gotcha if you use it this way: it's not uncommon
+for there to be a module <tt>Foobar::Plugin::Cool::Module</tt>,
+which is a plugin wrapper around <tt>Cool::Module</tt>.
+If you've done
+<span class="inlineCode">use lib::require::all '.../lib/Foobar/Plugin'</span>
+and then later on compilation hits <span class="inlineCode">use Cool::Module</span>,
+it will already think it's been loaded, but it hasn't.
+Pretty esoteric, I know, especially when this module is really intended for
+cases where you want:
+</p>
+
+<pre>
+use lib::require::all 'lib';
+</pre>
+
+<p>
+In which case you don't need to specify <tt>'lib'</tt>,
+as that's the default.
+</p>
+<h2 id="MAD::Loader">MAD::Loader</h2>
+<p>
+<a href="https://metacpan.org/module/MAD::Loader" class=moduleName>MAD::Loader</a>
+is useful where you might want one or more of a number of modules loaded, but not always.
+</p>
+
+<pre>
+use MAD::Loader;
+
+my $loader = MAD::Loader->new(
+                prefix   => 'Module',
+                on_error => sub { print "oops: $_[0]\n" },
+             );
+$loader->load(qw(Path Version));
+
+print "path    = ", Module::Path::module_path('MAD::Loader'),    "\n";
+print "version = ", Module::Version::get_version('MAD::Loader'), "\n";</pre>
+
+<p>
+You configure the loader with the prefix part of the modules you want to load.
+This might be the prefix for your plugins, such as <tt>Template::Plugin</tt>.
+</p>
+
+<p>
+You then call the <tt>load</tt> method to load up one or more modules.
+By default it will search for modules in <tt>@INC</tt>,
+but you can provide your own list of directories with the <tt>set_inc</tt> option.
+</p>
+
+<p>
+This can do quite a bit more than shown above. You can pass a method name
+with the <tt>initializer</tt> option to the <tt>MAD::Loader</tt>'s constructor.
+If you provide one, then this class method will be invoked on all classes loaded.
+</p>
+
+<p>
+You can also provide an error handler, which will be called if a module fails to load. 
+Unfortunately the error handler is just passed the text of the failure message;
+it would be more helpful if it was passed the name of the module as well.
+</p>
+
+<p>
+Another improvement would be if you could pass a pattern to the <tt>load</tt> method,
+or some way to specify "all modules with the given prefix". That would make this a
+a more generally useful module for loading plugins.
+</p>
+<h2 id="Module::Find">Module::Find</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Find" class=moduleName>Module::Find</a> provides
+functions that can be used to find and optionally load all modules in or under a given namespace.
+</p>
+
+<p>
+To find all Template Toolkit plugins installed locally, you could write:
+</p>
+
+<pre>
+use Module::Find;
+
+my @plugins = findallmod('Template::Plugin');
+print "found ", int(@plugins), " plugins\n";</pre>
+
+<p>
+The <tt>findsubmod()</tt> function is similar to <tt>findallmod()</tt>,
+but only returns modules who are immediately within the specified namespace.
+So if you used it in the above example,
+it would return <a href="https://metacpan.org/module/Template::Plugin::DBI" class=moduleName>Template::Plugin::DBI</a>, 
+but it wouldn't return
+<a href="https://metacpan.org/module/Template::Plugin::HTML::Template" class=moduleName>Template::Plugin::HTML::Template</a>
+</p>
+
+<p>
+The <tt>useall()</tt> and <tt>usesub()</tt> functions are similar to the functions described above,
+but they load the modules and then return a list of the modules loaded.
+They will die if any of the individual modules fail to load.
+</p>
+
+<p>
+By default it will look for modules in <tt>@INC</tt>;
+you can provide your own list of directories to search, with the <tt>setmoduledirs()</tt> function.
+</p>
+<h2 id="Module::Hash">Module::Hash</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Hash" class=moduleName>Module::Hash</a> is a quirky module
+from <a href="https://metacpan.org/author/TOBYINK">Toby Inkster</a>.
+It provides a tied hash which automatically loads modules for you.
+"Why would you want to do that?" I hear you ask. Good question, read on.
+</p>
+
+<p>
+The following shows the explicit tied interface:
+</p>
+
+<pre>
+use Module::Hash;
+        
+tie my %MOD, "Module::Hash";
+        
+my $ua_string = 'amaya/11.3.1 libwww/5.4.1';
+my $ua        = $MOD{'Parse::HTTP::UserAgent'}->new($ua_string);
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+You can remove the explicit <tt>tie</tt> by passing a hashref when <tt>use</tt>'ing Module::Hash:
+</p>
+
+<pre>
+use Module::Hash \%MOD;
+        
+my $ua_string = 'amaya/11.3.1 libwww/5.4.1';
+my $ua        = $MOD{'Parse::HTTP::UserAgent'}->new($ua_string);
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+On the positive side, you can specify a minimum version for the module you're using:
+</p>
+
+<pre>$ua = $MOD{'Parse::HTTP::UserAgent 0.35'}-&gt;new($ua_string);</pre>
+
+<p>
+Why might you want to use this module?
+Toby points out that <span class="inlineCode">Math::BigInt->new(...)</span> is ambiguous,
+as you could define a function <tt>BigInt()</tt> in the Math package.
+While that's true, I don't think this is <em>the</em> solution to that,
+and somehow I suspect Toby doesn't either!
+</p>
+
+<p>
+This really seems like an experiment, and as such I don't think it should be on CPAN.
+But wait, you say, if you look at the module summary at the start of this review,
+there's another dist on CPAN that uses Module::Hash.
+That's <a href="https://metacpan.org/module/Module::Quote" class=moduleName>Module::Quote</a>,
+another of Toby's experiments, described below...
+</p>
+<h2 id="Module::Implementation">Module::Implementation</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Implementation" class=moduleName>Module::Implementation</a> is useful
+where you have multiple implementations for a common interface,
+and don't really mind which is used (but might have a preference),
+as long as one of them can be.
+A common example in the Perl world is where you have a pure perl implementation,
+and an XS one.
+The following example is lifted straight from the SYNOPSIS:
+</p>
+
+<pre>
+package Foo::Bar;
+
+use Module::Implementation;
+
+BEGIN {
+    my $loader = Module::Implementation::build_loader_sub(
+                    implementations =&gt; [ 'XS',  'PurePerl' ],
+                    symbols         =&gt; [ 'run', 'check' ],
+                  );
+    $loader-&gt;();
+}
+</pre>
+
+<p>
+This will first try to load <tt>Foo::Bar::XS</tt>, and if successful will import <tt>run()</tt>
+and <tt>check()</tt> into <tt>Foo::Bar</tt>.
+If <tt>Foo::Bar::XS</tt> wasn't found, it will try and load <tt>Foo::Bar::PurePerl</tt>,
+again importing the specified functions if successful.
+</p>
+
+<p>
+A user of <tt>Foo::Bar</tt> then just writes:
+</p>
+
+<pre>
+use Foo::Bar;
+
+# can use run() and check()
+</pre>
+
+<p>
+You might want to provide a library of functions,
+only one of which would benefit from an XS implementation.
+In that case, define most of the functions in the parent class (<tt>Foo::Bar</tt> in the example above),
+and then put the interesting function in the two subordinate classes.
+This is exactly what Class::Load (described above) does.
+</p>
+
+<p>
+You can have as many implementations as you like:
+<tt>Module::Implementation</tt> will just work down the list until
+it loads one successfully. Some of the implementations may only be
+available on certain operating systems, or there might be multiple implementations
+that make different trade-offs of RAM / run-time / disk space.
+</p>
+<h2 id="Module::Load">Module::Load</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Load" class=moduleName>Module::Load</a> provides
+a <tt>load()</tt> function which will perform runtime loading of both modules and files.
+It addresses the same issue with <tt>require</tt> that is addressed by <tt>Class::Load</tt>,
+but is slightly more generic.
+</p>
+
+<p>
+The following illustrates the module's use:
+</p>
+
+<pre>
+use Module::Load;
+
+load Parse::HTTP::UserAgent;
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+You can load a module with any of the following:
+</p>
+
+<pre>
+load Foo::Bar;
+load 'Foo::Bar';
+load $module;      # $module = 'Foo::Bar';
+</pre>
+
+<p>
+You can pass import arguments:
+</p>
+
+<pre>
+load CGI, ':standard';
+</pre>
+
+<p>
+But you can't specify a minimum version of the module.
+<p>
+<h2 id="Module::Load::Conditional">Module::Load::Conditional</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Load::Conditional" class=moduleName>Module::Load::Conditional</a>
+provides functions for getting information about what modules are installed locally,
+and loading them at run-time.
+</p>
+
+<p>
+The <tt>check_install()</tt> function will see whether a module is installed locally,
+and tell you where, and optionally what version:
+</p>
+
+<pre>
+use Module::Load::Conditional qw(check_install);
+
+$ref = check_install(module => 'Module::Path', version => 0.09);
+
+print "Module::Path\n";
+if (!defined $ref) {
+    print "  not installed\n";
+
+} elsif (not $ref->{uptodate}) {
+    print "  needs updating\n";
+
+} else {
+    print "Module::Path\n";
+    print "  version = $ref->{version}\n";
+    print "  path    = $ref->{file}\n";
+}</pre>
+
+<p>
+The <tt>can_load()</tt> function takes a hash of modules,
+and loads them all, if it can:
+</p>
+
+<pre>
+use Module::Load::Conditional qw(can_load);
+
+$loaded = can_load(
+            modules => {
+                        'Module::Path'    => undef,
+                        'Module::Version' => undef,
+                       },
+            verbose => 1,
+            nocache => 0);
+
+if ($loaded) {
+    print "path    = ", Module::Path::module_path('Module::Load::Conditional'), "\n";
+    print "version = ", Module::Version::get_version('Module::Load::Conditional'), "\n";
+} else {
+    print "failed to load Module::Path and Module::Version\n";
+}</pre>
+
+<p>
+You can't provide an import list for the modules.
+</p>
+
+<p>
+If <tt>verbose</tt> is true, a warning will be printed if a module fails to load;
+this can also be controlled with a package variable.
+There are six global variables which control behaviour, see the
+<a href="https://metacpan.org/module/Module::Load::Conditional#Global-Variables">relevant section in the documentation</a> for more details on these.
+</p>
+
+<p>
+The <tt>requires()</tt> function takes a module name and returns a list of
+all the modules that will be loaded if you use the module. This includes immediate
+dependencies, their dependencies, and so on:
+</p>
+
+<pre>
+use Module::Load::Conditional qw(requires);
+
+# @deps = requires('Module::Load::Conditional');
+@deps = requires('Devel::Loaded');
+
+print "Module::Load::Conditional uses the following:\n";
+foreach my $module (@deps) {
+    print "  $module\n";
+}</pre>
+
+<p>
+This works by running perl in a sub-process, and having it load the module
+and then print out everything in <tt>%INC</tt>, which is captured in back-ticks.
+This means it can generate confusing output if the module passed prints something
+to STDOUT in an END block, for example. I've submitted a bug report on that,
+with a complete hack (partial) solution.
+</p>
+
+<h2 id="Module::Quote">Module::Quote</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Quote" class=moduleName>Module::Quote</a>
+is another quirky module from the mind of
+<a href="https://metacpan.org/author/TOBYINK">Toby Inkster</a>.
+It's provides a quote-like operator, <b><tt>qm</tt></b>,
+that will load a module
+if it hasn't already been loaded, and return its name.
+</p>
+
+<pre>
+use Module::Quote;
+        
+my $ua_string = 'amaya/11.3.1 libwww/5.4.1';
+my $ua        = qm( Parse::HTTP::UserAgent )->new($ua_string);
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+You can also specify a minimum version of the module:
+</p>
+
+<pre>
+$ua = qm( Parse::HTTP::UserAgent 0.35 )-&gt;new($ua_string);
+</pre>
+
+<p>
+Sure, it's freaky,
+but I like this more than its twisted sister module,
+<a href="https://metacpan.org/module/Module::Hash" class=moduleName>Module::Hash</a>,
+which is described above.
+</p>
+
+<h2 id="Module::Recursive::Require">Module::Recursive::Require</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Recursive::Require" class=moduleName>Module::Recursive::Require</a>
+is a class that can be used to load all modules in a given namespace.
+It is similar to
+<a href="https://metacpan.org/module/Module::Find" class=moduleName>Module::Find</a>,
+but there are some key differences.
+</p>
+
+<p>
+To find all Template Toolkit plugins installed locally, you could write:
+</p>
+
+<pre>
+use Module::Recursive::Require;
+
+my $mrr     = Module::Recursive::Require->new();
+my @plugins = $mrr->require_of('Template::Plugin');
+print "found ", int(@plugins), " plugins\n";</pre>
+
+<p>
+The documentation seems to imply that this will load all modules
+matching <tt>Template::Plugin::*</tt>,
+but it seems to only match modules in <tt>Template/Plugin/</tt>.
+Ie it will find <tt>Template::Plugin::DBI</tt>
+but won't find <tt>Template::Plugin::HTML::Template</tt>.
+</p>
+
+<p>
+It also lets you provide filters, which exclude modules that
+match provided patterns.
+</p>
+
+<p>
+The documentation is a bit thin,
+and given the above I think you'd be better off using
+<a href="https://metacpan.org/module/Module::Find" class=moduleName>Module::Find</a>:
+it provides more functionality, has better documentation,
+and appears to be still actively maintained / under development.
+</p>
+<h2 id="Module::Require">Module::Require</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Require" class=moduleName>Module::Require</a>
+is another module that can be used to load all modules in a given namespace.
+You can either specify a glob-style pattern for matching modules, or a regex.
+</p>
+
+<p>
+The following uses the glob interface to load all locally installed Template Toolkit plugins
+of the form <tt>Template::Plugin::&lt;name&gt;</tt>:
+</p>
+
+<pre>
+use Module::Require ();
+
+my @failed = Module::Require::require_glob( 'Template::Plugin::*' );
+print "plugins loaded:\n";
+foreach my $key (keys %INC) {
+    print "  $key\n" if $key =~ m!^Template/Plugin/!;
+}</pre>
+
+<p>
+The module has a bug: it doesn't <span class="inlineCode">require Exporter</span>,
+so you can't import the provided functions in the way suggested by the SYNOPSIS.
+Another downside of the module is that it doesn't return a list of the modules loaded,
+but rather returns a list of any modules that failed to load.
+</p>
+
+<p>
+The <tt>require_regex()</tt> function works just like <tt>require_glob()</tt>,
+but takes a regular expression rather than a glob pattern.
+The module also provides a function <tt>walk_inc()</tt>,
+for iterating over all modules in <tt>@INC</tt> which start with a specified path.
+</p>
+
+<p>
+All in all I think you'd be better off using
+<a href="https://metacpan.org/module/Module::Find" class=moduleName>Module::Find</a>.
+</p>
+<h2 id="Module::Requires">Module::Requires</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Requires" class=moduleName>Module::Requires</a>
+can be used to load one or more modules, optionally specifying version constraints.
+The following show basic usage:
+</p>
+
+<pre>
+use Module::Requires
+    'Parse::HTTP::UserAgent' => 0.35,
+    'HTML::ParseBrowser';
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "first guess  = ", $ua->name, "\n";
+
+$ua = HTML::ParseBrowser->new('amaya/11.3.1 libwww/5.4.1');
+print "second guess = ", $ua->name, "\n";</pre>
+
+<p>
+You can also specify the version using a more complex set of constraints:
+</p>
+
+<pre>
+use Module::Requires
+    'Parse::HTTP::UserAgent' => [ '>' => 0.30, '<=' => 1.00 ];
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+You can also provide import parameters:
+</p>
+
+<pre>
+use Module::Requires -autoload,
+    'Module::Path' => {
+        import  => [qw(module_path)],
+        version => ['>' => 0.08, '<=' => 1.00],
+    };
+
+print "path = ", module_path('Module::Requires'), "\n";</pre>
+
+<p>
+Note that you also need to provide the <span class="inlineCode">-autoload</span>
+option when you specify import symbols.
+If you include <tt>-autoload</tt> on its own, <tt>Module::Requires</tt>
+will call <tt>import()</tt> on all modules loaded.
+<p>
+
+<p>
+The documentation for this module is a bit terse, so it took me a while
+(and reading of the source) to work out exactly what it can do.
+The main thing it adds over the other modules described here is the more
+flexible mechanism for specifying version constraints.
+</p>
+<h2 id="Module::Runtime">Module::Runtime</h2>
+<p>
+<a href="https://metacpan.org/module/Module::Runtime" class=moduleName>Module::Runtime</a>
+provides a collection of functions that are useful for manipulating modules
+and their names at run-time.
+</p>
+
+<p>
+The <span class="inlineCode">require_module()</span> function takes a string
+&mdash; either literal or variable &mdash; and <tt>require</tt>'s the named module:
+</p>
+
+<pre>
+use Module::Runtime qw(require_module);
+require_module 'Module::Path';
+print "path = ", Module::Path::module_path('Module::Runtime'), "\n";
+
+my $module = 'Module::Version';
+require_module $module;
+print "version = ", Module::Version::get_version('Module::Runtime'), "\n";</pre>
+
+<p>
+This addresses a restriction with the <tt>require</tt> built-in, as do other modules here.
+But unlike <a href="https://metacpan.org/module/Module::Load" class=moduleName>Module::Load</a>,
+it doesn't support the module name as a bareword. Ie the following fails:
+</p>
+
+<pre>
+require_module Module::Path;
+</pre>
+
+<p>
+You can't specify a minimum version of the module with <tt>require_module</tt>,
+but you can with <tt>use_module</tt>, which takes an optional second argument:
+</p>
+
+<pre>
+use_module 'Module::Path', 0.09;
+
+my $module = 'Module::Version';
+use_module $module, 0.12;
+</pre>
+
+<p>
+It returns the name of the module loaded, if successful,
+so you can chain it in situations like:
+</p>
+
+<pre>
+$object = use_module('My::Class')-&gt;new();
+</pre>
+
+<p>
+The module provides other things, including the following.
+See <a href="https://metacpan.org/module/Module::Runtime">the documentation</a>
+for the rest.
+</p>
+
+<ul>
+<li><tt>is_module_name($name)</tt> returns true if the string passed is a valud format
+    module name.</li>
+<li><tt>module_notional_filename($module)</tt> returns the partial path name for
+    a module, which is used as the key in <tt>%INC</tt>.
+    For <tt>Module::Path</tt> this will return <tt>Module/Path.pm</tt>.</li>
+<li><tt>$module_name_rx</tt> is a regular expression which will match a valid module name.</li>
+</ul>
+
+<p>
+As with all modules from <a href="https://metacpan.org/author/ZEFRAM">Andrew Main</a>,
+this is a rigorous and solid module.
+</p>
+<h2 id="Module::UseFrom">Module::UseFrom</h2>
+<p>
+I couldn't get
+<a href="https://metacpan.org/module/Module::UseFrom" class=moduleName>Module::UseFrom</a>
+to work on Perl 5.16.2.
+I've submitted a bug, and will have another go if the bug gets fixed,
+or I fancy having a dig in the code.
+</p>
+
+<h2 id="modules">modules</h2>
+<p>
+<a href="https://metacpan.org/module/modules" class=moduleName>modules</a>
+lets you load multiple modules with a single <tt>use</tt> line:
+</p>
+
+<pre>
+use modules 'strict', 'warnings', { Module::Path => 'module_path' };
+
+print "path = ", module_path('modules'), "\n";</pre>
+
+<p>
+Ok, all looks fine so far, right. Maybe you're thinking you might install it...?
+</p>
+
+<p>
+<span style="color: #aa3333;">Hold your horses, pardner:</span>
+this module has a bonus feature:
+by default, if you try and use a module that's not installed,
+it will try and install it for you.
+No, really!
+</p>
+
+<p>
+You can use the <span class="inlineCode">-force</span>
+and <span class="inlineCode">+force</span> options can be used to control
+this behaviour:
+</p>
+
+<pre>
+use modules 'strict', '-force', { Module::Path => 'module_path' }, '+force', 'warnings';
+
+print "path = ", module_path('modules'), "\n";</pre>
+
+<p>
+You might decide to use this module, and always put <span class="inlineCode">-force</span>
+at the start, but I'd rather the default was to not try and install modules for me.
+At least if you use <a href="https://metacpan.org/module/CPAN::AutoINC" class=moduleName>CPAN::AutoINC</a>
+or <a href="https://metacpan.org/module/Module::AutoINC" class=moduleName>Module::AutoINC</a>
+you're explicitly saying you want this behaviour.
+</p>
+<h2 id="Mojo::Loader">Mojo::Loader</h2>
+<p>
+<a href="https://metacpan.org/module/Mojo::Loader" class=moduleName>Mojo::Loader</a>
+provides support functions for a plugin framework: a run-time class loader,
+and a method for finding all modules within a given namespace.
+</p>
+
+<p>
+The following illustrates use of the class loader:
+</p>
+
+<pre>
+use Mojo::Loader;
+$loader = Mojo::Loader->new();
+$e = $loader->load('Parse::HTTP::UserAgent');
+if (ref($e)) {
+    die "Exception: $e\n";
+} elsif ($e) {
+    die "failed to load class\n";
+}
+
+$ua = Parse::HTTP::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+You can also find all locally installed modules under a given namespace:
+</p>
+
+<pre>
+use Mojo::Loader;
+$loader = Mojo::Loader->new();
+$listref = $loader->search('Template::Plugin');
+
+print "Template plugins found:\n";
+foreach my $module (@$listref) {
+    print "  $module\n";
+}</pre>
+
+<p>
+One problem with this method:
+it only finds modules immediately within the namespace specified.
+I have <tt>Template::Plugin::HTTP::UserAgent</tt> installed,
+but this won't be returned.
+I submitted a bug for this but was told "This is not a bug, but a feature".
+</p>
+<h2 id="Mrequire">Mrequire</h2>
+<p>
+<a href="https://metacpan.org/module/Mrequire" class=moduleName>Mrequire</a> is another module
+which helps you load modules at run-time.
+The <tt>mrequire</tt> function works just like the built-in require,
+but you can pass the module name in a variable:
+</p>
+
+<pre>
+use Mrequire 'mrequire';
+
+$module = 'Module::Path';
+mrequire($module);
+print "path = ", Module::Path::module_path('Mrequire'), "\n";</pre>
+
+<p>
+You can't pass any import parameters.
+</p>
+
+<p>
+Mrequire can also call the constructor for a class you've presumably
+just loaded with the <tt>mrequire</tt> function:
+</p>
+
+<pre>
+use Mrequire;
+my $class = 'Parse::HTTP::UserAgent';
+
+Mrequire::mrequire($class);
+$ua = Mrequire::new($class, 'amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+I'm not sure why you'd do this though, when you can just write:
+</p>
+
+<pre>
+$ua = $class-&gt;new('amaya/11.3.1 libwww/5.4.1');
+</pre>
+
+<p>
+You'd be better off looking at Module::Load or Module::Runtime,
+depending on your needs.
+<p>
+<h2 id="namespace">namespace</h2>
+<p>
+<a href="https://metacpan.org/module/namespace" class=moduleName>namespace</a> lets you
+define an alternate name for a module ("namespace aliasing"),
+just like <a href="https://metacpan.org/module/aliased" class=moduleName>aliased</a>,
+described above.
+The following shows the simplest usage:
+</p>
+
+<pre>
+use namespace UserAgent => 'Parse::HTTP::UserAgent';
+
+$ua = UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+If the alias starts with '::', then the alias is prefixed with the calling package name:
+</p>
+
+<pre>
+package Foobar;
+use namespace '::UserAgent' => 'Parse::HTTP::UserAgent';
+
+$ua = Foobar::UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<h2 id="Object::Trampoline">Object::Trampoline</h2>
+<p>
+<a href="https://metacpan.org/module/Object::Trampoline" class=moduleName>Object::Trampoline</a>
+provides lazy instantiation of a class.
+Let's say you've got a class which is expensive to instantiate,
+or perhaps some other reason for only wanting to instantiate it when you're really
+sure you need it.
+You call the constructor for your class on <tt>Object::Trampoline</tt>
+and pass the name of the class as an additional first argument:
+</p>
+
+<pre>
+use Object::Trampoline;
+use Parse::HTTP::UserAgent;
+
+$ua = Object::Trampoline->new('Parse::HTTP::UserAgent', 'amaya/11.3.1 libwww/5.4.1');
+
+# class isn't instantiated until we call a method:
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+It can go one step further, and provide lazy loading of your class as well.
+This is done by invoking the constructor on <tt>Object::Trampoline::<b>Use</b></tt>:
+</p>
+
+<pre>
+use Object::Trampoline;
+
+$ua = Object::Trampoline::Use->new('Parse::HTTP::UserAgent', 'amaya/11.3.1 libwww/5.4.1');
+
+# class isn't instantiated until we call a method:
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+When you do this, you can't pass any import argument to be passed when your
+class is <tt>use</tt>'d.
+If you need to do that, use <tt>Object::Trampoline</tt>
+rather than <tt>Object::Trampoline::Use</tt>,
+and <tt>use</tt> your class directly yourself.
+</p>
+
+<p>
+If you're interested in this class, you should also look at
+<a href="https://metacpan.org/module/Class::LazyLoad" class=moduleName>Class::LazyLoad</a>,
+described above.
+</p>
+<h2 id="only">only</h2>
+<p>
+The <a href="https://metacpan.org/module/only" class=moduleName>only</a>
+pragma serves two functions:
+</p>
+<ul>
+<li>Only include a module if the version meets certain conditions.
+<li>It provides a mechanism for keeping multiple versions of a module
+    installed, and then letting you load a specific version.
+</ul>
+
+<p>
+To only use a specific version of a module:
+</p>
+
+<pre>
+use only MyModule =&gt; '0.09';
+</pre>
+
+<p>
+To specify a minimum version of a module:
+</p>
+
+<pre>
+use only MyModule =&gt; '0.08-';
+</pre>
+
+<p>
+To use any version of a module within a range:
+</p>
+
+<pre>
+use only MyModule =&gt; '0.08-0.15';
+</pre>
+
+<p>
+The module can be used to keep multiple versions of modules installed;
+they're stored in a separate directory.
+</p>
+
+<p>
+At the time of writing, the version on CPAN (0.28) doesn't work with Perl 5.16.2,
+and has <a href="https://rt.cpan.org/Public/Dist/Display.html?Name=only">outstanding bugs</a> going back 10 years,
+so I haven't tested it.
+</p>
+<h2 id="parent">parent</h2>
+<p>
+The <a href="https://metacpan.org/module/parent" class=moduleName>parent</a> pragma
+is a lightweight replacement for the
+<a href="https://metacpan.org/module/base" class=moduleName>base</a> pragma.
+It is used to
+specify one or more parents for the invoking class to inherit from:
+</p>
+
+<pre>
+package MyClass;
+use parent 'ParentClass';
+</pre>
+
+<p>
+The above code is equivalent to:
+</p>
+
+<pre>
+package MyClass;
+BEGIN {
+    require ParentClass;
+    push(@ISA, 'ParentClass');
+}
+</pre>
+
+<p>
+The <tt>parent</tt> pragma was a fork of <tt>base</tt>, with a lot of the 'cruft' removed.
+It has just 30 lines of code, compared to 167 for base,
+which has a lot of complexity for handling fields and signals.
+</p>
+
+<p>
+As with base, you can't specify a minimum version of the base class;
+if you want to do that, you should look at
+<a href="https://metacpan.org/module/superclass" class=moduleName>superclass</a>
+(described below),
+which is a fork of <tt>parent</tt>.
+</p>
+<h2 id="pkg">pkg</h2>
+<p>
+The <a href="https://metacpan.org/module/pkg" class=moduleName>pkg</a> pragma
+is a re-imagining of the <tt>use</tt> pragma
+to better handle inner packages.
+</p>
+
+<p>
+Let's say you've got a module A, which has two nested modules:
+</p>
+
+<pre>package A {
+    use superclass 'Exporter';
+    our @EXPORT_OK = qw(a);
+    sub a { print "Hello from a()\n"; }
+
+    package A::B {
+        use superclass 'Exporter';
+        our @EXPORT_OK = qw(ab);
+        sub ab { print "Hello from ab()\n"; }
+    }
+
+    package A::C {
+        use superclass 'Exporter';
+        our @EXPORT_OK = qw(ac);
+        sub ac { print "Hello from ac()\n"; }
+    }
+}
+1;
+</pre>
+
+<p>
+And in some other bit of code you want to import the <tt>ab()</tt> function.
+You can't do this in a single line with the <tt>use</tt> built-in,
+but with <tt>pkg</tt> you can:
+</p>
+
+<pre>
+use pkg [ 'A' ], [ 'A::B' => qw(ab) ];
+
+ab();</pre>
+
+<p>
+The <a href="https://metacpan.org/module/pkg">documentation</a> is very thorough,
+so if you're (interested to try) using inner packages, there's a lot more to read.
+</p>
+
+<p>
+It has a number of other features. For example, it can be used like the
+<a href="https://metacpan.org/module/aliased">aliased</a> pragma (described above),
+to define a short name for a class, either by just taking the last part of the
+class name:
+</p>
+
+<pre>
+use pkg -alias => 'Parse::HTTP::UserAgent';
+
+$ua = UserAgent->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<p>
+Or specifying an entirely new alias, with the slightly clumsy notation:
+</p>
+
+<pre>
+use pkg 'Parse::HTTP::UserAgent' => -as => 'UA';
+
+$ua = UA->new('amaya/11.3.1 libwww/5.4.1');
+print "browser = ", $ua->name, "\n";</pre>
+
+<h2 id="provide">provide</h2>
+<p>
+<a href="https://metacpan.org/module/provide" class=moduleName>provide</a>
+will load different modules depending on which version of Perl is running:
+</p>
+
+<pre>
+package My::Module;
+
+use provide (
+    if =&gt; ge =&gt; '5.013000' =&gt; 'My::Module::v5_013000',
+    else                   =&gt; 'My::Module::v5_080000',
+);
+</pre>
+
+<p>
+With a more recent version of Perl you might be able to provide a more efficient
+implementation, and using this <tt>provide</tt>, you can ensure that your module
+can be used with older versions of Perl as well.
+</p>
+
+<p>
+This is a sister module, in spirit, to
+<a href="https://metacpan.org/module/Module::Implementation" class=moduleName>Module::Implementation</a>
+which provides a different mechanism for loading alternate implementations.
+</p>
+<h2 id="relative">relative</h2>
+<p>
+<a href="https://metacpan.org/module/relative" class=moduleName>relative</a>
+lets you load modules by specifying names relative to the calling
+package name.
+</p>
+
+<p>
+In my module
+<a href="https://metacpan.org/module/Mail::SendGrid" class=moduleName>Mail::SendGrid</a> you'll see code similar to:
+</p>
+
+<pre>
+package Mail::SendGrid;
+use Mail::SendGrid::Bounce;
+</pre>
+
+<p>
+Instead I could write:
+</p>
+
+<pre>
+package Mail::SendGrid;
+use relative Bounce;
+</pre>
+
+<p>
+And if I had more than one subordinate class, I could load them with
+a single line:
+</p>
+
+<pre>
+package Mail::SendGrid;
+use relative qw(Bounce Block);
+</pre>
+
+<p>
+In the above example, I'd still write
+<span class=inlineCode>$bounce = Mail::SendGrid::Bounce-&gt;new(...)</span>,
+but you can also define an alias for the class
+(as you can with <a href="https://metacpan.org/module/aliased" class=moduleName>aliased</a>
+and <a href="https://metacpan.org/module/namespace" class=moduleName>namespace</a>):
+</p>
+
+<pre>
+package Mail::SendGrid;
+use relative -aliased =&gt; Bounce;
+...
+$bounce = Bounce-&gt;new(...);
+</pre>
+
+<p>
+When I discovered this module my first thought was "Ooh, I'll use that!".
+But then I thought about someone else coming across the following line
+in my code, and perhaps wondering what it does:
+</p>
+
+<pre>
+use relative qw(Bounce Block);
+</pre>
+
+<p>
+You could argue that this module increases the cognitive load for someone
+reading your code, and adds a dependency.
+But now I know about it, will I use it in production...
+</p>
+<h2 id="superclass">superclass</h2>
+<p>
+The <a href="https://metacpan.org/module/superclass" class=moduleName>superclass</a> pragma
+was forked from the <a href="https://metacpan.org/module/parent" class=moduleName>parent</a>
+pragma (described below),
+to add module version checks.
+It is used to
+specify one or more superclasses for the invoking class:
+</p>
+
+<pre>
+package MyClass;
+use superclass qw(Foo Bar), 'Baz' =&gt; 1.23;
+</pre>
+
+<p>
+The above code is equivalent to:
+</p>
+
+<pre>
+package MyClass;
+BEGIN {
+    require Foo;
+    require Bar;
+    require Baz;
+    Baz-&gt;VERSION(1.23)
+    push @ISA, qw(Foo Bar Baz);
+}
+</pre>
+
+<p>
+Given that <a href="https://metacpan.org/module/base" class=moduleName>base</a> and
+<a href="https://metacpan.org/module/parent" class=moduleName>parent</a>
+don't let you specify a version,
+I might switch to this module.
+</p>
+<h2 id="syntax">syntax</h2>
+<p>
+The <a href="https://metacpan.org/module/syntax" class=moduleName>syntax</a>
+pragma loads syntax extensions in the <tt>Syntax::Feature</tt> namespace.
+</p>
+
+<p>
+For example,
+<a href="https://metacpan.org/module/Syntax::Feature::Method" class=moduleName>Syntax::Feature::Method</a>
+provides a <tt>method</tt> keyword;
+you can use this with:
+</p>
+
+<pre>
+use syntax 'method';
+
+method foo($n)
+{
+    return $n * $self-&gt;bar;
+}
+</pre>
+<h2 id="UNIVERSAL::require">UNIVERSAL::require</h2>
+<p>
+<a href="https://metacpan.org/module/UNIVERSAL::require" class=moduleName>UNIVERSAL::require</a>
+adds a universal <tt>require()</tt> class method which lets you do the following:
+</p>
+
+<pre>
+$module = 'Module::Path';
+$module->require();</pre>
+
+<p>
+instead of the following (which you have to do due to the limitations of
+the <tt>require</tt> built-in):
+</p>
+
+<pre>
+$module = 'Module::Path';
+eval "require $module";
+</pre>
+
+<p>
+You can optionally specify a minimum version of the module:
+</p>
+
+<pre>
+use UNIVERSAL::require;
+
+$class = 'Parse::HTTP::UserAgent';
+$class->require(0.35);</pre>
+
+<p>
+The module also provides a universal <tt>use()</tt> class method.
+The following is lifted straight from the documentation:
+</p>
+
+<pre>
+my $require_return = $module-&gt;use           or die $@;
+my $require_return = $module-&gt;use(@imports) or die $@;
+</pre>
+
+<p>
+<a href="https://rt.cpan.org/Public/Bug/Display.html?id=53683">As of 2010</a>, 
+MSCHWERN considers this deprecated, and suggests you look at
+<a href="https://metacpan.org/module/Module::Load" class=moduleName>Module::Load</a>
+(described above).
+</p>
+<h2 id="use">use</h2>
+<p>
+The <a href="https://metacpan.org/module/use" class=moduleName>use</a>
+pragma lets you load multiple modules with a single statement:
+</p>
+
+<pre>
+use use 'strict', 'warnings', 'Module::Path';
+
+print "path = ", Module::Path::module_path('use'), "\n";</pre>
+
+<p>
+The documentation says you can specify import parameters, but the
+following doesn't work with use 0.05 on Perl 5.16.2:
+</p>
+
+<pre>
+use use Module::Path => ['module_path'];
+
+print "path = ", module_path('use'), "\n";</pre>
+
+<p>
+This module basically does the same thing as the
+<a href="https://metacpan.org/module/modules" class=moduleName>modules</a> pragma,
+but it doesn't try and install modules for you (a good thing in my book).
+Furthermore,
+the documentation says that <tt>use</tt> works with syntax-altering modules
+like <tt>Devel::Declare</tt>, but <tt>modules</tt> doesn't.
+</p>
+
+<p>
+I think the name of this module is confusing:
+on first seeing <span class=inlineCode>use use qw(strict warnings);</span>
+people might think it's a typo.
+</p>
+<h2 id="comparison">Comparison</h2>
+
+<p>
+The modules described here do quite a range of things,
+so there aren't really any tests we can use to run a bake-off.
+Instead, here they are grouped by the kind of function provided:
+</p>
+
+<div class=blockPicture>
+<img src="loading-module-map.png"/>
+</div>
+
+<p>
+Some modules really belong to more than one of these categories,
+so for a future version I might try and come up with some kind
+of Venn diagram.
+</p>
+
+<p>
+Given the space covered by these modules,
+in the next section I try to recommend which module(s)
+you might to use for specific needs.
+</p>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+Given the range of features described, there's obviously not one size to fit all,
+so here are some thoughts on what to use where and when:
+</p>
+
+<ul>
+<li>If you want to defer loading of a module until you use one of its functions,
+    go for <a href="https://metacpan.org/module/autouse" class=moduleName>autouse</a>.
+<li>If you want to defer loading of a class until you try and instantiate it,
+    go for <a href="https://metacpan.org/module/Class::Autouse" class=moduleName>Class::Autouse</a>.
+<li>For lazy loading <em>and</em> lazy instantiation,
+    <a href="https://metacpan.org/module/Class::LazyLoad" class=moduleName>Class::LazyLoad</a>
+    has a cleaner interface than
+    <a href="https://metacpan.org/module/Object::Trampoline" class=moduleName>Object::Trampoline</a>.
+<li>If you want to import an external function, and you don't mind which of multiple
+    implementations on CPAN you use,
+    try <a href="https://metacpan.org/module/Devel::UseAnyFunc" class=moduleName>Devel::UseAnyFunc</a>.
+    You'll need to think about what you declare as your dependencies though.
+<li>If you want to provide a single interface, with pure perl and XS implementations behind,
+    <a href="https://metacpan.org/module/Module::Implementation" class=moduleName>Module::Implementation</a>
+    is the module for you.
+<li>If you want to use other modules with long names, then
+    <a href="https://metacpan.org/module/aliased" class=moduleName>aliased</a> might be helpful.
+    If the modules are within your namespace, then
+    <a href="https://metacpan.org/module/relative" class=moduleName>relative</a> may be a better fit.
+<li>If you want to find and load plugin modules, it's a toss-up between
+    <a href="https://metacpan.org/module/Module::Find" class=moduleName>Module::Find</a>,
+    which offers more flexibility, and
+    <a href="https://metacpan.org/module/Mojo::Loader" class=moduleName>Mojo::Loader</a>,
+    which has a cleaner interface, but will only find modules where the <tt>.pm</tt> file is immediately within
+    the namespace specified.
+<li>When specifying your base classes, if you want to specify a minimum version, use the new
+    <a href="https://metacpan.org/module/superclass" class=moduleName>superclass</a>.
+    Otherwise, until superclass is in the core, you might as well go with 
+    <a href="https://metacpan.org/module/parent" class=moduleName>parent</a>.
+<li>If your dist has a lot of subordinate modules, then
+    <a href="https://metacpan.org/module/relative" class=moduleName>relative</a> may be useful.
+<li>If you want runtime loading of a module, I'd look at
+    <a href="https://metacpan.org/module/Module::Runtime" class=moduleName>Module::Runtime</a> first, but
+    <a href="https://metacpan.org/module/Class::Load" class=moduleName>Class::Load</a> and
+    <a href="https://metacpan.org/module/Module::Load" class=moduleName>Module::Load</a> are contenders.
+    <tt>Module::Runtime</tt> has no dependencies, <tt>Module::Load</tt> has 6 ultimate dependencies,
+    and <tt>Class::Load</tt> has 21 dependencies, one of which is <tt>Module::Runtime</tt>.
+</ul>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

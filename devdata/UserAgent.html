@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for parsing User-Agent strings</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for parsing User-Agent strings</h1>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-05</p>
+</div>
+<p>
+This article is a comparison of nine CPAN modules for extracting information
+out of the User-Agent string passed to web sites by browsers, spiders,
+and other software agents.
+These are useful when processing log files, to produce analytics,
+and other purposes.
+You may even use it to change your application's behaviour,
+but that sort of thing is frowned upon.
+</p>
+
+<p>
+A good default choice is HTML::ParseBrowser &mdash; it has the best overall
+coverage, and is probably fast enough for most users.
+If speed is important, use HTTP::UserAgentString::Parser &mdash; it's an order
+of magnitude faster, and has the second-best coverage.
+If you need to identify whether an agent is a robot, use HTTP::BrowserDetect.
+</p>
+
+<p>
+Here's a summary of the modules which gives <em>some</em>
+indication of maturity and whether the module is actively maintained:
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#HTML::ParseBrowser"><tt>HTML::ParseBrowser</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/HTML-ParseBrowser-1.05/lib/HTML/ParseBrowser.pm">CPAN</a></span></td>
+  <td align=right><tt>1.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTML-ParseBrowser"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTML::ParseBrowser"><tt>1</tt></a></td>
+  <td align=right><tt>2012-02-25</tt></td>
+</tr><tr>
+  <td><a href="#HTTP::BrowserDetect"><tt>HTTP::BrowserDetect</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~oalders/HTTP-BrowserDetect-1.44/lib/HTTP/BrowserDetect.pm">CPAN</a></span></td>
+  <td align=right><tt>1.44</tt></td>
+  <td align=left><a href="http://search.cpan.org/~oalders/">Olaf Alders</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-BrowserDetect"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::BrowserDetect"><tt>17</tt></a></td>
+  <td align=right><tt>2012-05-04</tt></td>
+</tr><tr>
+  <td><a href="#HTTP::DetectUserAgent"><tt>HTTP::DetectUserAgent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nanzou/HTTP-DetectUserAgent-0.02-withoutworldwriteables/lib/HTTP/DetectUserAgent.pm">CPAN</a></span></td>
+  <td align=right><tt>0.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nanzou/">Takaaki Mizuno</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-DetectUserAgent"><tt>6</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::DetectUserAgent"><tt>1</tt></a></td>
+  <td align=right><tt>2011-10-18</tt></td>
+</tr><tr>
+  <td><a href="#HTTP::Headers::UserAgent"><tt>HTTP::Headers::UserAgent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/HTTP-Headers-UserAgent-3.02/lib/HTTP/Headers/UserAgent.pm">CPAN</a></span></td>
+  <td align=right><tt>3.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-Headers-UserAgent"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::Headers::UserAgent"><tt>1</tt></a></td>
+  <td align=right><tt>2011-11-14</tt></td>
+</tr><tr>
+  <td><a href="#HTTP::MobileAgent"><tt>HTTP::MobileAgent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~kurihara/HTTP-MobileAgent-0.36/lib/HTTP/MobileAgent.pm">CPAN</a></span></td>
+  <td align=right><tt>0.36</tt></td>
+  <td align=left><a href="http://search.cpan.org/~kurihara/">Yoshiki KURIHARA</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-MobileAgent"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::MobileAgent"><tt>16</tt></a></td>
+  <td align=right><tt>2012-07-24</tt></td>
+</tr><tr>
+  <td><a href="#HTTP::UserAgentString::Parser"><tt>HTTP::UserAgentString::Parser</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nmoldav/HTTP-UserAgentString-Parser-0.6.1/lib/HTTP/UserAgentString/Parser.pm">CPAN</a></span></td>
+  <td align=right><tt>0.6.1</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nmoldav/">Nicolas Moldavsky</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=HTTP-UserAgentString-Parser"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=HTTP::UserAgentString::Parser"><tt>0</tt></a></td>
+  <td align=right><tt>2012-06-15</tt></td>
+</tr><tr>
+  <td><a href="#Mobile::UserAgent"><tt>Mobile::UserAgent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~cmanley/Mobile-UserAgent-1.05/lib/Mobile/UserAgent.pm">CPAN</a></span></td>
+  <td align=right><tt>1.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~cmanley/">Craig Manley</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Mobile-UserAgent"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Mobile::UserAgent"><tt>0</tt></a></td>
+  <td align=right><tt>2005-10-14</tt></td>
+</tr><tr>
+  <td><a href="#Parse::HTTP::UserAgent"><tt>Parse::HTTP::UserAgent</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~burak/Parse-HTTP-UserAgent-0.35/lib/Parse/HTTP/UserAgent.pm">CPAN</a></span></td>
+  <td align=right><tt>0.35</tt></td>
+  <td align=left><a href="http://search.cpan.org/~burak/">Burak GÃ¼rsoy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Parse-HTTP-UserAgent"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Parse::HTTP::UserAgent"><tt>2</tt></a></td>
+  <td align=right><tt>2012-05-14</tt></td>
+</tr><tr>
+  <td><a href="#Woothee"><tt>Woothee</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tagomoris/Woothee-0.2.4/lib/Woothee.pm">CPAN</a></span></td>
+  <td align=right><tt>0.2.4</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tagomoris/">ç°ç±  è¡</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Woothee"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Woothee"><tt>0</tt></a></td>
+  <td align=right><tt>2012-07-20</tt></td>
+</tr>
+</table>
+
+<p>
+I'll look at each module in turn, then present results of comparing the modules,
+and finally which module you should use when.
+</p>
+
+<p>
+There are two basic types of module:
+</p>
+<ol>
+<li>Provides methods like <tt>name()</tt>, <tt>version()</tt>, <tt>os()</tt>. This is useful for logfile analytics, and similar applications.</li>
+<li>Provides methods like <tt>is_chrome()</tt>, <tt>is_firefox()</tt>, <tt>is_windows()</tt>. I guess this is used if you're generating browser-specific code? I have to admit I don't see the attraction of this style of interface, and would be interested to hear from anyone whose code better maps to this style of interface.</li>
+</ol>
+
+<p>
+In each section I'll show SYNOPSIS style code examples to illustrate basic use of each module. The User-Agent string I'll use for these is:
+</p>
+
+<pre>
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.54 Safari/535.2
+</pre>
+
+<p>
+Which is taken from the version of Chrome I'm using on my Mac.
+It's actually all on one line, but I've broken it so it will show up ok in your browser.
+</p>
+
+<h3>What's the problem?</h3>
+
+<p>
+Why is this hard, and why are there so many problems?
+HTTP user agents are supposed to ("SHOULD" in the terms of the HTTP/1.1 spec) identify themselves,
+using a simple format for the
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43">User-Agent</a> field:
+</p>
+
+<pre>product/version</pre>
+
+<p>
+Major sub-products can also be listed in the User-Agent (UA) string, and additional information can be included in parentheses, and can just be freeform text, so basically any format you like. Here's the UA string from the version of curl on my laptop:</p>
+
+<pre>curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5</pre>
+
+<p>The first entry gives the product name and version, and subsequent products identify the main libraries used by curl. What's so hard with this, huh? Look at the UA string above from Chrome. If I hadn't already told you, would you know for sure whether it was Chrome or Safari? And look at:</p>
+
+<pre>Opera/9.80 (X11; Linux i686; U; hu) Presto/2.9.168 Version/11.50</pre>
+
+<p>At least it's not listing Mozilla/5.0 as the first product (which many browsers do), but then we've got two different version numbers. Which one would appear in the About popup?</p>
+
+<p>
+Some agents put structured information in the parentheses, some put a URI,
+some don't bother putting the free-form information in parens.
+Oh, and people lie. Browsers mis-represent themselves in the UA string, for various reasons.
+</p>
+
+<p>
+So basically, it's a mess.
+You might try and do some standardised parsing,
+but if you want to get good coverage (see the Comparison section at the end),
+you'll need a bunch of special cases as well.
+</p>
+
+<h2 id="HTML::ParseBrowser">HTML::ParseBrowser</h2>
+<p>HTML::ParseBrowser provides a keyword extractor style of interface.</p>
+
+<pre>
+use HTML::ParseBrowser;
+
+$ua = HTML::ParseBrowser->new( $ua_string );
+print "browser  = ", $ua->name, "\n";
+print "version  = ", $ua->v, "\n";
+print "os       = ", $ua->os, "\n";
+print "ostype   = ", $ua->ostype, "\n";
+print "osvers   = ", $ua->osvers, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>browser  = Chrome
+version  = 15.0.874.54
+os       = Macintosh
+ostype   = Macintosh
+osvers   = 
+</pre>
+
+<p>The <tt>ostype</tt> method returns the <em>interpreted</em> type of the operating system; for example 'Windows' rather than some specific version or codename. Similarly, <tt>osvers</tt> is supposed to return the <em>interpreted</em> version of the operating system; for Windows NT 5.1, this method will return 'XP', as it's more commonly known.</p>
+
+<p>
+The module provides four methods for returning the language or languages suppported by the browser, either as a language name, or two-letter language code. The module will also report the same language more than once; for example with the following UserAgent string:
+</p>
+
+<pre>
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.3) Gecko/20070309 Mozilla/4.8 [en] (Windows NT 5.1; U)
+</pre>
+
+<p>the <tt>langs()</tt> method returns <tt>['en', 'en']</tt>, where it should really just return <tt>['en']</tt>. I may just drop the <tt>langs()</tt> and <tt>languages</tt> methods in a future release.</p>
+
+<p>
+The <tt>name()</tt> method returns the "<em>interpreted</em> name of the browser". For example, 'Mozilla' becomes 'Netscape' (early versions of Netscape Navigator were known as Mozilla), but 'Gecko' becomes Mozilla, 'Netscape6' becomes Netscape. Less confusingly, 'MSIE' is returned as 'Internet Explorer'.
+</p>
+
+<p>I recently took over maintenance of this module, and guided by this review, have released a number of updates to improve its coverage and performance, particularly related to the popular modern browsers.</p>
+<h2 id="HTTP::BrowserDetect">HTTP::BrowserDetect</h2>
+<p>HTTP::BrowserDetect implements both styles of interface:
+
+<pre>
+$ua = HTTP::BrowserDetect->new( $ua_string );
+print "name        = ", $ua->browser_string, "\n";
+print "version     = ", $ua->public_version, "\n";
+print "OS          = ", $ua->os_string, "\n";
+print "engine      = ", $ua->engine_string, "\n";
+print "is-mac?     = ", $ua->mac, "\n";
+print "is-windows? = ", $ua->windows, "\n";
+print "is-chrome?  = ", $ua->chrome, "\n";
+print "is-safari?  = ", $ua->safari, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>name        = Chrome
+version     = 15
+OS          = Mac OS X
+engine      = KHTML
+is-mac?     = 1
+is-windows? = 
+is-chrome?  = 1
+is-safari?  = 
+</pre>
+
+<p>
+Notice that the is-<em>something</em> methods return an empty string for false, rather than 0. This can still be used in a boolean expression, as the empty string evaluates to false, but I'd prefer to see 0 returned.
+</p>
+
+<p>
+Because of the approach taken, the module provides about 116 methods, many of which are for identifying specific hardware and/or software (lotusnotes, blackberry, wap, ps3, win95, altavista, and lycos, for example).
+</p>
+
+<p>
+The module does also provide some useful generic methods, such as <tt>robot()</tt> and <tt>mobile()</tt>.
+</p>
+
+<p>
+The module basically has a long list of rules based on looking for substrings in the User-Agent string. These are all run when you instantiate the class, and used to set up a data structure. The methods then check values in the data structure.
+</p>
+
+<p>
+As with HTML::ParseBrowser, HTTP::BrowserDetect also does some transforming of browser names. For example 'AOL' becomes 'AOL Browser'; 'mobile safari' becomes 'Mobile Safari', but 'Opera Mobile' becomes 'Opera'. Sometimes these sorts of transformations are useful, other times confusing. And when comparing modules, it was frustrating that there isn't consistency in these name and version transformations.
+</p>
+
+<p>
+HTTP::BrowserDetect expects version strings to look like floating point numbers, so gets Chrome's 15.0.861.0 wrong, as it does with 0.13.GIT, 0.11.3-5ubuntu2 and similar. It has methods for the major and minor version numbers, so it would make sense to have a method which returns the "raw version string".
+</p>
+<h2 id="HTTP::DetectUserAgent">HTTP::DetectUserAgent</h2>
+<p>HTTP::DetectUserAgent provides a simple interface of the first type:
+
+<pre>
+use HTTP::DetectUserAgent;
+
+$ua = HTTP::DetectUserAgent->new( $ua_string );
+print "type    = ", $ua->type,    "\n";
+print "name    = ", $ua->name,    "\n";
+print "version = ", $ua->version, "\n";
+print "vendor  = ", $ua->vendor,  "\n";
+print "os      = ", $ua->os,      "\n";</pre>
+
+<p>That's the whole interface: simple and gets the job done. The above prints the following:</p>
+
+<pre>type    = Browser
+name    = Chrome
+version = 15.0.874.54
+vendor  = Google
+os      = Macintosh
+</pre>
+
+<p>The <tt>type</tt> method will either return 'Browser', 'Mobile', 'Crawler', 'Robot', or 'Unknown'. Crawler is used for specific search-engine crawlers, such as Google and Yahoo. Robot is used for LWP, wget, curl, etc.</p>
+
+<p>The module doesn't seem to be maintained, and there have only been two versions released, but it's provides better coverage than most of the modules, and is the fastest.</p>
+<h2 id="HTTP::Headers::UserAgent">HTTP::Headers::UserAgent</h2>
+<p>
+HTTP::Headers::UserAgent provides basic functions to get the browser name, version, and the operating system:
+</p>
+
+<pre>
+use HTTP::Headers::UserAgent 3.02;
+
+$ua = HTTP::Headers::UserAgent->new( $ua_string );
+print "browser  = ", $ua->browser,  "\n";
+print "version  = ", $ua->version,  "\n";
+print "os       = ", $ua->os,       "\n";
+print "platform = ", $ua->platform, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>browser  = Chrome
+version  = 15
+os       = macos
+platform = ppc
+</pre>
+
+<p>
+I have now taken over maintenance of this module, and released version 3.02.
+The module is now deprecated; it's recommended you use one of the other modules described here.
+HTTP::Headers::UserAgent is now a front end to HTTP::BrowserDetect.
+</p>
+
+<p>The bottom line is: don't use this module.</p>
+<h2 id="HTTP::MobileAgent">HTTP::MobileAgent</h2>
+<p>HTTP::MobileAgent aims to identify mobile UserAgents, and the documentation admits that it's mainly Japanese mobiles. Here's the standard example:</p>
+
+<pre>
+use HTTP::MobileAgent;
+
+$ua = HTTP::MobileAgent->new( $ua_string );
+print "name          = ", $ua->name, "\n";
+print "is_non_mobile = ", $ua->is_non_mobile, "\n";
+print "carrier       = ", $ua->carrier, "\n";</pre>
+
+<p>which results in the following:</p>
+
+<pre>name          = Mozilla
+is_non_mobile = 1
+carrier       = N
+</pre>
+
+<p>So not very successful. The documentation doesn't say whether 'N' is a special value returned by the <tt>carrier()</tt> method for non-mobiles. Or is could be the result of failed parsing.</p>
+
+<p>I tried the same code with the user agent string from my iPhone 4:</p>
+
+<pre>name          = Mozilla
+is_non_mobile = 1
+carrier       = N
+</pre>
+
+<p>The module supports methods for checking whether it's a specific carrier (e.g. <tt>is_docomo()</tt>), if the phone supports GPS (<tt>gps_compliant()</tt>), and the <tt>display()</tt> method returns an instance of HTTP::MobileAgent::Display, which gives characteristics of the phone's screen, such as size and whether colour is supported.</p>
+
+<p>This module provides some useful methods, but the coverage is poor, so unless you're in Japan, it's not very useful.</p>
+
+<p>A separate module, <a href="http://search.cpan.org/~yoshimi/HTTP-MobileAgent-Flash-0.19/lib/HTTP/MobileAgent/Flash.pm">HTTP::MobileAgent::Flash</a>, adds methods to HTTP::MobileAgent for checking whether the user agent supports Flash.</p>
+<h2 id="HTTP::UserAgentString::Parser">HTTP::UserAgentString::Parser</h2>
+<p>
+HTTP::UserAgentString::Parser is a Perl API for the User-Agent
+database maintained at
+<a href="http://user-agent-string.info">user-agent-string.info</a>.
+You create an instance of the Parser class, then call the <tt>parse()</tt>
+method on it to parse a UA string.
+The <tt>parse()</tt> method returns either an instance of
+<a href="https://www.metacpan.org/module/HTTP::UserAgentString::Browser">HTTP::UserAgentString::Browser</a> or
+<a href="https://www.metacpan.org/module/HTTP::UserAgentString::Robot">HTTP::UserAgentString::Robot</a>,
+depending on whether the UA is identified as a robot.
+If neither, then <tt>undef</tt> is returned.
+</p>
+
+<p>
+Here's the standard example for parsing the Chrome User-Agent string:
+</p>
+
+<pre>
+use HTTP::UserAgentString::Parser;
+
+$parser = HTTP::UserAgentString::Parser->new();
+$ua     = $parser->parse( $ua_string );
+print "browser  = ", $ua->name, "\n";
+print "version  = ", $ua->version, "\n";
+print "os       = ", $ua->os->name, "\n";
+print "ostype   = ", $ua->os->family, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>browser  = Chrome
+version  = 15.0.874.54
+os       = Mac OS X 10.7 Lion
+ostype   = Mac OS X
+</pre>
+
+<p>
+For Internet Explorer the <tt>name()</tt> method returns 'IE'.
+</p>
+
+<p>
+The browser class also provides methods for identifying whether the user agent
+is a browser, a mobile browser, an email client, a robot, or an HTTP library.
+</p>
+
+<p>
+The <tt>os()</tt> method returns an instance of
+<a href="https://www.metacpan.org/module/HTTP::UserAgentString::Robot">HTTP::UserAgentString::OS</a>
+if the OS could be identified, or <tt>undef</tt> otherwise.
+The OS class which has methods for getting the operating system name (eg "Windows 98"), family (eg "Windows"),
+and a few other things.
+</p>
+
+<p>
+HTTP::UserAgentString::Parser downloads a data file from
+<a href="htp://user-agent-string.info">user-agent-string.info</a>,
+which is then cached locally for 7 days.
+It provides methods for retrieving information about the database being used.
+By default the local database is stored in <tt>/tmp</tt>;
+I think it should really be somewhere like <tt>/usr/share</tt>.
+</p>
+
+<p>
+The <a href="https://www.metacpan.org/module/HTTP::UserAgentString::Robot">HTTP::UserAgentString::Robot</a>
+class doesn't provide a <tt>version()</tt> method, so if you're looking at the version, you need to
+do something like the following:
+</p>
+
+<pre>
+$parser = HTTP::UserAgentString::Parser->new();
+$ua = $parser->parse( $ua_string );
+if ($ua->can('version')) {
+    ...
+}
+</pre>
+
+<p>
+Or use the <tt>isRobot</tt> method.
+</p>
+<h2 id="Mobile::UserAgent">Mobile::UserAgent</h2>
+<p>HTTP::MobileAgent is another module focussed on mobile user agents. Here's the standard example:</p>
+
+<pre>
+use Mobile::UserAgent;
+
+$ua = Mobile::UserAgent->new( $ua_string );
+if ($ua->success) {
+    print "vendor  = ", $ua->vendor,  "\n";
+    print "model   = ", $ua->model,   "\n";
+    print "version = ", $ua->version, "\n";
+} else {
+    print "not a mobile user agent\n";
+}</pre>
+
+<p>which results in the following:</p>
+
+<pre>not a mobile user agent
+</pre>
+
+<p>I tried this example with the iPhone user agent string, but that wasn't recognised as a mobile. Given the module hasn't been updated since 2005, and the iPhone wasn't released until 2007, that's not surprising!</p>
+
+<p>The module provides methods for getting the screen dimensions (if available), checking if the user agent is an i-mode handset, and checking if the agent is Mozilla-like. It also provides a method <tt>isStandard()</tt> which returns true if the user agent string has the standard model/version format, and <tt>isRubbish()</tt>, which returns true if the user agent string doesn't follow the standard format. The isRubbish check isn't just <tt>not isStandard()</tt>, it returns true if the user agent doesn't follow the standard format, doesn't specify Mozilla-likeness, and isn't an i-mode phone.</p>
+
+<p>Given how out-of-date this module is, relative to the speed of change in the mobile phone space, it's probably not worth using.</p>
+<h2 id="Parse::HTTP::UserAgent">Parse::HTTP::UserAgent</h2>
+<p>Parse::HTTP::UserAgent provides a simple looking API, but is actually the front-end for a small handful of classes which try and make sense of the UserAgent string.</p>
+
+<pre>
+use Parse::HTTP::UserAgent;
+
+$ua = Parse::HTTP::UserAgent->new( $ua_string );
+die "Cannot parse UserAgent string\n" if $ua->unknown;
+
+print "browser     = ", $ua->name, "\n";
+print "version     = ", $ua->version, "\n";
+print "raw version = ", $ua->version('raw'), "\n";
+print "os          = ", $ua->os, "\n";
+print "lang        = ", $ua->lang, "\n";
+print "toolkit     = ", $ua->toolkit, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>browser     = Chrome
+version     = 15.000874054
+raw version = 15.0.874.54
+os          = Macintosh
+lang        = Intel Mac OS X 10_7_1
+toolkit     = AppleWebKit535.2535.200
+</pre>
+
+<p>It identifies Chrome correctly, but the version is wrong, <tt>lang()</tt> returns the wrong thing, and the toolkit is reported as something which looks like an amalgam of two parts of the UserAgent string.</p>
+
+<p>Note that if you pass 'raw' to the version method, you'll get the raw version string, which in this case is correct. This isn't currently documented. I'd make the <tt>version()</tt> method work this way by default, and require parameters for trying to interpet the version string.</p>
+
+<p>
+This code also results in a warning about use of an uninitialized value. I've submitted a patch for that. Update: a new version has been released with these fixes, so the module is very much in active development.
+</p>
+
+<p>In addition to the fairly standard interface above, the module also overloads stringification and numification on the UA object returned, so you can do freaky things like:</p>
+
+<pre>print "ok\n" if $ua eq 'Opera' && $ua >= 9</pre>
+<p>which is equivalent to:</p>
+<pre>print "ok\n" if $ua->name eq 'Opera' && $ua->version >= 9</pre>
+
+<p>A neat use of overloading, but I think the more explicit version is going to be less confusing for the average reader.</p>
+
+<p>The module generates a warning if it gets a version string which isn't made up of dotted digits (such as 1.0rc1). If module can't handle the format of a UA string it shouldn't generate a warning, but should just flag this in what's returned.</p>
+<h2 id="Woothee">Woothee</h2>
+<p>
+The Woothee module is a part of a suite of libraries for parsing User-Agent strings;
+the suite has versions of the Woothee parser in Java, Perl, Python,
+and Ruby.
+</p>
+
+<p>
+Woothee provides a class method <tt>parse()</tt>,
+which takes a User-Agent string and returns a hashref
+with keys <em>name</em>, <em>category</em>, <em>os</em>, <em>version</em>,
+and <em>vendor</em>
+</p>
+
+<pre>
+use Woothee;
+
+$ua = Woothee->parse( $ua_string );
+print "browser  = ", $ua->{name}, "\n";
+print "category = ", $ua->{category}, "\n";
+print "version  = ", $ua->{version}, "\n";
+print "os       = ", $ua->{os}, "\n";</pre>
+
+<p>which prints the following:</p>
+
+<pre>browser  = Chrome
+category = pc
+version  = 15.0.874.54
+os       = Mac OSX
+</pre>
+
+<p>
+The <em>category</em> key will have one of the following values:
+'pc', 'smartphone', 'mobilephone', 'appliance',
+'crawler' or 'misc', 'UNKNOWN'.
+</p>
+
+<p>
+Woothee provides one other class method, <tt>is_crawler()</tt>,
+which takes a User-Agent string,
+and returns a true value if the agent is a crawler.
+It does this in a quick and dirty way;
+the documentation says that if you want accuracy on this check,
+you should call <tt>parse()</tt> and check whether the
+<em>category</em> key has the value 'crawler'.
+</p>
+
+<h2>Comparison</h2>
+
+<p>
+For this comparison I've excluded the two modules which focus only on mobiles,
+and excluded HTTP::Headers::UserAgent, for the reasons given above.
+</p>
+
+<h3>Coverage</h3>
+
+<p>
+I built a corpus of user agent strings,
+based on the list at <a href="http://useragentstring.com">useragentstring.com</a>,
+taking those where the agent name and version could be clearly determined.
+I ran this corpus (of 12,875 user agent strings) past the five modules.
+The following table shows how many were correctly recognised by each module:
+</p>
+
+<table><tr><td width=25></td><td></td><td></td><th align=right>Name (%)</th><td></td><th align=right>Version (%)</th><td></td><th align=right>Coverage (%)</th></tr>
+<tr><td width=25></td><td align=left>HTML::ParseBrowser</td><td></td><td align=right>65.3</td><td></td><td align=right>60.4</td><td></td><td align=right>59.2</td></tr>
+<tr><td width=25></td><td align=left>HTTP::UserAgentString::Parser</td><td></td><td align=right>58.1</td><td></td><td align=right>63.1</td><td></td><td align=right>51.6</td></tr>
+<tr><td width=25></td><td align=left>Parse::HTTP::UserAgent</td><td></td><td align=right>53.9</td><td></td><td align=right>51.7</td><td></td><td align=right>47.8</td></tr>
+<tr><td width=25></td><td align=left>HTTP::DetectUserAgent</td><td></td><td align=right>44.5</td><td></td><td align=right>42.1</td><td></td><td align=right>39.4</td></tr>
+<tr><td width=25></td><td align=left>Woothee</td><td></td><td align=right>30.9</td><td></td><td align=right>27.7</td><td></td><td align=right>26.4</td></tr>
+<tr><td width=25></td><td align=left>HTTP::BrowserDetect</td><td></td><td align=right>40.1</td><td></td><td align=right>10.7</td><td></td><td align=right>7.9</td></tr>
+<tr><td width=25></td><td align=left>HTTP::Headers::UserAgent</td><td></td><td align=right>39.0</td><td></td><td align=right>10.7</td><td></td><td align=right>7.9</td></tr>
+</table>
+
+
+<p>
+I had something of an unfair advantage with HTML::ParseBrowser,
+as I was testing the module with the same corpus that I use for this evaluation.
+I'll be offering it to the other module authors.</p>
+
+<p>
+The corpus contains a lot of outdated browsers and robots,
+which you're unlikely to see in logfiles today,
+though looking at examples that weren't matched by the various modules,
+many of them were precisely these outdated ones.
+But still, take these figures with a pinch of salt.
+</p>
+
+<p>
+For comparison, I wrote the simplest UserAgent parser:
+it just takes the first product/version item in the string and uses that.
+It scored 12.6%, 12.2%, and 7.7%.
+</p>
+
+<h3>Modern browsers</h3>
+
+<p>
+I created a mini corpus which just had example user agent strings from
+Internet Explorer, Firefox, Chrome, Safari, Opera and Camino.
+The following table shows how well each of the four modules did
+at recognising these.
+</p>
+
+<table class=capabilities><tr><th></th><th class=module>Woothee</th><th class=module>HTTP :: DetectUserAgent</th><th class=module>HTTP :: BrowserDetect</th><th class=module>HTTP :: UserAgentString :: Parser</th><th class=module>HTML :: ParseBrowser</th><th class=module>HTTP :: Headers :: UserAgent</th><th class=module>Parse :: HTTP :: UserAgent</th></tr>
+<tr><td align=left nowrap>Internet Explorer 8 /<br> Windows XP</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Firefox 7 /<br> Mac</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Safari 5 /<br> Mac</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Firefox 3 /<br> Mac</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Camino 2 /<br> Mac</td><td align=center>  </td><td align=center> &#10003;&#10003; </td><td align=center>  </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center>  </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Safari 5 /<br> Windows XP</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Firefox 7 /<br> Windows XP</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Chrome 14 /<br> Windows 7</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Firefox 3 /<br> Windows 7</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Internet Explorer 9 /<br> Windows 7</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Opera 11 /<br> Mac</td><td align=center> &#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+<tr><td align=left nowrap>Chrome 15 /<br> Mac</td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003;&#10003; </td><td align=center> &#10003; </td><td align=center> &#10003;&#10003; </td></tr>
+</table>
+
+
+<p>
+Two ticks means it got both browser name and version correct,
+one tick means it got one of those right.
+</p>
+
+<p>HTTP::BrowserDetect scores particularly badly on this test, because it can't handle double- or triple-dotted version numbers.</p>
+
+<h3>Robot detection</h3>
+
+<p>
+Only five of the modules provide a method for finding out if the agent is believed to be a robot or crawler.
+I used the XML corpus from <a href="http://www.user-agents.org/">www.user-agents.org</a>,
+and trusted that the Robot classification was largely correct.
+The following table shows how the five modules handled the 1439 robots.
+</p>
+
+<table class=benchmark><th align=left>Module</th><th>Robot detection (%)</th></tr>
+<tr><td align=left class=module>HTTP::BrowserDetect</td><td align=right class=time>69.8</td></tr>
+<tr><td align=left class=module>Woothee</td><td align=right class=time>31.1</td></tr>
+<tr><td align=left class=module>HTTP::DetectUserAgent</td><td align=right class=time>30.2</td></tr>
+<tr><td align=left class=module>HTTP::UserAgentString::Parser</td><td align=right class=time>8.5</td></tr>
+<tr><td align=left class=module>Parse::HTTP::UserAgent</td><td align=right class=time>1.4</td></tr>
+</table>
+
+
+<h3>Performance</h3>
+
+<p>
+I used the Benchmark module to time each module processing the corpus used in the coverage tests.
+To get meaningful results, I did 10 runs through the corpus with each module.
+</p>
+
+<p>
+The table shows the number of seconds taken, so smaller is better:
+</p>
+
+<table class=benchmark><tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>HTTP::UserAgentString::Parser</td><td align=right class=time>0.12</td></tr>
+<tr><td class=module>Woothee</td><td align=right class=time>5.00</td></tr>
+<tr><td class=module>HTTP::DetectUserAgent</td><td align=right class=time>5.14</td></tr>
+<tr><td class=module>HTML::ParseBrowser</td><td align=right class=time>6.87</td></tr>
+<tr><td class=module>Parse::HTTP::UserAgent</td><td align=right class=time>15.58</td></tr>
+<tr><td class=module>HTTP::BrowserDetect</td><td align=right class=time>25.83</td></tr>
+<tr><td class=module>HTTP::Headers::UserAgent</td><td align=right class=time>26.07</td></tr>
+</table>
+
+
+<p>
+Which just shows the benefit of the approach taken by HTTP::UserAgentString::Parser,
+using a lookup file.
+</p>
+<h2>Conclusion</h2>
+
+<p>
+For general purpose parsing of a UserAgent string,
+to identify the agent name and version,
+the overall best choice is HTML::ParseBrowser.
+It gives the best coverage, both overall and on modern browsers,
+and while it's not the fastest, it's probably fast enough for most users.
+</p>
+
+<p>
+If you're processing a lot of data, so speed is important,
+and you're only really worried about identifying the most popular browsers,
+then HTTP::UserAgentString::Parser would be a good choice.
+It's much faster than the rest and comes second on coverage.
+</p>
+
+<p>
+If identification of robots is important to you,
+then HTTP::BrowserDetect is clearly the best module to use.
+If you want good browser identification as well,
+then use this in conjunction with HTML::ParseBrowser.
+</p>
+
+<p>
+If you're looking for information about mobile browsers,
+HTTP::MobileAgent might be worth a look.
+It currently has a strong bias towards Japanese mobiles,
+but is under active development,
+so maybe you could help get coverage outside Japan.
+</p>
+
+<h3>The perfect module</h3>
+
+<p>
+There is no one standout module, so here's my wishlist,
+which is not much more than a mashup of features from the modules described above:
+</p>
+
+<ul>
+<li>Good coverage at recognising the browser.</li>
+<li>A simple interface if all you want is the browser and version, with more under the hood if you want it.</li>
+<li>By default performs sensible mapping from the name given in the UserAgent string (for example MSIE would be returned as Internet Explorer), but provides an interface for getting the raw agent name.</li>
+<li>The version method would return the raw version string, but would also provide a way to get at major, minor version numbers, etc.</li>
+<li>Provides methods for the operating system and version. Again, this would map the raw data to more user-friendly values ("NT 6.1" would be OS "Windows", version "7"), but would also provide a way to get at the raw data.</li>
+<li>An agent_type method would return 'mobile', 'browser', 'robot', 'tablet', or 'unknown'.</li>
+<li>If information is available, a device method would return an object which has methods for getting the screen resolution, etc.</li>
+<li>Kept up-to-date. The documentation might refer to a website, where you can direct your browser. You'd be asked to give information about your browser, which would add it to the corpus.</li>
+</ul>
+
+<p>It's the last point that's the big challenge. If the currently active authors pooled their efforts, the above doesn't seem implausible. That's my next goal after a bit more work on HTML::ParseBrowser.</p>
+
+<p>
+HTTP::UserAgentString::Parser is a new entry on this list,
+but it's already a good contender for the crown.
+</p>
+
+<p>Here's one possible interface:</p>
+
+<pre>
+  $ua = Perfect::UserAgent::Parser->new( $ua_string );
+  
+  $name = $ua->name;
+  print "name       = ", $name, "\n";           # Internet Explorer
+  print "raw name   = ", $name->raw, "\n";      # MSIE
+  
+  $version = $ua->version;
+  print "version    = ", $version, "\n";        # 15.0.874.54
+  print "major      = ", $version->major, "\n"; # 15
+  
+  print "agent type = ", $ua->agent_type, "\n"; # browser
+
+  print "os       = ", $ua->os, "\n";           # Windows 7
+  print " name    = ", $ua->os->name, "\n";     # Windows
+  print " version = ", $ua->os->version, "\n";  # 7
+</pre>
+
+<p>This is using stringification overloading so if you just want the browser name and version, the interface is simple, but you can dig deeper if you want to.</p>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

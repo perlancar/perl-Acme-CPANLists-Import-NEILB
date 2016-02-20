@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for getting a module's path</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for getting a module's path</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-09-21</p>
+</div>
+<p>
+This is a review of modules that can be used to find out
+where some other module is installed locally.
+Typically this consists of looking for the module
+in the directories listed in <tt>@INC</tt>.
+</p>
+
+<p>
+The following is a list of the modules I'm aware of so far.
+Please let me know if I've missed any: neilb at cpan dot org.
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#App::moduleswhere"><tt>App::moduleswhere</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~sunnavy/App-moduleswhere-0.03/lib/App/moduleswhere.pm">pod</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sunnavy/">å­æµ·å</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=App-moduleswhere"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=App::moduleswhere"><tt>1</tt></a></td>
+  <td align=right><tt>2011-05-08</tt></td>
+</tr><tr>
+  <td><a href="#App::whichpm"><tt>App::whichpm</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~jkutej/App-whichpm-0.04/lib/App/whichpm.pm">pod</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~jkutej/">Jozef Kutej</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=App-whichpm"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=App::whichpm"><tt>0</tt></a></td>
+  <td align=right><tt>2010-06-22</tt></td>
+</tr><tr>
+  <td><a href="#Class::Inspector"><tt>Class::Inspector</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~adamk/Class-Inspector-1.27/lib/Class/Inspector.pm">pod</a></span></td>
+  <td align=right><tt>1.27</tt></td>
+  <td align=left><a href="http://search.cpan.org/~adamk/">Adam Kennedy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Class-Inspector"><tt>3</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Inspector"><tt>104</tt></a></td>
+  <td align=right><tt>2012-01-25</tt></td>
+</tr><tr>
+  <td><a href="#Module::Data"><tt>Module::Data</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~kentnl/Module-Data-0.006/lib/Module/Data.pm">pod</a></span></td>
+  <td align=right><tt>0.006</tt></td>
+  <td align=left><a href="http://search.cpan.org/~kentnl/">Kent Fredric</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Data"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Data"><tt>2</tt></a></td>
+  <td align=right><tt>2012-04-13</tt></td>
+</tr><tr>
+  <td><a href="#Module::Filename"><tt>Module::Filename</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mrdvt/Module-Filename-0.01/lib/Module/Filename.pm">pod</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mrdvt/">Michael R. Davis</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Filename"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Filename"><tt>0</tt></a></td>
+  <td align=right><tt>2009-01-19</tt></td>
+</tr><tr>
+  <td><a href="#Module::Finder"><tt>Module::Finder</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ewilhelm/Module-Finder-v0.1.5/lib/Module/Finder.pm">pod</a></span></td>
+  <td align=right><tt>v0.1.5</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ewilhelm/">Eric Wilhelm</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Finder"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Finder"><tt>1</tt></a></td>
+  <td align=right><tt>2007-07-17</tt></td>
+</tr><tr>
+  <td><a href="#Module::Info"><tt>Module::Info</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mbarbon/Module-Info-0.32/lib/Module/Info.pm">pod</a></span></td>
+  <td align=right><tt>0.32</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mbarbon/">Mattia Barbon</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Info"><tt>5</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Info"><tt>13</tt></a></td>
+  <td align=right><tt>2010-09-08</tt></td>
+</tr><tr>
+  <td><a href="#Module::Locate"><tt>Module::Locate</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Module-Locate-1.71/lib/Module/Locate.pm">pod</a></span></td>
+  <td align=right><tt>1.71</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Locate"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Locate"><tt>7</tt></a></td>
+  <td align=right><tt>2012-09-17</tt></td>
+</tr><tr>
+  <td><a href="#Module::Mapper"><tt>Module::Mapper</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~darnold/Module-Mapper-1.01/lib/Module/Mapper.pm">pod</a></span></td>
+  <td align=right><tt>1.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~darnold/">Dean Arnold</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Mapper"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Mapper"><tt>0</tt></a></td>
+  <td align=right><tt>2007-08-18</tt></td>
+</tr><tr>
+  <td><a href="#Module::Metadata"><tt>Module::Metadata</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~apeiron/Module-Metadata-1.000011/lib/Module/Metadata.pm">pod</a></span></td>
+  <td align=right><tt>1.000011</tt></td>
+  <td align=left><a href="http://search.cpan.org/~apeiron/">apeiron</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Metadata"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Metadata"><tt>0</tt></a></td>
+  <td align=right><tt>2012-08-16</tt></td>
+</tr><tr>
+  <td><a href="#Module::Path"><tt>Module::Path</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Module-Path-0.06/lib/Module/Path.pm">pod</a></span></td>
+  <td align=right><tt>0.06</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Path"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Path"><tt>2</tt></a></td>
+  <td align=right><tt>2012-09-18</tt></td>
+</tr><tr>
+  <td><a href="#Module::Util"><tt>Module::Util</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mattlaw/Module-Util-1.08/lib/Module/Util.pm">pod</a></span></td>
+  <td align=right><tt>1.08</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mattlaw/">Matthew Lawrence</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Util"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Module::Util"><tt>13</tt></a></td>
+  <td align=right><tt>2012-05-28</tt></td>
+</tr><tr>
+  <td><a href="#Path::ScanINC"><tt>Path::ScanINC</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~kentnl/Path-ScanINC-0.002/lib/Path/ScanINC.pm">pod</a></span></td>
+  <td align=right><tt>0.002</tt></td>
+  <td align=left><a href="http://search.cpan.org/~kentnl/">Kent Fredric</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Path-ScanINC"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Path::ScanINC"><tt>1</tt></a></td>
+  <td align=right><tt>2012-04-11</tt></td>
+</tr><tr>
+  <td><a href="#Pod::Perldoc"><tt>Pod::Perldoc</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mallen/Pod-Perldoc-3.17/lib/Pod/Perldoc.pm">pod</a></span></td>
+  <td align=right><tt>3.17</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mallen/">Mark Allen</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Pod-Perldoc"><tt>8</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Pod::Perldoc"><tt>15</tt></a></td>
+  <td align=right><tt>2012-03-18</tt></td>
+</tr>
+</table>
+
+
+<p>
+As my standard test, I'll be using HTTP::Client, a module that I now maintain.
+Obviously, to get the path for a module you could just do something like:
+</p>
+
+<pre>
+eval "require $module";
+($relpath = "$module.pm") =~ s!::!/!g;
+print "$module path = ", $INC{$relpath}, "\n";</pre>
+
+<p>
+But there are various reasons why you might not want to load the module,
+so most of the modules described here get the path <em>without</em> having
+to load the module.
+</p>
+
+<p>
+Before we dive in, it's worth recapping relevant parts of how modules are loaded.
+When you <span class="inlineCode">require HTTP::Client</span> or
+<span class="inlineCode">use HTTP::Client</span>,
+perl ends up running <tt>require</tt>.
+The module name is converted into a partial path, where
+<tt>HTTP::Client</tt> becomes <tt>HTTP/Client.pm</tt>.
+The directory path separator will always be <b><tt>/</tt></b> in this partial path,
+even if the correct directory path separator for your operating system is something else.
+<tt>require</tt> looks in <tt>%INC</tt> to see if the module has been loaded,
+and if not, it searches the list of directories in <tt>@INC</tt>, looking for the module.
+If found, the module is loaded, and <tt>%INC</tt> is updated: the key is the partial path,
+and the value is the full path. See <a href="http://perldoc.perl.org/functions/require.html">perldoc -f require</a> for more of the gory details.
+</p>
+
+<p>
+Each module is presented in turn, with a SYNOPSIS style code sample.
+Then all the modules are compared, and I end up with recommendations.
+</p>
+<h2 id="App::moduleswhere">App::moduleswhere</h2>
+<p>
+<a href="https://www.metacpan.org/module/App::moduleswhere" class=module>App::moduleswhere</a>
+is an empty module, the distribution for which contains the
+<a href="https://www.metacpan.org/source/SUNNAVY/App-moduleswhere-0.03/bin/mwhere"><tt>mwhere</tt></a> script.
+This is a command-line script for getting the path to a module:
+</p>
+
+<pre>
+% mwhere -n HTTP::Client
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+</pre>
+
+<p>
+If you use the <tt>-n</tt> (or <tt>-no-require</tt>) switch,
+then <tt>mwhere</tt> will scan <tt>@INC</tt>, and not load the module.
+Without that switch, the script <tt>require</tt>s the target module,
+then gets the path from <tt>%INC</tt>.
+</p>
+
+<p>
+It seems a little odd to me that <tt>App::moduleswhere</tt>
+has the documentation for the script,
+and <tt>mwhere</tt> itself has no embedded documentation,
+so <tt>man mwhere</tt> or <tt>perldoc mwhere</tt> gets you nothing.
+</p>
+
+<h2 id="App::whichpm">App::whichpm</h2>
+<p>
+<a href="https://www.metacpan.org/module/App::whichpm">App::whichpm</a>
+provides a single function, <tt>which_pm()</tt>,
+which in a scalar context returns the path to the module:
+
+<pre>
+use App::whichpm qw(which_pm);
+
+print "$module path = ", which_pm($module), "\n";</pre>
+
+<p>
+<tt>which_pm()</tt> always runs:
+</p>
+
+<pre>
+eval "use $module_name;";
+</pre>
+
+<p>
+and first looks to see if the target module is in <tt>%INC</tt>,
+returning the path found there if it is.
+If it isn't found in <tt>%INC</tt>, then <tt>@INC</tt> is scanned.
+</p>
+
+<p>
+In an array context, <tt>which_pm()</tt> returns <tt>($fullpath, $version)</tt>,
+where:
+</p>
+
+<pre>
+$version = $module_name->VERSION;
+</pre>
+
+<p>
+The distribution also includes the
+<a href="https://www.metacpan.org/module/whichpm"><tt>whichpm</tt></a> script,
+which is just a wrapper around the module.
+By default it reports both path and version; the <tt>-q</tt> switch results
+in the path only.
+</p>
+
+<pre>
+% whichpm -q HTTP::Client
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+
+% whichpm HTTP::Client
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm 1.53
+</pre>
+
+<p>
+The problem with the approach used (loading the module then
+getting the path from <tt>%INC</tt>) is that the loading of
+the module might have side effects.
+For example,
+<a href="https://www.metacpan.org/module/Devel::Modlist"><tt>Devel::Modlist</tt></a>
+prints the list of modules used, so you'll get the following:
+</p>
+
+<pre>
+% <b>whichpm Devel::Modlist</b>
+/usr/local/lib/perl5/site_perl/5.16.0/Devel/Modlist.pm 0.801
+App::whichpm           0.04
+Carp                   1.26
+... <i>33 more modules</i> ...
+</pre>
+<h2 id="Class::Inspector">Class::Inspector</h2>
+<p>
+<a href="https://www.metacpan.org/module/Class::Inspector">Class::Inspector</a>
+provides a number of class methods for getting information about a class.
+The <tt>resolved_filename()</tt> method returns the full path to a module:
+</p>
+
+<pre>
+use Class::Inspector;
+
+print "$module path = ", Class::Inspector->resolved_filename($module), "\n";</pre>
+
+<p>
+Class::Inspector provides the following class methods in addition to
+the one demonstrated above:
+</p>
+
+<ul>
+<li><tt>installed($module)</tt> returns true if the module is installed (in <tt>@INC</tt>).
+<li><tt>loaded($module)</tt> returns true if the module is loaded in the calling process.
+<li><tt>filename($module)</tt> returns the partial filename for the module.
+    Eg <tt>HTTP/Client.pm</tt> for <tt>HTTP::Client</tt>.
+<li><tt>loaded_filename($module)</tt> returns the full path that the specified module
+    was loaded from, if it's in memory, otherwise false.
+<li><tt>functions($module)</tt> returns a list of the names of the functions
+    defined in the module's namespace, if the module is loaded.
+<li><tt>function_refs($module)</tt> returns a list of code refs, for all functions
+    defined in the module's namespace, if the module is loaded.
+<li><tt>function_exists($module,$function_name)</tt> returns true if the specified
+    function is defined in the specified module.
+<li><tt>methods($module,@options)</tt> returns a arrayref of methods defined in the module,
+    according to the options passed. Returns <tt>undef</tt> if the module isn't loaded.
+    See <a href="https://www.metacpan.org/module/Class::Inspector#methods-class-options"
+    >the documentation</a> for more details.
+<li><tt>subclasses($module)</tt> returns a list of all the currently loaded modules
+    that are subclasses of the specified module.
+</ul>
+
+<p>
+I'm not sure why everything is provided as a class method rather than
+functions, but maybe some of the <a href="http://deps.cpantesters.org/depended-on-by.pl?module=Class::Inspector">many modules dependent on Class::Inspector</a> are subclasses,
+which would explain it.
+</p>
+
+<h2 id="Module::Data">Module::Data</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Data">Module::Data</a>
+bills itself as a module which will "introspect context information about modules in @INC".
+The <tt>path()</tt> method returns the path from <tt>%INC</tt> if the target module has already
+been loaded, otherwise it uses <a href="https://www.metacpan.org/module/Path::ScanINC">Path::ScanINC</a>:
+</p>
+
+<pre>
+use Module::Data;
+
+$md = Module::Data->new($module);
+print "$module path = ", $md->path, "\n";</pre>
+
+<p>
+The module also provides some other methods:
+</p>
+
+<ul>
+<li><tt>package()</tt> returns the package that the instance was created for (i.e. the name of the
+    module that was passed to the constructor.
+<li><tt>loaded()</tt> returns true if the module has already been loaded.
+<li><tt>require()</tt> loads the module into memory,
+    using <a href="https://www.metacpan.org/module/Module::Runtime">Module::Runtime</a>.
+<li><tt>root()</tt> returns the directory in <tt>@INC</tt> where the module was found.
+<li><tt>version()</tt> returns the <tt>$package-&gt;VERSION</tt> if the module is <tt>loaded</tt>,
+    otherwise it uses <a href="https://www.metacpan.org/module/Module::Metadata">Module::Metadata</a>
+    to parse the version from the source.
+</ul>
+<h2 id="Module::Filename">Module::Filename</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Filename">Module::Filename</a>
+provides an OO interface for getting a module's filename:
+</p>
+
+<pre>
+use Module::Filename;
+
+$mf = Module::Filename->new;
+print "$module path = ", $mf->filename($module), "\n";</pre>
+
+<p>
+It uses <a href="https://www.metacpan.org/module/Path::Class">Path::Class</a> to
+construct the full path from the module name and the relevant directory in <tt>@INC</tt>.
+</p>
+
+<p>
+I think the OO design is overkill, as it's really just providing one function.
+For example, the SYNOPSIS suggests the following use,
+which is basically saying to use it like a function call:
+</p>
+
+<pre>
+use Module::Filename;
+my $filename=Module::Filename-&gt;new-&gt;filename("strict");
+</pre>
+
+<p>
+The use of Path::Class means that Module::Filename has 38 dependencies.
+</p>
+<h2 id="Module::Finder">Module::Finder</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Finder">Module::Finder</a>
+is an interesting module, with a quirky interface. So much so that it took me a while
+to work out how to get it work, and I still don't understand all of it.
+By default it will search through <tt>@INC</tt> looking for modules,
+and for your modules of interest you get a hashref containing information,
+including the path. Unless you constrain the search, it will recurse through all
+the directories in <tt>@INC</tt>, which takes quite a while.
+</p>
+
+<p>
+Here's an example that shows getting the information for HTTP::Client:
+</p>
+
+<pre>
+use Module::Finder;
+
+$finder = Module::Finder->new( dirs => \@INC,
+                              paths => { 'HTTP' => '+' });
+$info   = $finder->module_info('HTTP::Client');
+
+print "name        = ", $info->{module_name}, "\n";
+print "path        = ", $info->{filename}, "\n";
+print "inc_path    = ", $info->{inc_path}, "\n";
+print "module_path = ", $info->{module_path}, "\n";</pre>
+
+<p>
+This generates the following output:
+</p>
+
+<pre>
+name        = HTTP::Client
+path        = /usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+inc_path    = /usr/local/lib/perl5/site_perl/5.16.0
+module_path = HTTP/Client.pm
+</pre>
+
+<p>
+The <tt>paths</tt> parameter is used to constrain the search. The <b>+</b> for <tt>HTTP</tt> says to
+only look for things in the HTTP directory, and no deeper.
+Look at <a href="https://www.metacpan.org/module/Module::Finder">the documentation</a>
+to learn about the other options for constraining the search.
+The <tt>dirs</tt> parameter provides a list of directories to search;
+if not specified then Module::Finder will look through <tt>@INC</tt>.
+</p>
+
+<p>
+There are a number of other methods; the following shows how could get information about
+all locally installed modules:
+</p>
+
+<pre>
+use Module::Finder;
+
+$finder = Module::Finder->new();
+%all    = $finder->module_infos();
+
+foreach my $info (values %all) {
+    print $info->{module_name}, "\n";
+    print "    path        = ", $info->{filename}, "\n";
+    print "    inc_path    = ", $info->{inc_path}, "\n";
+    print "    module_path = ", $info->{module_path}, "\n";
+}</pre>
+
+<h2 id="Module::Info">Module::Info</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Info">Module::Info</a>
+can provide some information about a module without loading the module,
+and can provide more information after loading the module.
+Getting the path for a module doesn't load it:
+</p>
+
+<pre>
+use Module::Info;
+
+$mi = Module::Info->new_from_module($module);
+print "$module path = ", $mi->file, "\n";</pre>
+
+<p>
+The following shows the other methods that don't trigger loading of the module:
+</p>
+
+<pre>
+use Module::Info;
+
+$mi = Module::Info->new_from_module($module);
+print "  name    = ", $mi->name, "\n";
+print "  version = ", $mi->version, "\n";
+print "  inc_dir = ", $mi->inc_dir, "\n";
+print "  is_core = ", $mi->is_core, "\n";</pre>
+
+<p>
+Which provides the following for <tt>HTTP::Client</tt>:
+</p>
+
+<pre>  name    = HTTP::Client
+  version = 1.53
+  inc_dir = /usr/local/lib/perl5/site_perl/5.16.0
+  is_core = 0
+</pre>
+
+<p>
+The following methods do trigger the loading of the target module; read
+<a href="https://www.metacpan.org/module/Module::Info#Information-that-requires-loading">the documentation</a> for more details.
+Note that the documentation also caveats "From here down reliability drops rapidly!".
+</p>
+
+<ul>
+<li><tt>packages_inside()</tt> returns a list of the packages defined in the module.
+<li><tt>package_versions()</tt> returns a hash, the keys of which are the packages
+    from <tt>packages_inside()</tt>, with the values the version, if one is defined.
+<li><tt>modules_used()</tt> returns a list of the modules <tt>use</tt>'d or <tt>require</tt>'d.
+<li><tt>modules_required()</tt> returns a hash, the keys of which are the modules
+    in <tt>modules_used()</tt>, and each value is an array ref, which contains
+    a list of the versions required or an empty list if no version was specified.
+<li><tt>subroutines()</tt> returns a hash, the keys of which are names of subroutines
+    defined in the module, and the values are hashrefs with information about the subroutine.
+<li><tt>superclasses()</tt> returns the value of <tt>@ISA</tt> for the module.
+<li><tt>subroutines_called()</tt> returns a list of all the subroutines called.
+</ul>
+
+<p>
+There are a few more things the module can do &mdash;
+the interested reader is directed to the
+<a href="https://www.metacpan.org/module/Module::Info">documentation</a>.
+</p>
+<h2 id="Module::Locate">Module::Locate</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Locate">Module::Locate</a>
+provides a number of functions related to finding a module.
+The main function is <tt>locate()</tt>, which takes a module name
+and returns the full path to the module:
+</p>
+
+<pre>
+use Module::Locate qw(locate);
+
+print "$module path = ", locate($module), "\n";</pre>
+
+<p>
+It uses <tt>catfile</tt> from
+<a href="https://www.metacpan.org/module/File::Spec::Functions">File::Spec::Functions</a>
+to ensure paths are generated portably.
+</p>
+
+<p>
+Module::Locate provides a number of other functions:
+</p>
+
+<ul>
+<li><tt>get_source($module)</tt> returns a string containing the source of the module.
+<li><tt>acts_like_fh()</tt> returns true if passed a scalar which acts like a filehandle.
+    This is an odd function to include in the module; it's used internally by <tt>locate()</tt>,
+    but I think I would have kept it private.
+<li><tt>mod_to_path($module)</tt> returns the partial path for the module: <tt>HTTP::Client</tt>
+    becomes <tt>HTTP/Client.pm</tt>
+<li><tt>is_mod_loaded($module)</tt> returns true if the module's partial path (see above)
+    is found in <tt>%INC</tt>.
+<li><tt>is_pkg_loaded($module)</tt> returns true if the module appears to have been loaded;
+    this is different from <tt>is_mod_loaded()</tt> because it looks for a symbol table in the <tt>%main::</tt>
+    stash.
+</ul>
+
+<p>
+<a href="https://www.metacpan.org/module/App::Module::Locate">App::Module::Locate</a>
+provides a command-line interface to Module::Locate &mdash;
+the distribution includes the
+<a href="http://search.cpan.org/~celogeek/App-Module-Locate-0.5/bin/mlocate">mlocate</a> script:
+</p>
+<pre>
+% mlocate HTTP::Client
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+</pre>
+
+<p>
+This module has a major <a href="https://rt.cpan.org/Ticket/Display.html?id=30523">flaw</a>:
+when you use <tt>locate($module)</tt>,
+if <tt>$module</tt> hasn't already been loaded, then it finds it in <tt>@INC</tt>,
+and then caches the path in <tt>%INC</tt>.
+So if you subsequently try to <tt>require</tt> or <tt>use</tt> the module, it won't actually
+be loaded, because its appearance in <tt>%INC</tt> tricks Perl into thinking it has already been loaded.
+The module's author, Dan, has just given me co-maint, so I can fix this bug.
+</p>
+<h2 id="Module::Mapper">Module::Mapper</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Mapper">Module::Mapper</a>
+provides one function, <tt>find_sources()</tt>,
+which searches either <tt>@INC</tt> and/or a specified list of directories,
+looking for one or more module names.
+It returns a hashref, which is keyed off the module name, with the value
+being a list of paths. The first path in the list is the absolute path to the module.
+</p>
+
+<pre>
+use Module::Mapper;
+
+$ref = find_sources(
+                           All => 0,
+                        UseINC => 1,
+                    IncludePOD => 0,
+                       Modules => [ $module ],
+                   );
+print "$module path = ", $ref->{$module}->[0], "\n";</pre>
+
+<p>
+The <tt>find_sources()</tt> function takes 9 different options:
+</p>
+
+<ul>
+<li><tt>Modules</tt> takes an arrayref of module names.
+<li>If <tt>All()</tt> is true, it will look for all modules under the namespaces
+    of the modules passed in the <tt>Modules</tt> option.
+<li>If <tt>IncludePOD()</tt> is true, then the search will look for <tt>.pod</tt> files;
+    any pod file associated with each module will be included in the results arrayref.
+<li>If <tt>UseINC()</tt> is true, then the search will taken in all directories
+    in <tt>@INC</tt>.
+<li><tt>Libs</tt> takes an arrayref, which can be used to provide additional directories
+    that should be searched.
+<li><tt>Output</tt> can be used to provide a path which is used to remap the modules,
+    and scripts if you specified any. See the doc for more details on what this does.
+<li><tt>Project</tt> provides a project root directory, which will be searched.
+    I'm not really sure what this does.
+<li><tt>Verbose</tt> can be used to provide a coderef; the referenced code will
+    be called with diagnostic messages as the search progresses.
+</ul>
+
+<p>
+The design of the interface seems a bit curious to me,
+but the SEE ALSO says that it was created to support
+<a href="http://search.cpan.org/~darnold/Pod-Classdoc-1.01/lib/Pod/Classdoc.pod">Pod::Classdoc</a> and
+<a href="http://search.cpan.org/~darnold/PPI-HTML-CodeFolder-1.01/lib/PPI/HTML/CodeFolder.pod">PPI::HTML::CodeFolder</a>,
+so perhaps the design reflects the design of those modules.
+</p>
+
+<h2 id="Module::Metadata">Module::Metadata</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Metadata">Module::Metadata</a>
+can provide several pieces of metadata about a module without loading the module &mdash;
+it parses the module's source and uses regexes to pull out the metadata.
+The simplest way to get the path to a module is with the <tt>find_module_by_name()</tt>
+class method:
+</p>
+
+<pre>
+use Module::Metadata;
+
+print "$module path = ", Module::Metadata->find_module_by_name($module), "\n";</pre>
+
+<p>
+You can also instantiate <tt>Module::Metadata</tt> on a module (or source file),
+and then get information using instance methods, including the path:
+</p>
+
+<pre>
+use Module::Metadata;
+
+$meta = Module::Metadata->new_from_module($module);
+print "  name         = ", $meta->name, "\n";
+print "  version      = ", $meta->version, "\n";
+print "  filename     = ", $meta->filename, "\n";
+print "  packages     = ", join(',', $meta->packages_inside), "\n";
+print "  contains-pod = ", $meta->contains_pod, "\n";
+print "  pod          = ", join(',', $meta->pod_inside), "\n";</pre>
+
+<p>
+For <tt>HTTP::Client</tt> this results in the following:
+</p>
+
+<pre>  name         = HTTP::Client
+  version      = 1.53
+  filename     = /usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+  packages     = HTTP::Client
+  contains-pod = -1
+  pod          = 
+</pre>
+
+<p>
+The current version (1.000011) of Module::Metadata has
+a <a href="https://rt.cpan.org/Ticket/Display.html?id=79656">bug</a>
+which means it ignores any pod that comes after <span class="inlineCode">__END__</span>.
+Here's the output for
+<a href="https://www.metacpan.org/module/Net::HTTP::Tiny"><tt>Net::HTTP::Tiny</tt></a>:
+</p>
+
+<pre>
+  name         = Net::HTTP::Tiny
+  version      = 0.001
+  filename     = /usr/local/lib/perl5/site_perl/5.16.0/Net/HTTP/Tiny.pm
+  packages     = Net::HTTP::Tiny
+  contains-pod = 8
+  pod          = NAME,SYNOPSIS,DESCRIPTION,FUNCTIONS,BUGS,SEE ALSO,AUTHOR,COPYRIGHT,LICENSE
+</pre>
+
+<h2 id="Module::Path">Module::Path</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Path">Module::Path</a>
+is a module I wrote while working on my review of
+<a href="http://neilb.org/reviews/dependencies.html">CPAN modules for getting module dependency information</a>.
+A number of modules expect the path to perl source, but I wanted to provide a module name.
+On searching CPAN I only turned up a couple of modules,
+but they either seemed to have too many dependencies, or had potential issues.
+So I whipped up Module::Path. While continuing to work on the other review I subsequently found more
+modules, and that prompted this review.
+</p>
+
+<p>
+Module::Path provides one function, <tt>module_path()</tt>, which you must import:
+</p>
+
+<pre>
+use Module::Path qw(module_path);
+
+print "$module path = ", module_path($module), "\n";</pre>
+
+<p>
+The distribution also includes a script,
+<a href="https://www.metacpan.org/module/mpath"><tt>mpath</tt></a>,
+for use from the command-line:
+</p>
+
+<pre>
+% <b>mpath HTTP::Client</b>
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+</pre>
+
+<p>
+Module::Path uses the right directory path separator for your operating system,
+and ignores any code references it finds in <tt>@INC</tt>.
+It has 3 runtime dependencies: Exporter, strict, and warnings.
+</p>
+
+<h2 id="Module::Util">Module::Util</h2>
+<p>
+<a href="https://www.metacpan.org/module/Module::Util">Module::Util</a>
+provides a selection of functions for getting information about a module.
+The <tt>find_installed()</tt> function returns the first path found for a module:
+</p>
+
+<pre>
+use Module::Util qw(find_installed);
+
+print "$module path = ", find_installed($module), "\n";</pre>
+
+<p>
+Similarly, <tt>all_installed()</tt> will report all paths where the module
+was found in <tt>@INC</tt>.
+</p>
+
+<p>
+A quick summary of the main other functions:
+</p>
+
+<ul>
+<li><tt>is_valid_module_name($module></tt> returns true if <tt>$module</tt>
+    looks like a valid module name.
+<li><tt>find_in_namespace()</tt> returns all modules found in <tt>@INC</tt> that
+    are under a given namespace.
+    So <span class="inlineCode">find_installed('Furl')</span>
+    returns <tt>Furl::ConnectionCache, Furl::Headers, Furl::HTTP, Furl::Response, Furl::ZlibStream</tt>.
+<li><tt>module_path()</tt> returns the relative path for a module,
+    as it appears in <tt>%INC</tt>,
+    so <span class="inlineCode">module_path('HTTP::Client')</span>
+    returns <tt>HTTP/Client.pm</tt>.
+<li><tt>module_fs_path()</tt> is like <tt>module_path()</tt>, but it uses the
+    appropriate directory path separate for the local operating system,
+    rather than always using /, which <tt>module_path()</tt> does.
+<li><tt>path_to_module()</tt> does the inverse of <tt>module_path()</tt>,
+    converting a partial path to a module name,
+    and analogously <tt>fs_path_to_module()</tt> does the inverse of <tt>module_fs_path()</tt>.
+</ul>
+
+<p>
+The distribution also includes a script
+<a href="https://www.metacpan.org/module/pm_which"><tt>pm_which</tt></a>
+which displays the path for one or more modules:
+</p>
+
+<pre>
+% <b>pm_which HTTP::Client</b>
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+
+% <b>pm_which Furl HTTP::Tiny</b>
+Furl       - /usr/local/lib/perl5/site_perl/5.16.0/Furl.pm
+HTTP::Tiny - /usr/local/lib/perl5/site_perl/5.16.0/HTTP/Tiny.pm
+</pre>
+<h2 id="Path::ScanINC">Path::ScanINC</h2>
+<p>
+<a href="https://www.metacpan.org/module/Path::ScanINC">Path::ScanINC</a>
+emulates the way perl searches for modules in <tt>@INC</tt>.
+This includes handling of coderefs in <tt>@INC</tt> &mdash;
+when you're expecting to be returned a scalar containing a path,
+you might get an arrayref:
+</p>
+
+<pre>
+use Path::ScanINC;
+
+$inc   = Path::ScanINC->new;
+@parts = split('::', "$module.pm");
+$path = $inc->first_file(@parts);
+if (ref($path)) {
+    print "oops, a code ref must have handled this!\n";
+} else {
+    print "$module path = ", $inc->first_file(@parts), "\n";
+}</pre>
+
+<p>
+Notice that instead of calling <span class="inlineCode">$inc->first_file('HTTP::Client')</span>,
+you have to pass the partial path (<tt>HTTP/Client.pm</tt>), split into its consituent parts:
+<span class="inlineCode">$inc->first_file('HTTP', 'Client.pm')</span>
+</p>
+
+<p>
+The <tt>all_files()</tt> method works like <tt>first_file()</tt>,
+but returns all instances found in <tt>@INC</tt>, not just the first one.
+The <tt>first_dir()</tt> and <tt>all_dirs()</tt> methods are analogous to the <tt>_file()</tt>
+methods, but find directories rather than files.
+</p>
+<h2 id="Pod::Perldoc">Pod::Perldoc</h2>
+<p>
+<a href="https://www.metacpan.org/module/Pod::Perldoc">Pod::Perldoc</a>
+is the module that provides the guts
+of the <a href="https://www.metacpan.org/module/perldoc">perldoc</a> command.
+</p>
+<p>
+The perldoc command has an <tt>-l</tt> option,
+which lists the path to the documentation for the item specified.
+For HTTP::Client, the pod is in the module itself, so this returns the
+path to the module:
+</p>
+<pre>
+% perldoc -l HTTP::Client
+/usr/local/lib/perl5/site_perl/5.16.0/HTTP/Client.pm
+</pre>
+<p>
+But if the documentation for a module is in a separate file,
+then you'll get the path to that, rather than the path to the module:
+</p>
+<pre>
+% perldoc -l Locale::Country
+/usr/local/lib/perl5/5.16.0/Locale/Country.pod
+</pre>
+<p>
+It turns out that there's an undocumented feature though: if you list
+both the <tt>-l</tt> and <tt>-m</tt> switches, it will always show
+the module path rather than the pod path:
+</p>
+<pre>
+% perldoc -l -m Locale::Country
+/usr/local/lib/perl5/5.16.0/Locale/Country.pm
+</pre>
+<p>
+The Pod::Perldoc module doesn't provide any hook to this functionality
+though, so you can't call it from your code,
+unless you want to do something like:
+</p>
+<pre>
+chomp($path = `perldoc -lm $module`);
+</pre>
+<h1 id="comparison">Comparison</h1>
+
+<h2 id="performance">Performance</h2>
+
+<p>
+The following table shows the result of benchmarking all of the relevant
+modules. I looked up the path for <tt>HTTP::Client</tt> 100,000 times.
+The code used is basically what was presented in the examples above.
+For the OO style modules, where the constructor is passed the module name,
+obviously I called the constructor. But for <tt>Module::Filename</tt>
+I called the constructor once, before running the benchmark.
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>Module::Path</td><td align=right class=time>0.64</td></tr>
+<tr><td class=module>Class::Inspector</td><td align=right class=time>1.46</td></tr>
+<tr><td class=module>Module::Mapper</td><td align=right class=time>2.75</td></tr>
+<tr><td class=module>Path::ScanINC</td><td align=right class=time>4.79</td></tr>
+<tr><td class=module>App::whichpm</td><td align=right class=time>4.94</td></tr>
+<tr><td class=module>Module::Info</td><td align=right class=time>8.65</td></tr>
+<tr><td class=module>Module::Locate</td><td align=right class=time>9.31</td></tr>
+<tr><td class=module>Module::Data</td><td align=right class=time>12.36</td></tr>
+<tr><td class=module>Module::Util</td><td align=right class=time>14.26</td></tr>
+<tr><td class=module>Module::Filename</td><td align=right class=time>24.83</td></tr>
+<tr><td class=module>Module::Metadata</td><td align=right class=time>47.54</td></tr>
+<tr><td class=module>Module::Finder</td><td align=right class=time>176.58</td></tr>
+</table>
+
+
+<p>
+That's a surprisingly wide spread. Some of the modules are doing
+more than simply looking up the path, and some are built on generic
+modules which do a lot more when constructing directory paths.
+</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>
+The following table shows the number of run-time dependencies for
+each module, when running the example code given for each module above.
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right># dependencies</th></tr>
+<tr><td align=left>Path::ScanINC</td><td align=right>2</td></tr>
+<tr><td align=left>Module::Path</td><td align=right>3</td></tr>
+<tr><td align=left>Class::Inspector</td><td align=right>7</td></tr>
+<tr><td align=left>App::whichpm</td><td align=right>8</td></tr>
+<tr><td align=left>Module::Info</td><td align=right>12</td></tr>
+<tr><td align=left>Module::Util</td><td align=right>15</td></tr>
+<tr><td align=left>Module::Locate</td><td align=right>19</td></tr>
+<tr><td align=left>Module::Finder</td><td align=right>23</td></tr>
+<tr><td align=left>Module::Metadata</td><td align=right>24</td></tr>
+<tr><td align=left>Module::Data</td><td align=right>38</td></tr>
+<tr><td align=left>Module::Filename</td><td align=right>40</td></tr>
+<tr><td align=left>Module::Mapper</td><td align=right>42</td></tr>
+</table>
+
+
+<h2 id="features">Features</h2>
+
+<p>
+The following table summarises the various methods or functions provided by each module:
+</p>
+
+<div style="margin: 15px;"><img src="feature-table.png"></div>
+
+<p>
+As you can see, there are a lot of different functions provided by the various modules,
+with a lot less overlap than I expected.
+The 's' for Module::Info reflects the fact that some of the methods can trigger the loading of the module.
+</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>
+If you just want to get the path to a module, <tt>Module::Path</tt> is your best bet:
+it's the fastest and has very few dependencies. This was by design, so that someone
+could use it in another module without fear of unexpected bloat.
+This might seem like I've cheated, but I've basically optimised for the same
+things I tend to evaluate when benchmarking modules in these reviews.
+</p>
+
+<p>
+If you want additional information, such as version and whether the module is in the core,
+then <tt>Module::Info</tt> is not a bad choice. But be careful, as some methods
+can trigger loading of the module.
+</p>
+
+<p>
+Depending on what other information you want, <tt>Module::Metadata</tt>
+and <tt>Class::Inspector</tt> are also worth a look.
+</p>
+
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

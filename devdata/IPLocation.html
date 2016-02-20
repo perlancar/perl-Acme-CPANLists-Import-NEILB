@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for locating an IP address</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for locating an IP address</h1>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-08</p>
+</div>
+<p>
+This is a review of 12 CPAN modules which can be used to get information about
+the location of an IP address.
+As a minimum, I'm looking for modules which will return a country code,
+given an IP address or fully-qualified domain name (FQDN).
+</p>
+
+<p>There are a number of reasons why you might want this:</p>
+
+<ul>
+<li>Web server analytics, to see where your visitors are coming from.</li>
+<li>Web site localisation: automatically redirecting the user to the best default site. You might see people using this to change the language, but as Kent pointed out in a comment, you should use the Accept-Language HTTP header for that.</li>
+<li>Work distribution: picking which server farm to send some work to?</li>
+</ul>
+
+<p>Here are the 12 modules; please let me know if there are any modules I've missed.</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#Geo::Coder::HostIP"><tt>Geo::Coder::HostIP</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Geo-Coder-HostIP-0.04/lib/Geo/Coder/HostIP.pm">CPAN</a></span></td>
+  <td align=right><tt>0.04</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-Coder-HostIP"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Geo::Coder::HostIP"><tt>0</tt></a></td>
+  <td align=right><tt>2012-01-15</tt></td>
+</tr><tr>
+  <td><a href="#Geo::IP"><tt>Geo::IP</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~borisz/Geo-IP-1.40/lib/Geo/IP.pm">CPAN</a></span></td>
+  <td align=right><tt>1.40</tt></td>
+  <td align=left><a href="http://search.cpan.org/~borisz/">Boris Zentner</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-IP"><tt>6</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Geo::IP"><tt>5</tt></a></td>
+  <td align=right><tt>2011-08-23</tt></td>
+</tr><tr>
+  <td><a href="#Geo::IP2Location"><tt>Geo::IP2Location</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~location/Geo-IP2Location-4.00/lib/Geo/IP2Location.pm">CPAN</a></span></td>
+  <td align=right><tt>4.00</tt></td>
+  <td align=left><a href="http://search.cpan.org/~location/">IP2Location</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-IP2Location"><tt>4</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Geo::IP2Location"><tt>0</tt></a></td>
+  <td align=right><tt>2012-04-04</tt></td>
+</tr><tr>
+  <td><a href="#Geo::IP::RU::IpGeoBase"><tt>Geo::IP::RU::IpGeoBase</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ruz/Geo-IP-RU-IpGeoBase-0.03/lib/Geo/IP/RU/IpGeoBase.pm">CPAN</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ruz/">Ð ÑÑÐ»Ð°Ð½ Ð£. ÐÐ°ÐºÐ¸ÑÐ¾Ð²</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-IP-RU-IpGeoBase"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Geo::IP::RU::IpGeoBase"><tt>0</tt></a></td>
+  <td align=right><tt>2010-02-11</tt></td>
+</tr><tr>
+  <td><a href="#Geo::IPfree"><tt>Geo::IPfree</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~bricas/Geo-IPfree-1.121660/lib/Geo/IPfree.pm">CPAN</a></span></td>
+  <td align=right><tt>1.121660</tt></td>
+  <td align=left><a href="http://search.cpan.org/~bricas/">Brian Cassidy</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-IPfree"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Geo::IPfree"><tt>1</tt></a></td>
+  <td align=right><tt>2012-06-14</tt></td>
+</tr><tr>
+  <td><a href="#IP::Country"><tt>IP::Country</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nwetters/IP-Country-2.27/lib/IP/Country.pm">CPAN</a></span></td>
+  <td align=right><tt>2.27</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nwetters/">Nigel Wetters Gourlay</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-Country"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::Country"><tt>5</tt></a></td>
+  <td align=right><tt>2009-07-25</tt></td>
+</tr><tr>
+  <td><a href="#IP::Country::DB_File"><tt>IP::Country::DB_File</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nwellnhof/IP-Country-DB_File-2.01/lib/IP/Country/DB_File.pm">CPAN</a></span></td>
+  <td align=right><tt>2.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nwellnhof/">Nick Wellnhofer</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-Country-DB_File"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::Country::DB_File"><tt>0</tt></a></td>
+  <td align=right><tt>2011-01-19</tt></td>
+</tr><tr>
+  <td><a href="#IP::Country::DNSBL"><tt>IP::Country::DNSBL</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nwetters/IP-Country-DNSBL-1.02/lib/IP/Country/DNSBL.pm">CPAN</a></span></td>
+  <td align=right><tt>1.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nwetters/">Nigel Wetters Gourlay</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-Country-DNSBL"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::Country::DNSBL"><tt>0</tt></a></td>
+  <td align=right><tt>2006-12-19</tt></td>
+</tr><tr>
+  <td><a href="#IP::Info"><tt>IP::Info</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~manwar/IP-Info-0.05/lib/IP/Info.pm">CPAN</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~manwar/">Mohammad S Anwar</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-Info"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::Info"><tt>0</tt></a></td>
+  <td align=right><tt>2011-09-05</tt></td>
+</tr><tr>
+  <td><a href="#IP::Location"><tt>IP::Location</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~loveky/IP-Location-0.01/lib/IP/Location.pm">CPAN</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~loveky/">Michael Wang</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-Location"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::Location"><tt>0</tt></a></td>
+  <td align=right><tt>2011-01-10</tt></td>
+</tr><tr>
+  <td><a href="#IP::QQWry"><tt>IP::QQWry</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~sunnavy/IP-QQWry-0.0.20/lib/IP/QQWry.pm">CPAN</a></span></td>
+  <td align=right><tt>0.0.20</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sunnavy/">å­æµ·å</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-QQWry"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::QQWry"><tt>1</tt></a></td>
+  <td align=right><tt>2011-11-26</tt></td>
+</tr><tr>
+  <td><a href="#IP::World"><tt>IP::World</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mackenna/IP-World-0.37/lib/IP/World.pm">CPAN</a></span></td>
+  <td align=right><tt>0.37</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mackenna/">Craig MacKenna</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=IP-World"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=IP::World"><tt>0</tt></a></td>
+  <td align=right><tt>2010-07-03</tt></td>
+</tr>
+</table>
+
+<p>
+I'll give a summary of each module in turn, then present results of evaluating the modules,
+and finally conclusions on which module might be the best bet in different situations.
+</p>
+
+<h2 id="Geo::Coder::HostIP">Geo::Coder::HostIP</h2>
+<p>
+Geo::Coder::HostIP provides an interface to the online service for geocoding info
+at <a href="http://www.hostip.info">www.hostip.info</a>.
+</p>
+
+<pre>
+use Geo::Coder::HostIP;
+    
+$geo     = Geo::Coder::HostIP->new();
+@results = $geo->FetchIP('212.58.244.71');
+if (@results > 0) {
+    print "code = ", $geo->CountryCode, "\n";
+} else {
+    print "IP address not covered\n";
+}
+</pre>
+
+<p>
+Every time you call <tt>FetchIP</tt> it makes a call to the online service, and populates an internal data structure. You can then call various methods to retrieve information such as latitude and longitude, city, country name, country code and state.
+</p>
+
+<p>
+You can lookup either an IPv4 IP address,
+using <tt>FetchIP</tt>, or a hostname, using <tt>FetchName</tt>.
+</p>
+
+<p>
+The service at <a href="http://www.hostip.info">www.hostip.info</a> is a community-based project
+to geolocate IP addresses, crowdsourcing the data, and making it freely available.
+If you use this module, don't hammer their service please.
+<p>
+
+<p>
+The version of this module previously on CPAN had a number of bugs,
+and the original author, SeÃ¡n Cannon,
+gave me co-maint so I could release a version with fixes.
+</p>
+<h2 id="Geo::IP">Geo::IP</h2>
+<p>
+Geo::IP provides an interface to a database from MaxMind.com,
+which maps IP address to country code.
+If installed, it will use the GeoIP C library, but if you don't have it,
+the module will fall back on a pure Perl implementation (included in the distribution,
+Geo::IP::PurePerl is now deprecated). For all my testing I had the C library installed.
+</p>
+
+<pre>
+use Geo::IP;
+
+$gi     = Geo::IP->new(GEOIP_MEMORY_CACHE);
+$code   = $gi->country_code_by_addr('212.58.244.71');
+$code   = $gi->country_code_by_name('www.bbc.co.uk');
+
+$record = $gi->record_by_addr('212.58.244.71');
+$code   = $record->country_code;
+</pre>
+
+<p>
+You can pass a number of flags to the constructor. The example above uses more memory for higher performance. GEOIP_STANDARD goes for lower memory. See the documentation for further options.
+</p>
+
+<p>
+The module provides two types of method:
+</p>
+<ol>
+<li>There are two methods which take an address and return a <em>record</em> object, which has methods for accessing information about the identified location. For example <tt>record_by_addr()</tt>, shown in the example above.</li>
+<li>There are 10+ methods which will return one specific piece of information, such as the two-letter country code (shown above), or country name.</li>
+</ol>
+
+<p>A monthly update to the data file is available for download from maxmind.com. You can also subscribe to a commercial version ($50 initial, $12/month),
+which provides weekly updates, and improved accuracy.</p>
+
+<p>There is also a data file which has richer information, including country name, region, city, post code, latitude and longitude, etc. This is also
+available either as a free data file (updated monthly), or on a commercial subscription basis ($370 initial, $90/month for updates).
+
+<p>You can download the C library from <a href="http://geolite.maxmind.com/download/geoip/api/c/">http://geolite.maxmind.com/download/geoip/api/c/</a></p>
+
+<p>The module also supports IPv6, but this requires the underlying C library.</p>
+<h2 id="Geo::IP2Location">Geo::IP2Location</h2>
+<p>Geo::IP2Location provides lookup of various location information from IP,
+based on a commercial data file, available from ip2location.com.
+There are currently 20 different files available, each providing a different
+combination of location data, including Country, ISP, Region, City, latitude &amp; longitude,
+postcode, and others.</p>
+
+<p>Geo::IP2Location supports IPv4 and IPv6; it doesn't support lookup of FQDNs.</p>
+
+<p>The smallest, and cheapest, database provides country information:</p>
+
+<pre>
+use Geo::IP2Location;
+
+$gi   = Geo::IP2Location->open('IP-COUNTRY.BIN');
+$code = $gi->get_country_short('212.58.244.71');
+$name = $gi->get_country_long('212.58.244.71');
+</pre>
+
+<p>
+If you try and call a method that needs data not in the file you bought,
+the return value is a string saying the parameter is not available.
+This means you can't call the <tt>get_all()</tt> method to get the code and
+name of the country with a single call. I've submitted a feature suggestion via RT
+to add a <tt>get_country()</tt> method which would return a simple data object.
+</p>
+
+<p>The <tt>get_country_short()</tt> method returns an ISO 3166 code,
+but for the United Kingdom it returns 'UK', instead of the official code, 'GB'.
+If you pass a private IP address you'll get back '-'. I don't know what you'll
+get back if you pass an IP address not covered by the database.</p>
+
+<p>You can download sample databases from <a href="http://www.ip2location.com/developers.htm">http://www.ip2location.com/developers.htm</a></p>
+
+<p>If you just want the country information, it costs $49/year for a single server.
+The subscription also gets you monthly updates.</p>
+<h2 id="Geo::IP::RU::IpGeoBase">Geo::IP::RU::IpGeoBase</h2>
+<p>
+Geo::IP::RU::IpGeoBase provides a mapping from IP address to location
+information, but only for IP addresses in Russia.
+It's based on data provided by http://ipgeobase.ru, which you must download and load
+into a database. The distribution includes a script which will
+do this for you; for example to use SQLite:
+</p>
+
+<pre>
+% ip-geo-base-ru --dsn 'dbi:SQLite:geobase-ru.db' --create
+</pre>
+
+<p>
+Once you've done this, you can use the module to look up information
+on an IP address:
+</p>
+
+<pre>
+use Geo::IP::RU::IpGeoBase;
+
+$gbase = Geo::IP::RU::IpGeoBase->new( db => { dsn => 'dbi:SQLite:dbname=geobase-ru.db' } );
+($location) = $gbase->find_by_ip( '109.148.155.77' );
+$city = $location->{city};
+($latitude, $longitude) = ( $location->{latitude}, $location->{longitude} );
+</pre>
+
+<p>The <tt>find_by_ip</tt> method only supports IPv4 IP addresses. The module doesn't support
+IPv6, and you can't pass FQDNs.</p>
+
+<p>
+The <tt>find_by_ip</tt>method returns 0, 1 or more records for the specified IP address,
+where is record is just a hash reference. In the underlying data a given IP address may
+appear in more than one record.
+</p>
+
+<h2 id="Geo::IPfree">Geo::IPfree</h2>
+<p>
+Geo::IPfree uses a local data file, and returns both the 2-letter ISO country code, and the country name.
+It supports IPv4 addresses only, but can handle both IP addresses and FQDNs.
+</p>
+
+<pre>
+use Geo::IPfree;
+
+$geo = Geo::IPfree->new();
+$geo->Faster;
+($code, $name) = $geo->LookUp('212.58.244.71');
+</pre>
+
+<p>
+The <tt>Faster</tt> method tells the module to load the data file into memory, for faster lookups.
+From the testing I've done, this gives about a 5% improvement, on average.
+</p>
+
+<p>
+By default the module caches the result for the last up-to 1000 IP addresses.
+When the cache hits 1000 addresses it is cleared and starts from empty again.
+This means that if you look-up the same address multiple times close together,
+as you might when processing an HTTP access log for example,
+you'll see the benefit. But if they're more than 1000 lookups apart you won't
+see any benefit. Cache hits are beneficial, because the full lookup is relatively
+slow (see Comparison section below).
+</p>
+
+<p>
+If you pass an FQDN, then you get an extra return value -- the IP address for the FQDN.
+</p>
+
+<pre>
+($code, $name, $ip) = $geo->LookUp( 'www.cnn.com' );
+</pre>
+
+<p>
+The module uses a data file which is freely available from <a href="http://software77.net/geo-ip/">WebNet77</a>.
+The file is updated daily, but they suggest that most users should only update it on a monthly basis.
+The distribution includes a copy of the data file, and the module's author releases a new version
+of the module every four months or so, to ensure you have a up-to-date database.
+I downloaded a fresh copy for my tests: on the bottom right-hand side of the page, there's a Download section:
+select the Geo::IPfree format before downloading.
+</p>
+
+<p>The module also supports a number of utility functions for processing IP addresses and FQDNs.</p>
+
+<h2 id="IP::Country">IP::Country</h2>
+<p>
+IP::Country provides an OO api on top of various databases;
+the main method takes an IP address or FQDN and returns a two-letter country code:
+</p>
+
+<pre>
+use IP::Country::Fast;
+
+$ipc = IP::Country::Fast->new();
+$country = $ipc->inet_atocc('212.58.244.71');
+</pre>
+
+<p>
+If you pass a private IP address, it will return <tt>**</tt>. If the IP address isn't covered, you'll get <tt>undef</tt> back.
+</p>
+
+<p>
+The module supports two other methods: <tt>inet_ntocc()</tt> takes the format returned by inet_aton(3) and returns a country code. <tt>db_time()</tt> returns the creation time of the database, in seconds since the epoch.
+</p>
+
+<p>IPv6 addresses are not supported.</p>
+<h2 id="IP::Country::DB_File">IP::Country::DB_File</h2>
+<p>
+IP::Country::DB_File provides the same interface as IP::Country,
+but works with a DB_File data file, generated from publically available databases.
+</p>
+
+<pre>
+use IP::Country::DB_File;
+    
+$ipc  = IP::Country::DB_File->new( 'ipcc.db' );
+$code = $ipc->inet_atocc('212.58.244.71');
+</pre>
+
+<p>
+It will return the pseudo-code of <tt>**</tt> if passed a private IP address
+</p>
+
+<p>
+Before you can use the module you have to build the data file, using the IP::Country::DB_File::Builder module, which is part of the distribution:
+</p>
+
+<pre>
+perl -MIP::Country::DB_File::Builder -e command -- -fbr
+</pre>
+
+<p>
+It would be more user-friendly if the distribution included a script for rebuilding the database. Furthermore, the above command just generates the database in the current directory, and you have to pass the path to it when calling the constructor. It would be even more user friendly for the database to be built when the module is installed, and put in a standard location. The command-line script could then update that location.
+</p>
+
+<p>The module doesn't support IPv6, or the passing of FQDNs rather than IP addresses.</p>
+<h2 id="IP::Country::DNSBL">IP::Country::DNSBL</h2>
+<p>
+<strong>Note:</strong> the default service used by this module is currently offline,
+so this module doesn't work.
+</p>
+
+<p>
+IP::Country::DNSBL provides the same interface as IP::Country,
+but queries a <a href="http://en.wikipedia.org/wiki/DNSBL">DNSBL</a> server,
+by default using country.netop.org,
+which is provided by the NetOp organisation:
+</p>
+
+<pre>
+use IP::Country::DNSBL;
+    
+$ipc  = IP::Country::DNSBL->new();
+$code = $ipc->inet_atocc('212.58.244.71');
+</pre>
+
+<p>
+If you don't know what DNSBL is about, NetOp have a page
+<a href="http://www.netop.org/services/ip-geolocation">explaining how this works</a>.
+</p>
+
+<p>The module only works with IPv4 addresses and ASCII hostnames.</p>
+<h2 id="IP::Info">IP::Info</h2>
+<p>
+IP::Info provides an interface to the Quova service, which provides a RESTful API for getting information about an IP address. You can sign up for a free developer account on Quova, but it's limited to a maximum rate of 2 lookups per second, and 1000 lookups per day.
+</p>
+
+<pre>
+use IP::Info;
+
+$ipinfo = IP::Info->new(
+                        apikey => ' ... ',
+                        secret => ' ... ',
+                        format => 'json'
+                       );
+$response = $ipinfo->ipaddress('212.58.244.71');
+$code     = $response->country_code();
+</pre>
+
+<p>
+The <tt>ipaddress</tt> method returns an instance of <a href="https://www.metacpan.org/module/IP::Info::Response">IP::Info::Response</a>,
+a data class which has methods for getting the country code, country name,
+latitude and longitude, area code, and much more.
+</p>
+
+<p>
+Quova boast that they have the most IP geolocation data, and the most accurate.
+So if you're after coverage, this might be your best bet.
+Using this module also has the advantage that you don't have to install a local
+copy of the data file, and are thus always "up to date".
+</p>
+
+<p>
+This module was only recently released, but it has already evolved in a good direction,
+partly as a result of earlier versions of this review.
+</p>
+
+<p>
+The module only supports IPv4 IP addresses (in decimal or dot-decimal notation).
+IPv6 and FQDNs are not supported.
+</p>
+
+<p>
+In addition to the free rate-limited service, you can sign up for commercial
+service, which obviously isn't rate limited. You pay varying amounts per lookup;
+details on <a href="http://www.quova.com">www.quova.com</a>.
+</p>
+<h2 id="IP::Location">IP::Location</h2>
+<p>
+IP::Location is an interface to QQWry data,
+which appears to a file with location data associated with IP ranges,
+where the location information is in Chinese.
+I'm not entirely sure, since most of the resources online describing it are in Chinese.
+</p>
+
+<pre>
+use IP::Location;
+
+$locator = IP::Location->new('qqwry.dat', 'UTF-8');
+$location = $locator->locate('212.58.244.71');
+
+binmode STDOUT, ":utf8";
+print "location = $location\n";
+</pre>
+
+<p>
+This results in the following:
+</p>
+
+<pre>
+% ./ip-location.pl
+location = è±å½
+</pre>
+
+<p>
+Here the constructor takes two arguments.
+The first is the path to your local copy of the QQWry data file.
+The second is optional,
+and specifies the character set you want the returned value to be in.
+By default this is 'GBK'; the other supported value is 'UTF-8'.
+</p>
+
+<p>
+The documentation doesn't make clear what will be returned if the data file doesn't
+contain any information on the passed IP address.
+</p>
+
+<p>
+The SYNOPSIS section of the document starts with
+</p>
+
+<pre>
+no warnings;
+</pre>
+
+<p>
+Without this, you'll occasionally get a warning about use of an uninitialized value within the module.
+</p>
+
+<p>
+The documentation suggests that the module has an online mode of working,
+where it will query a service, but looking at the code this clearly hasn't
+been implemented (yet).
+</p>
+
+<p>
+The documentation also says you can download the data file from <a href="http://www.cz88.net/fox/">http://www.cz88.net/fox/</a>, but I couldn't find it there. I tracked down a copy of the data file with google:
+</p>
+
+<pre>
+http://code.google.com/p/stid/downloads/detail?name=qqwry.dat
+</pre>
+
+<p>
+Using the <tt>info()</tt> method, it looks like this version is fairly recent: 2011-05-10.
+If anyone knows the definitive source for this file, please let me know via the comments.
+The format is described (in Chinese) at <a href="http://lumaqq.linuxsir.org/article/qqwry_format_detail.html">http://lumaqq.linuxsir.org/article/qqwry_format_detail.html</a>.
+</p>
+
+<p>I believe the module only supports IPv4 IP addresses, and that IPv6 and FQDNs aren't supported. I've emailed the author for confirmation.</p>
+<h2 id="IP::QQWry">IP::QQWry</h2>
+<p>
+IP::QQWry is another interface to the QQWry database.
+</p>
+
+<pre>
+use IP::QQWry;
+    
+$qqwry = IP::QQWry->new('qqwry.dat');
+($country, $area) = $qqwry->query('212.58.244.71');
+</pre>
+
+<p>
+The documentation says that qqwry.dat uses GBK or Big5 encoding, and doesn't make clear which
+will be returned. I have no experience handling Chinese encodings, so haven't successfully displayed any results.
+</p>
+
+<p>
+If the datafile doesn't contain information on the passed IP address,
+the <tt>query()</tt> method will return <tt>undef</tt>.
+</p>
+
+<p>The <tt>query</tt> method only supports IPv4 IP addresses in decimal or dot-decimal notation. IPv6 and FQDNs are not supported.</p>
+<h2 id="IP::World">IP::World</h2>
+<p>
+IP::World comes with its own data file based on two free databases.
+It provides a single method which returns a two-letter country code:
+</p>
+
+<pre>
+use IP::World;
+    
+$ipworld = IP::World->new(1);
+$code    = $ipworld->getcc('212.58.244.71');
+</pre>
+
+<p>
+The constructor takes a single argument, which controls the trade-off between memory usage and performance.
+It specifies how the module should process the data file:
+0 keeps all the data in memory, 1 uses mmap, 2 searches the data file on disk using traditional C I/O calls,
+and 3 uses PerlIO. I've submitted a feature request via RT that constants be defined for these values,
+similar to Geo::IP, for example.
+</p>
+
+<p>
+The <tt>getcc()</tt> method takes an IPv4 address in either the dotted quad or decimal format. IPv6 and FQDNs are not supported.</p>
+</p>
+
+<p>
+If you pass an invalid address, the method returns <tt>**</tt>. If the database doesn't provide information for the specified address, <tt>getcc()</tt> will return <tt>??</tt>.
+</p>
+
+<p>
+The distribution contains 3 scripts, one of which can be used to update your local data file.
+This is used at installation time to ensure you have the latest data.
+</p>
+<h1>Comparison</h1>
+
+<p>
+There are two main areas in which I've compared these modules, coverage and performance.
+Some of the modules I couldn't really test, either because I don't speak the relevant language,
+or because it didn't make sense. Since I first posted this, I've been given a copy of the database
+for Geo::IP2Location, so I could include it in this comparison.
+</p>
+
+<p>
+If you're processing logfiles,
+then you might be wanting to look up thousands of IP addresses per minute,
+and performance will be important.
+</p>
+
+<p>
+But first, a summary of capabilities, by module.
+</p>
+
+<h2>Capabilities</h2>
+
+<table class=capabilities>
+<tr align=center>
+    <th align=left>Module</th>
+    <th>IPv6</th>
+    <th>FQDN</th>
+    <th>Active</th>
+    <th>Extra</th>
+    <th align=left>Style</th>
+</tr>
+<tr align=center>
+    <td align=left class=module>Geo::Coder::HostIP</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td align=left>remote</td>
+</tr><tr align=center>
+    <td align=left class=module>Geo::IP</td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>Geo::IPfree</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td></td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>Geo::IP::RU::IpGeoBase</td>
+    <td></td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>Geo::IP2Location</td>
+    <td>&#10003;</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::Country</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td></td>
+    <td></td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::Country::DB_File</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td></td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::Country::DNSBL</td>
+    <td></td>
+    <td>&#10003;</td>
+    <td></td>
+    <td></td>
+    <td align=left>remote</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::Info</td>
+    <td></td>
+    <td></td>
+    <td>&#10003;</td>
+    <td>&#10003;</td>
+    <td align=left>remote</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::Location</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::QQWry</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td align=left>local</td>
+</tr><tr align=center>
+    <td align=left class=module>IP::World</td>
+    <td></td>
+    <td></td>
+    <td>&#10003;</td>
+    <td></td>
+    <td align=left>local</td>
+</tr>
+</table>
+
+
+<p>
+The non-obvious columns are:
+</p>
+
+<ul>
+<li><b>Extra</b>: does the module provide anything beyond country code and country name?</li>
+<li><b>Style</b>: either <em>local</em> data file, or using a <em>remote</em> service.</li>
+<li><b>Active</b>: either updated in the last 6 months,
+    or the author at least responded to an email from me.</li>
+</ul>
+
+
+
+<h2>Coverage</h2>
+
+<p>
+I generated a list of 4 hostnames for every valid country code, looked up the IP address, and then
+looked up the country code using the modules listed below. I ended up with a list of 940 IP addresses;
+I wanted under 1000, since the service behind IP::Info is limited to 1000 lookups per day.
+</p>
+
+<p>
+There are two figures given for each module:
+<b>coverage</b> shows the percentage of IP addresses for which a valid country code was returned;
+<b>hit rate</b> shows what percentage of country codes seemed to be right.
+</p>
+
+<table class=benchmark><tr><td></td><th align=right>Coverage</th><th align=right>Hit rate</th></tr>
+<tr><td align=right><tt>IP::Country::DB_File</tt></td><td align=right>100.0</td><td align=right>83.6</td></tr>
+<tr><td align=right><tt>Geo::IPfree</tt></td><td align=right>100.0</td><td align=right>83.6</td></tr>
+<tr><td align=right><tt>Geo::IP</tt></td><td align=right>100.0</td><td align=right>83.5</td></tr>
+<tr><td align=right><tt>IP::World</tt></td><td align=right>100.0</td><td align=right>83.1</td></tr>
+<tr><td align=right><tt>IP::Info</tt></td><td align=right>100.0</td><td align=right>82.7</td></tr>
+<tr><td align=right><tt>Geo::IP2Location</tt></td><td align=right>100.0</td><td align=right>81.3</td></tr>
+<tr><td align=right><tt>IP::Country::Fast</tt></td><td align=right>91.1</td><td align=right>79.4</td></tr>
+<tr><td align=right><tt>Geo::Coder::HostIP</tt></td><td align=right>100.0</td><td align=right>68.2</td></tr>
+</table>
+
+
+<p>
+Obviously not all domains are hosted in the country associated with the country code, so I had to use
+some heuristics to decide what the correct country code should be:
+</p>
+
+<ul>
+<li>If all modules agreed, then I took that code (ignoring any modules that didn't return a code).
+<li>If five or more modules agreed, then I took that code.
+<li>If there was no obvious "winner", then I marked them all as being wrong.
+</ul>
+
+<p>The problem with this approach is that one module could be right and all the others wrong,
+and there isn't an independent source I can use to verify the location (that I know of).
+As I've added modules to this bake-off some of the figures have changed quite a bit.
+For a future version I'll try and generate error bounds for the hit rate.</p>
+
+<h2>Performance</h2>
+
+<p>
+I generated a list of 100,000 different random IP addresses and saved them in a file. I then Benchmark'd each module
+to see how long it took to lookup the IP addresses, using the same framework code for each of them. The Benchmark
+only covered the time to lookup the IP addresses, it didn't cover any module initialisation time, etc.
+</p>
+
+<p>Some of the modules are so quick that Benchmark complained that I wasn't running them long enough to
+get an accurate figure. So I ended up running 1 million iterations, looping over my list of IP addresses
+ten times. At least one of the modules caches results, so I decided to do two runs: (1) 10 iterations over 100k addresses, and (2) 1 million unique IP addresses.
+Times are given in seconds:</p>
+
+<table class=benchmark><tr><th>Module</th><th align=right>10 x 100k</th><th align=right>1 million</th></tr>
+<tr><td><tt>Geo::IP</tt></td><td align=right>0.88</td><td align=right>0.78</td></tr>
+<tr><td><tt>IP::World</tt></td><td align=right>1.03</td><td align=right>0.90</td></tr>
+<tr><td><tt>IP::Country::DB_File</tt></td><td align=right>6.95</td><td align=right>3.76</td></tr>
+<tr><td><tt>IP::Country::Fast</tt></td><td align=right>16.53</td><td align=right>17.17</td></tr>
+<tr><td><tt>IP::QQWry</tt></td><td align=right>29.94</td><td align=right>208.76</td></tr>
+<tr><td><tt>IP::Location</tt></td><td align=right>198.28</td><td align=right>195.53</td></tr>
+<tr><td><tt>Geo::IPfree</tt></td><td align=right>1264.64</td><td align=right>1192.05</td></tr>
+<tr><td><tt>Geo::IP2Location</tt></td><td align=right>9333.87</td><td align=right>9388.03</td></tr>
+</table>
+
+
+<p>As you can see, IP::QQWry is a lot faster when seeing repeat IP addresses. Interestingly, IP::Country::DB_File appears to be slower
+when seeing repeat IP addresses.</p>
+
+<p>
+I didn't include the following modules in the performance comparison:
+</p>
+
+<ul>
+<li>Geo::IP::RU::IpGeoBase, because it only covers locations within Russia, which none of the other modules do.</li>
+<li>IP::Info, because the free service is rate-throttled.</li>
+</ul>
+<h1>Conclusion</h1>
+
+<p>
+There's not much difference between Geo::IP, IP::World, IP::Info, Geo::IPfree,
+and IP::Country::DB_File.
+</p>
+
+<ul>
+    <li>If speed of lookup is critical, then Geo::IP is probably your best bet, closely followed by IP::World.</li>
+    <li>If performance isn't critical, but coverage and accuracy are,
+        then any of those five modules listed above will do the job.</li>
+    <li>If you want more than just the location, then Geo::IP and IP::Info are probably the best bet.</li>
+    <li>If you want IPv6 support, Geo::IP and Geo::IP2Location are your only options.</li>
+    <li>If you want to lookup FQDNs, then Geo::IP or Geo::IP2Location are your best bet
+        (IP::Country also supports this).</li>
+    <li>If you want detailed information on locations within Russia, use Geo::IP::RU::IpGeoBase!</li>
+</ul>
+
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

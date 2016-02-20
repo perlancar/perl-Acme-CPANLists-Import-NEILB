@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for checking credit card numbers (LUHN check)</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for checking credit card numbers (LUHN check)</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-10</p>
+</div>
+<p>
+This is a review and comparison of 9 CPAN modules
+that can be used to do a LUHN check on a number.
+</p>
+
+<p>
+If you don't want to read the whole review,
+or even the <a href="#conclusion">conclusion</a>,
+then I'd recommend you use
+<a href="https://www.metacpan.org/module/Business::CreditCard">Business::CreditCard</a>.
+</p>
+
+<p>
+The <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">LUHN algorithm</a>
+is a simple checksum formula used to check whether a number is valid.
+It is used in a number of contexts, the most well-known of which is
+credit-cards, where in a 16-digit card number the rightmost digit
+is a check digit.
+</p>
+
+<p>
+I'm not going to explain the LUHN algorithm here &mdash; there are plenty
+of resources for that online, including the wikipedia page linked above.
+Here are the five modules:
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#Acme::Tools"><tt>Acme::Tools</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~kjetil/Acme-Tools-0.13/Tools.pm">CPAN</a></span></td>
+  <td align=right><tt>0.13</tt></td>
+  <td align=left><a href="http://search.cpan.org/~kjetil/">Kjetil Skotheim</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Acme-Tools"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Acme::Tools"><tt>0</tt></a></td>
+  <td align=right><tt>2010-10-13</tt></td>
+</tr><tr>
+  <td><a href="#Algorithm::CheckDigits"><tt>Algorithm::CheckDigits</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mamawe/Algorithm-CheckDigits-v1.2.0/lib/Algorithm/CheckDigits.pm">CPAN</a></span></td>
+  <td align=right><tt>v1.2.0</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mamawe/">Mathias Weidner</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Algorithm-CheckDigits"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Algorithm::CheckDigits"><tt>0</tt></a></td>
+  <td align=right><tt>2012-06-08</tt></td>
+</tr><tr>
+  <td><a href="#Algorithm::LUHN"><tt>Algorithm::LUHN</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~tayers/Algorithm-LUHN-1.00/LUHN.pm">CPAN</a></span></td>
+  <td align=right><tt>1.00</tt></td>
+  <td align=left><a href="http://search.cpan.org/~tayers/">Tim Ayers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Algorithm-LUHN"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Algorithm::LUHN"><tt>1</tt></a></td>
+  <td align=right><tt>2002-03-26</tt></td>
+</tr><tr>
+  <td><a href="#Business::BankCard"><tt>Business::BankCard</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~sharyanto/Business-BankCard-0.01/lib/Business/BankCard.pm">CPAN</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sharyanto/">Steven Haryanto</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Business-BankCard"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Business::BankCard"><tt>1</tt></a></td>
+  <td align=right><tt>2012-07-06</tt></td>
+</tr><tr>
+  <td><a href="#Business::CardInfo"><tt>Business::CardInfo</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~elliott/Business-CardInfo-0.12/lib/Business/CardInfo.pm">CPAN</a></span></td>
+  <td align=right><tt>0.12</tt></td>
+  <td align=left><a href="http://search.cpan.org/~elliott/">Simon Elliott</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Business-CardInfo"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Business::CardInfo"><tt>0</tt></a></td>
+  <td align=right><tt>2011-12-15</tt></td>
+</tr><tr>
+  <td><a href="#Business::CCCheck"><tt>Business::CCCheck</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~miker/Business-CCCheck-0.05/CCCheck.pm">CPAN</a></span></td>
+  <td align=right><tt>0.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~miker/">Michael Robinton</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Business-CCCheck"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Business::CCCheck"><tt>0</tt></a></td>
+  <td align=right><tt>2012-08-06</tt></td>
+</tr><tr>
+  <td><a href="#Business::CreditCard"><tt>Business::CreditCard</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~ivan/Business-CreditCard-0.31/CreditCard.pm">CPAN</a></span></td>
+  <td align=right><tt>0.31</tt></td>
+  <td align=left><a href="http://search.cpan.org/~ivan/">Ivan Kohler</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Business-CreditCard"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Business::CreditCard"><tt>9</tt></a></td>
+  <td align=right><tt>2009-10-20</tt></td>
+</tr><tr>
+  <td><a href="#Regexp::Common"><tt>Regexp::Common</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~abigail/Regexp-Common-2011121001/lib/Regexp/Common.pm">CPAN</a></span></td>
+  <td align=right><tt>2011121001</tt></td>
+  <td align=left><a href="http://search.cpan.org/~abigail/">Abigail</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Regexp-Common"><tt>17</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Regexp::Common"><tt>139</tt></a></td>
+  <td align=right><tt>2011-12-10</tt></td>
+</tr><tr>
+  <td><a href="#Regexp::Common::_support"><tt>Regexp::Common::_support</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~abigail/Regexp-Common-2011121001/lib/Regexp/Common/_support.pm">CPAN</a></span></td>
+  <td align=right><tt>2010010201</tt></td>
+  <td align=left><a href="http://search.cpan.org/~abigail/">Abigail</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Regexp-Common"><tt>17</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Regexp::Common::_support"><tt>139</tt></a></td>
+  <td align=right><tt>2011-12-10</tt></td>
+</tr>
+</table>
+
+
+<p>
+The following modules also provide a LUHN check,
+but not for general usage, so they're not included in this review:
+</p>
+<ul>
+<li><a href="https://www.metacpan.org/module/Data::Type::Facet">Data::Type::Facet</a>
+<li><a href="https://www.metacpan.org/module/HTML::CheckArgs">HTML::CheckArgs</a>
+<li><a href="https://www.metacpan.org/module/CGI::Ex::Validate">CGI::Ex::Validate</a>
+</ul>
+
+<p>
+For each module I'll present a SYNOPSIS style code example,
+and briefly outline any other features.
+For these code examples I use one of the
+<a href="http://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm">test card numbers</a>.
+I then present results from comparing and benchmarking the modules,
+followed with a recommendation for which module to use when.
+</p>
+<h2 id="Acme::Tools">Acme::Tools</h2>
+<p>
+<a href="https://www.metacpan.org/module/Acme::Tools">Acme::Tools</a>
+provides a large collection (60!) of utility functions,
+including <tt>ccn_ok()</tt> which implements the LUHN check:
+</p>
+
+<pre>
+use Acme::Tools ();
+
+if (Acme::Tools::ccn_ok('5555555555554444')) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+<tt>ccn_ok()</tt> returns <tt>undef</tt> if the argument is missing digits,
+0 (zero) if the number doesn't pass the LUHN check,
+and either returns 1 or a string identifying the issuer of the card number.
+</p>
+
+<p>
+Acme::Tools exports all 60 functions by default,
+which is why I used:
+</p>
+
+<pre>
+use Acme::Tools ();
+</pre>
+
+<p>
+and then explicitly call <tt>Acme::Tools::ccn_ok()</tt>.
+</p>
+
+<p>
+Given there are other modules which provide LUHN functionality,
+without bringing along 59 other functions,
+I can't see this often being the right choice.
+</p>
+<h2 id="Algorithm::CheckDigits">Algorithm::CheckDigits</h2>
+<p>
+<a href="https://www.metacpan.org/module/Algorithm::CheckDigits">Algorithm::CheckDigits</a>
+is the front-end to a large collection of modules for working with check digits.
+The LUHN check is provided by
+<a href="https://www.metacpan.org/module/Algorithm::CheckDigits::M10_001">Algorithm::CheckDigits::M10_001</a>,
+but you don't explicitly <tt>use</tt> it:
+</p>
+
+<pre>
+use Algorithm::CheckDigits;
+
+$card = CheckDigits('visa');
+
+if ($card->is_valid('5555555555554444')) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+It's slightly confusing that you have to pass 'visa' to the <tt>CheckDigits()</tt> function,
+as it's not doing anything specific to VISA.
+</p>
+
+<p>
+In addition to the <tt>is_valid()</tt> method,
+the module supports 3 other methods:
+</p>
+<ul>
+<li><a href="https://www.metacpan.org/module/Algorithm::CheckDigits::M10_001#complete-number-"><tt>complete()</tt></a>
+    takes a number, calculates the LUHN check digit,
+    and returns the number with the check digit appended.
+    Returns the empty string if the input consists of anything other than digits and spaces.
+<li><a href="https://www.metacpan.org/module/Algorithm::CheckDigits::M10_001#checkdigit-number-"><tt>checkdigit()</tt></a>
+    takes a number, and assumes it has a check digit is included.
+    It returns the check digit if it is valid, or the empty string otherwise.
+<li><a href="https://www.metacpan.org/module/Algorithm::CheckDigits::M10_001#basenumber-number-"><tt>basenumber()</tt></a>
+    The documentation says "Returns the basenumber of $number if $number has a valid check digit. Return '' otherwise.".
+    But I don't really understand that.
+</ul>
+
+<p>
+If you're working with a multiple data types that include check digits,
+then I can imagine this is exactly the one for you &mdash;
+it looks like a solid piece of work.
+But if you're just after a LUHN check, then probably not.
+</p>
+<h2 id="Algorithm::LUHN">Algorithm::LUHN</h2>
+<p>
+<a href="https://www.metacpan.org/module/Algorithm::LUHN">Algorithm::LUHN</a>
+is a good example of why a module
+doesn't need to have a lot of releases, or even recent releases,
+to be considered mature.
+Version 1.00 was released in March 2002, and another release
+hasn't been needed since then.
+</p>
+
+<pre>
+use Algorithm::LUHN qw(is_valid);
+
+if (is_valid('5555555555554444')) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+The module also provides two other functions:
+</p>
+
+<ul>
+<li><a href="https://www.metacpan.org/module/Algorithm::LUHN#check_digit-NUM"><tt>check_digit()</tt></a>
+    takes a number and returns the check digit
+    that you would append to make a LUHN-valid number.
+    So for a 16-digit credit card number, if you pased the leftmost
+    15 digits to this function, you should get back the rightmost single digit.
+<li><a href="https://www.metacpan.org/module/Algorithm::LUHN#valid_chars-LIST"><tt>valid_chars()</tt></a> is used to extend the 
+    valid list of characters. By default the valid characters are [0-9], used in credit cards etc, but other types of identifiers
+    use additional characters (I don't know anything about them, so will leave it at that).
+</ul>
+
+<p>
+This module has exactly the right name, and provides exactly and only the functions you might need.
+When looking for LUHN modules, my first search turned up just this module.
+</p>
+<h2 id="Business::BankCard">Business::BankCard</h2>
+<p>
+This module doesn't have an implementation yet &mdash;
+it's a placeholder for the prolific
+<a href="https://www.metacpan.org/author/SHARYANTO">Steven Haryanto</a>,
+which looks like it will provide some form of LUHN check.
+</p>
+
+<h2 id="Business::CardInfo">Business::CardInfo</h2>
+<p>
+<a href="Business::CardInfo">Business::CardInfo</a>
+provides an OO interface, and performs a LUHN check when you specify the number,
+for example by passing it to the constructor:
+</p>
+
+<pre>
+use Business::CardInfo;
+
+eval { $card = Business::CardInfo->new(number => '5555555555554444'); };
+if (!$@) {
+    print "valid card number, issued by ", $card->type, "\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+Business::CardInfo uses
+<a href="https://www.metacpan.org/module/Moose">Moose</a>,
+and defines a type constraint on the number.
+If you pass a number that doesn't pass the LUHN check, it dies.
+So you need to wrap this in an <tt>eval</tt> and check whether the eval died.
+On the plus side, it will strip spaces from the number.
+</p>
+
+<p>
+The <tt>type()</tt> method returns the name of the issuer,
+or <tt>'Unknown'</tt>.
+The documentation mentions a <tt>country()</tt> method,
+but this always returns <tt>'UK'</tt>.
+</p>
+
+<p>
+The documentation is a bit thin,
+and a bit confusing (it doesn't explain about the type constraint,
+but suggests there's a <tt>validate()</tt> method).
+It's also much slower than the other modules here
+(see the <a href="#comparison">comparison</a> below).
+</p>
+<h2 id="Business::CCCheck">Business::CCCheck</h2>
+<p>
+<a href="https://www.metacpan.org/module/Business::CCCheck">Business::CCCheck</a> provides a number of functions
+for dealing with credit card numbers,
+including <tt>CC_digits()</tt>,
+which returns false if the passed number fails the LUHN check:
+</p>
+
+<pre>
+use Business::CCCheck qw(CC_digits);
+
+$result = CC_digits('5555555555554444');
+if ($result) {
+    print "valid card number ($result)!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+If the number passed is valid,
+then <tt>CC_digits()</tt> returns a string which identifies
+the card issuer.
+</p>
+
+<p>
+There's currently a problem with the <tt>CC_digits()</tt> function:
+the documentation suggests it only returns false if the number
+passed doesn't satisfy the LUHN check.
+But in fact you'll only get a true value back if the number passes the
+LUHN check <em>and</em> is in a valid number range for a known issuer.
+I've raised this with the author, and may end up getting co-maint to
+help release an update, as he's currently swamped with work.
+</p>
+
+<p>
+The module provides other functions related to handling credit cards,
+such as <tt>CC_clean()</tt>, which removes blanks and dashes,
+returning the clean number if no unexpected characters were seen,
+or <tt>false</tt> otherwise.
+</p>
+<h2 id="Business::CreditCard">Business::CreditCard</h2>
+<p>
+<a href="https://www.metacpan.org/module/Business::CreditCard">Business::CreditCard</a> provides three functions:
+</p>
+
+<ul>
+<li><tt>validate()</tt> returns true if passed a valid credit card number.
+<li><tt>cardtype()</tt> returns a string identifying the issuer of the card number.
+<li><tt>generate_last_digit()</tt> returns the final check digit. For a 16-digit card number you'd pass a 15-digit number, and this would return the 16th check digit.
+</ul>
+
+<pre>
+use Business::CreditCard;
+
+if (validate('5555555555554444')) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+A couple of minor niggles about this module:
+it exports all functions by default.
+I think it would be better to let the user decide which functions to import.
+And <tt>validate()</tt> is a bit of a generic name.
+</p>
+
+<p>
+<a href="https://www.metacpan.org/module/Business::CreditCard::Object">Business::CreditCard::Object</a> provides an OO interface to this module:
+</p>
+
+<pre>
+use Business::CreditCard::Object;
+
+$card = Business::CreditCard::Object->new('5555555555554444');
+
+if ($card->is_valid) {
+    print "valid card number, issued by ", $card->type, "\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<h2 id="Regexp::Common">Regexp::Common</h2>
+<p>
+<a href="https://www.metacpan.org/module/Regexp::Common">Regexp::Common</a>
+provides a range of commonly used regular expressions
+in an extensible framework.
+It supports combined LUHN and issuer checking.
+For example, to check whether a number is a valid card number
+issued by MasterCard, you might write:
+</p>
+
+<pre>
+use Regexp::Common qw(CC);
+
+$number = '5555555555554444';
+
+if ($number =~ /^$RE{CC}{Mastercard}/) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+It only supports checking for the following issuers:
+Mastercard, Amex, Diners Club, and Discover.
+</p>
+
+<p>
+I guess this might be useful if you're creating an interface
+where the user has to select the card type and then enter the number,
+but it's not really a general purpose LUHN interface
+(though the underlying function is: see the section on
+<a href="#Regexp::Common::_support">Regexp::Common::_support</a>).
+</p>
+<h2 id="Regexp::Common::_support">Regexp::Common::_support</h2>
+<p>
+<a href="">Regexp::Common::_support</a> is billed as providing support
+functions for <a href="">Regexp::Common</a>.
+At the moment it only provides one (documented) function, <tt>luhn()</tt>,
+which returns true if the argument passes the luhn checksum test:
+</p>
+
+<pre>
+use Regexp::Common::_support qw(luhn);
+
+if (luhn('5555555555554444')) {
+    print "valid card number!\n";
+} else {
+    print "bogus card number.\n";
+}</pre>
+
+<p>
+You probably shouldn't rely on this module,
+as the documentation contains the following
+</p>
+
+<blockquote>
+Subroutines from the module may disappear without any notice,
+or their meaning or interface may change without notice.
+</blockquote>
+
+<p>
+You might wonder why I've included this module?
+My rule is that I have to include any modules that someone can
+find by searching CPAN using <a href="https://www.metacpan.org">metacpan</a>
+or <a href="http://search.cpan.org">search.cpan.org</a>.
+</p>
+<h1 id="comparison">Comparison</h1>
+
+<h2>Performance</h2>
+
+<p>
+The following table shows the results of benchmarking the seven modules that can be used
+to do a LUHN check.
+I ran one million random 16-digit numbers past each module, only checking validity
+(where modules provide separate functions for checking validity and card issuer).
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>Business::CCCheck</td><td align=right class=time>2.66</td></tr>
+<tr><td class=module>Regexp::Common::_support</td><td align=right class=time>9.34</td></tr>
+<tr><td class=module>Business::CreditCard</td><td align=right class=time>11.29</td></tr>
+<tr><td class=module>Algorithm::LUHN</td><td align=right class=time>20.94</td></tr>
+<tr><td class=module>Algorithm::CheckDigits</td><td align=right class=time>21.89</td></tr>
+<tr><td class=module>Acme::Tools</td><td align=right class=time>30.42</td></tr>
+<tr><td class=module>Business::CardInfo</td><td align=right class=time>1123.42</td></tr>
+</table>
+
+
+<p>
+Business::CardInfo is much slower than the other modules;
+I'm guessing this is down to Moose.
+</p>
+
+<p>
+The following table shows the results of looking up the issuer,
+for the modules that support it. For two of the modules,
+that's the same function as used for the above test.
+</p>
+
+<p>
+For this test I also used one million random 16-digit numbers.
+</p>
+
+<table class=benchmark>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td class=module>Business::CCCheck</td><td align=right class=time>2.59</td></tr>
+<tr><td class=module>Business::CreditCard</td><td align=right class=time>4.82</td></tr>
+<tr><td class=module>Acme::Tools</td><td align=right class=time>28.26</td></tr>
+<tr><td class=module>Business::CardInfo</td><td align=right class=time>2583.22</td></tr>
+</table>
+
+
+<p>
+So Business::CCCheck is the fastest in both cases;
+a shame about the quirk with <tt>CC_digits()</tt>.
+</p>
+
+<h2>Correctness</h2>
+
+<p>
+Obviously a key thing you want to know about a LUHN implementation is that it's correct. Always.
+It's a well-known and relatively simple algorithm,
+so I wasn't expecting to find errors,
+but I still need to check.
+</p>
+
+<p>
+One approach would be for me to reimplement the algorithms
+and check that all modules agree with mine.
+But apart from the obvious flaw that I may introduce bugs in my implementation,
+with enough implementations I can just test them against each other.
+</p>
+
+<p>
+I ran one million random 16-digit numbers past the seven modules
+that can do a LUHN check,
+to see whether they all agreed.
+This was how I discovered the issue with <tt>CC_digits()</tt>
+from Business::CCCheck (described above).
+Apart from that issue, all of the modules were in agreement.
+</p>
+
+<p>
+Next I looked at the three modules which identify the issuer,
+and checked to see whether they agree on the issuer,
+again for one million random 16-digit numbers.
+They were all in agreement.
+</p>
+<h1 id="conclusion">Conclusion</h1>
+
+<p>
+There is no standout module here.
+Business::CCCheck is the fastest, but has some quirks with the API.
+Business::CreditCard isn't much slower, but provides a useful
+set of functions, even if they're not so well named.
+</p>
+
+<p>
+Overall I think Business::CreditCard is the best module.
+It provides a separate LUHN function and another function
+for identifying a card's issuer.
+</p>
+
+<p>
+If you want to perform a LUHN check on identifiers that
+contain characters other than digits, then Algorithm::LUHN
+looks like the best bet.
+Caveat: I haven't actually tested that functionality.
+</p>
+
+<p>
+I wonder if there's an opportunity for Algorithm::LUHN::XS,
+or Business::CreditCard::XS here?
+There are plenty of fast LUHN implementations in C out there,
+and I can't imagine it would take much for an experienced XS
+developer (I'm not one of those).
+</p>
+
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>

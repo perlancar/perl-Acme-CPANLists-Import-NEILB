@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CPAN modules for defining constants</title>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy"/>
+    <link rel='stylesheet' href='perl-reviews.css' type='text/css'/>
+  </head>
+<body>
+<div class=titlebar>
+    <h1>CPAN modules for defining constants</h1>
+    <p class=contents><a href="index.html">other reviews</a></p>
+    <p class=author>Neil Bowers</p>
+    <p class=date>2012-08-10</p>
+</div>
+<p>
+This is a review of CPAN modules that can be used to define or work with constants.
+The following modules are covered:
+</p>
+
+<table class="moduleInfo">
+<tr>
+  <th align=left>Module</th>
+  <th align=left>Doc</th>
+  <th align=right>Version</th>
+  <th align=left>Author</th>
+  <th align=right># bugs</th>
+  <th align=right># users</th>
+  <th align=right>Last update</th>
+</tr>
+<tr>
+  <td><a href="#Attribute::Constant"><tt>Attribute::Constant</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dankogai/Attribute-Constant-0.02/lib/Attribute/Constant.pm">CPAN</a></span></td>
+  <td align=right><tt>0.02</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dankogai/">Dan Kogai</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Attribute-Constant"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Attribute::Constant"><tt>1</tt></a></td>
+  <td align=right><tt>2008-06-27</tt></td>
+</tr><tr>
+  <td><a href="#Config::Constants"><tt>Config::Constants</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~stevan/Config-Constants-0.03/lib/Config/Constants.pm">CPAN</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~stevan/">Stevan Little</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Config-Constants"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Config::Constants"><tt>0</tt></a></td>
+  <td align=right><tt>2005-05-05</tt></td>
+</tr><tr>
+  <td><a href="#Const::Fast"><tt>Const::Fast</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~leont/Const-Fast-0.012/lib/Const/Fast.pm">CPAN</a></span></td>
+  <td align=right><tt>0.012</tt></td>
+  <td align=left><a href="http://search.cpan.org/~leont/">Leon Timmermans</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Const-Fast"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Const::Fast"><tt>20</tt></a></td>
+  <td align=right><tt>2012-08-09</tt></td>
+</tr><tr>
+  <td><a href="#constant"><tt>constant</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~saper/constant-1.21/lib/constant.pm">CPAN</a></span></td>
+  <td align=right><tt>1.21</tt></td>
+  <td align=left><a href="http://search.cpan.org/~saper/">SÃ©bastien Aperghis-Tramoni</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=constant"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=constant"><tt>221</tt></a></td>
+  <td align=right><tt>2011-04-18</tt></td>
+</tr><tr>
+  <td><a href="#constant::def"><tt>constant::def</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mons/constant-def-0.01/lib/constant/def.pm">CPAN</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mons/">Mons Anderson</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=constant-def"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=constant::def"><tt>1</tt></a></td>
+  <td align=right><tt>2009-03-11</tt></td>
+</tr><tr>
+  <td><a href="#constant::defer"><tt>constant::defer</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~kryde/constant-defer-5/lib/constant/defer.pm">CPAN</a></span></td>
+  <td align=right><tt>5</tt></td>
+  <td align=left><a href="http://search.cpan.org/~kryde/">Kevin Ryde</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=constant-defer"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=constant::defer"><tt>8</tt></a></td>
+  <td align=right><tt>2011-02-11</tt></td>
+</tr><tr>
+  <td><a href="#Constant::FromGlobal"><tt>Constant::FromGlobal</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~nuffin/Constant-FromGlobal-0.01/lib/Constant/FromGlobal.pm">CPAN</a></span></td>
+  <td align=right><tt>0.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~nuffin/">×××× ×§××'×× (Yuval Kogman)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Constant-FromGlobal"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Constant::FromGlobal"><tt>1</tt></a></td>
+  <td align=right><tt>2009-11-05</tt></td>
+</tr><tr>
+  <td><a href="#Constant::Generate"><tt>Constant::Generate</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~mnunberg/Constant-Generate-0.16/lib/Constant/Generate.pm">CPAN</a></span></td>
+  <td align=right><tt>0.16</tt></td>
+  <td align=left><a href="http://search.cpan.org/~mnunberg/">Mark (××¨×××) Nunberg</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Constant-Generate"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Constant::Generate"><tt>5</tt></a></td>
+  <td align=right><tt>2012-01-30</tt></td>
+</tr><tr>
+  <td><a href="#constant::lexical"><tt>constant::lexical</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~sprout/constant-lexical-2.0001/lib/constant/lexical.pm">CPAN</a></span></td>
+  <td align=right><tt>2.0001</tt></td>
+  <td align=left><a href="http://search.cpan.org/~sprout/">Father Chrysostomos</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=constant-lexical"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=constant::lexical"><tt>4</tt></a></td>
+  <td align=right><tt>2012-01-08</tt></td>
+</tr><tr>
+  <td><a href="#constant::our"><tt>constant::our</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~green/constant-our-0.07/lib/constant/our.pm">CPAN</a></span></td>
+  <td align=right><tt>0.07</tt></td>
+  <td align=left><a href="http://search.cpan.org/~green/">Evdokimov Denis</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=constant-our"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=constant::our"><tt>0</tt></a></td>
+  <td align=right><tt>2012-05-14</tt></td>
+</tr><tr>
+  <td><a href="#Devel::Constants"><tt>Devel::Constants</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/Devel-Constants-1.01/lib/Devel/Constants.pm">CPAN</a></span></td>
+  <td align=right><tt>1.01</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-Constants"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Devel::Constants"><tt>0</tt></a></td>
+  <td align=right><tt>2012-02-01</tt></td>
+</tr><tr>
+  <td><a href="#enum"><tt>enum</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~zenin/enum-1.016/enum.pm">CPAN</a></span></td>
+  <td align=right><tt>1.016</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zenin/">Byron Brummer</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=enum"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=enum"><tt>13</tt></a></td>
+  <td align=right><tt>1999-05-27</tt></td>
+</tr><tr>
+  <td><a href="#enum::fields"><tt>enum::fields</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~dmlloyd/enum-fields-1.0/fields.pm">CPAN</a></span></td>
+  <td align=right><tt>1.0</tt></td>
+  <td align=left><a href="http://search.cpan.org/~dmlloyd/">David Lloyd</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=enum-fields"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=enum::fields"><tt>1</tt></a></td>
+  <td align=right><tt>2002-07-27</tt></td>
+</tr><tr>
+  <td><a href="#ex::constant::vars"><tt>ex::constant::vars</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~neilb/ex-constant-vars-0.03/lib/ex/constant/vars.pm">CPAN</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~neilb/">Neil Bowers</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=ex-constant-vars"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=ex::constant::vars"><tt>0</tt></a></td>
+  <td align=right><tt>2012-01-28</tt></td>
+</tr><tr>
+  <td><a href="#Lexical::Import"><tt>Lexical::Import</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~zefram/Lexical-Import-0.002/lib/Lexical/Import.pm">CPAN</a></span></td>
+  <td align=right><tt>0.002</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zefram/">Andrew Main (Zefram)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Lexical-Import"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Lexical::Import"><tt>0</tt></a></td>
+  <td align=right><tt>2011-10-26</tt></td>
+</tr><tr>
+  <td><a href="#Lexical::Var"><tt>Lexical::Var</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~zefram/Lexical-Var-0.007/lib/Lexical/Var.pm">CPAN</a></span></td>
+  <td align=right><tt>0.007</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zefram/">Andrew Main (Zefram)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Lexical-Var"><tt>0</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Lexical::Var"><tt>3</tt></a></td>
+  <td align=right><tt>2012-02-04</tt></td>
+</tr><tr>
+  <td><a href="#Readonly"><tt>Readonly</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~roode/Readonly-1.03/Readonly.pm">CPAN</a></span></td>
+  <td align=right><tt>1.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~roode/">Eric J. Roode</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Readonly"><tt>18</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Readonly"><tt>269</tt></a></td>
+  <td align=right><tt>2004-04-21</tt></td>
+</tr><tr>
+  <td><a href="#Readonly::XS"><tt>Readonly::XS</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~roode/Readonly-XS-1.05/XS.pm">CPAN</a></span></td>
+  <td align=right><tt>1.05</tt></td>
+  <td align=left><a href="http://search.cpan.org/~roode/">Eric J. Roode</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Readonly-XS"><tt>7</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Readonly::XS"><tt>5</tt></a></td>
+  <td align=right><tt>2009-02-24</tt></td>
+</tr><tr>
+  <td><a href="#Scalar::Constant"><tt>Scalar::Constant</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~arunbear/Scalar-Constant-0.001005/lib/Scalar/Constant.pm">CPAN</a></span></td>
+  <td align=right><tt>0.001005</tt></td>
+  <td align=left><a href="http://search.cpan.org/~arunbear/">Arun Prasaad</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Scalar-Constant"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Scalar::Constant"><tt>0</tt></a></td>
+  <td align=right><tt>2012-01-29</tt></td>
+</tr><tr>
+  <td><a href="#Scalar::Construct"><tt>Scalar::Construct</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~zefram/Scalar-Construct-0.000/lib/Scalar/Construct.pm">CPAN</a></span></td>
+  <td align=right><tt>0</tt></td>
+  <td align=left><a href="http://search.cpan.org/~zefram/">Andrew Main (Zefram)</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Scalar-Construct"><tt>1</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Scalar::Construct"><tt>0</tt></a></td>
+  <td align=right><tt>2012-02-06</tt></td>
+</tr><tr>
+  <td><a href="#Scalar::Readonly"><tt>Scalar::Readonly</tt></a></td>
+  <td><span class="docLink"><a href="http://search.cpan.org/~gozer/Scalar-Readonly-0.03/lib/Scalar/Readonly.pm">CPAN</a></span></td>
+  <td align=right><tt>0.03</tt></td>
+  <td align=left><a href="http://search.cpan.org/~gozer/">Philippe M. Chiasson</a></td>
+  <td align=right><a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Scalar-Readonly"><tt>2</tt></a></td>
+  <td align=right><a href="http://deps.cpantesters.org/depended-on-by.pl?module=Scalar::Readonly"><tt>1</tt></a></td>
+  <td align=right><tt>2012-01-23</tt></td>
+</tr>
+</table>
+
+<p>
+In one of my projects I was using Readonly, but hit a snag,
+so ended up doing this review, to work out which module I should switch to.
+The funny thing is, that as a result of writing this,
+I had to learn more about Readonly,
+and now I can't remember what the problem was!
+</p>
+
+<p>
+For each module I wrote a simple script,
+in the style of the SYNOPSIS section of documentation.
+I tried to make these the same, as much as possible.
+The relevant interesting part of these is included to illustrate the module.
+</p>
+
+<p>
+I also wrote a script to test every module's <em>constantness</em>,
+using Test::More to check that constants really were immutable.
+</p>
+
+<pre>
+use Const::Fast;
+use Test::More;
+
+const my $scalar => 42;
+eval { $scalar = 15; };
+ok($@, "assigning to my scalar");
+</pre>
+
+<p>
+After reviewing each module, various comparisons are presented,
+and then recommendations given for which module to use when.
+</p>
+
+<p>
+At first I included module
+<a href="https://metacpan.org/module/constant::Atom">constant::Atom</a>
+in this review, but it's really for defining an enumeration,
+and I discovered there are other similar modules.
+I haven't included them in this review &mdash;
+maybe they'll get one of their own.
+</p>
+<h2 id="Attribute::Constant">Attribute::Constant</h2>
+<p>
+Attribute::Constant lets you define scalar, hash and array constants
+by defining a Constant attribute.
+You can use it with both my and our variables.
+</p>
+
+<pre>
+use Attribute::Constant;
+
+my $scalar  : Constant(42);
+my @array   : Constant(qw(red green blue));
+my %hash    : Constant(food => 'sushi', drink => 'sake');
+
+our $string : Constant('xyzzy');
+our @list   : Constant(17, 23);
+our %map    : Constant(x => 1, y => 2, z => 3);</pre>
+
+<p>
+The initialiser can be empty, or even omitted.
+For a scalar this results in <tt>undef</tt>,
+for an array or hash it produces the empty list.
+</p>
+
+<p>
+Internally, Attribute::Constant uses <tt>dlock()</tt> from
+<a href="https://metacpan.org/module/Data::Lock">Data::Lock</a>,
+which is part of the same distribution.
+The <tt>dlock()</tt> function uses the the core undocumented
+<tt>Internals::SvREADONLY()</tt> function to make the variable read-only.
+This is true even if the value is a complex data structure
+(as with Const::Fast, see the example in that section below).
+</p>
+
+<p>
+This is clean and fairly simple,
+thought the syntax feels a little strange for declaring a constant.
+It's only version 0.02 (released 2008),
+which might be interpreted as unstable and likely to change,
+but in fact there's not much more the module needs.
+</p>
+<h2 id="Config::Constants">Config::Constants</h2>
+<p>
+Config::Constants lets you define scalar constants in a config file,
+and then provides function constants for referring to the values
+in the config file.
+Let's say you want to create a separate module, Foobar::Constants,
+which will provide all constants for use by the rest of your code.
+</p>
+
+<p>
+First, you create the XML which defines the name and value of each constant:
+</p>
+
+<pre>&lt;config&gt;
+    &lt;module name=&quot;Foobar::Constants&quot;&gt;
+        &lt;constant name=&quot;STATE&quot; value=&quot;bewildered&quot;/&gt;
+    &lt;/module&gt;
+&lt;/config&gt;
+</pre>
+
+<p>Then your constants class might look something like:</p>
+
+<pre>
+package Foobar::Constants;
+
+use Config::Constants xml => 'constants.xml';
+
+use parent qw(Exporter);
+our @EXPORT = qw(STATE);
+
+1;</pre>
+
+<p>If a script wants to use a constant, it just does:</p>
+
+<pre>
+use Foobar::Constants;
+
+print "STATE has value ", STATE, "\n";</pre>
+
+<p>
+It took me a little while to get my head around this module &mdash;
+I found the SYNOPSIS in the documentation a little confusing.
+I get the feeling it was an experiment, one that hasn't been taken forward.
+That said, I like the idea of configuration constants being in a config file.
+</p>
+<h2 id="Const::Fast">Const::Fast</h2>
+<p>Const::Fast lets you define scalar, hash and array constants with the <tt>const</tt> function, which is exported by default. You can use it with both my and our variables.</p>
+
+<pre>
+use Const::Fast;
+
+const my $scalar  => 42;
+const my @array   => qw(red green blue);
+const my %hash    => (food => 'sushi', drink => 'sake');
+
+const our $string => 'xyzzy';
+const our @list   => (17, 23);
+const our %map    => (x => 1, y => 2, z => 3);</pre>
+
+<p>
+If the value of a constant is a complex data structure, or reference to one,
+then the entire structure will be made read-only. For example:
+</p>
+
+<pre>
+const my $href =>
+{
+    color => {red => 100, green => 127, blue => 64},
+    size  => 'large',
+};
+
+$href->{color}->{red} = 200;
+</pre>
+
+<p>
+results in the error:
+</p>
+
+<pre>
+Modification of a read-only value attempted at deep.pl line 12.
+</pre>
+
+<p>
+Const::Fast uses the core undocumented <tt>Internals::SvREADONLY()</tt> function to make the specific items read-only. Since it's undocumented, I had a look at the source, which made me smile:
+</p>
+<pre>
+  XS(XS_Internals_SvREADONLY) /* This is dangerous stuff. */
+</pre>
+<h2 id="constant">constant</h2>
+<p>The <tt>constant</tt> pragma is used to define function constants at compile time.</p>
+
+<pre>
+use constant SCALAR => 42;
+use constant LIST   => qw(red green blue);
+
+print "scalar  = ", SCALAR,    "\n";
+print "list[1] = ", (LIST)[1], "\n";</pre>
+
+<p>When you declare a constant this way, the value is evaluated at compile time, and assigned to the constant. Wherever the constant is used in an expression, it is replaced by the constant's value.</p>
+
+<p>With this module you can define scalar and <em>list</em> constants. Note that the LIST constant above is a list, not an array, which is why it appears in parentheses above.</p>
+
+<p>The documentation for the pragma includes the following example:</p>
+
+<pre>  use constant PI => 4 * atan2(1, 1);</pre>
+
+<p>If you use a function in the value of a constant, the function must be defined before you define the constant.</p>
+
+<p>One of the key uses for this type of constant is conditional compilation:</p>
+
+<pre>
+  use constant DEBUG => 0;
+
+  sub foobar {
+    print "starting foobar()\n" if DEBUG;
+    # ...
+  }
+</pre>
+
+<p>
+Where a constant is used in an <tt>if (CONSTANT)</tt> construct, the code will be optimized away at compile time if the constant evaluates to false.
+</p>
+
+<p>
+One thing to beware of: if you define string constants, you can't use it in the obvious way as a hash key:
+</p>
+
+<pre>  $color = $color_hash{BACKGROUND};</pre>
+
+<p>Here BACKGROUND will be treated as a bareword. To force the interpretation as a constant, you have to use one of several ways to prevent the bareword, such as treating it as a function:
+</p>
+
+<pre>  $color = $color_hash{BACKGROUND()};</pre>
+
+<p>
+As the documentation points out,
+you could assign a hash ref to a constant,
+but the referenced hash isn't immutable:
+</p>
+
+<pre>
+use constant HASHREF => { color => 'red', size => 'large' };
+print "color = ", HASHREF->{color}, "\n";
+HASHREF->{color} = 'blue';
+print "color = ", HASHREF->{color}, "\n";</pre>
+
+<p>Output:</p>
+
+<pre>color = red
+color = blue
+</pre>
+
+<p>
+If you look at Const::Fast,
+if you create a scalar constant which is actually a reference to a
+deep data structure, it will make the entire data structure read-only. 
+I wonder if there's any reason why the constant pragma couldn't borrow
+that code?
+</p>
+<h2 id="constant::def">constant::def</h2>
+<p>
+This distribution contains two modules: <tt>constant::def</tt> and <tt>constant::abs</tt>.
+These let you define a constant in a module, and effectively override it from another part of your code.
+</p>
+
+<p>
+Let's say you have a module Foobar. In this module you want to define a constant DEBUG, unless someone else has already defined the constant <em>in your namespace</em>.
+</p>
+
+<pre>
+package Foobar;
+use constant::def DEBUG => $ENV{FOOBAR_DEBUG} || 0;
+
+sub do_something
+{
+    print "in do_something()\n" if DEBUG;
+}</pre>
+
+<p>
+And then in a script which is using the module, you want to specify a value for the constant, which effectively overrides the module's own preferred value:
+</p>
+
+<pre>
+use constant::abs 'Foobar::DEBUG' => 1;
+use Foobar;
+
+Foobar::do_something();</pre>
+
+<p>Note that you need to <tt>use constant::abs</tt> before you <tt>use</tt> the module that you're defining the constant in.</p>
+
+<p>
+As with the <tt>constant</tt> pragma, there is no way to use these modules for a constant hash.
+See the section on <tt>constant</tt> above.
+</p>
+
+<p>
+I can't see the scenario where these modules would be the right way to define constants. If you have a collection of your own modules which need to work together, why not have a module which defines and exports constants? And if you're using a third-party module, the odds are pretty slim that it's using <tt>constant::def</tt>. And the need to use constant::abs before use'ing the third-party module just seems a bit clumsy. But maybe I'm missing the killer scenario?
+</p>
+<h2 id="constant::defer">constant::defer</h2>
+<p>constant::defer is used to define a constant in a way very similar to the <tt>constant</tt> module, but the value must be an anonymous sub. The first time the constant is used, the sub is called, and the constant is then redefined as a function constant with the value returned by the sub.
+
+<pre>
+use constant::defer FIB5 => sub {
+                                  print "BOO!\n";
+                                  return fibonacci(5);
+                                };
+
+print "fib(5) = ", FIB5, "\n";
+print "fib(5) = ", FIB5, "\n";</pre>
+
+<p>Running this you'll get:</p>
+
+<pre>  BOO!
+  fib(5) = 5
+  fib(5) = 5
+</pre>
+
+<p>
+As with <tt>constant</tt>, this can be used for scalar and list constants.
+</p>
+
+<p>
+The main purpose for this is obviously if the constant value is expensive to produce. Maybe it is retrieved from somewhere, such as a database, or calculated. I haven't hit such a situation myself, but I'm guessing the author did, to have created this.</p>
+
+<p>The documentation also suggests that you could use it to create one instance of a class, which is then re-used. Later on the doc references Class::Singleton, which is probably a better way to do that. The documentation also lists other modules which can be used for lazy (or deferred) calculation. Not enough modules provide these sorts of pointers, so +1 for the author Kevin Ryde.</p>
+
+<p>I can't think of a situation where this would be the right module, but now it's in my mental arsenal, maybe I'll come across one in the future.</p>
+<h2 id="Constant::FromGlobal">Constant::FromGlobal</h2>
+<p>
+Constant::FromGlobal lets you define scalar function constants
+which take their values from one of three places, in order of priority:
+</p>
+
+<ul>
+<li>A package global variable with the same name as the constant.</li>
+<li>An environment variable with the same name as the constant.</li>
+<li>A default value specified when declaring the constant.</li>
+</ul>
+
+<p>
+The module was prompted by a
+<a href="http://use.perl.org/~Alias/journal/39845">blog post</a> by
+<a href="http://search.cpan.org/~adamk/">Adam Kennedy</a>,
+where he defines the "Constant Global" pattern.
+His canonical example is for setting debug mode in a module:
+
+<pre>
+BEGIN { our $DEBUG = 1; }
+use Constant::FromGlobal qw(DEBUG);
+
+print "in debug mode\n" if DEBUG;</pre>
+
+<p>
+Note that because the constant is defined at compile time,
+the associated variable must be declared inside a BEGIN block.
+</p>
+
+<p>
+This means you could have a performance-sensitive module which most of the time has debug statements compiled out. But then if you need to turn on debug for that module, you can use:
+</p>
+
+<pre>
+  BEGIN { $HotSpot::DEBUG = 1; }
+  use HotSpot;
+</pre>
+
+<p>Obviously the module needs to be cooperating, by using Constant::FromGlobal.</p>
+
+<p>If there isn't a package global of the right name, Constant::FromGlobal will look for a suitably named environment variable, if you tell it to:</p>
+
+<pre>
+BEGIN { $ENV{MAIN_DEBUG} = 1; }
+use Constant::FromGlobal DEBUG => { env => 1 };
+
+print "in debug mode\n" if DEBUG;</pre>
+
+<p>The environment variable must include the full namespace, with :: changed to underscore.</p>
+
+<p>You can also specify a default value, which will be used if there isn't a global variable, and the environment variable wasn't used (or there wasn't an environment variable set):</p>
+
+<pre>
+use Constant::FromGlobal LOG_LEVEL => { env => 1, int => 1, default => 2 };
+
+print "Log level = ", LOG_LEVEL, "\n";</pre>
+
+<p>That also illustrates the <tt>int</tt> control, which says that the constant must have an integer value, enforced by <tt>looks_like_number()</tt> from Scalar::Util.</p>
+<h2 id="Constant::Generate">Constant::Generate</h2>
+<p>
+Constant::Generate is the swiss army module for defining function constants.
+It can be used to generate a number of different styles of constants,
+and has various bells &amp; whistles on top.
+</p>
+
+<p>
+First, here's the basic definition of constants with a value:
+</p>
+
+<pre>
+use Constant::Generate
+    {
+        HAPPY       => 17,
+        INDIFFERENT => 23,
+        SAD         => 42,
+    };</pre>
+
+<p>
+Unlike <tt>constant</tt> and similar modules, you can't define list
+constants, only scalar. And like <tt>constant</tt> and other modules
+described above, you can't create a true hash-ref or array-ref constant.
+</p>
+
+<p>
+If you just pass symbol names, they will be assigned values in sequence:
+</p>
+
+<pre>
+use Constant::Generate [qw(ALPHA BETA GAMMA)];
+print "ALPHA = ", ALPHA, "\n";
+print "BETA  = ", BETA,  "\n";
+print "GAMMA = ", GAMMA, "\n";</pre>
+
+<p>Which produces the output:</p>
+
+<pre>ALPHA = 0
+BETA  = 1
+GAMMA = 2
+</pre>
+
+<p>
+By default any generated constants are sequential integers. You can change this behaviour by passing the <tt>type</tt> option when declaring constants. If you pass <tt>'str'</tt>, then the constants are given string values, with each constant's string value being the name of the constant. The type <tt>'bit'</tt> will create bit-flag constants:
+</p>
+
+<pre>
+use Constant::Generate [qw(PERL RUBY LISP)], type => 'bit';
+print "PERL = ", PERL, "\n";
+print "RUBY = ", RUBY, "\n";
+print "LISP = ", LISP, "\n";</pre>
+
+<p>Which produces the output:</p>
+
+<pre>PERL = 1
+RUBY = 2
+LISP = 4
+</pre>
+
+<p>For integer and bit-flag constants, you can specify the value for the first constant, using the <tt>start_at</tt> option. You can also request a reverse-mapping function (c.f. Devel::Constants) with the <tt>mapname</tt> option:</p>
+
+<pre>
+use Constant::Generate [qw(LEGO TRIO OCTO)], type => 'bit', mapname => 'toys2str';
+$toys = LEGO | TRIO;
+print "toys = ", toys2str($toys), "\n";</pre>
+
+<p>Which produces the output:</p>
+
+<pre>toys = LEGO|TRIO
+</pre>
+
+<p>
+You can also request that the constants be defined as <em>dualvars</em>: in numeric context the constant will have the value which either you or the module assigned it. In a string context its value will be the name of the constant:
+</p>
+
+<pre>
+use Constant::Generate [qw(COFFEE TEA HOTCHOC)], dualvar => 1;
+$value = TEA;
+printf "value(int) = %d\n", $value;
+printf "value(str) = %s\n", $value;</pre>
+
+<p>Which produces the output:</p>
+
+<pre>value(int) = 1
+value(str) = TEA
+</pre>
+
+<p>
+There are two ways two define dualvar constants: either with the <tt>dualvar</tt> option,
+or by using <tt>Constant::Generate::Dualvar</tt> instead of <tt>Constant::Generate</tt>.
+</p>
+
+<p>
+The documentation refers to dualvar constants as DWIM constants,
+though I don't get why dualvar implies DWIM. 
+</p>
+
+<p>
+Constant::Generate also provides support for the scenario which started me doing this review
+in the first place: creating a module which defines and exports constants.
+Your constant module is written as follows:
+</p>
+
+<pre>
+package MyConstants;
+use parent qw(Exporter);
+our @EXPORT;
+use Constant::Generate {
+        TITLE  => 1,
+        AUTHOR => 2,
+        ISBN   => 3,
+    }, export => 1;
+
+1;</pre>
+
+<p>
+You can specify <tt>export_ok</tt> instead of <tt>export</tt>.
+</p>
+
+<p>
+There are plenty more features I haven't touched on,
+including the <tt>allvalues</tt> and <tt>allsyms</tt> options, and the <tt>prefix</tt> option.
+</p>
+
+<h2 id="constant::lexical">constant::lexical</h2>
+<p>
+constant::lexical is used to define constants in a very similar way
+to the <tt>constant</tt> module, but makes them local to the enclosing scope.
+</p>
+
+<pre>
+use constant::lexical LOG_LEVEL => 1;
+
+print "log level = ", LOG_LEVEL, "\n";
+
+{
+ use constant::lexical LOG_LEVEL => 3;
+ print "in nested scope, log level = ", LOG_LEVEL, "\n";
+}
+
+print "after nested scope, log level = ", LOG_LEVEL, "\n";</pre>
+
+<p>Which when run, produces:</p>
+
+<pre>  log level = 1
+  in nested scope, log level = 3
+  after nested scope, log level = 1
+</pre>
+
+<p>
+Father Chrysostomos says he created this module because he wanted to use function constants,
+but didn't want them appearing to be methods for his classes.
+It's a shame the constant folding doesn't work for readonly scalars.
+</p>
+<h2 id="constant::our">constant::our</h2>
+<p>constant::our implements a kind of global or shared constant, using the <tt>constant</tt> pragma to create the constants. The one-line description in the NAME section of the pod says "pragma to declare constants like our vars". After reading the documentation, I wasn't exactly sure what the module would do for me, so I had to read the code to be sure.</p>
+
+<p>There are two ways you use this module: at the top-level, for example in package main, you use this module to declare one or more constants, and give them values. In other packages you just give the names of the constants, and they're imported into your namespace:</p>
+
+<pre>
+package main;
+use constant::our { FOOBAR => 17 };
+
+package Foobar;
+use constant::our qw(FOOBAR BANANA);
+sub printit
+{
+    print "FOOBAR = ", FOOBAR, "\n";
+    if (defined(BANANA)) {
+        print "BANANA = ", BANANA, "\n";
+    } else {
+        print "BANANA not defined\n";
+    }
+}
+
+package main;
+Foobar::printit();</pre>
+
+<p>
+So far, it looks like it largely works like <tt>constant</tt>.
+But it doesn't. When you run:
+</p>
+
+<pre>
+package main;
+use constant::our { FOOBAR => 17 };
+</pre>
+
+<p>
+You might think that you're effectively creating a <tt>sub main::FOOBAR</tt>,
+but what it actually does is:
+</p>
+
+<ul>
+<li>Uses <tt>constant</tt> to define <tt>constant::our::FOOBAR</tt>, a function which returns the value you specified.</li>
+<li>Uses <tt>Exporter</tt> to export FOOBAR into package main.</li>
+</ul>
+
+<p>And then, when in another module you write:</p>
+
+<pre>
+package Foobar;
+use constant::our qw(FOOBAR BANANA);
+</pre>
+
+<p>
+It looks to see if the constant has been defined in <tt>constant::our</tt>;
+if it has then it's exported.
+If it's not exported (as with BANANA in the example above),
+then a new constant function is declared, returning undef.
+This means that you can refer to constants that haven't been defined yet.
+</p>
+
+<p>
+The end result of this mechanism is that
+you must define any constants you want to refer to,
+before you refer to them anywhere.
+And if you have some constants that you want to use in a lot of modules,
+you have to refer to the constant names explicitly in every module.
+</p>
+
+<p>
+The mechanism used also means that this module can only be used to define
+scalar constants. You can't use it for LIST constants,
+because let's say you tried the following:
+</p>
+
+<pre>
+use constant::our FOOBAR => (1, 2, 3);
+</pre>
+
+<p>
+The <tt>import</tt> method knows how to deal with two cases:
+the first is a hashref, which it interprets as definitions of constants.
+If it sees a list, as above,
+it interprets them as names of constants to import or provide default values for.
+</p>
+<h2 id="Devel::Constants">Devel::Constants</h2>
+<p>
+Devel::Constants provides a reverse-mapping from constant value to name,
+for constants defined with the <tt>constant</tt> pragma.
+The simplest use:
+</p>
+
+<pre>
+use Devel::Constants 'to_name';
+
+use constant DRAFT     => 1;
+use constant PUBLISHED => 2;
+use constant RETIRED   => 3;
+
+my $state = DRAFT;
+
+print "state = $state (", to_name($state), ")\n";</pre>
+
+<p>
+Obviously this can cause problems if you've more than one constant
+with the same value - it will return the latest constant name.
+</p>
+
+<p>
+Devel::Constants also provides a function for reverse-mapping values
+where you have constants for bit-flags:
+</p>
+
+<pre>
+use Devel::Constants 'flag_to_names';
+
+use constant OPT_A  => 0x01;
+use constant OPT_B  => 0x02;
+use constant OPT_C  => 0x04;
+use constant OPT_D  => 0x08;
+
+$value = OPT_B | OPT_D;
+
+print "flags = ", join(' | ', flag_to_names($value)), "\n";</pre>
+
+<p>
+which produces the following output:
+</p>
+
+<pre>flags = OPT_D | OPT_B
+</pre>
+
+<p>
+By default it only intercepts constants in the current package,
+but you can chage that by specifying a package,
+before you use the relevant module. From the pod:
+</p>
+
+<pre>
+use Devel::Constants package => NetPacket::TCP;
+use NetPacket::TCP;
+</pre>
+
+<p>
+When you do this it only intercepts constants in the specified package &mdash;
+it doesn't intercept them in the current package.
+</p>
+
+<p>
+This module was written by chromatic, but you'll see me listed as
+maintainer in the table above. Chromatic gave me co-maint so I could
+update the documentation with pointers to this article, and
+<tt>Constant::Generate</tt>.
+</p>
+<h2 id="enum">enum</h2>
+<p>
+<tt>enum</tt> is a module for defining sets of function constants
+with sequential values, similar to the <em>enum</em> type in C.
+The basic use is similar to other modules listed here:
+</p>
+
+<pre>
+use enum qw(SUN MON TUE WED THU FRI SAT);
+</pre>
+
+<p>
+By default the first constant will have the value 0 (zero),
+the next 1, and so on. You can change the start value,
+or even every value:
+</p>
+
+<pre>
+use enum qw(SUN=1 MON TUE WED THU FRI SAT);
+</pre>
+
+<p>
+If you want all your constants to have a prefix,
+you can specify this before listing the constants:
+</p>
+
+<pre>
+use enum qw(:OPT_ A B C);
+</pre>
+
+<p>
+Which defines constants <tt>OPT_A</tt>, <tt>OPT_B</tt>, and <tt>OPT_C</tt>.
+</p>
+
+<p>
+You can also define bit flag constants, using the <tt>BITMASK:</tt> directive.
+This can be combined with a prefix:
+</p>
+
+<pre>
+use enum qw(BITMASK:FLAG_ X Y Z);
+</pre>
+
+<p>
+<tt>FLAG_X</tt> will have value 1, <tt>FLAG_Y</tt> will be 2,
+and <tt>FLAG_Z</tt> will be 4.
+</p>
+
+<p>
+You can combine the above options and define all your constants
+in one invocation.
+</p>
+
+<pre>
+use enum qw(
+            :DAY_         SUN=0 MON TUE WED THU FRI SAT
+            BITMASK:FLAG_ A..C
+            ENUM:MONTH_   JAN=1 FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC
+           );
+</pre>
+
+<p>
+Note the <tt>..</tt> notation, which lets you define a sequence of
+constant names. And having used the <tt>BITMASK:</tt> directive,
+you can use the <tt>ENUM:</tt> directive to switch back to
+usual definition of enumeration constants.
+</p>
+<h2 id="enum::fields">enum::fields</h2>
+<p>
+<tt>enum::fields</tt> is used to define sequences of integer constants,
+similar to the <tt>enum</tt> module, but with a twist.
+It was created to be used in classes that are implemented as a blessed
+array reference, defining constants that are used to access attributes
+in the referenced array. And beyond that, it supports subclassing by
+supporting the extension of the sequence by a subclass.
+</p>
+
+<p>
+Let's say you have a class for a 2D point, you might start this with:
+</p>
+
+<pre>
+package Point2D;
+
+use enum::fields qw(COORD_X COORD_Y);
+</pre>
+
+<p>
+This would define constant <tt>COORD_X</tt> with value 0,
+and <tt>COORD_Y</tt> with value 1.
+You would access fields in an instance:
+</p>
+
+<pre>
+$self->[COORD_X]
+$self->[COORD_Y]
+</pre>
+
+<p>
+You then want to subclass this to create Point3D:
+</p>
+
+<pre>
+package Point3D;
+
+use parent 'Point2D';
+use enum::fields::extending Point2D => qw(COORD_Z);
+</pre>
+
+<p>
+This defines <tt>COORD_Z</tt> as 2, i.e. the next index in the sequence.
+</p>
+<h2 id="ex::constant::vars">ex::constant::vars</h2>
+<p>
+ex::constant::vars uses <a href="http://perldoc.perl.org/functions/tie.html">tie</a> to provide a mechanism for creating read-only variables.
+It provides three different types of interface.
+</p>
+
+<p>The first is an explicit tie interface:</p>
+
+<pre>
+use ex::constant::vars;
+
+tie my $greeting, 'ex::constant::vars', 'hello';
+tie my @cyan,     'ex::constant::vars', (0, 255, 255);
+tie my %meaning,  'ex::constant::vars', (felix => 'happy', erin => 'Irish');
+
+print "Greeting    : $greeting\n";
+print "Cyan        : @cyan\n";
+print "Felix means : ", $meaning{felix}, "\n";</pre>
+
+<p>The second interface uses the <tt>const</tt> function:</p>
+
+<pre>
+use ex::constant::vars 'const';
+
+const SCALAR my $pause_id, 'NEILB';
+const ARRAY  my @stooges,  qw(Larry Moe Curly);
+const HASH   my %point,    (x => 1, y => 3);
+
+print "PAUSE id : $pause_id\n";
+print "Stooges  : @stooges\n";
+print "Point    : ($point{x},$point{y})\n";</pre>
+
+<p>
+This seemed like a slightly strange notation, so I had a look at the code.
+SCALAR, ARRAY and HASH are defined thusly:
+</p>
+
+<pre>
+  sub SCALAR (\$$) { 'scalar', @_ }
+  sub ARRAY  (\@@) { 'array',  @_ }
+  sub HASH   (\%%) { 'hash',   @_ }
+</pre>
+
+<p>
+These functions are used to identify the constant type required,
+which is then passed to the <tt>const</tt> function,
+which in turn uses the tie interface under the hood.
+</p>
+
+<p>
+The third way to define constants with this module is at compile time,
+i.e. when use'ing the module:
+</p>
+
+<pre>
+use ex::constant::vars (
+    '$greeting'  => 'hello',
+    '@cyan'      => [0, 255, 255],
+    '%meaning'   => { felix => 'happy', erin => 'Irish' },
+);
+
+print "Greeting    : $greeting\n";
+print "Cyan        : @cyan\n";
+print "Felix means : ", $meaning{felix}, "\n";</pre>
+
+<p>Under the hood the const and import interfaces are using the tie interface.</p>
+
+<p>
+This module had a couple of bugs, and would generate warnings with modern perls,
+so I have taken over maintenance and released a new version which addresses all known issues.
+</p>
+<h2 id="Lexical::Import">Lexical::Import</h2>
+<p>
+<tt>Lexical::Import</tt> is used to import things from other packages
+into the invoker's lexical namespace.
+You could use this to define an immutable variable at compile time,
+which could be used for constant folding / conditional compilation.
+</p>
+
+<p>
+Let's say you want to define a <tt>$DEBUG</tt> constant,
+to use in the conditional compilation idiom.
+You could define the constant in a module as follows:
+</p>
+
+<pre>
+package LIConstants;
+*LI_DEBUG = \0;
+use parent 'Exporter';
+our @EXPORT = qw($LI_DEBUG);
+1;</pre>
+
+<p>
+Ok, that's not a very user-friendly way to define a constant.
+Here's some example code which shows use of the module:
+</p>
+
+<pre>
+use Lexical::Import 'LIConstants';
+warn '1';
+warn '2' if $LI_DEBUG;
+warn '3';</pre>
+
+<p>
+When you run that, you get the following, as you'd hopefully expect:
+</p>
+
+<pre>
+1 at article/lexical-import.pl line 5.
+3 at article/lexical-import.pl line 7.
+</pre>
+
+<p>
+You can run the following,
+to illustrate that it really is a compile-time constant:
+</p>
+
+<pre>
+<b>% perl -MO=Deparse lexical-import.pl</b>
+lexical-import.pl syntax OK
+use Lexical::Import ('LIConstants');
+BEGIN {
+    $^H{'Lexical::Var/$LI_DEBUG'} = 'SCALAR(0x7ffa229245e8)';
+}
+warn '1';
+'???';
+;
+warn '3';
+</pre>
+
+<p>
+Note the <tt>???</tt> instead of <tt>warn '2'</tt>.
+I picked up that trick from
+<a href="https://metacpan.org/author/GREEN">Denis Evdokimov</a>
+in the documentation for
+<a href="https://metacpan.org/module/constant::our">constant::our</a>.
+</p>
+<h2 id="Lexical::Var">Lexical::Var</h2>
+<p>
+<tt>Lexical::Var</tt> can be used to export a constant to the
+caller's lexical environment, rather than to the caller's package.
+If the variable is defined as a reference to a literal value,
+you end up creating a compile-time lexical constant.
+</p>
+
+<p>
+You could define a constant in a module as follows:
+</p>
+
+<pre>package LVConstants;
+use Lexical::Var '$LV_DEBUG' => \0;
+sub import {
+    require Lexical::Var;
+    Lexical::Var->import('$LV_DEBUG' => \$LV_DEBUG);
+}
+1;
+
+</pre>
+
+<p>
+Here's some example code which shows use of the module:
+</p>
+
+<pre>
+use LVConstants;
+warn '1';
+warn '2' if $LV_DEBUG;
+warn '3';</pre>
+
+<p>
+When you run that, you get the following, as you'd hopefully expect:
+</p>
+
+<pre>
+1 at article/lexical-var.pl line 5.
+3 at article/lexical-var.pl line 7.
+</pre>
+
+<p>
+You can run the following,
+to illustrate that it really is a compile-time constant:
+</p>
+
+<pre>
+<b>% perl -MO=Deparse lexical-var.pl</b>
+lexical-var.pl syntax OK
+use LVConstants;
+BEGIN {
+    $^H{'Lexical::Var/$LV_DEBUG'} = 'SCALAR(0x7fbdcc125f88)';
+}
+warn '1';
+'???';
+;
+warn '3';
+</pre>
+
+<h2 id="Readonly">Readonly</h2>
+<p>Readonly helps you create read-only scalar, array and hash variables. It supports a number of ways to declare read-only variables, some of which depend on your version of Perl. The simplest interface uses a class for each type of variable:</p>
+
+<pre>
+use Readonly;
+
+Readonly::Scalar my $scalar => 42;
+Readonly::Array  my @array  => qw(red green blue);
+Readonly::Hash   my %hash   => (food => 'sushi', drink => 'sake');
+
+Readonly::Scalar our $string => 'xyzzy';
+Readonly::Array  our @list   => (17, 23);
+Readonly::Hash   our %map    => (x => 1, y => 2, z => 3);</pre>
+
+<p>There's a more generic interface, which only works in Perl 5.8 and later:</p>
+
+<pre>
+use Readonly;
+
+Readonly my $scalar => 42;
+Readonly my @array  => qw(red green blue);
+Readonly my %hash   => (food => 'sushi', drink => 'sake');
+
+Readonly our $string => 'xyzzy';
+Readonly our @list   => (17, 23);
+Readonly our %map    => (x => 1, y => 2, z => 3);</pre>
+
+<p>
+Under the hood Readonly uses tied variables,
+in the same way ex::constant::vars does.
+But unlike the latter, it doesn't let you use the tie interface directly.
+This makes it slower than most of the modules here,
+unless you use Readonly::XS (see below).
+</p>
+
+<p>
+This is <a href="http://deps.cpantesters.org/depended-on-by.pl?module=Readonly">the most widely used</a> module of those listed here,
+using the measure of how many other CPAN distributions have
+one of these modules as a pre-requisite.
+It also has the most <a href="https://rt.cpan.org/Public/Dist/Display.html?Name=Readonly">open issues in RT</a>.
+</p>
+<h2 id="Readonly::XS">Readonly::XS</h2>
+<p>
+Readonly::XS is a companion module for Readonly.
+If you have it installed, Readonly will use it for any scalar constants you declare.
+It creates a constant by setting the SvREADONLY flag on the variable.
+At the moment there's a
+<a href="https://rt.cpan.org/Public/Bug/Display.html?id=59689">bug</a> which means that
+you only get the performance benefit if you use <tt>Readonly::Scalar</tt>
+rather than <tt>Readonly</tt>.
+</p>
+
+<p>You don't <tt>use</tt> this module, you just need to have it installed.</p>
+<h2 id="Scalar::Constant">Scalar::Constant</h2>
+<p>
+Scalar::Constant says it's for "lightweight constant scalars":
+</p>
+
+<pre>
+use Scalar::Constant ANSWER   => 42;
+use Scalar::Constant GREETING => 'Hej';
+
+print "scalar   = $ANSWER\n";
+print "greeting = $GREETING\n";</pre>
+
+<p>
+Internally when you define a constant,
+it builds up a string which it passes to eval
+(the <a href="http://www.effectiveperlprogramming.com/blog/965">dangerous version</a>).
+For the above constant, the eval string is:
+</p>
+
+<pre>
+*main::ANSWER   = \ 42;
+*main::GREETING = \ 'Hej';
+</pre>
+
+<p>
+Note that because of the mechanism used,
+you cannot use this module to create a constant with an arrayref or hashref value.
+</p>
+
+<p>
+If you use this module, make sure you use version 0.001003 or later:
+earlier versions would fail if you tried to declare a scalar constant with a string value.
+</p>
+<h2 id="Scalar::Construct">Scalar::Construct</h2>
+<p>
+<tt>Scalar::Construct</tt> provides a number of functions for
+constructing scalar objects.
+The one of interest here is the function <tt>constant</tt>:
+</p>
+
+<pre>
+use Scalar::Construct qw(constant);
+
+$ref = constant($value);
+</pre>
+
+<p>
+This creates an immutable scalar initialised to the value passed,
+and returns a reference to it. But how do you create a constant
+that you can use in your code? It's not obvious from the documentation.
+</p>
+
+<p>
+If you want to define constants in a module that is then used
+by the rest of your code, you can define your module as follows:
+</p>
+
+<pre>package SCConstants;
+use Scalar::Construct qw(constant);
+
+my $SC_DEBUG = constant(0);
+
+sub import {
+    require Lexical::Var;
+    Lexical::Var->import('$SC_DEBUG' => $SC_DEBUG);
+}
+
+1;
+
+</pre>
+
+<p>
+Here's some example code which shows use of the module:
+</p>
+
+<pre>
+use SCConstants;
+warn '1';
+warn '2' if $SC_DEBUG;
+warn '3';</pre>
+
+<p>
+When you run that, you get the following, as you'd hopefully expect:
+</p>
+
+<pre>
+1 at article/scalar-construct.pl line 5.
+3 at article/scalar-construct.pl line 7.
+</pre>
+
+<p>
+You could also use it in conjunction with Lexical::Import &mdash;
+the example module in the <a href="#Lexical::Import">Lexical::Import</a>
+could be lifted, with just the glob assignment changed:
+</p>
+
+<pre>
+*DEBUG = constant(0);
+</pre>
+
+<p>
+Given both examples given here work with other modules which can be used
+on their own, why would you use Scalar::Construct?
+The following is taken from the <a href="https://metacpan.org/module/Scalar::Construct">Scalar::Construct documentation</a>:
+</p>
+
+<blockquote>
+If VALUE is actually a compile-time constant
+that can be expressed as a literal, such as <tt>123</tt>,
+it would appear that a reference to a constant object with that value
+can be created by a Perl expression such as <tt>\123</tt>.
+However, Perl has some bugs relating to compile-time constants
+that prevent this working as intended.
+On Perls built for threading (even if threading is not actually used),
+such a scalar will be copied at surprising times,
+losing both its object identity and its immutability.
+The function supplied by this module avoids these problems.
+</blockquote>
+<h2 id="Scalar::Readonly">Scalar::Readonly</h2>
+<p>Scalar::Readonly is another module which basically is a layer on top of the SvREADONLY internal function (used by Const::Fast). The <tt>readonly_on()</tt> function is used to make a scalar variable read-only:</p>
+
+<pre>
+use Scalar::Readonly ':all';
+
+readonly_on(my $my_int    = 42);
+readonly_on(my $my_string = 'hello');
+
+readonly_on(our $our_int    = 15);
+readonly_on(our $our_string = 'goodbye');</pre>
+
+<p>The module also provides a <tt>readonly_off()</tt> function, and <tt>readonly()</tt>, which tells you whether a scalar is read-only or not:</p>
+
+<pre>
+use Scalar::Readonly ':all';
+
+my $scalar;
+
+$scalar = 3;
+
+print "scalar = $scalar\n";
+print "first, readonly(scalar) = ", readonly($scalar), "\n";
+
+readonly_on($scalar);
+print "then, readonly(scalar) = ", readonly($scalar), "\n";
+
+eval { $scalar++ };
+print "nope, can't change scalar ($scalar)\n" if $@;
+
+readonly_off($scalar);
+print "finally, readonly(scalar) = ", readonly($scalar), "\n";
+
+eval { $scalar++ };
+print "and at the end, \$scalar=$scalar\n";</pre>
+
+<p>When you run the above you'll get:</p>
+
+<pre>scalar = 3
+first, readonly(scalar) = 0
+then, readonly(scalar) = 1
+nope, can't change scalar (3)
+finally, readonly(scalar) = 0
+and at the end, $scalar=4
+</pre>
+
+<p>
+<h2>Comparison</h2>
+
+<p>
+There are two basic types of constant module: <em>functions</em> and <em>immutable variables</em>.
+Both approaches have strengths and weaknesses. Some of the points below relate to current modules,
+rather than being inherent in the particular approach.
+</p>
+
+<p>Function constants:</p>
+<ul>
+<li>Can be used for conditional compilation with the <tt>foobar if (DEBUG)</tt> idiom.</li>
+<li>Look different from regular variables, which can be a good thing.</li>
+<li>Cannot be interpolated into strings.</li>
+<li>Lists rather than arrays might catch some people out.</li>
+<li>Might trip you up with a bareword interpretation.</li>
+</ul>
+
+<p>Immutable variables:</p>
+<ul>
+<li>Can be used just like any other variables (apart from changing them, of course), including interpolating into strings.</li>
+<li>Scalars, arrays and hashes are supported.</li>
+<li>Cannot be used for conditional compilation.</li>
+<li>Some modules support constant complex data structures.</li>
+</ul>
+
+<p>
+The following is a map to help you identify the modules to consider,
+based on your needs:
+</p>
+
+<div class=blockPicture>
+<img src="module-map.png"/>
+</div>
+
+<p>
+The following tables show the results of simple performance comparisons
+for each type of constant.
+I defined constants with each module,
+and then accessed the constant one hundred million times.
+</p>
+
+<table class=benchmarkSummary>
+    <tr valign=top>
+        <td width="33%"><table class=benchmark><tr><th colspan=2>Scalar</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td>enum::fields</td><td align=right class=duration>3.1</td></tr>
+<tr><td>constant</td><td align=right class=duration>3.2</td></tr>
+<tr><td>Constant::Generate</td><td align=right class=duration>3.5</td></tr>
+<tr><td>enum</td><td align=right class=duration>3.6</td></tr>
+<tr><td>constant::def</td><td align=right class=duration>3.6</td></tr>
+<tr><td>Lexical::Import</td><td align=right class=duration>3.7</td></tr>
+<tr><td>Constant::FromGlobal</td><td align=right class=duration>3.8</td></tr>
+<tr><td>Scalar::Constant</td><td align=right class=duration>4.3</td></tr>
+<tr><td>Scalar::Construct</td><td align=right class=duration>4.5</td></tr>
+<tr><td>Lexical::Var</td><td align=right class=duration>4.5</td></tr>
+<tr><td>Readonly::Scalar</td><td align=right class=duration>4.8</td></tr>
+<tr><td>constant::our</td><td align=right class=duration>5.0</td></tr>
+<tr><td>constant::lexical</td><td align=right class=duration>5.2</td></tr>
+<tr><td>Attribute::Constant</td><td align=right class=duration>5.2</td></tr>
+<tr><td>Scalar::Readonly</td><td align=right class=duration>5.7</td></tr>
+<tr><td>Const::Fast</td><td align=right class=duration>6.0</td></tr>
+<tr><td>Config::Constants</td><td align=right class=duration>6.6</td></tr>
+<tr><td>constant::defer</td><td align=right class=duration>11.5</td></tr>
+<tr><td>ex::constant::vars</td><td align=right class=duration>94.2</td></tr>
+<tr><td>Readonly</td><td align=right class=duration>112.1</td></tr>
+</table>
+</td>
+        <td width="34%"><table class=benchmark><tr><th colspan=2>Array/List</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td>Const::Fast</td><td align=right class=duration>4.9</td></tr>
+<tr><td>Attribute::Constant</td><td align=right class=duration>5.1</td></tr>
+<tr><td>constant::def</td><td align=right class=duration>41.4</td></tr>
+<tr><td>constant</td><td align=right class=duration>41.9</td></tr>
+<tr><td>constant::defer</td><td align=right class=duration>42.1</td></tr>
+<tr><td>constant::lexical</td><td align=right class=duration>43.5</td></tr>
+<tr><td>ex::constant::vars</td><td align=right class=duration>147.8</td></tr>
+<tr><td>Readonly</td><td align=right class=duration>164.6</td></tr>
+</table>
+</td>
+        <td width="33%"><table class=benchmark><tr><th colspan=2>Hash</th></tr>
+<tr><th align=left>Module</th><th align=right>Time (s)</th></tr>
+<tr><td>Attribute::Constant</td><td align=right class=duration>7.2</td></tr>
+<tr><td>Const::Fast</td><td align=right class=duration>8.0</td></tr>
+<tr><td>ex::constant::vars</td><td align=right class=duration>200.5</td></tr>
+<tr><td>Readonly</td><td align=right class=duration>221.4</td></tr>
+</table>
+</td>
+    </tr>
+</table>
+
+<p>
+Notice that <tt>Readonly</tt> and <tt>Readonly::Scalar</tt> are listed.
+To get the performance benefits of <tt>Readonly::XS</tt> you currently have to
+use <tt>Readonly::Scalar</tt> and not <tt>Readonly</tt>.
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+As always seems to be the case, there is no single module which will meet all of your needs.
+</p>
+
+<ul>
+<li>For conditional compilation, <tt>constant</tt> is a good choice. It's a mature module and widely used.</li>
+<li>If you want conditional compilation with immutable scalar variables, use <tt>Scalar::Construct</tt> together with <tt>Lexical::Var</tt>.</li>
+<li>If you want to create your own module which provides a number of scalar function constants, use <tt>Constant::Generate</tt>.</li>
+<li>If you want array or hash constants, or immutable rich data structures, use <tt>Const::Fast</tt>. It's a close race between that and <tt>Attribute::Constant</tt>, but <tt>Const::Fast</tt> seems maturer, and has had more releases.</li>
+<li>If you want lazy calculation / generation of constants, then <tt>constant::defer</tt> is for you.</li>
+<li>If you only want scalar constants, and like the idea of defining them in a config file, then go with <tt>Config::Constants</tt>.</li>
+</ul>
+
+<p>
+In the previous version of this review, I wrote:
+</p>
+
+<blockquote>
+My perfect scenario doesn't exist: I'd like a module which can be used to declare immutable variable style constants at compile time,
+<em>and</em> for those variables to work in a conditional compilation idiom. <tt>ex::constant::vars</tt> covers the first part,
+but it's very slow. I'll have to ask p5p whether the second part is possible, or even makes sense.
+</blockquote>
+
+<p>
+I asked p5p, and as a result learned about <tt>Lexical::Var</tt> and <tt>Lexical::Import</tt>.
+Those modules provide everything I wanted,
+but they're not really user-friendly / elegant. Now I want a module that can be used to <em>elegantly</em> declare immutable variables
+at compile time, so they can be used in constant folding.
+</p>
+
+<p>
+For the app which started this, I've switched from <tt>Readonly</tt> to <tt>Const::Fast</tt>.
+</p>
+<div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'cpanreviews';
+
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+</body>
+</html>
