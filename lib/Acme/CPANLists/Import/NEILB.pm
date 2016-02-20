@@ -13,8 +13,6 @@ This distribution contains module lists that are imported from Neil Bowers'
 This distribution is created to improve the "mentions cloud".
 
 
-=head1 SEE ALSO
-
-L<Acme::CPANLists>
+=head1 append:SEE ALSO
 
 L<App::lcpan> and L<lcpan>, particularly the B<related-mods> subcommand.
