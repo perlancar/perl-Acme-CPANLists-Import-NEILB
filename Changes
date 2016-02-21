@@ -1,5 +1,12 @@
 Revision history for Acme-CPANLists-Import-NEILB
 
+0.04    2016-02-21 (PERLANCAR)
+
+	- No functional changes.
+
+	- Add years to summaries.
+
+
 0.03    2016-02-21 (PERLANCAR)
 
         - Add description to generated modules.
