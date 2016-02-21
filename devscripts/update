@@ -18,57 +18,57 @@ my @modules = (
     {
         name => 'Markdown',
         url => 'http://neilb.org/reviews/markdown.html',
-        summary => 'Modules for converting markdown to HTML',
+        summary => 'Modules for converting markdown to HTML (2013)',
     },
     {
         name => 'ModuleLoading',
         url => 'http://neilb.org/reviews/module-loading.html',
-        summary => 'Modules that (can) load other modules',
+        summary => 'Modules that (can) load other modules (2013)',
     },
     {
         name => 'ModulePath',
         url => 'http://neilb.org/reviews/module-path.html',
-        summary => q(Getting a module's path),
+        summary => 'Getting a module\'s path (2012)',
     },
     {
         name => 'LUHN',
         url => 'http://neilb.org/reviews/luhn.html',
-        summary => 'Checking credit card numbers (LUHN check)',
+        summary => 'Checking credit card numbers (LUHN check) (2012)',
     },
     {
         name => 'HTTPRequesters',
         url => 'http://neilb.org/reviews/http-requesters.html',
-        summary => 'Making HTTP requests',
+        summary => 'Making HTTP requests (2012)',
     },
     {
         name => 'Dependencies',
         url => 'http://neilb.org/reviews/dependencies.html',
-        summary => 'Getting module dependency information',
+        summary => 'Getting module dependency information (2012)',
     },
     {
         name => 'Constants',
         url => 'http://neilb.org/reviews/constants.html',
-        summary => 'Defining constants',
+        summary => 'Defining constants (2012)',
     },
     {
         name => 'UserAgent',
         url => 'http://neilb.org/reviews/user-agent.html',
-        summary => 'Parsing User-Agent strings',
+        summary => 'Parsing User-Agent strings (2012)',
     },
     {
         name => 'SpellNumbers',
         url => 'http://neilb.org/reviews/spell-numbers.html',
-        summary => 'Spelling out a number in English',
+        summary => 'Spelling out a number in English (2012)',
     },
     {
         name => 'IPLocation',
         url => 'http://neilb.org/reviews/ip-location.html',
-        summary => 'Locating an IP address',
+        summary => 'Locating an IP address (2012)',
     },
     {
         name => 'Passwords',
         url => 'http://neilb.org/reviews/passwords.html',
-        summary => 'Generating passwords',
+        summary => 'Generating passwords (2012)',
     },
 );
 
